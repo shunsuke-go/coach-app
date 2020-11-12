@@ -25,12 +25,25 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
+  gem 'bootstrap-sass', '3.4.1'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem "rspec-rails"
+  gem "factory_bot_rails"
+
+  gem 'capybara',                 '3.28.0'
+  gem 'selenium-webdriver',       '3.142.4'
+  gem 'webdrivers',               '4.1.2'
+  gem 'rails-controller-testing', '1.0.4'
+  gem 'minitest',                 '5.11.3'
+  gem 'minitest-reporters',       '1.3.8'
+  gem 'guard',                    '2.16.2'
+  gem 'guard-minitest',           '2.4.6'
 end
 
 group :development do
