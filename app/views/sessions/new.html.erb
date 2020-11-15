@@ -1,0 +1,17 @@
+<% provide(:title,"ログイン")%>
+
+<%= form_with(url: login_path,scope: :session,local: true) do |f|%>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= f.label :email,"メールアドレス" %>
+    <%= f.email_field :email,class: 'form-controll' %>
+    
+    <%= f.label :password,"パスワード" %>
+    <%= f.password_field :password,class: 'form-controll'  %>
+
+    <%= f.submit "ログイン" ,class: "btn btn-primary" %>
+
+    <%= link_to "新規登録はこちら",signup_path %>
+    <% end %>
+  </div>
+</div>
