@@ -17,6 +17,7 @@
 	// Set *default* container specific settings.json values on container create.
 	"settings": {
 		"terminal.integrated.shell.linux": "/bin/bash",
+		"ruby.useLanguageServer": true,
 		"ruby.intellisense": "rubyLocate",
 		
 		"emmet.includeLanguages": {

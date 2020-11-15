@@ -9,6 +9,12 @@
     <%= f.label :password,"パスワード" %>
     <%= f.password_field :password,class: 'form-controll'  %>
 
+    <%= f.label :remember_me,class: 'checkbox inline' do %>
+    <%= f.check_box :remember_me %>
+    <span>次回から自動でログイン</span>
+    <% end %>
+
+
     <%= f.submit "ログイン" ,class: "btn btn-primary" %>
 
     <%= link_to "新規登録はこちら",signup_path %>
