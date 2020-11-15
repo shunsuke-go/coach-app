@@ -17,7 +17,7 @@
 	// Set *default* container specific settings.json values on container create.
 	"settings": {
 		"terminal.integrated.shell.linux": "/bin/bash",
-		"ruby.useLanguageServer": true,
+		"ruby.useLanguageServer": false,
 		"ruby.intellisense": "rubyLocate",
 		
 		"emmet.includeLanguages": {
@@ -28,7 +28,8 @@
 	"extensions": [
 		"rebornix.ruby",
 		"castwide.solargraph",
-		"wingrunr21.vscode-ruby"
+		"wingrunr21.vscode-ruby",
+		"formulahendry.auto-close-tag"
 	],
 	"addPort": [
 		"3000:3000",

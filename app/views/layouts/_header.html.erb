@@ -7,11 +7,11 @@
             <li><%= link_to "ホーム",   root_path %></li>
             <li><%= link_to "ヘルプ",   help_path %></li>
           <% if logged_in? %>
-          <li><%= link_to "ユーザ一覧","#" %></li>
+          <li><%= link_to "ユーザ一覧", users_path %></li>
             <li><%= link_to "アカウント","#" %></li>
             
             <li><%= link_to "プロフィール", current_user %></li>
-            <li><%= link_to "セッティング", "#" %></li>
+            <li><%= link_to "セッティング", edit_user_path(current_user) %></li>
             <li>
            <%= link_to "ログアウト",logout_path,method: :delete %>
           </li>
