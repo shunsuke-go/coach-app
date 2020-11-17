@@ -8,7 +8,8 @@ before_action :check_admin, only:[:destroy]
   end
 
   def show
-    @user = User.find(session[:user_id])
+    @user = User.find(params[:id])
+    @articles = @user.articles.paginate(page: params[:page])
   end
 
 
@@ -61,15 +62,7 @@ before_action :check_admin, only:[:destroy]
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 
-  #ログインしてなかったらログインページへ飛ばす
-  def logged_in_user
-    unless logged_in?
-      store_location
-      flash[:danger] = "ログインしてください！"
-      redirect_to login_url
-    end
-  end
-
+  
   #別のユーザーページを編集するのを防ぐ
   def correct_user
     @user = User.find_by(id: params[:id])

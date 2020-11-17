@@ -1,6 +1,10 @@
 class User < ApplicationRecord
-  attr_accessor :remember_token
+  
+  has_many :articles, dependent: :destroy
 
+
+
+  attr_accessor :remember_token
   before_save :downcase_email
 
   validates :name, presence: true, length: { maximum: 50 }
@@ -18,7 +22,7 @@ class User < ApplicationRecord
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                   BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
-  end
+   end
 
   #ランダムなトークンを作成し、リターンする
    def User.new_token
@@ -38,10 +42,17 @@ class User < ApplicationRecord
     BCrypt::Password.new(remember_digest).is_password?(remember_token)
    end
 
+   #cookieのremember_digestを空にする
    def forget
     update_attribute(:remember_digest,nil)
    end
 
+   def feed
+    Article.where("user_id = ?", self.id)
+   end
+   
+
+   
 
 
   private

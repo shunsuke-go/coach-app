@@ -1,0 +1,16 @@
+<li id="micropost-<%= article.id %>">
+
+<span class="user"> <%= link_to article.user.name,article.user %> </span>
+<span class="content"> <%= article.content %> </span>
+<span class="timestamp">　投稿 <%= time_ago_in_words(article.created_at) %> 時間前
+
+<% if current_user?(article.user) %>
+<%= link_to "削除", article, method: :delete,
+data:{ confirm: "本当に削除しますか？" } %>
+<% end %>
+
+</span>
+
+
+
+</li>
