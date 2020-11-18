@@ -1,10 +1,12 @@
 class UsersController < ApplicationController
-before_action :logged_in_user, only:[:edit,:update]
+before_action :logged_in_user, 
+only:[:index,:edit,:update,:destroy,:following,:followers]
 before_action :correct_user, only:[:edit,:update]
 before_action :check_admin, only:[:destroy]
   
   def new
     @user = User.new
+    
   end
 
   def show
@@ -52,6 +54,24 @@ before_action :check_admin, only:[:destroy]
     redirect_to user_url
   end
   
+
+
+  def following
+    @title = "フォロー中"
+    @user = User.find_by(params[:id])
+    @users = @user.following.paginate(page: params[:page])
+    render 'show_follow'
+  end
+
+
+  def followers
+    @title = "フォロワー"
+    @user = User.find_by(params[:id])
+    @users = @user.followers.paginate(page: params[:page])
+    render 'show_follow'
+  end
+
+
   
 
 

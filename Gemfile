@@ -38,7 +38,6 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem "rspec-rails"
   gem "factory_bot_rails"
-
   gem 'capybara',                 '3.28.0'
   gem 'selenium-webdriver',       '3.142.4'
   gem 'webdrivers',               '4.1.2'
@@ -47,6 +46,8 @@ group :development, :test do
   gem 'minitest-reporters',       '1.3.8'
   gem 'guard',                    '2.16.2'
   gem 'guard-minitest',           '2.4.6'
+  gem 'pry-rails'
+  gem 'pry-byebug'
 end
 
 group :development do

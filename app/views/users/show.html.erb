@@ -1,16 +1,19 @@
 <%= provide(:title,"マイページ")%>
 <h1>マイページ</h1 >
-<%= link_to "プロフィール編集",edit_user_path(current_user) %>
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
       <h1>
         <%= @user.name %>
-          </h1>
+      </h1>
+      <%= link_to "プロフィール編集",edit_user_path(current_user) %>
+    <%= render 'shared/status' %>
     </section>
   </aside>
+
 <div class="col-md-8">
-<% if @user.articles.any? %>
+  <%= render 'follow_form' %>
+  <% if @user.articles.any? %>
   <h3><%= @user.articles.count%>記事</h3>
   <ol class="microposts">
   <%= render @articles %>
