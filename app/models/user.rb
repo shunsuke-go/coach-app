@@ -66,10 +66,19 @@ class User < ApplicationRecord
     update_attribute(:remember_digest,nil)
    end
 
+
+
    def feed
-    Article.where("user_id = ?", self.id)
+    
+    followed_ids = "SELECT followed_id FROM relationships
+    WHERE follower_id = :user_id"
+    Article.where("user_id IN (#{followed_ids})
+    OR user_id = :user_id",user_id: self.id)
+
    end
    
+
+
    def follow(other_user)
     following << other_user
    end
