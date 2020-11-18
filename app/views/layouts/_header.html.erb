@@ -10,7 +10,7 @@
           <li><%= link_to "ユーザ一覧", users_path %></li>
             <li><%= link_to "アカウント","#" %></li>
             
-            <li><%= link_to "プロフィール", current_user %></li>
+            <li><%= link_to "プロフィール", user_path(current_user) %></li>
             <li><%= link_to "セッティング", edit_user_path(current_user) %></li>
             <li>
            <%= link_to "ログアウト",logout_path,method: :delete %>

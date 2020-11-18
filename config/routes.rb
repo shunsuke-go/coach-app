@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   end
   
   resources :relationships, only:[:create,:destroy]
-  resources :articles, only:[:create,:destroy,]
+  resources :articles, only:[:create,:destroy,:show]
   get '/articles', to: 'static_pages#home'
   
 

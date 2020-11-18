@@ -2,6 +2,9 @@ class ArticlesController < ApplicationController
   before_action :logged_in?,only:[:create,:destroy]
   before_action :correct_user,only:[:destroy]
 
+    def show
+      @article = Article.find(params[:id])
+    end
 
     def create
       @article = current_user.articles.build(article_params) 
@@ -19,13 +22,19 @@ class ArticlesController < ApplicationController
       flash[:success] = "削除しました！"
       redirect_to request.referrer || root_url
     end
+  
+
+
+
 
 private
-
+  # Strong Parameter
     def article_params
-        params.require(:article).permit(:content)         
+        params.require(:article).permit(:content,:title)         
     end
 
+
+  # 削除する記事を取得する。削除前に行う。
     def correct_user
       @article = current_user.articles.find_by(id: params[:id])
       redirect_to root_url if @article.nil?
