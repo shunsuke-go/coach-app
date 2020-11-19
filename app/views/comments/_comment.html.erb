@@ -3,4 +3,7 @@
 <%= link_to comment.user.name,user_path(comment.user.id) %>さんのコメント</p>
 <%= comment.content %>
 
+<% if current_user?(comment.user)%>
+<%= link_to "削除", article_comment_path(@article,comment), method: :delete,data:{ confirm:"本当に削除しますか？" } %> 
+<% end %>
 </li>

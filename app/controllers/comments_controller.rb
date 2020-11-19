@@ -7,6 +7,8 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
     
     
+    
+    
     if @comment.save
       flash[:success] = "コメントしました！"
       redirect_to article_url(article)
@@ -22,6 +24,12 @@ class CommentsController < ApplicationController
 
 
   def destroy
+    #article_id  params[:id] ← commentのid
+    
+    article = Article.find(params[:article_id])
+    Comment.find(params[:id]).destroy
+    redirect_to article_url(article)
+    
   end
 
 private
