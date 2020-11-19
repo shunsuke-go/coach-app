@@ -10,6 +10,10 @@
 data:{ confirm: "本当に削除しますか？" } %>
 <% end %>
 
+<% if article.comments.any? %>
+<span><%= link_to "コメント：#{article.comments.count}件",article_path(article) %> 
+　</span>
+<% end %>
 </span>
 
 

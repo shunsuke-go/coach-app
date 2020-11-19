@@ -1,0 +1,6 @@
+<li class="micropost-<%= comment.id %>">
+
+<%= link_to comment.user.name,user_path(comment.user.id) %>さんのコメント</p>
+<%= comment.content %>
+
+</li>
