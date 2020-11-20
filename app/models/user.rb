@@ -3,9 +3,7 @@ class User < ApplicationRecord
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
 #  関連付け
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-   
-
-
+  
   has_many :articles, dependent: :destroy
 
   # active_relationships関連付けはRelationshipクラスを元にして
@@ -32,7 +30,8 @@ class User < ApplicationRecord
 
   has_many :comments, dependent: :destroy
 
-
+  has_many :likes, dependent: :destroy
+  has_many :liked_articles,through: :likes,source: :article
 
  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
  #  validation
@@ -95,6 +94,11 @@ class User < ApplicationRecord
 
    end
    
+   # select * from article where article_id in
+   # articlesからlikesのuser_id = 1　のarticle_idのarticleを全て取り出す 
+   # hoge = SELECT article_id FROM likes WHERE user_id = 1
+   # Article.where("id IN (#{hoge})")
+
 
 
    def follow(other_user)
@@ -109,8 +113,12 @@ class User < ApplicationRecord
     following.include?(other_user)
    end
 
+   def article_like?(article)
+    self.likes.exists?(article_id:article.id)
+    
+    
+   end
    
-
 
 
 

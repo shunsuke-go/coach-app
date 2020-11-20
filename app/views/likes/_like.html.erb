@@ -1,0 +1,5 @@
+<% if current_user.article_like?(@article) %>
+  <%= render 'likes/unlike_button' %>
+<% else %>
+  <%= render 'likes/like_button' %>
+<% end %>
