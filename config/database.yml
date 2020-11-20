@@ -49,9 +49,9 @@ test:
 #
 production:
   <<: *default
-  adaptar: postgresql
-  encodeing: unicode
+  adapter: postgresql
+  encoding: unicode
   pool: 5
-  #database: coach_app_production
- # username: coach_app
-#  password: <%= ENV['COACH_APP_DATABASE_PASSWORD'] %>
+  database: coach_app_production
+  username: coach_app
+  password: <%= ENV['COACH_APP_DATABASE_PASSWORD'] %>
