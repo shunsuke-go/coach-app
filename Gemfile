@@ -9,7 +9,7 @@ gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 
 #追記
 gem 'mysql2', '>= 0.4.4',groups: %w(test development), require: false
-gem 'pg', '~> 0.19.0', group: :production, require: false
+gem 'postgresql', '~> 0.19.0', group: :production, require: false
 
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
