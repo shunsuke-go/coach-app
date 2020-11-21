@@ -8,6 +8,7 @@ class ArticlesController < ApplicationController
       @comments = @article.comments.all
       @like = @article.likes.build
       
+      
     end
 
     def create

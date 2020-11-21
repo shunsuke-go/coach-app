@@ -22,13 +22,8 @@ class LikesController < ApplicationController
     
   end
 
-  
-
-
-  # current_userがこのarticleをlikeしているかどうか
-  # Likeにcurrent_user.idをキーとしてarticle_idを取得できるかどうか
-
-  # if Like.find_by(user_id:curent_user.id)
-
+  def index
+    @likes = current_user.liked_articles
+  end
 
 end

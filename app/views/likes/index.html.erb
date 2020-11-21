@@ -1,0 +1,6 @@
+<% if @likes.any? %>
+<h2>いいねした記事一覧</h2>
+<ol class="microposts">
+<%= render @likes %>
+<% end %>
+</ol>

@@ -1,6 +1,6 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">
-        <%= link_to "コーチャーズ", root_path, id: "logo" %>
+        <%= link_to "タイトル", root_path, id: "logo" %>
         <nav>
         
           <ul class="nav navbar-nav navbar-right">
@@ -8,8 +8,7 @@
             <li><%= link_to "ヘルプ",   help_path %></li>
           <% if logged_in? %>
           <li><%= link_to "ユーザ一覧", users_path %></li>
-            <li><%= link_to "アカウント","#" %></li>
-            
+            <li><%= link_to "いいねした記事", user_likes_path(current_user) %></li>
             <li><%= link_to "プロフィール", user_path(current_user) %></li>
             <li><%= link_to "セッティング", edit_user_path(current_user) %></li>
             <li>
