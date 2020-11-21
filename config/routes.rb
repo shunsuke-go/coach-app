@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   resources :users do
+  resources :likes,only:[:index]
     member do
       get :following,:followers
     end
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
   resources :relationships, only:[:create,:destroy]
   resources :articles, only:[:create,:destroy,:show] do
     resources :comments,only:[:create,:destroy]
+    resources :likes,only:[:create,:destroy]
   end
 
   get '/articles', to: 'static_pages#home'

@@ -6,8 +6,9 @@ class ArticlesController < ApplicationController
       @article = Article.find(params[:id])
       @comment = @article.comments.build
       @comments = @article.comments.all
+      @like = @article.likes.build
       
-             
+      
     end
 
     def create
