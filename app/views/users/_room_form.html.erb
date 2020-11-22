@@ -1,0 +1,7 @@
+<% unless current_user == @user %>
+  <% unless Entry.find_by(user_id:@user.id).present? && Entry.find_by(user_id:current_user.id).present? %>
+  <%= render 'rooms/create_room' %>
+  <% else %>
+    <%= render 'rooms/join_room'%>   
+  <% end %>
+<% end %>

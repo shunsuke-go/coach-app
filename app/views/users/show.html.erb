@@ -12,6 +12,7 @@
   </aside>
 
 <div class="col-md-8">
+  <%= render 'room_form' %>
   <%= render 'follow_form' %>
   <% if @user.articles.any? %>
   <h3><%= @user.articles.count%>記事</h3>

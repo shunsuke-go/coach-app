@@ -10,8 +10,27 @@ before_action :check_admin, only:[:destroy]
   end
 
   def show
+    
     @user = User.find(params[:id])
     @articles = @user.articles.paginate(page: params[:page])
+    
+   unless Entry.find_by(user_id:@user.id).present? && Entry.find_by(user_id:current_user.id).present?
+      @room = Room.new  
+      @entry = Entry.new
+   else
+    
+    
+      unless current_user?(@user)
+      @room = Room.find_by_sql("SELECT * FROM rooms WHERE id =  
+       (SELECT room_id FROM entries WHERE user_id = #{@user.id} && #{current_user.id})") 
+      end
+      # entriesのroom_idを引き出す。user_idがcurrent_userと@userで同じroom_id
+
+      # SELECT * FROM rooms WHERE room_id = 
+      # (SELECT room_id FROM entries WHERE user_id = @user.id =
+      # (SELECT room_id FROM entries WHERE user_id = current_user.id) ) 
+
+   end
   end
 
 

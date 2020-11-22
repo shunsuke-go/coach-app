@@ -15,13 +15,15 @@ Rails.application.routes.draw do
   end
   
   resources :relationships, only:[:create,:destroy]
+
   resources :articles, only:[:create,:destroy,:show] do
     resources :comments,only:[:create,:destroy]
     resources :likes,only:[:create,:destroy]
   end
-
   get '/articles', to: 'static_pages#home'
   
+  resources :rooms,only:[:show,:create,:index]
+  resources :messages,only:[:create]
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
