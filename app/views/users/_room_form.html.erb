@@ -1,0 +1,7 @@
+<% unless current_user == @user %>
+  <% if @room[0].nil? %>
+  <%= render 'rooms/create_room' %>
+  <% else %>
+    <%= render 'rooms/join_room'%>   
+  <% end %>
+<% end %>
