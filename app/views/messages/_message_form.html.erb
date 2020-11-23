@@ -2,6 +2,6 @@
 <%= f.label :content, "メッセージ" %>
 <%= f.text_area :content, class:'form-control' %>
 <%= f.submit "送信",class:"btn btn-primary"%>
-<%= hidden_field_tag :user_id,@user.id %>
-<%= hidden_field_tag :room_id,@room[0].id %>
+<%= hidden_field_tag :user_id,@user[0].id %>
+<%= hidden_field_tag :room_id,@room.id %>
 <% end %>
