@@ -12,7 +12,7 @@ class RoomsController < ApplicationController
     if @room.save       
       @entry_user = Entry.create(room_id:@room.id, user_id:@user.id)
       @entry_current = Entry.create(room_id:@room.id, user_id:current_user.id)
-      redirect_to room_url(@room,user_id:@user.id)
+      redirect_to room_url(@room)
     else
       
       flash[:danger]="無効な操作です"
