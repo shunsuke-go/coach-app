@@ -1,0 +1,15 @@
+<li><%= notification.visiter.name %>さんが
+<% if notification.action == "like" %>
+  <%= link_to notification.article.title,article_path(notification.article) %>
+  の記事をいいねしました
+
+<% elsif notification.action == "comment" %>
+  <%= link_to notification.article.title,article_path(notification.article) %>
+  の記事にコメントしました
+
+<% elsif notification.action == "message" %>
+<% binding.pry %>
+  あなたに
+  <%= link_to "メッセージ",room_path(notification.message.room) %>
+  を送信しました
+</li><% end %>

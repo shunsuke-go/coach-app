@@ -7,8 +7,6 @@ class ArticlesController < ApplicationController
       @comment = @article.comments.build
       @comments = @article.comments.all
       @like = @article.likes.build
-      
-      
     end
 
     def create
@@ -28,10 +26,6 @@ class ArticlesController < ApplicationController
       redirect_to request.referrer || root_url
     end
   
-
-
-
-
 private
   # Strong Parameter
     def article_params

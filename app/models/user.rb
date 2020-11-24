@@ -36,8 +36,15 @@ class User < ApplicationRecord
   has_many :entries,dependent: :destroy
   has_many :messages,dependent: :destroy
 
+  has_many :active_notifications, class_name: "Notification",
+  foreign_key: "visiter_id", dependent: :destroy
+
+  has_many :passive_notifications, class_name: "Notification",
+  foreign_key: "visited_id", dependent: :destroy
+
+
  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
- #  validation
+ #  validations
  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  
  
@@ -97,11 +104,6 @@ class User < ApplicationRecord
 
    end
    
-   # select * from article where article_id in
-   # articlesからlikesのuser_id = 1　のarticle_idのarticleを全て取り出す 
-   # hoge = SELECT article_id FROM likes WHERE user_id = 1
-   # Article.where("id IN (#{hoge})")
-
 
 
    def follow(other_user)

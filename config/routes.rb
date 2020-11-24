@@ -23,7 +23,8 @@ Rails.application.routes.draw do
   get '/articles', to: 'static_pages#home'
   
   resources :rooms,only:[:show,:create,:index]
-  resources :messages,only:[:create]
+  resources :messages,only: :create
+  resources :notifications,only: :index 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
