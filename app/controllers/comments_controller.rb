@@ -5,11 +5,12 @@ class CommentsController < ApplicationController
     article = Article.find(params[:article_id])
     @comment = article.comments.build(comment_params)
     @comment.user_id = current_user.id
-    
+
     
     
     
     if @comment.save
+      article.create_comment_notification(current_user,@comment)
       flash[:success] = "コメントしました！"
       redirect_to article_url(article)
     

@@ -17,7 +17,7 @@ before_action :check_admin, only:[:destroy]
     
     @room = Room.find_by_sql("SELECT * FROM rooms WHERE id IN 
       (SELECT room_id FROM entries WHERE user_id = #{@user.id} && 
-      room_id in (SELECT room_id FROM entries WHERE user_id = #{current_user.id}))")
+      room_id IN (SELECT room_id FROM entries WHERE user_id = #{current_user.id}))")
       
       
     if @room[0].nil?
@@ -72,15 +72,16 @@ before_action :check_admin, only:[:destroy]
 
   def following
     @title = "フォロー中"
-    @user = User.find_by(params[:id])
+    @user = User.find_by(id:params[:id])
     @users = @user.following.paginate(page: params[:page])
     render 'show_follow'
+
   end
 
 
   def followers
     @title = "フォロワー"
-    @user = User.find_by(params[:id])
+    @user = User.find_by(id:params[:id])
     @users = @user.followers.paginate(page: params[:page])
     render 'show_follow'
   end

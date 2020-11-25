@@ -4,7 +4,11 @@ class LikesController < ApplicationController
     @article = Article.find(params[:article_id])
     @like = @article.likes.build
     @like.user_id = current_user.id
-    
+
+    # 通知
+    @article.create_like_notification(current_user)
+  
+      
     if @like.save
       redirect_to article_url(@article)
 

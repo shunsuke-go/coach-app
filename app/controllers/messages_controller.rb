@@ -5,15 +5,19 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     @message.user_id = current_user.id
     @message.room_id = params[:room_id]
+    
+    
 
     if @message.save
-      flash[:success] = "メッセージを送信しました"
-
+      @room = @message.room
+      @message.create_message_notification(@user)
       
-      redirect_to room_url(params[:room_id],user_id: @user.id)
+      
+      flash[:success] = "メッセージを送信しました"
+      redirect_to room_url(@room)
     else
       flash[:danger] = "無効な操作です"
-      redirect_to room_url(params[:room_id])
+      redirect_to root_url
        
     end  
 

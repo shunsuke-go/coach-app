@@ -6,23 +6,18 @@ class RoomsController < ApplicationController
   
   
   def create
-    # もし、指定した2人のルームがないなら作成
     @user = User.find_by(id:params[:entry][:user_id])
-
+    @room = Room.new
       
-        @room = Room.new
+    if @room.save       
+      @entry_user = Entry.create(room_id:@room.id, user_id:@user.id)
+      @entry_current = Entry.create(room_id:@room.id, user_id:current_user.id)
+      redirect_to room_url(@room)
+    else
       
-       if @room.save       
-        @entry_user = Entry.create(room_id:@room.id, user_id:@user.id)
-        @entry_current = Entry.create(room_id:@room.id, user_id:current_user.id)
-        redirect_to room_url(@room,user_id:@user.id)
-       
-
-       else
-      
-        flash[:danger]="無効な操作です"
-        redirect_to user_url(@user)
-       end
+      flash[:danger]="無効な操作です"
+      redirect_to user_url(@user)
+    end
   end
   
 
@@ -30,24 +25,18 @@ class RoomsController < ApplicationController
     # @userは配列
     @user = User.find_by_sql("SELECT * FROM users WHERE id = 
        (SELECT user_id FROM entries WHERE room_id = #{params[:id]} && user_id != #{current_user.id})")
-    
-    
-    
     @room = Room.find_by(id: params[:id])
     @message = Message.new    
     @messages = Message.where("room_id = #{@room.id}")
 
-    # select * from users where id = 
-    # (select user_id from entries where room_id = #{params[:id] && user_id != #{current_user.id})
   end  
+
     private
 
       def room_exists? 
-        
-        
-        check_room = Room.find_by_sql("select * from rooms where id in 
-          (select room_id from entries where user_id = #{params[:entry][:user_id]} && 
-          room_id in (select room_id from entries where user_id = #{current_user.id}))")
+        check_room = Room.find_by_sql("SELECT * FROM rooms WHERE id IN 
+          (SELECT room_id FROM entries WHERE user_id = #{params[:entry][:user_id]} && 
+          room_id IN (SELECT room_id FROM entries WHERE user_id = #{current_user.id}))")
 
           unless check_room[0].nil?
             redirect_to room_url(check_room)
