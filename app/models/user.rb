@@ -42,6 +42,7 @@ class User < ApplicationRecord
   has_many :passive_notifications, class_name: "Notification",
   foreign_key: "visited_id", dependent: :destroy
 
+  has_one :profile, dependent: :destroy
 
  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
  #  validations
@@ -129,7 +130,7 @@ class User < ApplicationRecord
    
 
    def create_follow_notification(current_user,other_user)
-    notification = current_user.active_notifications.new(
+    notification = current_user.active_notifications.build(
       visited_id:other_user.id,
       action: "follow"
     )

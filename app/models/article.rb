@@ -12,7 +12,7 @@ class Article < ApplicationRecord
 
 
   def create_like_notification(current_user)
-    like_notification = current_user.active_notifications.new(
+    like_notification = current_user.active_notifications.build(
         article_id: id,
         visited_id: user_id,
         action:"like"
@@ -22,7 +22,7 @@ class Article < ApplicationRecord
   end
 
   def  create_comment_notification(current_user,comment)
-    comment_notification = current_user.active_notifications.new(
+    comment_notification = current_user.active_notifications.build(
     article_id: id,
     visited_id: user_id,
     comment_id: comment.id,

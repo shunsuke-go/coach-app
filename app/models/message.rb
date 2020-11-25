@@ -6,7 +6,7 @@ class Message < ApplicationRecord
   validates :content, presence: true
 
   def create_message_notification(user)
-    message_notification = user.passive_notifications.new(
+    message_notification = user.passive_notifications.build(
       visiter_id: user_id,
       message_id: id,
       action: "message"

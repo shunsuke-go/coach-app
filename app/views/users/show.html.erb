@@ -6,7 +6,8 @@
       <h1>
         <%= @user.name %>
       </h1>
-      <%= link_to "プロフィール編集",edit_user_path(current_user) %>
+      <%= link_to "プロフィール編集",edit_user_path(current_user) %></p>
+      <%= render 'profile_page' %>
     <%= render 'shared/status' %>
     </section>
   </aside>
