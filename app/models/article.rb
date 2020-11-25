@@ -32,7 +32,7 @@ class Article < ApplicationRecord
   ) 
 
     comment_notification.save if comment_notification.valid?
-    binding.pry
+    
       
   end
 

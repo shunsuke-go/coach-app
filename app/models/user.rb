@@ -70,10 +70,12 @@ class User < ApplicationRecord
     BCrypt::Password.create(string, cost: cost)
    end
 
+
   #ランダムなトークンを作成し、リターンする
    def User.new_token
     SecureRandom.urlsafe_base64
    end 
+
 
    #remember_tokenにランダム文字列を代入しそれを暗号化したものを
    #remember_digestに保存する
@@ -82,17 +84,18 @@ class User < ApplicationRecord
     update_attribute(:remember_digest,User.digest(remember_token))
    end
 
+
    #remember_tokenとremember_digestのハッシュ前の値が同じかどうか確認
    def authenticated?(remember_token)
     return false if remember_digest.nil?
     BCrypt::Password.new(remember_digest).is_password?(remember_token)
    end
 
+
    #cookieのremember_digestを空にする
    def forget
     update_attribute(:remember_digest,nil)
    end
-
 
 
    def feed
@@ -105,25 +108,34 @@ class User < ApplicationRecord
    end
    
 
-
    def follow(other_user)
     following << other_user
    end
+
 
    def unfollow(other_user)
     active_relationships.find_by(followed_id: other_user.id).destroy
    end
 
+
    def following?(other_user)
     following.include?(other_user)
    end
 
+
    def article_like?(article)
     self.likes.exists?(article_id:article.id)
-    
-    
    end
    
+
+   def create_follow_notification(current_user,other_user)
+    notification = current_user.active_notifications.new(
+      visited_id:other_user.id,
+      action: "follow"
+    )
+
+    notification.save if notification.valid?
+   end
 
 
 

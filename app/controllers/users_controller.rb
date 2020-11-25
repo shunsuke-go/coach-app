@@ -72,15 +72,16 @@ before_action :check_admin, only:[:destroy]
 
   def following
     @title = "フォロー中"
-    @user = User.find_by(params[:id])
+    @user = User.find_by(id:params[:id])
     @users = @user.following.paginate(page: params[:page])
     render 'show_follow'
+
   end
 
 
   def followers
     @title = "フォロワー"
-    @user = User.find_by(params[:id])
+    @user = User.find_by(id:params[:id])
     @users = @user.followers.paginate(page: params[:page])
     render 'show_follow'
   end
