@@ -1,0 +1,17 @@
+<%= provide(:title,@title)%>
+
+
+<%= form_with(model:[current_user,@profile], local: true) do |f| %>
+<%= render 'shared/error_messages', object: f.object%>
+<%= f.label :age, '年齢' %>
+<%= f.text_area :age %>
+
+<%= f.label :address, '住所' %>
+<%= f.text_area :address, class: 'form-controll' %>
+
+<%= f.label :content, '本文' %>
+<%= f.text_area :content, class: 'form-controll' %>
+
+<%= f.submit "送信", class:'btn btn-primary' %>
+
+<% end %>

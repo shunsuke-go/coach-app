@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   resources :users do
   resources :likes,only:[:index]
+  resources :profiles,only:[:create,:update,:new,:edit]
     member do
       get :following,:followers
     end
@@ -28,7 +29,9 @@ Rails.application.routes.draw do
     collection do
       delete 'destroy_all'
     end
-  end     
+  end
+  
+  
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
