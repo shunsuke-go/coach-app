@@ -1,3 +1,4 @@
 <% @tags.each do |tag|%>
 <li><%= link_to tag.name,articles_path(tag_name: tag.name) %></li>
 <% end %>
+
