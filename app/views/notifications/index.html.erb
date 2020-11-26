@@ -1,6 +1,8 @@
 <h2>通知</h2>
 
-<% unless @notifications.empty? %>
+<% if @notifications.empty? %>
+  <h3>通知はありません</h3>
+<% else %>
 <%= link_to "通知全削除", destroy_all_notifications_path,method: :delete %></p>
 <% end %>
 

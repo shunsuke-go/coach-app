@@ -1,5 +1,6 @@
-<% if current_user?(@user) %>
-
-  <%= link_to "プロフィールを作成する", new_user_profile_path(current_user)%>
-<%# 作成してあれば編集画面に飛べるようにする。 %>
-<% end %>
+  <% if @profile.nil? %>
+    <%= link_to "プロフィールを作成する", new_user_profile_path(current_user)%>
+  <% else %>
+    <%= link_to "プロフィールを更新する", edit_user_profile_path(current_user) %>
+  <% end %>
+  
