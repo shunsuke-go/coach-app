@@ -2,6 +2,9 @@
 
 <span class="user"> <%= link_to article.user.name,article.user %> </span>
 <span class="content"> <%= link_to article.title,article_path(article) %> </span>
+<span> 
+       <%= render 'articles/tag_list',tag_list:article.tag_list %>
+</span>
 <!-- <span class="content"> <%= article.content %> </span> -->
 <span class="timestamp">　投稿 <%= time_ago_in_words(article.created_at) %> 時間前
 

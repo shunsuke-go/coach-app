@@ -8,6 +8,7 @@ gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 # Use mysql as the database for Active Record
 
 #追記
+
 gem 'mysql2', '>= 0.4.4'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
@@ -34,6 +35,7 @@ gem 'solargraph', group: :development
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'will_paginate',           '3.1.8'
 gem 'bootstrap-will_paginate', '1.0.0'
+gem 'acts-as-taggable-on', '~> 6.0' #追加
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

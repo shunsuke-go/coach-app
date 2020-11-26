@@ -17,9 +17,12 @@ Rails.application.routes.draw do
   
   resources :relationships, only:[:create,:destroy]
 
-  resources :articles, only:[:create,:destroy,:show] do
+  resources :articles, only:[:create,:destroy,:show,:index] do
     resources :comments,only:[:create,:destroy]
     resources :likes,only:[:create,:destroy]
+  collection do
+    get :tags
+  end
   end
   get '/articles', to: 'static_pages#home'
   

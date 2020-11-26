@@ -10,6 +10,7 @@ class Article < ApplicationRecord
   validates :content, presence: true, length: {maximum:500}
   validates :title, presence: true, length: {maximum:20}
 
+  acts_as_taggable
 
   def create_like_notification(current_user)
     like_notification = current_user.active_notifications.build(

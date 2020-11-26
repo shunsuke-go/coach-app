@@ -7,6 +7,7 @@ class ArticlesController < ApplicationController
       @comment = @article.comments.build
       @comments = @article.comments.all
       @like = @article.likes.build
+      @tags = @article.tag_counts_on(:tags)
     end
 
     def create
@@ -25,13 +26,27 @@ class ArticlesController < ApplicationController
       flash[:success] = "削除しました！"
       redirect_to request.referrer || root_url
     end
+
+    def index
+      
+        @tag = params[:tag_name]
+        @articles = Article.tagged_with("#{params[:tag_name]}")
+      
+    end  
+
+
+    def tags
+      @tags = Article.tag_counts
+      render 'tags/_tag_all'
+    end
   
 private
   # Strong Parameter
     def article_params
-        params.require(:article).permit(:content,:title)         
+        params.require(:article).permit(:content,:title,:tag_list)         
     end
 
+    
 
   # 削除する記事を取得する。削除前に行う。
     def correct_user
