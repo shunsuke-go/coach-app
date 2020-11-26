@@ -7,6 +7,7 @@
             <li><%= link_to "ホーム",   root_path %></li>
             <li><%= link_to "ヘルプ",   help_path %></li>
           <% if logged_in? %>
+          <li> <%= link_to "タグ",tags_articles_path %> </li>
             <li><%= link_to "通知", notifications_path %></li>
           <li><%= link_to "ユーザ一覧", users_path %></li>
             <li><%= link_to "いいねした記事", user_likes_path(current_user) %></li>
