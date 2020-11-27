@@ -21,6 +21,13 @@ before_action :check_admin, only:[:destroy]
     end
 
     @profile = Profile.find_by(user_id: params[:id])
+    @review = Review.new
+    @reviews = @user.passive_reviews
+    
+    @point = @review.num_point(@reviews) unless @reviews.empty?
+
+
+
     
 
   end

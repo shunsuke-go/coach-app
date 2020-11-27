@@ -1,0 +1,9 @@
+</p>レビュー
+<%= form_with(model:[@user,@review],local: true) do |f| %>
+<%= render 'shared/error_messages', object: f.object %>
+<%= f.label :content %>
+<%= f.text_area :content, class:"form-control" %>
+<%= f.label :rate %>
+<%= f.text_area :rate, class:"form-control" %>
+<%= f.submit "送信", class:"btn btn-primary" %>
+<% end %>
