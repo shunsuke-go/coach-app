@@ -1,0 +1,5 @@
+<li>レビュー:<%= review.content %><li>
+評価<%= review.rate %>
+<% if review.reviewer_id == current_user.id %>
+<%= link_to "削除",user_review_path(@user,review),method: :delete %></p>
+<%end%>

@@ -44,6 +44,19 @@ class User < ApplicationRecord
 
   has_one :profile, dependent: :destroy
 
+
+  has_many :active_reviews, class_name: "Review",
+  foreign_key: "reviewer_id", dependent: :destroy
+
+  has_many :passive_reviews, class_name: "Review",
+  foreign_key: "reviewed_id", dependent: :destroy
+
+  has_many :reviewing, through: :active_reviews,
+  source: :reviewed
+
+  has_many :reviewers, through: :passive_reviews,
+  source: :reviewer
+
  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
  #  validations
  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
