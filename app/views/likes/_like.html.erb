@@ -1,5 +1,7 @@
+<div id="like_form">
 <% if current_user.article_like?(@article) %>
-  <%= render 'likes/unlike_button' %>
+ <%= render 'likes/unlike_button' %>
 <% else %>
   <%= render 'likes/like_button' %>
 <% end %>
+</div>

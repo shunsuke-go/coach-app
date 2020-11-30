@@ -29,7 +29,9 @@
 		"rebornix.ruby",
 		"castwide.solargraph",
 		"wingrunr21.vscode-ruby",
-		"formulahendry.auto-close-tag"
+		"formulahendry.auto-close-tag",
+		"ratismal.erb-types"
+		
 	],
 	"addPort": [
 		"3000:3000",

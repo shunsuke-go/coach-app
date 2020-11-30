@@ -1,11 +1,13 @@
-<%= form_with(model:@article,local: true) do |f| %>
+<%= form_with(model:@article) do |f| %>
+<div id="article_error">
 <%= render 'shared/error_messages',object: f.object %>
+</div>
 
-<div class="field">
+<div id="article_form" class="field">
   <%= f.text_area :title %>
   <%= f.text_area :content,placeholder:"入力してください" %>
   <%= f.label :tag_list %>
   <%= f.text_area :tag_list, value: @article.tag_list.join(','), class: "from-control" %>
 </div>
-<%= f.submit "投稿！",class:"btn btn-primary"%>
+<div id="article_button"><%= f.submit "投稿！",class:"btn btn-primary"%></div>
 <% end %>

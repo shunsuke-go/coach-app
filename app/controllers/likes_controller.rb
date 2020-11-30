@@ -10,7 +10,12 @@ class LikesController < ApplicationController
   
       
     if @like.save
-      redirect_to article_url(@article)
+    
+    respond_to do |format|
+      format.html {redirect_to article_url(@article)}
+      format.js
+    end
+    
 
     else
       flash[:danger] = "いいねに失敗しました。"
@@ -21,9 +26,13 @@ class LikesController < ApplicationController
   def destroy
     
     @article = Article.find_by(id: params[:article_id])
-    Like.find_by(id: params[:id]).destroy
-    redirect_to article_url(@article)
-    
+    @like = Like.find_by(id: params[:id])
+    @like.destroy
+
+    respond_to do |format|
+      format.html {redirect_to article_url(@article)}
+      format.js
+    end
   end
 
   def index

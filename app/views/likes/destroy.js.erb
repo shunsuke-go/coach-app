@@ -1,0 +1,10 @@
+var unlike = document.getElementById('unlike');
+var like_form = document.getElementById('like_form');
+
+like_form.insertAdjacentHTML('afterbegin',"<%= j(render 'like_button') %>");
+unlike.remove();
+
+console.log(unlike);
+
+
+//like_formのコンテンツを消して、空になったlike_formの下にlike_buttonをrenderしている

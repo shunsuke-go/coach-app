@@ -14,17 +14,25 @@ class ArticlesController < ApplicationController
       @article = current_user.articles.build(article_params) 
       if @article.save
         flash[:success] = "投稿しました！"
-        redirect_to root_url
+        
+        respond_to do |format|
+          format.html { redirect_to root_url }
+          format.js
+        end
+
       else
         @feed_items = current_user.feed.paginate(page: params[:page])
-        render 'static_pages/home'
+        render 'error'
       end
     end
 
     def destroy
       @article.destroy
       flash[:success] = "削除しました！"
-      redirect_to request.referrer || root_url
+      respond_to do |format|
+        format.html { redirect_to request.referrer || root_url}
+        format.js
+      end
     end
 
     def index
