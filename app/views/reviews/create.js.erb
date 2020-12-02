@@ -1,0 +1,5 @@
+var reviews = document.getElementById('reviews');
+var ave_point = document.getElementById('ave_point');
+
+reviews.insertAdjacentHTML('beforeend',"<%= j(render @review) %>");
+ave_point.innerHTML="<%= j(render 'ave_point') %>";

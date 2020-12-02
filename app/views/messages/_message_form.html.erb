@@ -1,4 +1,4 @@
-<%= form_with(model:@message, local: true) do |f| %> </p>
+<%= form_with(model:@message) do |f| %> </p>
 <%= f.label :content, "メッセージ" %>
 <%= f.text_area :content, class:'form-control' %>
 <%= f.submit "送信",class:"btn btn-primary"%>

@@ -1,4 +1,7 @@
-<%= form_with(model: [@article,@comment],local: true) do |f| %>
+
+<%= form_with(model: [@article,@comment]) do |f| %>
+<div id="comment_error">
+</div>
 <%= f.text_area :content,class:'form-controll' %>
-<%= f.submit "コメント",class:"btn btn-primary"%>
+<%= f.submit "コメント",class:"btn btn-primary",id:"comment_button"%>
 <% end %>

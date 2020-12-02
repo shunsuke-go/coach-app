@@ -14,7 +14,12 @@ class MessagesController < ApplicationController
       
       
       flash[:success] = "メッセージを送信しました"
-      redirect_to room_url(@room)
+      respond_to do |format|
+        format.html { redirect_to room_url(@room) }
+        format.js
+      end
+
+      
     else
       flash[:danger] = "無効な操作です"
       redirect_to root_url

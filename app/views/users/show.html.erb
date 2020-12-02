@@ -18,8 +18,13 @@
    
    <% unless @reviews.empty? %>
     レビュー一覧
+    <div id="reviews">
     <%= render @reviews %>
-    平均<%= @point %>点
+    </div>
+    
+    <div id="ave_point">
+      <%= render "reviews/ave_point" %>
+    </div>
     <% end %>
     <%= render 'reviews/review_form' %>
 

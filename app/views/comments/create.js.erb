@@ -1,0 +1,5 @@
+var comment_content = document.getElementById('comment_content');
+var article_page = document.getElementById('article_page');
+var comments = document.getElementById('comments');
+comments.insertAdjacentHTML('beforeend',"<%= j(render @comment) %>");
+comment_content.value='';
