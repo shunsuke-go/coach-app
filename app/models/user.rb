@@ -142,6 +142,9 @@ class User < ApplicationRecord
    end
    
 
+   
+
+
    def create_follow_notification(current_user,other_user)
     notification = current_user.active_notifications.build(
       visited_id:other_user.id,

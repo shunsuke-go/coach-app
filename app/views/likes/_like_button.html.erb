@@ -1,3 +1,5 @@
-<%= form_with(model:[@article,@like],local: true) do |f| %>
+<div  id="like"><%= form_with(model:[@article,@like]) do |f| %>
 <%= f.submit "いいね",class: "btn btn-primary" %>
 <% end %>
+<div id="like_counts">いいね数<%= @article.likes.count %></div>
+</div>

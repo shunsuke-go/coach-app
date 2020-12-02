@@ -1,4 +1,4 @@
-<li id="micropost-<%= article.id %>">
+<li id="article-<%= article.id %>">
 
 <span class="user"> <%= link_to article.user.name,article.user %> </span>
 <span class="content"> <%= link_to article.title,article_path(article) %> </span>
@@ -10,7 +10,7 @@
 
 <% if current_user?(article.user) %>
 <%= link_to "削除", article, method: :delete,
-data:{ confirm: "本当に削除しますか？" } %>
+data:{ confirm: "本当に削除しますか？" },remote: true %>
 <% end %>
 
 <% if article.comments.any? %>

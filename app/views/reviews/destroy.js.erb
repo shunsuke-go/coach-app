@@ -1,0 +1,5 @@
+var reviews = document.getElementById("review_<%= @review.id %>");
+var ave_point = document.getElementById('ave_point');
+
+reviews.remove();
+ave_point.innerHTML="<%= j(render 'ave_point') %>";

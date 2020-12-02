@@ -24,7 +24,7 @@ before_action :check_admin, only:[:destroy]
     @review = Review.new
     @reviews = @user.passive_reviews
     
-    @point = @review.num_point(@reviews) unless @reviews.empty?
+   # @point = @user.num_point(@reviews) unless @reviews.empty?
 
 
 

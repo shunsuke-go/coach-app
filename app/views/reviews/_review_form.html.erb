@@ -1,5 +1,5 @@
 </p>レビュー
-<%= form_with(model:[@user,@review],local: true) do |f| %>
+<%= form_with(model:[@user,@review]) do |f| %>
 <%= render 'shared/error_messages', object: f.object %>
 <%= f.label :content %>
 <%= f.text_area :content, class:"form-control" %>

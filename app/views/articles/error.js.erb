@@ -1,0 +1,5 @@
+var errors = document.getElementById('article_error');
+var article_button = document.getElementById('article_button');
+
+errors.insertAdjacentHTML('afterbegin',"<%= j(render 'shared/error_messages',object:@article) %>");
+article_button.addEventListener('click',()=>{errors.textContent=''});
