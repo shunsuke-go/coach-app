@@ -2,6 +2,7 @@
 
 <div id="tag-all">
 <% @tags.each do |tag|%>
+
 <v-chip class="ma-2"
 outlined 
 href="<%=articles_path(tag_name: tag.name)%>">
@@ -43,3 +44,5 @@ new Vue({
     })
 </script>
 <% end %>
+
+
