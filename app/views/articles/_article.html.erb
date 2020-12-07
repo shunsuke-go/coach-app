@@ -1,28 +1,27 @@
 <li id="article-<%= article.id %>">
+  <span class="user"> <%= link_to article.user.name,article.user %> </span>
+ 
+  <span class="content"> <%= link_to article.title,article_path(article) %> </span>
+ 
+  <span> 
+    <%= render 'articles/tag_list',tag_list:article.tag_list %>
+  </span>
+ 
+  <span class="timestamp">　投稿 <%= time_ago_in_words(article.created_at) %> 時間前
+ 
+ 
+  <% if current_user?(article.user) %>
+  <%= link_to "削除", article, method: :delete,
+  data:{ confirm: "本当に削除しますか？" },remote: true %>
+  <% end %>
 
-<span class="user"> <%= link_to article.user.name,article.user %> </span>
-<span class="content"> <%= link_to article.title,article_path(article) %> </span>
-<span> 
-       <%= render 'articles/tag_list',tag_list:article.tag_list %>
-</span>
-<!-- <span class="content"> <%= article.content %> </span> -->
-<span class="timestamp">　投稿 <%= time_ago_in_words(article.created_at) %> 時間前
+  <% if article.comments.any? %>
+  <span><%= link_to "コメント：#{article.comments.count}件",article_path(article) %> 
+  </span>
+  <% end %>
+  </span>
 
-<% if current_user?(article.user) %>
-<%= link_to "削除", article, method: :delete,
-data:{ confirm: "本当に削除しますか？" },remote: true %>
-<% end %>
-
-<% if article.comments.any? %>
-<span><%= link_to "コメント：#{article.comments.count}件",article_path(article) %> 
-　</span>
-<% end %>
-</span>
-
-<span>
-  いいね数:<%= article.likes.count %>
-</span>
-
-
-
+  <span>
+    いいね数:<%= article.likes.count %>
+  </span>
 </li>
