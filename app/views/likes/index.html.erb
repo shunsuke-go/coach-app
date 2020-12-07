@@ -1,6 +1,9 @@
-<% if @likes.any? %>
+<% if @feed_items.any? %>
 <h2>いいねした記事一覧</h2>
+<div>
 <ol class="microposts">
-<%= render @likes %>
-<% end %>
+<%= render 'shared/feed' %>
+
 </ol>
+</div>
+<% end %>

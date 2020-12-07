@@ -36,7 +36,7 @@ class LikesController < ApplicationController
   end
 
   def index
-    @likes = current_user.liked_articles
+    @feed_items = current_user.liked_articles.paginate(page: params[:page],per_page: 5)
   end
 
 end
