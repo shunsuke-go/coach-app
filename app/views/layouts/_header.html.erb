@@ -1,31 +1,105 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-      <div class="container">
-        <%= link_to "タイトル", root_path, id: "logo" %>
-        <nav>
+
+<div id="header">  
+  <v-app>    
+    <div class="container"> 
+    
+    
+    <v-app-bar
+      app
+      color="orange accent-4"
+      dense
+      dark
+    >
+      <v-app-bar-nav-icon></v-app-bar-nav-icon>
+      <v-toolbar-title><%=link_to "タイトル",root_path %></v-toolbar-title>
+      <v-spacer></v-spacer>
+     
+      <v-btn icon>
+        <v-icon>mdi-magnify</v-icon>
+      </v-btn>
         
-          <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to "ホーム",   root_path %></li>
-            <li><%= link_to "ヘルプ",   help_path %></li>
-          <% if logged_in? %>
-          <li> <%= link_to "タグ",tags_articles_path %> </li>
-            <li><%= link_to "通知", notifications_path %></li>
-          <li><%= link_to "ユーザ一覧", users_path %></li>
-            <li><%= link_to "いいねした記事", user_likes_path(current_user) %></li>
-            <li><%= link_to "プロフィール", user_path(current_user) %></li>
-            <li><%= link_to "セッティング", edit_user_path(current_user) %></li>
-            <li>
-            
-           <%= link_to "ログアウト",logout_path,method: :delete %>
-          </li>
-          </ul>
-            </li>
-            <% else %>
-            <li><%= link_to "Log in", login_path %></li>
-            <% end %>
-          </ul>
-        </nav>
-      </div>
-    </header>
+      <v-menu
+        left
+        bottom
+      >
+
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn
+            icon
+            v-bind="attrs"
+            v-on="on"
+          >
+            <v-icon>mdi-dots-vertical</v-icon>
+          </v-btn>
+        </template>
+              
+        <v-list>
+        
+          <v-list-item
+            v-for="headLink in headLinks"
+            :key="headLink.name"
+            :href="headLink.link"
+            :data-method="headLink.method"
+          >
+            <v-list-item-title>{{headLink.name}}</v-list-item-title>
+          </v-list-item>
+
+        
+        </v-list>
+        
+         
+        
+
+      </v-menu>
+        
+    </v-app-bar>
+ 
+    
     <div class="container">
-      <%= yield %>
+    <%= yield %>
     </div>
+    
+</div>
+</v-app>
+</div>
+
+
+
+
+
+
+<% content_for :javascripts do %>
+<script>
+     new Vue({
+      el: '#header',
+      vuetify: new Vuetify(),
+      data(){
+        return{
+            headLinks:[
+              
+              <% if logged_in? %>
+              {name: "ホーム", link: "<%=root_path %>"},
+              {name: "ヘルプ", link: "<%= help_path %>"},
+              {name: "タグ", link: "<%= tags_articles_path %>" },
+              {name: "通知", link: "<%= notifications_path %>"},
+              {name: "ユーザ一覧", link: "<%= users_path %>"},
+              {name: "いいねした記事", link: "<%= user_likes_path(current_user) %>"},
+              {name: "プロフィール", link: "<%= user_path(current_user) %>"},
+              {name: "セッティング", link: "<%= edit_user_path(current_user) %>"},
+              {name: "ログアウト", link: "<%= logout_path %>",method: "delete"},
+              <% else %>
+              {name: "ログイン",link: "<%= login_path%>"}
+              <% end %>   
+              
+            ],
+            
+          }
+
+        }
+    })
+  </script>
+  <% end %>
+ 
+
+
+
