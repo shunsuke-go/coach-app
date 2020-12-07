@@ -21,7 +21,7 @@ class ArticlesController < ApplicationController
         end
 
       else
-        @feed_items = current_user.feed.paginate(page: params[:page])
+        @feed_items = current_user.feed.paginate(page: params[:page],per_page: 5)
         render 'error'
       end
     end
@@ -38,7 +38,7 @@ class ArticlesController < ApplicationController
     def index
       
         @tag = params[:tag_name]
-        @articles = Article.tagged_with("#{params[:tag_name]}")
+        @feed_items = Article.tagged_with("#{params[:tag_name]}").paginate(page: params[:page],per_page: 5)
       
     end  
 

@@ -11,16 +11,3 @@ href="<%=articles_path(tag_name: tag.name)%>">
 </div>
 
 
-<% content_for :javascripts do %>
-<script>
-new Vue({
-      el: '#tag-all',
-      vuetify: new Vuetify(),
-      data(){
-        return{
-
-          }
-        }
-    })
-</script>
-<% end %>
