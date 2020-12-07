@@ -1,7 +1,8 @@
 
-<div id="header">  
+<div id="app">  
   <v-app>    
-    <div class="container"> 
+
+    
     
     
     <v-app-bar
@@ -43,24 +44,18 @@
           >
             <v-list-item-title>{{headLink.name}}</v-list-item-title>
           </v-list-item>
-
-        
         </v-list>
-        
-         
-        
-
       </v-menu>
-        
     </v-app-bar>
- 
-    
-    <div class="container">
+     
+
     <%= yield %>
-    </div>
     
-</div>
+
 </v-app>
+
+
+
 </div>
 
 
@@ -70,8 +65,8 @@
 
 <% content_for :javascripts do %>
 <script>
-     new Vue({
-      el: '#header',
+new Vue({
+      el: '#app',
       vuetify: new Vuetify(),
       data(){
         return{
@@ -92,10 +87,12 @@
               <% end %>   
               
             ],
+            show: false
             
           }
 
         }
+      
     })
   </script>
   <% end %>

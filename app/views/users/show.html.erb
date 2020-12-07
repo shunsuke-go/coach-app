@@ -38,9 +38,11 @@
   <% if @user.articles.any? %>
   <h3><%= @user.articles.count%>記事</h3>
   <ol class="microposts">
-  <%= render @articles %>
+  <%= render 'shared/feed' %>
+  <%= will_paginate @feed_items %>
   </ol>
-  <%= will_paginate @articles %>
     <% end %>
   </div>
 </div>
+
+

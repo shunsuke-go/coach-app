@@ -11,7 +11,7 @@ before_action :check_admin, only:[:destroy]
 
   def show
     @user = User.find(params[:id])
-    @articles = @user.articles.paginate(page: params[:page])
+    @feed_items = @user.articles.paginate(page: params[:page],per_page: 5)
     @room = Room.find_by_sql("SELECT * FROM rooms WHERE id IN 
       (SELECT room_id FROM entries WHERE user_id = #{@user.id} && 
       room_id IN (SELECT room_id FROM entries WHERE user_id = #{current_user.id}))")
