@@ -1,16 +1,14 @@
 
-
-<div id="app">
 <v-main>
-<div class="d-flex flex-wrap 
-justify-space-around 
-justify-start md-6
-">
+<div class="d-flex flex-row flex-wrap 
+justify-space-between"
+id="articles">
 
-  <% @feed_items.each do |article| %>
+
+  <% feed_items.each do |article| %>
 <li id="article-<%= article.id %>">
 
-
+ 
      <v-card
     max-width="500"
     height="100%"
@@ -78,10 +76,13 @@ justify-start md-6
   </v-card>
 
   <% end %>
+  </template>
 
 </li>
 
+
 </div>
+
 </v-main>
-</div>
+
 

@@ -27,7 +27,8 @@ gem 'jbuilder', '~> 2.7'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
-
+gem 'materialize-sass', '~> 1.0.0'
+gem 'material_icons' 
 gem 'bootstrap-sass', '3.4.1'
 gem 'bcrypt', '3.1.13'
 gem 'solargraph', group: :development

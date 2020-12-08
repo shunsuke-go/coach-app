@@ -3,7 +3,7 @@
 <div>
 <ol class="microposts">
 <%= render 'shared/feed' %>
-
+<%= will_paginate @feed_items %>
 </ol>
 </div>
 <% end %>

@@ -11,7 +11,8 @@ class ArticlesController < ApplicationController
     end
 
     def create
-      @article = current_user.articles.build(article_params) 
+      @article = current_user.articles.build(article_params)
+      @feed_items = current_user.articles.paginate(page: params[:page],per_page: 5) 
       if @article.save
         flash[:success] = "投稿しました！"
         

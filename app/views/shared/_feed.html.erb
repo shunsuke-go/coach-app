@@ -1,8 +1,8 @@
 <% if @feed_items.any? %>
   <ol class="microposts">
-    <div id="articles"> <%= render 'articles/article' %> </div>
+    <div id="art"> <%= render 'articles/article',feed_items: @feed_items %> </div>
   </ol>
-  <%= will_paginate @feed_items %>
+<!--   <%= will_paginate @feed_items %> -->
 <% end %>
 
 

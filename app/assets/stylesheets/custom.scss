@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import 'materialize';
 
 /* mixins, variables, etc. */
 
@@ -214,7 +215,7 @@ color: red;
   padding: 0;
   li {
     padding: 10px 0;
-    border-top: 1px solid #e8e8e8;
+    //border-top: 1px solid #e8e8e8;
   }
   .user {
     margin-top: 5em;
@@ -291,5 +292,15 @@ span.image {
 
 .users.follow {
   padding: 0;
+}
+
+.d-flex::after{
+  content:"";
+  display: block;
+  width:425px;
+}
+
+[v-cloak] {
+  display: none;
 }
 
