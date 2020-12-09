@@ -1,6 +1,4 @@
-@import "bootstrap-sprockets";
-@import "bootstrap";
-
+@import 'materialize';
 /* mixins, variables, etc. */
 
 $gray-medium-light: #eaeaea;
@@ -51,7 +49,7 @@ h2 {
   margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
-  color: $gray-light;
+  
 }
 
 p {
@@ -83,11 +81,11 @@ footer {
   margin-top: 45px;
   padding-top: 5px;
   border-top: 1px solid $gray-medium-light;
-  color: $gray-light;
+  
   a {
-    color: $gray;
+    
     &:hover {
-      color: $gray-darker;
+      
     }
   }
   small {
@@ -173,12 +171,6 @@ color: red;
   }
 }
 
-.field_with_errors {
-  @extend .has-error;
-  .form-control {
-    color: $state-danger-text;
-  }
-}
 
 .checkbox {
   margin-top: -10px;
@@ -202,7 +194,7 @@ color: red;
   li {
     overflow: auto;
     padding: 10px 0;
-    border-bottom: 1px solid $gray-lighter;
+    
   }
 }
 
@@ -214,7 +206,7 @@ color: red;
   padding: 0;
   li {
     padding: 10px 0;
-    border-top: 1px solid #e8e8e8;
+    //border-top: 1px solid #e8e8e8;
   }
   .user {
     margin-top: 5em;
@@ -229,7 +221,6 @@ color: red;
     }
   }
   .timestamp {
-    color: $gray-light;
     display: block;
     margin-left: 60px;
   }
@@ -262,7 +253,6 @@ span.image {
   a {
     float: left;
     padding: 0 10px;
-    border-left: 1px solid $gray-lighter;
     color: gray;
     &:first-child {
       padding-left: 0;
@@ -292,4 +282,16 @@ span.image {
 .users.follow {
   padding: 0;
 }
+
+.d-flex::after{
+  content:"";
+  display: block;
+  width:425px;
+}
+
+[v-cloak] {
+  display: none;
+}
+
+
 

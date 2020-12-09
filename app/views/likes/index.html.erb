@@ -1,9 +1,11 @@
-<% if @feed_items.any? %>
+<% if @articles.any? %>
 <h2>いいねした記事一覧</h2>
-<div>
-<ol class="microposts">
-<%= render 'shared/feed' %>
-
-</ol>
+<div class="row">
+<div class="col s12 m8">
+<ul class="microposts">
+<%= render @articles %>
+<%= will_paginate @articles %>
+</ul>
+</div>
 </div>
 <% end %>

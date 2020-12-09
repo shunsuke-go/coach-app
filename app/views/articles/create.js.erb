@@ -1,10 +1,10 @@
-var articles = document.getElementById('articles');
+var articles = document.getElementById('art');
 var article_content = document.getElementById('article_content');
 var article_title = document.getElementById('article_title');
 var article_tag_list = document.getElementById('article_tag_list');
-articles.insertAdjacentHTML('afterbegin','<%= j(render @article) %>');
 
-
+articles.textContent="";
+articles.insertAdjacentHTML('afterbegin',"<%= j(render @articles) %>");
 
 article_content.value='';
 article_title.value='';
