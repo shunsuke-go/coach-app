@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   
   resources :relationships, only:[:create,:destroy]
 
-  resources :articles, only:[:create,:destroy,:show,:index] do
+  resources :articles, only:[:create,:destroy,:show,:index,:new] do
     resources :comments,only:[:create,:destroy]
     resources :likes,only:[:create,:destroy]
   collection do

@@ -1,5 +1,5 @@
 <ol class="microposts">
 <h3>タグ:<%= @tag %></h3>
-<%= render 'shared/feed' %>
-<%= will_paginate @feed_items %>
+<%= render @articles %>
+<%= will_paginate @articles %>
 </ol>

@@ -1,6 +1,6 @@
 <% if logged_in? %>
 <div class="row">
-  <aside class="col-md-4">
+  <aside class="col s12 m4">
     <section class="user_info">
       <%= render 'shared/user_info' %>
     </section>
@@ -10,11 +10,11 @@
     </section>
 
     <section class="micropost_form">
-      <%= render 'shared/article_form' %>
+      <a class="waves-effect waves-light btn" href="<%= new_article_path %>">投稿</a>
     </section>
     
   </aside>
-    <div class="col-md-8">
+    <div class="col s12 m8">
       <h3>フィード</h3>
       <%= render 'shared/feed' %>
       <%= will_paginate @feed_items %>

@@ -1,0 +1,16 @@
+@import 'materialize';
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+
+body{
+  background-color:#F2F2F2;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tag {
+  display: block;
+  margin:10px;
+}

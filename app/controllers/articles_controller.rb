@@ -2,6 +2,11 @@ class ArticlesController < ApplicationController
   before_action :logged_in?,only:[:create,:destroy]
   before_action :correct_user,only:[:destroy]
 
+    def new
+      @article = Article.new
+    end
+
+
     def show
       @article = Article.find(params[:id])
       @comment = @article.comments.build
@@ -11,8 +16,10 @@ class ArticlesController < ApplicationController
     end
 
     def create
+      
+      binding.pry
+      
       @article = current_user.articles.build(article_params)
-      @feed_items = current_user.articles.paginate(page: params[:page],per_page: 5) 
       if @article.save
         flash[:success] = "投稿しました！"
         
@@ -22,8 +29,8 @@ class ArticlesController < ApplicationController
         end
 
       else
-        @feed_items = current_user.feed.paginate(page: params[:page],per_page: 5)
-        render 'error'
+        @article = Article.new
+        redirect_to new_article_path
       end
     end
 
@@ -39,7 +46,7 @@ class ArticlesController < ApplicationController
     def index
       
         @tag = params[:tag_name]
-        @feed_items = Article.tagged_with("#{params[:tag_name]}").paginate(page: params[:page],per_page: 5)
+        @articles = Article.tagged_with("#{params[:tag_name]}").paginate(page: params[:page],per_page: 5)
       
     end  
 

@@ -1,7 +1,7 @@
 <%= provide(:title,"マイページ")%>
 <h1><%= @user.name %>のページ</h1 >
 <div class="row">
-  <aside class="col-md-4">
+  <aside class="col s12 m4">
     <section class="user_info">
       <h1>
         <%= @user.name %>
@@ -31,16 +31,14 @@
     </section>
   </aside>
 
-<div class="col-md-8">
+<div class="col s12 m8">
   <%= render 'room_form' %>
   <%= render 'follow_form' %>
   
   <% if @user.articles.any? %>
   <h3><%= @user.articles.count%>記事</h3>
-  <ol class="microposts">
   <%= render 'shared/feed' %>
   <%= will_paginate @feed_items %>
-  </ol>
     <% end %>
   </div>
 </div>
