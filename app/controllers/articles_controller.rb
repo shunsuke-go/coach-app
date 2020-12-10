@@ -15,11 +15,11 @@ class ArticlesController < ApplicationController
       @tags = @article.tag_counts_on(:tags)
     end
 
-    def create
-      
-      binding.pry
-      
+    def create      
       @article = current_user.articles.build(article_params)
+      @article.image.attach(params[:article][:image])
+
+      
       if @article.save
         flash[:success] = "投稿しました！"
         
@@ -59,7 +59,7 @@ class ArticlesController < ApplicationController
 private
   # Strong Parameter
     def article_params
-        params.require(:article).permit(:content,:title,:tag_list)         
+        params.require(:article).permit(:content,:title,:tag_list,:image)         
     end
 
     
@@ -69,6 +69,8 @@ private
       @article = current_user.articles.find_by(id: params[:id])
       redirect_to root_url if @article.nil?
     end
+
+    
 
 
 end
