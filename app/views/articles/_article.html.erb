@@ -1,32 +1,39 @@
-  <li id="article-<%= article.id %>">
-    <div class="card white darken-1">
-        <div class="card-content dark-text">
-          <span class="card-title"><%= link_to article.title,article_path(article) %>
-          </span>
-          <span class="user"> 
-          <%= link_to article.user.name,article.user %> </span>
-          <p> <!--本文切り取り--></p>
-        </div>
-        <div class="card-action">
-          <a href="<%= article_path(article)%>">続きを読む</a>
-          <% if article.comments.any? %>
-            <span><%= link_to "コメント：#{article.comments.count}件",article_path(article) %> 
-            　</span>
-            <% end %>
-          <span>
-            いいね数:<%= article.likes.count %>
-          </span>
-          <span class="timestamp">　投稿 <%= time_ago_in_words(article.created_at) %> 時間前
-          <% if current_user?(article.user) %>
-          <%= link_to "削除", article, method: :delete,
-          data:{ confirm: "本当に削除しますか？" },remote: true %>
-          <% end %>
-          <br>
-          <span> タグ：
-          <%= render 'articles/tag_list',tag_list:article.tag_list %>
-          </span>
-        </div>
-      </div>
+<li id="article-<%= article.id %>">
+<div class="card white darken-1">
+  <div class="card-content dark-text">
+    <span class="card-title">
+      <%= link_to article.title,article_path(article) %>
+    </span>
+    <span class="user"> 
+      <%= link_to article.user.name,article.user %>
+    </span>
+    <% if article.image.attached? %>
+      <p><%=link_to image_tag(article.display_image),article_path(article) %></p>
+    <% end %>
+  </div>
+    <div class="card-action">
+      <a href="<%= article_path(article)%>">続きを読む</a>
+      <% if article.comments.any? %>
+        <span>
+          <%= link_to "コメント：#{article.comments.count}件",article_path(article) %> 
+        </span>
+      <% end %>
+      <span>
+        いいね数:<%= article.likes.count %>
+      </span>
+      <span class="timestamp">
+        投稿 <%= time_ago_in_words(article.created_at) %>前
+      </span>
+      <% if current_user?(article.user) %>
+        <%= link_to "削除", article, method: :delete,
+        data:{ confirm: "本当に削除しますか？" },remote: true %>
+      <% end %>
+      <br>
+      <span> タグ：
+        <%= render 'articles/tag_list',tag_list:article.tag_list %>
+      </span>
+    </div>
+  </div>
 </li>
 
 
