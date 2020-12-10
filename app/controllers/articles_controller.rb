@@ -18,9 +18,12 @@ class ArticlesController < ApplicationController
     def create      
       @article = current_user.articles.build(article_params)
       @article.image.attach(params[:article][:image])
-
+      
+      
+      
       
       if @article.save
+
         flash[:success] = "投稿しました！"
         
         respond_to do |format|
@@ -29,8 +32,7 @@ class ArticlesController < ApplicationController
         end
 
       else
-        @article = Article.new
-        redirect_to new_article_path
+        render 'articles/new'
       end
     end
 
@@ -59,7 +61,7 @@ class ArticlesController < ApplicationController
 private
   # Strong Parameter
     def article_params
-        params.require(:article).permit(:content,:title,:tag_list,:image)         
+        params.require(:article).permit(:content,:title,:tag_list)         
     end
 
     
