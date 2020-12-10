@@ -4,7 +4,7 @@
 <div id="tag-all" class="row flex">
   <% @tags.each do |tag|%>
     <div class="col s12 m4">
-      <a class="waves-effect waves-light btn tag" href="<%=articles_path(tag_name: tag.name)%>">
+      <a class="waves-effect waves-light btn tag" href="<%= articles_path(tag_name: tag.name) %>">
       <%=tag.name%></a>
     </div>
   <% end %>

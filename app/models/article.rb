@@ -1,6 +1,7 @@
 class Article < ApplicationRecord
   belongs_to :user
   has_one_attached :image
+  
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :liked_users, through: :likes,source: :user
@@ -8,7 +9,7 @@ class Article < ApplicationRecord
 
   default_scope -> {order(created_at: :desc)} 
   validates :user_id, presence: true
-  validates :content, presence: true, length: {maximum:500}
+  validates :content, presence: true
   validates :title, presence: true, length: {maximum:20}
   validates :image,   content_type: { in: %w[image/jpeg image/gif image/png],
     message: "must be a valid image format" },
@@ -16,6 +17,9 @@ class Article < ApplicationRecord
     message: "should be less than 5MB" }
 
   acts_as_taggable
+
+  has_rich_text :content
+  
 
   #通知作成　いいね
   def create_like_notification(current_user)
