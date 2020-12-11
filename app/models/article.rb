@@ -6,6 +6,7 @@ class Article < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :liked_users, through: :likes,source: :user
   has_many :notifications,dependent: :destroy
+  has_one :map,dependent: :destroy
 
   default_scope -> {order(created_at: :desc)} 
   validates :user_id, presence: true
