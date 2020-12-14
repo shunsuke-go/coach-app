@@ -11,10 +11,6 @@ class StaticPagesController < ApplicationController
   end
 
   def help
-   @map_key = ENV['GOOGLE_MAP_API']
-   
-   binding.pry
-   
   end
   
 end

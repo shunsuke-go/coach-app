@@ -4,6 +4,7 @@ class ArticlesController < ApplicationController
 
     def new
       @article = Article.new
+      @article.build_map
     end
 
 
@@ -13,17 +14,29 @@ class ArticlesController < ApplicationController
       @comments = @article.comments.all
       @like = @article.likes.build
       @tags = @article.tag_counts_on(:tags)
+      @map = Map.find_by(article_id: @article.id)
+      unless @map.nil?
+        gon.latitude = @map.latitude
+        gon.longitude = @map.longitude
+      end
+      
     end
 
     def create      
       @article = current_user.articles.build(article_params)
       @article.image.attach(params[:article][:image])
       
-      
-      
-      
-      if @article.save
-
+      if @article.save 
+        latitude = params[:article][:map][:latitude]
+        longitude = params[:article][:map][:longitude]
+    
+        unless latitude.empty?
+          @map = @article.build_map(
+            latitude:latitude,
+            longitude: longitude)
+          @map.save
+        end
+          
         flash[:success] = "投稿しました！"
         
         respond_to do |format|
@@ -61,7 +74,8 @@ class ArticlesController < ApplicationController
 private
   # Strong Parameter
     def article_params
-        params.require(:article).permit(:content,:title,:tag_list)         
+        params.require(:article).
+        permit(:content,:title,:tag_list,:image,map_attributes: [:id,:latitude,:longitude])         
     end
 
     

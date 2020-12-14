@@ -3,6 +3,13 @@
 <div id="article_form" class="field">
   <%= f.label :title, "タイトル" %>
   <%= f.text_area :title %>
+  教える場所
+  <div id='map'></div>
+  <%= f.fields_for :map, @article.build_map do |map| %>   
+    <%= map.hidden_field :latitude %>
+    <%= map.hidden_field :longitude %>
+ 
+  <% end %>
   <%= f.label :content, "本文" %>
   <%= f.rich_text_area :content,placeholder:"入力してください" %>
   <%= f.label :tag_list %>
@@ -11,4 +18,62 @@
   <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
 </div>
 <div id="article_button"><%= f.submit "投稿！",class:"btn"%></div>
+
 <% end %>
+<button id="del" class="btn" onclick="deleteMarker();">マーカー削除</button>
+ 
+
+
+
+<style>
+#map{
+  height: 400px;
+}
+</style>
+
+<script>
+
+  var marker
+  var myLatLng
+  var map_lat
+  var map_lng
+function initMap(){
+   myLatLng = {lat: 35.68090045006303, lng: 139.76690798417752}
+   map_lat = document.getElementById('article_map_latitude')
+   map_lng = document.getElementById('article_map_longitude')
+   marker = new google.maps.Marker();
+  
+  let map = new google.maps.Map(document.getElementById('map'), {
+  center: myLatLng,
+  zoom: 8
+  });
+  
+
+ google.maps.event.addListener(map, 'click', mylistener);
+
+       //クリックしたときの処理
+  function mylistener(event){
+
+    //markerの位置を設定
+    //event.latLng.lat()でクリックしたところの緯度を取得
+    marker.setPosition(new google.maps.LatLng(event.latLng.lat(), event.latLng.lng()));
+    //marker設置
+    marker.setMap(map);    
+    console.log(event.latLng.lat(), event.latLng.lng());
+    map_lat.value = event.latLng.lat();
+    map_lng.value = event.latLng.lng();
+   
+  }
+
+  
+}
+function deleteMarker(){
+  marker.setMap(null);
+  map_lat.value = "";
+  map_lng.value = "";
+}
+
+
+
+</script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API'] %>&callback=initMap" async defer></script>
