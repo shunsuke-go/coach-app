@@ -1,14 +1,49 @@
 <div id="article_page" class="col-mid-8">
   <h2>タイトル:<%= @article.title %></p></h2>
   <h3>本文：<%= @article.content%></h3>
-
+  <% unless @map.nil? %>
+  <div id="map"></div>
+  <% end %>
   コメント</p>
-  
 
   <%= render 'comments/comment_form' %>
   <%= render 'likes/like' %>
   <div id="comments">
   <%= render @comments %>
   </div>
-
 </div>
+
+<style>
+#map{
+  height: 400px;
+}
+</style>
+
+
+<script>
+  var myLatLng
+  var marker
+
+  if(gon.latitude !== null){
+    latitude = gon.latitude
+  }
+
+  if(gon.longitude !== null){
+    longitude = gon.longitude
+  }
+
+function initMap(){
+   myLatLng = {lat: latitude, lng: longitude}
+ 
+  let map = new google.maps.Map(document.getElementById('map'), {
+  center: myLatLng,
+  zoom: 8
+    });
+  
+   marker = new google.maps.Marker();
+   marker.setPosition(new google.maps.LatLng(latitude,longitude));
+   marker.setMap(map);
+  
+}
+</script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API'] %>&callback=initMap" async defer></script>

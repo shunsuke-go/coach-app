@@ -35,6 +35,9 @@ gem 'materialize-sass', '~> 1.0.0'
 gem 'material_icons'
 gem 'bcrypt', '3.1.13'
 gem 'solargraph', group: :development
+gem 'geocoder'
+gem 'gon'
+gem 'dotenv-rails'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'will_paginate',           '3.1.8'
