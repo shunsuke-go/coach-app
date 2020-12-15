@@ -21,12 +21,7 @@ class ArticlesController < ApplicationController
         gon.longitude = @map.longitude
       end
 
-      respond_to do |format|
-        format.html
-        format.json {render :json => @comments }    
-      end
-
-
+     
     end
 
     def create      

@@ -29,6 +29,10 @@ class LikesController < ApplicationController
     @like = Like.find_by(id: params[:id])
     @like.destroy
 
+    
+    binding.pry
+    
+
     respond_to do |format|
       format.html {redirect_to article_url(@article)}
       format.js

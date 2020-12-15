@@ -1,7 +1,10 @@
 var comment_error = document.getElementById('comment_error');
 var comment_button = document.getElementById('comment_button');
+var comment_content = document.getElementById('comment_content');
 
-comment_error.insertAdjacentHTML('afterbegin',"<%= j(render 'shared/error_messages',object:@comment) %>");
-comment_button.addEventListener('click',()=>{
-  comment_error.textContent='';
-})
+comment_error.innerHTML=("<%= j(render 'shared/error_messages',object:@comment) %>");
+
+  if(comment_content.value != ""){
+    comment_error.textContent='';
+  }
+

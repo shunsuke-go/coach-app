@@ -40,8 +40,12 @@ Rails.application.routes.draw do
 
   namespace :api, format: 'json' do
     namespace :v1 do
+      resources :users do
+        resources :reviews,only: [:index],controller: 'reviews'
+      end
+
       resources :articles do
-        resources :comments, only: [:index], controller: '/articles/comments'
+        resources :comments, only: [:index], controller: 'comments'
       end
     end
   end
