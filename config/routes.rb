@@ -37,5 +37,16 @@ Rails.application.routes.draw do
   end
 
   resources :maps,only: [:index,:new]
-  
+
+  namespace :api, format: 'json' do
+    namespace :v1 do
+      resources :articles do
+        resources :comments, only: [:index], controller: '/articles/comments'
+      end
+    end
   end
+  
+
+  end
+
+  

@@ -7,9 +7,10 @@ class MapsController < ApplicationController
 
   def index
     
+    @area = params[:area]
     @articles = []
-    @gmaps = Map.near(params[:area],20,units: :km)
-    
+    @gmaps = Map.near(@area,20,units: :km)
+
     @gmaps.each do |gmap|
     @articles.push(gmap.article)
     end

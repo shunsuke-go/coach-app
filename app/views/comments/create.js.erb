@@ -1,5 +1,43 @@
-var comment_content = document.getElementById('comment_content');
-var article_page = document.getElementById('article_page');
-var comments = document.getElementById('comments');
-comments.insertAdjacentHTML('beforeend',"<%= j(render @comment) %>");
-comment_content.value='';
+ var article_page = document.getElementById('article_page');
+ var comments = document.getElementById('comments');
+// fetch("<%= article_path(@article) %>.json",
+// { 
+//   mode: 'cors',
+//   method: 'GET'
+// }).then(response =>{
+//   var value = response.json();
+  
+//   console.log(value);
+//   console.log("aaaaaaaaaaaa");
+// }).then(data => {
+//   console.log(data);
+// }).catch(e => {
+//   console.log(e);
+// })
+
+// data[data.length-1].content
+
+fetch("<%= article_path(@article) %>.json",
+{ 
+  mode: 'cors',
+  method: 'GET'
+}).then(response =>response.json())
+.then(data => {
+  //article_page.innerHTML = data.content.body;
+  console.log(data);
+  comments.insertAdjacentHTML('afterend',
+  `<li id='comment_${data[data.length-1].id}'　class='micropost-${data[data.length-1].id}'>
+  <%= link_to '${data[data.length-1].user_id}',root_path %>さんのコメント</p>
+  ${data[data.length-1].content}</li>`)
+
+
+}).catch(e => {
+  console.log(e);
+})
+
+  
+// var comment_content = document.getElementById('comment_content');
+// var article_page = document.getElementById('article_page');
+// var comments = document.getElementById('comments');
+// comments.insertAdjacentHTML('beforeend',"<%= j(render @comment) %>");
+// comment_content.value='';
