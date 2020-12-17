@@ -1,5 +1,43 @@
 var reviews = document.getElementById('reviews');
 var ave_point = document.getElementById('ave_point');
+var review_content = document.getElementById('review_content');
+var review_rate = document.getElementById('review_rate');
 
-reviews.insertAdjacentHTML('beforeend',"<%= j(render @review) %>");
-ave_point.innerHTML="<%= j(render 'ave_point') %>";
+fetch("/api/v1/users/<%= @user.id %>/reviews",{
+  mode: 'cors',
+  method: 'GET'
+}).then(response => response.json())
+.then(data => {
+  console.log(data);
+  var hidden = <%= current_user.id %> != data[data.length-1].user.id  ? "hidden":""
+
+    reviews.insertAdjacentHTML('beforeend',
+    `<li id="review_${data[data.length-1].id}" class="review_${data[data.length-1].id}">    
+    レビュー:${data[data.length-1].content} 評価: ${data[data.length-1].rate}
+    <a data-remote="true" rel="nofollow" data-method="delete" 
+    href="/users/${data[data.length-1].user.id}/reviews/${data[data.length-1].id}"
+    ${hidden}>削除</a>
+    </li>`);
+      }).catch(e=> {
+  console.log(e);
+})
+
+fetch("/users/<%= @user.id %>/reviews/ave_point_cal",{
+  mode: 'cors',
+  method: 'GET'
+}).then(response => response.json())
+.then(data => {
+  ave_point.textContent=`平均：${data.ave_points}点`
+})
+.catch(e =>{
+  console.log(e)
+})
+
+
+
+
+
+review_content.value='';
+review_rate.value='';
+review_error.textContent='';
+  

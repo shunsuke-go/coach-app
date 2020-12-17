@@ -1,0 +1,5 @@
+var review_error = document.getElementById('review_error');
+
+review_error.innerHTML=("<%= j(render 'shared/error_messages',object:@review) %>");
+
+

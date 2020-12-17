@@ -16,16 +16,18 @@
     <%= render 'shared/status' %>
     <%= render 'profile_list'%></p>
    
-   <% unless @reviews.empty? %>
+   
     レビュー一覧
     <div id="reviews">
     <%= render @reviews %>
     </div>
-    
     <div id="ave_point">
-      <%= render "reviews/ave_point" %>
-    </div>
+    <% unless @reviews.empty? %>
+     平均：<%= num_point(@reviews) %>点
     <% end %>
+    
+    </div>
+    <div id="review_error"></div>
     <%= render 'reviews/review_form' %>
 
     </section>

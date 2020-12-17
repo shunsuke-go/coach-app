@@ -63,7 +63,6 @@ module SessionsHelper
       end
 
     
-    
-    
+          
 
 end

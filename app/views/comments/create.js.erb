@@ -2,7 +2,7 @@
  var article_page = document.getElementById('article_page');
  var comments = document.getElementById('comments');
  var comment_content = document.getElementById('comment_content');
-fetch("http://localhost:3000/api/v1/articles/<%=@article.id%>/comments",
+fetch("/api/v1/articles/<%=@article.id%>/comments",
 { 
   mode: 'cors',
   method: 'GET'
@@ -28,7 +28,5 @@ fetch("http://localhost:3000/api/v1/articles/<%=@article.id%>/comments",
 })
 
 
-if(comment_content.value != ""){
-  comment_error.textContent='';
-}
-comment_content.value="";
+comment_error.textContent='';
+comment_content.value='';

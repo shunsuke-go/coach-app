@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   resources :users do
   resources :reviews,only:[:create,:destroy]
+  get '/reviews/ave_point_cal', to: 'reviews#ave_point_cal'
   resources :likes,only:[:index]
   resources :profiles,only:[:create,:update,:new,:edit]
     member do
@@ -22,6 +23,7 @@ Rails.application.routes.draw do
   resources :articles, only:[:create,:destroy,:show,:index,:new] do
     resources :comments,only:[:create,:destroy]
     resources :likes,only:[:create,:destroy]
+    get '/likes/counts', to: 'likes#count'
   collection do
     get :tags
   end

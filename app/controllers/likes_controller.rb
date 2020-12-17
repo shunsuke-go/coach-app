@@ -29,10 +29,6 @@ class LikesController < ApplicationController
     @like = Like.find_by(id: params[:id])
     @like.destroy
 
-    
-    binding.pry
-    
-
     respond_to do |format|
       format.html {redirect_to article_url(@article)}
       format.js
@@ -42,5 +38,18 @@ class LikesController < ApplicationController
   def index
     @articles = current_user.liked_articles.paginate(page: params[:page],per_page: 5)
   end
+
+
+  def count
+    @article = Article.find(params[:article_id])
+    counts = {counts: @article.likes.count}
+
+    respond_to do |format|
+      format.html
+      format.json {render json: counts}
+    end
+  end
+
+
 
 end
