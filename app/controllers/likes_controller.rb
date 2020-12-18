@@ -39,4 +39,17 @@ class LikesController < ApplicationController
     @articles = current_user.liked_articles.paginate(page: params[:page],per_page: 5)
   end
 
+
+  def count
+    @article = Article.find(params[:article_id])
+    counts = {counts: @article.likes.count}
+
+    respond_to do |format|
+      format.html
+      format.json {render json: counts}
+    end
+  end
+
+
+
 end

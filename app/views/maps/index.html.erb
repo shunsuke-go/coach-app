@@ -1,9 +1,10 @@
 <% unless @articles.empty? %>
 <ul class="microposts">
+  検索位置：<%= @area %>
   <%= render @articles %>
 </ul>
 
 <% else %>
-近い場所での募集はありません
+<%= @area %>に近い場所での募集はありません
 
 <% end %>

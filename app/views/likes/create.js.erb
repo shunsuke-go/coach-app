@@ -1,10 +1,19 @@
 var like = document.getElementById('like');
 var like_form = document.getElementById('like_form');
+var likes_count = document.getElementById('likes_count');
 
 like_form.insertAdjacentHTML('afterbegin',"<%= j(render 'unlike_button') %>");
 like.remove();
 
+fetch('/articles/<%= @article.id %>/likes/counts.json',{
+  mode: 'cors',
+  method: 'GET'
+}).then(response => response.json())
+.then(data => {
+console.log(data);
 
-console.log(like);
+likes_count.textContent=data.counts
 
-//like_formのコンテンツを消して、空になったlike_formの下にunlike_buttonをrenderしている
+}).catch(e => {
+  console.log(e);
+})

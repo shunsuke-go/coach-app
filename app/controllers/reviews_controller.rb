@@ -14,7 +14,7 @@ class ReviewsController < ApplicationController
         format.js
       end
     else  
-      redirect_to user_path(@user),flash:{danger: @review.errors.full_messages}
+      render 'error'
     end
   end
 
@@ -35,11 +35,32 @@ class ReviewsController < ApplicationController
       format.js
     end
   end
-  
+
+
+  def ave_point_cal
+    
+    user = User.find(params[:user_id])
+    reviews = user.passive_reviews
+    ave_points = {ave_points: num_point(reviews)}
+    render :json => ave_points
+    
+  end
 
 
   private
+
   def review_params
     params.require(:review).permit(:content,:rate)
   end
+
+
+  def num_point(reviews)
+    return 0 if reviews.count == 0
+    point = 0
+     reviews.each do |review|
+       point += review.rate
+     end
+     @point = point / reviews.count
+  end
+
 end

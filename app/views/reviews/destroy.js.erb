@@ -1,5 +1,23 @@
-var reviews = document.getElementById("review_<%= @review.id %>");
+var review = document.getElementById("review_<%= @review.id %>");
 var ave_point = document.getElementById('ave_point');
+var reviews = document.getElementById('reviews');
 
-reviews.remove();
-ave_point.innerHTML="<%= j(render 'ave_point') %>";
+review.remove();
+console.log(reviews.childElementCount);
+
+
+fetch("/users/<%= @user.id %>/reviews/ave_point_cal",{
+  mode: 'cors',
+  method: 'GET'
+}).then(response => response.json())
+.then(data => {
+  if(reviews.childElementCount == 0){
+    ave_point.textContent='';
+  }else{
+    ave_point.textContent=`平均：${data.ave_points}点`
+  }
+})
+.catch(e =>{
+  console.log(e)
+})
+

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   resources :users do
   resources :reviews,only:[:create,:destroy]
+  get '/reviews/ave_point_cal', to: 'reviews#ave_point_cal'
   resources :likes,only:[:index]
   resources :profiles,only:[:create,:update,:new,:edit]
     member do
@@ -22,6 +23,7 @@ Rails.application.routes.draw do
   resources :articles, only:[:create,:destroy,:show,:index,:new] do
     resources :comments,only:[:create,:destroy]
     resources :likes,only:[:create,:destroy]
+    get '/likes/counts', to: 'likes#count'
   collection do
     get :tags
   end
@@ -37,5 +39,20 @@ Rails.application.routes.draw do
   end
 
   resources :maps,only: [:index,:new]
-  
+
+  namespace :api, format: 'json' do
+    namespace :v1 do
+      resources :users do
+        resources :reviews,only: [:index],controller: 'reviews'
+      end
+
+      resources :articles do
+        resources :comments, only: [:index], controller: 'comments'
+      end
+    end
   end
+  
+
+  end
+
+  

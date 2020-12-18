@@ -14,7 +14,7 @@ class CommentsController < ApplicationController
       flash[:success] = "コメントしました！"
       respond_to do |format|
         format.html {redirect_to article_url(@article)}
-        format.js
+        format.js 
       end
     else 
       flash[:danger] = "送信に失敗しました"
