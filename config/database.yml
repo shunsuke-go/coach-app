@@ -51,6 +51,7 @@ production:
   <<: *default
   adapter: mysql2
   encoding: utf8mb4
-  database: coach_app_production
-  username: coach_app
-  password: <%= ENV['COACH_APP_DATABASE_PASSWORD'] %>
+  host: <%= Rails.application.credentials.rds[:host] %>
+  database: <%= Rails.application.credentials.rds[:database] %>
+  username: <%= Rails.application.credentials.rds[:username] %>
+  password: <%= Rails.application.credentials.rds[:password] %>

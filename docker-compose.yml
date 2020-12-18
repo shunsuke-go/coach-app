@@ -11,16 +11,33 @@ services:
       - mysql-data:/var/lib/mysql
   web:
     build: .
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec puma -C config/puma.rb"
     volumes:
       - .:/coach-app:delegated
+      - public-data:/coach-app/public
+      - tmp-data:/coach-app/tmp
+      - log-data:/coach-app/log
     ports:
       - "3000:3000"
     depends_on:
       - db
-    
     stdin_open: true
     tty: true
+
+  nginx:
+    build:
+      context: nginx
+    volumes:
+      - tmp-data:/coach-app/tmp
+    ports:
+      - "80:80"
+    depends_on:
+      - web
+    
 volumes:
   mysql-data:
     driver: local
+  tmp-data:
+  public-data:
+  log-data:
+  
