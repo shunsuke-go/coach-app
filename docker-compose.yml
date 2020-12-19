@@ -23,6 +23,8 @@ services:
       - db
     stdin_open: true
     tty: true
+    environment:
+      RAILS_ENV: production
 
   nginx:
     build:
