@@ -66,6 +66,22 @@ GEM
     ast (2.4.1)
     autoprefixer-rails (10.1.0.0)
       execjs
+    aws-eventstream (1.1.0)
+    aws-partitions (1.410.0)
+    aws-sdk-core (3.110.0)
+      aws-eventstream (~> 1, >= 1.0.2)
+      aws-partitions (~> 1, >= 1.239.0)
+      aws-sigv4 (~> 1.1)
+      jmespath (~> 1.0)
+    aws-sdk-kms (1.40.0)
+      aws-sdk-core (~> 3, >= 3.109.0)
+      aws-sigv4 (~> 1.1)
+    aws-sdk-s3 (1.86.2)
+      aws-sdk-core (~> 3, >= 3.109.0)
+      aws-sdk-kms (~> 1.26)
+      aws-sigv4 (~> 1.1)
+    aws-sigv4 (1.2.2)
+      aws-eventstream (~> 1, >= 1.0.2)
     backport (1.1.2)
     bcrypt (3.1.13)
     benchmark (0.1.0)
@@ -131,6 +147,7 @@ GEM
     jaro_winkler (1.5.4)
     jbuilder (2.10.1)
       activesupport (>= 5.0.0)
+    jmespath (1.4.0)
     kramdown (2.3.0)
       rexml
     kramdown-parser-gfm (1.1.0)
@@ -339,6 +356,7 @@ PLATFORMS
 DEPENDENCIES
   active_storage_validations (= 0.8.2)
   acts-as-taggable-on (~> 6.0)
+  aws-sdk-s3
   bcrypt (= 3.1.13)
   bootsnap (>= 1.4.2)
   byebug

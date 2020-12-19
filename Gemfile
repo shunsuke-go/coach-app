@@ -38,6 +38,7 @@ gem 'solargraph', group: :development
 gem 'geocoder'
 gem 'gon'
 gem 'dotenv-rails'
+gem 'aws-sdk-s3', require: false
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'will_paginate',           '3.1.8'
