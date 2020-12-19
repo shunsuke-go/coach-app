@@ -1,6 +1,6 @@
 version: '3'
 services:
-   db:
+  db:
      image: mysql:8.0
      environment:
        MYSQL_ROOT_PASSWORD: password
