@@ -25,6 +25,7 @@ services:
     tty: true
     environment:
       RAILS_ENV: production
+      
 
   nginx:
     build:
