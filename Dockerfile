@@ -9,7 +9,7 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
 WORKDIR /coach-app
 COPY Gemfile /coach-app/Gemfile
 COPY Gemfile.lock /coach-app/Gemfile.lock
-RUN bundle install && bundle update
+RUN bundle install
 COPY . /coach-app
 RUN bundle exec rails assets:precompile RAILS_ENV=production
 COPY entrypoint.sh /usr/bin/
