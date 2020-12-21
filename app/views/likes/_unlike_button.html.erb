@@ -1,5 +1,5 @@
 <div  id="unlike">
-<%= form_with(model: [@article,Like.find_by(user_id: current_user.id)],
+<%= form_with(model: [@article,Like.find_by(article_id: @article.id,user_id: current_user.id)],
 html:{method: :delete}) do |f| %>
 <%= f.submit "いいね解除",class:"btn btn-primary" %>
 <% end %>

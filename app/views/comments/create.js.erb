@@ -17,11 +17,9 @@ fetch("/api/v1/articles/<%=@article.id%>/comments",
     <a href="/users/${data[data.length-1].user.id}">${data[data.length-1].user.name}</a>さんのコメント</p>
   ${data[data.length-1].content}
   <a data-confirm="本当に削除しますか？" data-remote="true" rel="nofollow"
-  data-method="delete" href="/articles/35/comments/${data[data.length-1].id}"
+  data-method="delete" href="/articles/${data[data.length-1].article.id}/comments/${data[data.length-1].id}"
   ${hidden}>削除</a>
   </li>`)
-
-  
 
 }).catch(e => {
   console.log(e);
