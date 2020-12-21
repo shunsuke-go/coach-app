@@ -9,6 +9,10 @@ class ArticlesController < ApplicationController
 
 
     def show
+
+      
+      binding.pry
+      
       @article = Article.find(params[:id])
       @comment = @article.comments.build
       @comments = @article.comments.all
