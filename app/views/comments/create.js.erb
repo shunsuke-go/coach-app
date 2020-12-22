@@ -5,7 +5,11 @@
 fetch("/api/v1/articles/<%=@article.id%>/comments",
 { 
   mode: 'cors',
-  method: 'GET'
+  method: 'GET',
+  headers: {
+    Authorization: "Token <%= current_user.token %>",
+    "Content-Type": "application/json"
+  }
 }).then(response =>response.json())
 .then(data => {
  

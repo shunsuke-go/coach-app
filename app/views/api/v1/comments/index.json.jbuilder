@@ -7,5 +7,6 @@ json.array!(@comments) do |comment|
   json.user do
     json.name  comment.user.name
     json.id comment.user.id
+    json.token comment.user.token
   end
 end
