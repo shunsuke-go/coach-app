@@ -7,7 +7,11 @@ like.remove();
 
 fetch('/articles/<%= @article.id %>/likes/counts.json',{
   mode: 'cors',
-  method: 'GET'
+  method: 'GET',
+  headers: {
+    Authorization: "Token <%= current_user.token %>",
+    "Content-Type": "application/json"
+  }
 }).then(response => response.json())
 .then(data => {
 console.log(data);

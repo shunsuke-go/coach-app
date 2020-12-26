@@ -1,4 +1,5 @@
 class LikesController < ApplicationController
+  before_action :authenticate,only: :count
 
   def create
     @article = Article.find(params[:article_id])

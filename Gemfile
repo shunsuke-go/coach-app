@@ -60,6 +60,7 @@ group :development, :test do
   gem 'guard-minitest',           '2.4.6'
   gem 'pry-rails'
   gem 'pry-byebug'
+  gem 'faker'
 end
 
 group :development do

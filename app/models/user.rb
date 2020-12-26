@@ -1,8 +1,5 @@
 class User < ApplicationRecord
-  
-  
-  has_secure_token
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #  関連付け
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   
@@ -59,17 +56,18 @@ class User < ApplicationRecord
   has_many :reviewers, through: :passive_reviews,
   source: :reviewer
 
+
+  has_secure_token
+
+
  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
- #  validations
+ #  Validations
  #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  
- 
-   attr_accessor :remember_token
- 
- 
+   attr_accessor :remember_token 
    before_save :downcase_email
 
-  validates :name, presence: true, length: { maximum: 50 }
+  validates :name, presence: true, length: { maximum: 15 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
 
   validates :email, presence: true, length: { maximum: 255 },
@@ -77,7 +75,8 @@ class User < ApplicationRecord
                     uniqueness: true
   
   has_secure_password
-  validates :password, presence: true, length: { minimum: 6 },allow_nil: true
+  validates :password, presence: true, length: { minimum: 6 }
+ 
 
    # 渡された文字列のハッシュ値を返す
    def User.digest(string)
