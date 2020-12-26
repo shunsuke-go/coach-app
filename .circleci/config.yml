@@ -12,8 +12,8 @@ jobs:
         environment:
           - MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
           - MYSQL_ROOT_HOST: '%'
-      - run:
-          command: --default-authentication-plugin=mysql_native_password
+        - run:
+            command: --default-authentication-plugin=mysql_native_password
 
     working_directory: ~/repo
 
