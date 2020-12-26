@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/ruby:2.6.0-node-browsers
+      - image: circleci/ruby:2.6.6-node-browsers
         environment:
 #  ①注意！！ bundlerのバージョンが2.0.1以上だと、bundle installに失敗します。ここに環境として指定します。
           - BUNDLER_VERSION: 2.0.2
