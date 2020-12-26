@@ -41,7 +41,7 @@ jobs:
       - run: mv config/database.yml.ci config/database.yml 
       # Database setup
       - run:
-        command: --default-authentication-plugin=mysql_native_password
+          command: --default-authentication-plugin=mysql_native_password
       - run: bundle exec rails db:create
       - run: bundle exec rails db:schema:load
 # rubocop
