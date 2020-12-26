@@ -1,5 +1,4 @@
 require 'rails_helper'
 
-RSpec.describe "Messages", type: :request do
-
+RSpec.describe 'Messages', type: :request do
 end
