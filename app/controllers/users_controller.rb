@@ -6,7 +6,6 @@ before_action :check_admin, only:[:destroy]
   
   def new
     @user = User.new
-    
   end
 
   def show

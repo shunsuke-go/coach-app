@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :article do
-    content { "MyText" }
-    user { nil }
+    association :user
+    title { "a" * 15 }
+    content { Faker::Lorem.sentence }
   end
 end

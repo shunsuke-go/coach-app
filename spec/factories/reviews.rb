@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :review do
-    content { "MyText" }
-    rate { 1 }
+    content { "a" * 300 }
+    rate { 3 }
   end
 end

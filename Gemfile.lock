@@ -116,6 +116,8 @@ GEM
     factory_bot_rails (6.1.0)
       factory_bot (~> 6.1.0)
       railties (>= 5.0.0)
+    faker (2.15.1)
+      i18n (>= 1.6, < 2)
     ffi (1.14.0)
     formatador (0.2.5)
     geocoder (1.6.4)
@@ -148,6 +150,7 @@ GEM
     jbuilder (2.10.1)
       activesupport (>= 5.0.0)
     jmespath (1.4.0)
+    jwt (2.2.2)
     kramdown (2.3.0)
       rexml
     kramdown-parser-gfm (1.1.0)
@@ -363,12 +366,14 @@ DEPENDENCIES
   capybara (= 3.28.0)
   dotenv-rails
   factory_bot_rails
+  faker
   geocoder
   gon
   guard (= 2.16.2)
   guard-minitest (= 2.4.6)
   image_processing (= 1.9.3)
   jbuilder (~> 2.7)
+  jwt
   listen (~> 3.2)
   material_icons
   materialize-sass (~> 1.0.0)

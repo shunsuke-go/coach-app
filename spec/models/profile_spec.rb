@@ -1,5 +1,50 @@
 require 'rails_helper'
 
 RSpec.describe Profile, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe '#create' do 
+    context "正常に保存できる場合" do 
+      let(:profile) { create(:profile) }
+      it "profileが保存できること" do
+        expect(profile).to be_valid   
+      end
+    end
+
+    context "保存できない場合" do
+      let(:profile) { create(:profile) }
+      it "user_idが存在しないと保存できないこと" do
+        profile.user_id = ""
+        expect(profile).to be_invalid   
+      end
+
+      it "ageが存在しないと保存できないこと" do
+        profile.age = nil
+        expect(profile).to be_invalid   
+      end
+
+      it "ageが数字でないと保存できないこと" do
+         profile.age = "a"
+         expect(profile).to be_invalid  
+      end
+
+      it "contentが存在しないと保存できないこと" do
+        profile.content = ""
+        expect(profile).to be_invalid   
+      end
+
+      it "contentが1001文字以上だと保存できないこと" do
+        profile.content = "a" * 1001
+        expect(profile).to be_invalid   
+      end
+
+      it "addressが存在しないと保存できないこと" do
+        profile.address = ""
+        expect(profile).to be_invalid   
+      end
+
+      it "addressが51文字以上だと保存できないこと" do
+        profile.address = "a" * 51
+        expect(profile).to be_invalid   
+      end
+    end
+  end
 end

@@ -1,4 +1,5 @@
 class LikesController < ApplicationController
+  before_action :authenticate,only: :count
 
   def create
     @article = Article.find(params[:article_id])
@@ -28,7 +29,7 @@ class LikesController < ApplicationController
     @article = Article.find_by(id: params[:article_id])
     @like = Like.find_by(id: params[:id])
     @like.destroy
-
+    
     respond_to do |format|
       format.html {redirect_to article_url(@article)}
       format.js

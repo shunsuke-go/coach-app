@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_11_131848) do
+ActiveRecord::Schema.define(version: 2020_12_26_010039) do
 
   create_table "action_text_rich_texts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -128,8 +128,8 @@ ActiveRecord::Schema.define(version: 2020_12_11_131848) do
   end
 
   create_table "relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.integer "follower_id"
-    t.integer "followed_id"
+    t.integer "follower_id", null: false
+    t.integer "followed_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["followed_id", "follower_id"], name: "index_relationships_on_followed_id_and_follower_id", unique: true
@@ -187,6 +187,7 @@ ActiveRecord::Schema.define(version: 2020_12_11_131848) do
     t.string "password_digest"
     t.string "remember_digest"
     t.boolean "admin"
+    t.string "token"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

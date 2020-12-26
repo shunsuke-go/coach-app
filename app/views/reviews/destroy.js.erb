@@ -3,8 +3,6 @@ var ave_point = document.getElementById('ave_point');
 var reviews = document.getElementById('reviews');
 
 review.remove();
-console.log(reviews.childElementCount);
-
 
 fetch("/users/<%= @user.id %>/reviews/ave_point_cal",{
   mode: 'cors',

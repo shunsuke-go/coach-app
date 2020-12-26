@@ -5,7 +5,11 @@ var review_rate = document.getElementById('review_rate');
 
 fetch("/api/v1/users/<%= @user.id %>/reviews",{
   mode: 'cors',
-  method: 'GET'
+  method: 'GET',
+  headers: {
+    Authorization: "Token <%= current_user.token %>",
+    "Content-Type": "application/json"
+  }
 }).then(response => response.json())
 .then(data => {
   console.log(data);
@@ -24,7 +28,11 @@ fetch("/api/v1/users/<%= @user.id %>/reviews",{
 
 fetch("/users/<%= @user.id %>/reviews/ave_point_cal",{
   mode: 'cors',
-  method: 'GET'
+  method: 'GET',
+  headers: {
+    Authorization: "Token <%= current_user.token %>",
+    "Content-Type": "application/json"
+  }
 }).then(response => response.json())
 .then(data => {
   ave_point.textContent=`平均：${data.ave_points}点`

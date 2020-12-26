@@ -11,14 +11,13 @@ class Article < ApplicationRecord
   default_scope -> {order(created_at: :desc)} 
   validates :user_id, presence: true
   validates :content, presence: true
-  validates :title, presence: true, length: {maximum:20}
+  validates :title, presence: true, length: { maximum:20 }
   validates :image,   content_type: { in: %w[image/jpeg image/gif image/png],
-    message: "must be a valid image format" },
+    message: "そのファイル形式は使用できません" },
     size:         { less_than: 5.megabytes,
-    message: "should be less than 5MB" }
+    message: "5MB以下の画像を使用してください" }
 
   acts_as_taggable
-
   has_rich_text :content
   
 
