@@ -7,60 +7,52 @@ class ReviewsController < ApplicationController
     @reviews = @user.passive_reviews
 
     if @review.save
-      flash[:success] = "レビューを書き込みました"
+      flash[:success] = 'レビューを書き込みました'
 
       respond_to do |format|
         format.html { redirect_to user_path(@user) }
         format.js
       end
-    else  
+    else
       render 'error'
     end
   end
 
   def destroy
-
-    
     @user = User.find_by(id: params[:user_id])
     @review = Review.find_by(id: params[:id])
     @reviews = @user.passive_reviews
-    
+
     @review.destroy
 
+    flash[:success] = '削除しました'
 
-    flash[:success] = "削除しました"
-    
     respond_to do |format|
       format.html { redirect_to user_path(params[:user_id]) }
       format.js
     end
   end
 
-
   def ave_point_cal
-    
     user = User.find(params[:user_id])
     reviews = user.passive_reviews
-    ave_points = {ave_points: num_point(reviews)}
-    render :json => ave_points
-    
+    ave_points = { ave_points: num_point(reviews) }
+    render json: ave_points
   end
-
 
   private
 
-  def review_params
-    params.require(:review).permit(:content,:rate)
-  end
+    def review_params
+      params.require(:review).permit(:content, :rate)
+    end
 
+    def num_point(reviews)
+      return 0 if reviews.count.zero?
 
-  def num_point(reviews)
-    return 0 if reviews.count == 0
-    point = 0
-     reviews.each do |review|
-       point += review.rate
-     end
-     @point = point / reviews.count
-  end
-
+      point = 0
+      reviews.each do |review|
+        point += review.rate
+      end
+      @point = point / reviews.count
+    end
 end

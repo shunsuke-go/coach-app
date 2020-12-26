@@ -5,11 +5,66 @@ orbs:
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.6.6-stretch-node
-    executor: ruby/default
+      - image: circleci/ruby:2.6.6-node-browsers
+        environment:
+          - RAILS_ENV: 'test'
+      - image: circleci/mysql:8.0
+        environment:
+          - MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
+          - MYSQL_ROOT_HOST: '%'
+        command: --default-authentication-plugin=mysql_native_password
+
+    working_directory: ~/repo
+
     steps:
       - checkout
       - run:
-          name: Which bundler?
-          command: bundle -v
-      - ruby/bundle-install
+          name: "Node.js と npm の更新"
+          command: |
+            curl -sSL "https://nodejs.org/dist/v11.10.0/node-v11.10.0-linux-x64.tar.xz" | sudo tar --strip-components=2 -xJ -C /usr/local/bin/ node-v11.10.0-linux-x64/bin/node
+            curl https://www.npmjs.com/install.sh | sudo bash
+      - run:
+          name: 現行バージョンのノードのチェック
+          command: node -v
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "Gemfile.lock" }}
+            - v1-dependencies-
+      - run:
+          name: install dependencies
+          command: |
+            gem install bundler
+            bundle install --jobs=4 --retry=3 --path vendor/bundle
+      - save_cache:
+          paths:
+            - ./vendor/bundle
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+
+      - run: mv config/database.yml.ci config/database.yml 
+      # Database setup
+      - run: bundle exec rails db:create
+      - run: bundle exec rails db:schema:load
+# rubocop
+      - run:
+          name: Rubocop
+          command: bundle exec rubocop
+      - run:
+          name: run tests
+          command: |
+            rm -rf bin/webpack*
+            gem install rails
+            rails webpacker:install
+            RAILS_ENV=test bundle exec rails webpacker:compile
+            mkdir /tmp/test-results
+            TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | \
+              circleci tests split --split-by=timings)"
+            bundle exec rspec \
+              --format progress \
+              --out /tmp/test-results/rspec.xml \
+              --format progress \
+              $TEST_FILES
+      - store_test_results:
+          path: /tmp/test-results
+      - store_artifacts:
+          path: /tmp/test-results
+          destination: test-results

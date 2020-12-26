@@ -1,5 +1,5 @@
 class LikesController < ApplicationController
-  before_action :authenticate,only: :count
+  before_action :authenticate, only: :count
 
   def create
     @article = Article.find(params[:article_id])
@@ -8,49 +8,42 @@ class LikesController < ApplicationController
 
     # 通知
     @article.create_like_notification(current_user)
-  
-      
+
     if @like.save
-    
-    respond_to do |format|
-      format.html {redirect_to article_url(@article)}
-      format.js
-    end
-    
+
+      respond_to do |format|
+        format.html { redirect_to article_url(@article) }
+        format.js
+      end
 
     else
-      flash[:danger] = "いいねに失敗しました。"
+      flash[:danger] = 'いいねに失敗しました。'
       redirect_to article_url(@article)
     end
   end
 
   def destroy
-    
     @article = Article.find_by(id: params[:article_id])
     @like = Like.find_by(id: params[:id])
     @like.destroy
-    
+
     respond_to do |format|
-      format.html {redirect_to article_url(@article)}
+      format.html { redirect_to article_url(@article) }
       format.js
     end
   end
 
   def index
-    @articles = current_user.liked_articles.paginate(page: params[:page],per_page: 5)
+    @articles = current_user.liked_articles.paginate(page: params[:page], per_page: 5)
   end
-
 
   def count
     @article = Article.find(params[:article_id])
-    counts = {counts: @article.likes.count}
+    counts = { counts: @article.likes.count }
 
     respond_to do |format|
       format.html
-      format.json {render json: counts}
+      format.json { render json: counts }
     end
   end
-
-
-
 end

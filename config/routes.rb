@@ -8,42 +8,42 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   resources :users do
-  resources :reviews,only:[:create,:destroy]
-  get '/reviews/ave_point_cal', to: 'reviews#ave_point_cal'
-  resources :likes,only:[:index]
-  resources :profiles,only:[:create,:update,:new,:edit]
+    resources :reviews, only: [:create, :destroy]
+    get '/reviews/ave_point_cal', to: 'reviews#ave_point_cal'
+    resources :likes, only: [:index]
+    resources :profiles, only: [:create, :update, :new, :edit]
     member do
-      get :reviewing,:reviewers
-      get :following,:followers
+      get :reviewing, :reviewers
+      get :following, :followers
     end
   end
-  
-  resources :relationships, only:[:create,:destroy]
 
-  resources :articles, only:[:create,:destroy,:show,:index,:new] do
-    resources :comments,only:[:create,:destroy]
-    resources :likes,only:[:create,:destroy]
+  resources :relationships, only: [:create, :destroy]
+
+  resources :articles, only: [:create, :destroy, :show, :index, :new] do
+    resources :comments, only: [:create, :destroy]
+    resources :likes, only: [:create, :destroy]
     get '/likes/counts', to: 'likes#count'
-  collection do
-    get :tags
-  end
+    collection do
+      get :tags
+    end
   end
   get '/articles', to: 'static_pages#home'
-  
-  resources :rooms,only:[:show,:create,:index]
-  resources :messages,only: :create
-  resources :notifications,only: [:index] do
+
+  resources :rooms, only: [:show, :create, :index]
+  resources :messages, only: :create
+  resources :notifications, only: [:index] do
     collection do
       delete 'destroy_all'
     end
   end
 
-  resources :maps,only: [:index,:new]
+  resources :maps, only: [:index, :new]
 
   namespace :api, format: 'json' do
     namespace :v1 do
       resources :users do
-        resources :reviews,only: [:index],controller: 'reviews'
+        resources :reviews, only: [:index], controller: 'reviews'
       end
 
       resources :articles do
@@ -51,8 +51,4 @@ Rails.application.routes.draw do
       end
     end
   end
-  
-
-  end
-
-  
+end
