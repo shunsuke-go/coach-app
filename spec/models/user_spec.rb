@@ -21,7 +21,7 @@ RSpec.describe User, type: :model do
       end
 
       it 'メールアドレスが255文字以内なら登録できること' do
-        user.email = 'aaaaa' + '@' + 'a' * 245 + '.com'
+        user.email = "aaaaa@#{'a' * 245}.com"
         expect(user).to be_valid
       end
     end
@@ -45,7 +45,7 @@ RSpec.describe User, type: :model do
       end
 
       it 'メールアドレスが256文字以上だと登録できないこと' do
-        user.email = 'aaaaa' + '@' + 'a' * 246 + '.com'
+        user.email = "aaaaa@#{'a' * 246}.com"
         expect(user).to be_invalid
       end
 

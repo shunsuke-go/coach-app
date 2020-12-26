@@ -33,9 +33,9 @@ class RoomsController < ApplicationController
           (SELECT room_id FROM entries WHERE user_id = #{params[:entry][:user_id]} &&
           room_id IN (SELECT room_id FROM entries WHERE user_id = #{current_user.id}))")
 
-      unless check_room[0].nil?
-        redirect_to room_url(check_room)
-      end
+      return if check_room[0].nil?
+
+      redirect_to room_url(check_room)
     end
 
     def room_mached?

@@ -15,10 +15,10 @@ class ArticlesController < ApplicationController
     @tags = @article.tag_counts_on(:tags)
     @map = Map.find_by(article_id: @article.id)
 
-    unless @map.nil?
-      gon.latitude = @map.latitude
-      gon.longitude = @map.longitude
-    end
+    return if @map.nil?
+
+    gon.latitude = @map.latitude
+    gon.longitude = @map.longitude
   end
 
   def create
