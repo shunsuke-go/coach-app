@@ -12,6 +12,9 @@ jobs:
         environment:
           - MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
           - MYSQL_ROOT_HOST: '%'
+      - run:
+          command: --default-authentication-plugin=mysql_native_password
+
     working_directory: ~/repo
 
     steps:
@@ -40,8 +43,6 @@ jobs:
 
       - run: mv config/database.yml.ci config/database.yml 
       # Database setup
-      - run:
-          command: --default-authentication-plugin=mysql_native_password
       - run: bundle exec rails db:create
       - run: bundle exec rails db:schema:load
 # rubocop
