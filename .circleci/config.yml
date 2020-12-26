@@ -7,6 +7,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
+      # ruby2.5.1を使ったアプリのため
       - image: circleci/ruby:2.6.6-node-browsers
         environment:
 #  ①注意！！ bundlerのバージョンが2.0.1以上だと、bundle installに失敗します。ここに環境として指定します。
@@ -40,8 +41,8 @@ jobs:
           name: install dependencies
           command: |
 # ①bundler2.0.1以降のものを使っているのであれば、環境変数と合わせて指定する必要があります。
-            gem install bundler
-            # -v 2.0.2
+            gem install bundler 
+            #-v 2.0.2
             bundle install --jobs=4 --retry=3 --path vendor/bundle
 
       - save_cache:
