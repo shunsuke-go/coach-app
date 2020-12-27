@@ -1,0 +1,1 @@
+cd /home/ec2-user/my_app/ && git pull
