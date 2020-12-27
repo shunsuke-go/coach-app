@@ -1,1 +1,1 @@
-cd /home/ec2-user/coach-app/ && git pull
+cd /home/ec2-user/coach-app/ && git pull origin main
