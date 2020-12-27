@@ -76,11 +76,7 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - 3f:77:0f:b3:07:a0:cd:c8:43:9b:6c:1c:88:1d:df:86
-      - run:
-          name: "自動デプロイ"
-          command: ssh -p $SSH_PORT $SSH_USER@$SSH_HOST \
-                   "home/ec2-user/coach-app/deploy-me.sh"
-
+      - run: ssh -p $SSH_PORT $SSH_USER@$SSH_HOST "home/ec2-user/coach-app/deploy-me.sh"
 workflows:
   version: 2
   build-test-and-deploy:
@@ -91,7 +87,7 @@ workflows:
             - build
           filters:
             branches:
-              only: master
+              only: main
 
 
 
