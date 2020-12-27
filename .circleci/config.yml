@@ -70,9 +70,9 @@ jobs:
           destination: test-results
 
   deploy:
-    machine:
-      enabled: true
+    executor: default
     steps:
+      - setup
       - add_ssh_keys:
           fingerprints:
             - "3f:77:0f:b3:07:a0:cd:c8:43:9b:6c:1c:88:1d:df:86"
