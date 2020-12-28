@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   resources :users do
-    resources :reviews, only: [:create, :destroy]
+    resources :reviews, only: [:create, :destroy, :index]
     get '/reviews/ave_point_cal', to: 'reviews#ave_point_cal'
     resources :likes, only: [:index]
     resources :profiles, only: [:create, :update, :new, :edit]

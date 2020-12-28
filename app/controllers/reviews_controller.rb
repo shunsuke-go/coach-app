@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
     @review.reviewer_id = current_user.id
     @review.reviewed_id = @user.id
     @reviews = @user.passive_reviews
-
+    current_user.create_review_notification(current_user, @user)
     if @review.save
       flash[:success] = 'レビューを書き込みました'
 
@@ -31,6 +31,13 @@ class ReviewsController < ApplicationController
       format.html { redirect_to user_path(params[:user_id]) }
       format.js
     end
+  end
+
+  def index
+    @user = User.find(params[:user_id])
+    @profile = @user.profile
+    @reviews = @user.passive_reviews
+    @review = Review.new
   end
 
   def ave_point_cal

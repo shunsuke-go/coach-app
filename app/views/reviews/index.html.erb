@@ -1,0 +1,21 @@
+<%= @user.name %></p>
+<div id="ave_point">
+  <% unless @reviews.empty? %>
+    平均：<%= num_point(@reviews) %>点
+  <% end %>
+</div></p>
+<% if @profile.nil? %>
+  プロフィールはありません
+<% else %>
+  <%= render 'users/profile_list' %>
+<% end %></p>
+<% if @reviews.empty? %>
+  レビューはありません
+  <div id="reviews"></div>
+<% else %>
+  <div id="reviews">
+    <%= render @reviews %>
+  </div>
+<% end %>
+<div id="review_error"></div>
+<%= render 'reviews/review_form' %>

@@ -7,29 +7,11 @@
         <%= @user.name %>
       </h1>
       <% if current_user?(@user) %>
-
       <%= link_to "アカウント情報の更新",edit_user_path(current_user) %></p>
       <%= render 'profile_page' %>
-
       <% end %>
-
     <%= render 'shared/status' %>
-    <%= render 'profile_list'%></p>
-   
-   
-    レビュー一覧
-    <div id="reviews">
-    <%= render @reviews %>
-    </div>
-    <div id="ave_point">
-    <% unless @reviews.empty? %>
-     平均：<%= num_point(@reviews) %>点
-    <% end %>
-    
-    </div>
-    <div id="review_error"></div>
-    <%= render 'reviews/review_form' %>
-
+    <%= link_to "レビュー", user_reviews_path(@user) %>
     </section>
   </aside>
 
@@ -44,5 +26,3 @@
     <% end %>
   </div>
 </div>
-
-
