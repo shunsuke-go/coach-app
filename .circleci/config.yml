@@ -75,7 +75,7 @@ jobs:
     steps:
       - add_ssh_keys:
           fingerprints:
-            - "3f:77:0f:b3:07:a0:cd:c8:43:9b:6c:1c:88:1d:df:86"
+            - "57:e5:f0:4d:8b:e3:23:17:74:40:7a:95:cd:bc:3b:ba"
       - run: ssh -p $SSH_PORT $SSH_USER@$SSH_HOST "home/ec2-user/coach-app/deploy-me.sh"
       
 workflows:
