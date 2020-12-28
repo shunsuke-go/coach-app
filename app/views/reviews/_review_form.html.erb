@@ -1,4 +1,6 @@
-</p>レビュー
+</p>
+<%= @user.name %>
+のレビューを書く
 <%= form_with(model:[@user,@review]) do |f| %>
 <%= render 'shared/error_messages', object: f.object %>
 <%= f.label :content %>

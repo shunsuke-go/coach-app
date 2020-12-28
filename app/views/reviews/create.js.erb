@@ -17,7 +17,10 @@ fetch("/api/v1/users/<%= @user.id %>/reviews",{
 
     reviews.insertAdjacentHTML('beforeend',
     `<li id="review_${data[data.length-1].id}" class="review_${data[data.length-1].id}">    
-    レビュー:${data[data.length-1].content} 評価: ${data[data.length-1].rate}
+    レビュワー:${data[data.length-1].user.name}</p>
+    評価: ${data[data.length-1].rate}</p>
+    レビュー:${data[data.length-1].content}</p>
+    
     <a data-remote="true" rel="nofollow" data-method="delete" 
     href="/users/${data[data.length-1].user.id}/reviews/${data[data.length-1].id}"
     ${hidden}>削除</a>
@@ -40,10 +43,6 @@ fetch("/users/<%= @user.id %>/reviews/ave_point_cal",{
 .catch(e =>{
   console.log(e)
 })
-
-
-
-
 
 review_content.value='';
 review_rate.value='';

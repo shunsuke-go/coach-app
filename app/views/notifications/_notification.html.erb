@@ -18,8 +18,12 @@
         を送信しました
 
       <% elsif notification.action == "follow" %>
-        あなたをフォローしました。
-
+        あなたをフォローしました
+      
+      <% elsif notification.action == "review" %>
+        あなたに
+      <%= link_to "レビュー", user_reviews_path(notification.visited) %>
+      を書きました
       <% end %></li>
         </div>
       </div>

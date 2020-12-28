@@ -55,7 +55,7 @@ class User < ApplicationRecord
   has_many :reviewers, through: :passive_reviews,
                        source: :reviewer
 
-  has_secure_token
+  has_secure_token :token
 
  # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  #  Validations
@@ -137,7 +137,14 @@ class User < ApplicationRecord
       visited_id: other_user.id,
       action: 'follow'
     )
+    notification.save if notification.valid?
+  end
 
+  def create_review_notification(current_user, reviewed_user)
+    notification = current_user.active_notifications.build(
+      visited_id: reviewed_user.id,
+      action: 'review'
+    )
     notification.save if notification.valid?
   end
 

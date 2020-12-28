@@ -1,7 +1,9 @@
-<li id="review_<%= review.id %>">レビュー:<%= review.content %>
-評価:<%= review.rate %>
-<% if review.reviewer_id == current_user.id %>
-<%= link_to "削除",user_review_path(@user,review),method: :delete ,remote: true %></p>
-<%end%>
+<li id="review_<%= review.id %>">
+  レビュワー:<%= review.reviewer.name %></p>
+  評価:<%= review.rate %></p>
+  レビュー:<%= review.content %></p>
+  <% if review.reviewer_id == current_user.id %>
+  <%= link_to "削除",user_review_path(@user,review),method: :delete ,remote: true %></p>
+  <% end %>
 </li>
 
