@@ -5,6 +5,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= include_gon %>
+    
     <%= stylesheet_link_tag    'application', media: 'all',
                                'data-turbolinks-track': 'reload' %>
     
@@ -17,9 +18,15 @@
       </script>
     <![endif]-->
   <link rel=“stylesheet” href=“app/assets/stylesheets/application.scss”>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+  
+  
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+  
+
   </head>
 
 
@@ -34,7 +41,6 @@
     <%= render 'layouts/header'%>    
         
     <%= debug(params) if Rails.env.development? %>
-    
   </body>
 </html>
 
