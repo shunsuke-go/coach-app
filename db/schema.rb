@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_26_010039) do
+ActiveRecord::Schema.define(version: 2020_12_30_012623) do
 
   create_table "action_text_rich_texts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -141,7 +141,7 @@ ActiveRecord::Schema.define(version: 2020_12_26_010039) do
     t.integer "reviewer_id"
     t.integer "reviewed_id"
     t.text "content"
-    t.integer "rate"
+    t.float "rate"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["reviewed_id"], name: "index_reviews_on_reviewed_id"
@@ -188,6 +188,7 @@ ActiveRecord::Schema.define(version: 2020_12_26_010039) do
     t.string "remember_digest"
     t.boolean "admin"
     t.string "token"
+    t.float "ave_rate"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

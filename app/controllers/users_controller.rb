@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     @profile = Profile.find_by(user_id: params[:id])
     @review = Review.new
     @reviews = @user.passive_reviews
-
+    @ave_rate = @user.ave_rate.round(1) unless @user.ave_rate.nil?
    # @point = @user.num_point(@reviews) unless @reviews.empty?
   end
 

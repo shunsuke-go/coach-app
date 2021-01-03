@@ -1,0 +1,6 @@
+<% @user_ranks.each_with_index do |user_rank,idx| %> 
+  <li class="collection-item">
+    第<%= idx + 1 %>位　<%= link_to user_rank.name,user_path(user_rank) %>
+    　<%= user_rank.ave_rate%>点
+  </li>
+<% end %>

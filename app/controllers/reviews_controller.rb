@@ -8,6 +8,8 @@ class ReviewsController < ApplicationController
     current_user.create_review_notification(current_user, @user)
     if @review.save
       flash[:success] = 'レビューを書き込みました'
+      ave_rate = num_point(@reviews)
+      @user.update_columns(ave_rate: ave_rate)
 
       respond_to do |format|
         format.html { redirect_to user_path(@user) }
@@ -24,7 +26,8 @@ class ReviewsController < ApplicationController
     @reviews = @user.passive_reviews
 
     @review.destroy
-
+    ave_rate = num_point(@reviews)
+    @user.update_columns(ave_rate: ave_rate)
     flash[:success] = '削除しました'
 
     respond_to do |format|
@@ -38,12 +41,12 @@ class ReviewsController < ApplicationController
     @profile = @user.profile
     @reviews = @user.passive_reviews
     @review = Review.new
+    @ave_rate = @user.ave_rate.round(1) unless @user.ave_rate.nil?
   end
 
   def ave_point_cal
     user = User.find(params[:user_id])
-    reviews = user.passive_reviews
-    ave_points = { ave_points: num_point(reviews) }
+    ave_points = { ave_points: user.ave_rate.to_f.round(1) }
     render json: ave_points
   end
 
@@ -60,6 +63,6 @@ class ReviewsController < ApplicationController
       reviews.each do |review|
         point += review.rate
       end
-      @point = point / reviews.count
+      @point = point / reviews.count.to_f
     end
 end
