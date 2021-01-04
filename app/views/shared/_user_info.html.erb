@@ -1,3 +1,9 @@
-<h1> <%= current_user.name%> </h1>
-<span> <%= link_to "プロフィール",current_user%> </span>
-<span> 記事数<%= current_user.articles.count%> </span>
+<% if current_user.avatar? %>
+<%= image_tag current_user.avatar.url, class: "circle"%>
+<% else %>
+<%= image_tag 'no-image.jpg', class: "circle"%>
+<% end %>
+<span class="profile-link">
+<%= link_to current_user.name,current_user %>
+</span>
+

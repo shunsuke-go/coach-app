@@ -45,6 +45,9 @@ gem 'will_paginate',           '3.1.8'
 # gem 'bootstrap-will_paginate', '1.0.0'
 gem 'acts-as-taggable-on', '~> 6.0' # 追加
 gem 'jwt'
+gem 'carrierwave', '~> 2.0'
+gem 'fog-aws'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

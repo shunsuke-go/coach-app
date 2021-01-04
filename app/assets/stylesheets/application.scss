@@ -25,3 +25,71 @@ body{
 ul,li {
   list-style: none;
 }
+
+.user_info {
+margin-top : 30px ;
+margin-bottom : 30px ;
+}
+
+.header-icons { 
+  font-size: 20px; 
+  margin-right: 5px;
+}
+
+.brand-logo {
+  margin-left: 10px;
+}
+
+.crown {
+  margin:0px;
+  padding: 0px;
+  position: relative; 
+  right: 20px;
+}
+
+.collection-item.auto {
+  margin: 0px;
+}
+
+.follower {
+  margin: 20px;
+}
+
+.profile-link {
+  margin: 20px;
+  position: relative; 
+  bottom: 20px;
+}
+
+.feed {
+  margin-top: 13px;
+}
+
+.card-content.stats {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  position: relative; 
+  bottom: 20px;
+}
+
+.ranking {
+  margin-top: 15px;
+}
+
+.right {
+  text-align:right
+}
+
+.timestamp {
+  font-size: 15px;
+}
+
+.tag {
+  width:100.3%;
+  position: relative;
+  right: 11px;
+}
+
+.margin-5 {
+  margin:5px;
+}
