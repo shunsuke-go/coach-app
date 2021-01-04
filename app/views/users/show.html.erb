@@ -11,6 +11,11 @@
       <%= render 'profile_page' %>
       <% end %>
     <%= render 'shared/status' %>
+    <div id="ave_point">
+      <% unless @reviews.empty? %>
+      平均：<%= @ave_rate %>点
+      <% end %>
+    </div></p>
     <%= link_to "レビュー", user_reviews_path(@user) %>
     </section>
   </aside>

@@ -1,0 +1,6 @@
+<% if @user_ranks.any? %>
+ <ul class="collection with-header">
+ <li class="collection-header"><h6>レビューランキング</h6></li>
+ <%= render 'shared/user_rank', collection: @user_ranks %>
+ </ul>
+<% end %>

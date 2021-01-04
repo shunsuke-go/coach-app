@@ -1,7 +1,7 @@
 <%= @user.name %></p>
 <div id="ave_point">
   <% unless @reviews.empty? %>
-    平均：<%= num_point(@reviews) %>点
+    平均：<%= @ave_rate %>点
   <% end %>
 </div></p>
 <% if @profile.nil? %>
