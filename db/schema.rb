@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_30_012623) do
+ActiveRecord::Schema.define(version: 2021_01_04_061536) do
 
   create_table "action_text_rich_texts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -189,6 +189,7 @@ ActiveRecord::Schema.define(version: 2020_12_30_012623) do
     t.boolean "admin"
     t.string "token"
     t.float "ave_rate"
+    t.string "avatar"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

@@ -14,10 +14,7 @@ fetch('/articles/<%= @article.id %>/likes/counts.json',{
   }
 }).then(response => response.json())
 .then(data => {
-console.log(data);
-
 likes_count.textContent=data.counts
-
 }).catch(e => {
   console.log(e);
 })

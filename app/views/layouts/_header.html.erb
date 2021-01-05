@@ -1,4 +1,3 @@
-
   <header>
     <div class="conatiner">
     <nav>
@@ -6,18 +5,31 @@
         <%= link_to "タイトル", root_path, id: "logo",class: "brand-logo" %>
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><%= link_to "ホーム",   root_path %></li>
-        <li><%= link_to "ヘルプ",   help_path %></li>
         <% if logged_in? %>
-        <li> <%= link_to "タグ",tags_articles_path %> </li>
-        <li><%= link_to "通知", notifications_path %></li>
-        <li><%= link_to "ユーザ一覧", users_path %></li>
-        <li><%= link_to "いいねした記事", user_likes_path(current_user) %></li>
-        <li><%= link_to "プロフィール", user_path(current_user) %></li>
-        <li><%= link_to "セッティング", edit_user_path(current_user) %></li>
-        <li><%= link_to "近い記事検索",new_map_path %></li>
-        <li>        
-        <%= link_to "ログアウト",logout_path,method: :delete %>
+        
+        <li><a href="<%= tags_articles_path %>">
+          <i class="fas fa-tag header-icons"></i>タグ</a>
+        </li>
+
+        <li><a href="<%= notifications_path %>">
+          <i class="fas fa-bell header-icons"></i>通知</a>
+        </li>
+
+        <li><a href="<%= users_path %>">
+         <i class="fas fa-user header-icons"></i>ユーザ一覧</a>
+        </li>
+
+        <li><a href="<%= user_likes_path(current_user) %>">
+          <i class="fas fa-heart header-icons"></i>いいねした記事</a>
+        </li>
+
+        <li><a href="<%= new_map_path %>">
+        <i class="fas fa-globe header-icons"></i>近所の募集</a>
+        </li>
+        
+        <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">
+        マイメニュー
+        <i class="material-icons right">arrow_drop_down</i></a>
         </li>
         <% else %>
         <li><%= link_to "Log in", login_path %></li>
@@ -26,6 +38,24 @@
       </div>
     </nav>
   </header>  
+
+  <% if logged_in? %>
+  <ul id="dropdown1" class="dropdown-content">
+    <li><%= link_to "プロフィール", user_path(current_user) %></li>
+    <li><%= link_to "セッティング", edit_user_path(current_user) %></li>
+    <li><%= link_to "ヘルプ",help_path %></li>
+    <li class="divider"></li>
+    <li>        
+      <%= link_to "ログアウト",logout_path,method: :delete %>
+    </li>
+  </ul>
+  <% end %>
+
+
+
+
+
+
   <ul class="sidenav" id="mobile-demo">
     <li><%= link_to "ホーム",   root_path %></li>
         <li><%= link_to "ヘルプ",   help_path %></li>
@@ -41,7 +71,7 @@
         <%= link_to "ログアウト",logout_path,method: :delete %>
         </li>
         <% else %>
-        <li><%= link_to "Log in", login_path %></li>
+        <li><%= link_to "ログイン", login_path %></li>
         <% end %>
   </ul>
 
@@ -51,7 +81,9 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.sidenav');
-    var instances = M.Sidenav.init(elems,[]);
+    var sidenav = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(sidenav,[]);
+    var dropdown = document.querySelectorAll('.dropdown-trigger');
+    var instances = M.Dropdown.init(dropdown,[]);
   });
 </script>

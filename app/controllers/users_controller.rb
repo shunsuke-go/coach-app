@@ -81,7 +81,7 @@ class UsersController < ApplicationController
 
   # Strong Parameter
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :avatar)
     end
 
   # 別のユーザーページを編集するのを防ぐ
