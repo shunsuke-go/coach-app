@@ -1,8 +1,8 @@
-var like = document.getElementById('like');
-var like_form = document.getElementById('like_form');
-var likes_count = document.getElementById('likes_count');
+var like = document.getElementById('like_<%= @article.id %>');
+var like_form = document.getElementById("like_form_<%= @article.id %>");
+var likes_count = document.getElementById('likes_count_<%= @article.id %>');
 
-like_form.insertAdjacentHTML('afterbegin',"<%= j(render 'unlike_button') %>");
+like_form.insertAdjacentHTML('afterbegin',"<%= j(render 'unlike_button',article: @article) %>");
 like.remove();
 
 fetch('/articles/<%= @article.id %>/likes/counts.json',{

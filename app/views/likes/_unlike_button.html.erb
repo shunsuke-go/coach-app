@@ -1,5 +1,6 @@
-<div  id="unlike">
-<%= form_with(model: [@article,Like.find_by(article_id: @article.id,user_id: current_user.id)],
-html:{method: :delete}) do |f| %>
-<%= f.submit "いいね解除",class:"btn btn-primary" %>
-<% end %>
+<div  id="unlike_<%= article.id %>">
+  <%= link_to article_like_path(article.id,Like.find_by(
+    article_id: article.id,user_id: current_user.id)),
+    method: :delete,remote: true, class: "button-as_link" do %>
+  <i class="fa fa-heart fa-lg" style="color:red"></i>
+  <% end %>

@@ -13,8 +13,8 @@
   <%= f.rich_text_area :content,placeholder:"入力してください" %>
   <%= f.label :tag_list %>
   <%= f.text_area :tag_list, value: @article.tag_list.join(','), class: "from-control" %>
-  <%= f.label :image, "サムネイル" %>
-  <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
+  <%= f.label :thumbnail, "サムネイル" %>
+  <%= f.file_field :thumbnail, accept: "image/jpeg,image/gif,image/png" %>
 </div>
 <div id="article_button"><%= f.submit "投稿！",class:"btn"%></div>
 

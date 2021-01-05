@@ -1,17 +1,45 @@
-<div id="article_page" class="col-mid-8">
-  <h2>タイトル:<%= @article.title %></p></h2>
-  <h3>本文：<%= @article.content%></h3>
-  <% unless @map.nil? %>
-  <div id="map"></div>
-  <% end %>
-  コメント</p>
+<div id="article_page" class="col s12 m12">
+  <div class="card">
+    <div class="card-content">
+      <% if @article.user.avatar? %>
+        <%= link_to image_tag(@article.user.avatar.url, class: "circle"), user_path(@article.user) %>
+        <% else %>
+        <%=link_to image_tag('no-image.jpg', class: "circle"), user_path(current_user) %>
+      <% end %>
+      <span class="profile-link">
+        <%= link_to @article.user.name,user_path(@article.user) %>
+      </span>
+      <%= render 'likes/like' ,article: @article%>
+      </div>
 
-  <%= render 'comments/comment_form' %>
-  <%= render 'likes/like' %>
-  <div id="comments">
-  <%= render @comments %>
+      <div class="card-content">
+      <span class="card-title center">
+      <h2><%= @article.title %></h2></span>
+      <span class="right article-time">
+        <%= @article.created_at.strftime('%Y/%m/%d') %>
+      </span>
+      <div class="divider"></div>
+      <div class="article-body">
+      <p><%= @article.content%>
+      </div>
+      <% unless @map.nil? %>
+      <div id="map"></div>
+      <% end %>
+    </div>
   </div>
 </div>
+
+コメント
+<div class="card">
+  <div class="card-content">
+    <%= render 'comments/comment_form' %>
+    <div class="divider"></div>
+    <div id="comments">
+      <%= render @comments %>
+    </div>
+  </div>
+</div>
+
 
 
 

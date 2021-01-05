@@ -93,3 +93,67 @@ margin-bottom : 30px ;
 .margin-5 {
   margin:5px;
 }
+
+.center {
+  text-align: center;
+}
+
+.article-time {
+  position: relative;
+  bottom: 30px;
+}
+
+.article-body {
+  margin: 10px;
+  font-size: 20px;
+}
+
+.comment {
+  white-space: pre-line;
+}
+
+.margin-20 {
+  margin: 20px;
+}
+
+.comment-delete {
+  position: relative;
+  bottom: 20px ;
+}
+
+.button-as_link {
+  background:none;
+  border: none;
+  padding: 0;
+  outline: none;
+  cursor:pointer;
+}
+
+button:focus {
+  background-color:white
+}
+
+.likes-count {
+  position: relative;
+  left: 25px;
+  bottom: 22px;
+}
+
+.like-form {
+  margin:20px
+}
+
+.home-like {
+  float: right;
+  position: relative;
+  bottom: 20px;
+}
+
+.collapsible-header {
+  margin:0;
+  border: 0;
+}
+
+.margin-0 {
+  margin:0;
+}
