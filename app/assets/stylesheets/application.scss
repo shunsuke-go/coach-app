@@ -8,10 +8,19 @@ body{
   background-color:#F2F2F2;
 }
 
+.row {
+  margin-top: 20px;
+}
+
 .flex {
   display: flex;
   flex-wrap: wrap;
 }
+
+.pagination li.active a {
+  color: #fff;
+}
+
 
 .tag {
   margin:10px;
@@ -39,7 +48,7 @@ ul,li {
 }
 
 .user_info {
-margin-top : 30px ;
+//margin-top : 30px ;
 margin-bottom : 30px ;
 }
 
@@ -73,8 +82,8 @@ margin-bottom : 30px ;
   bottom: 20px;
 }
 
-.feed {
-  margin-top: 13px;
+.articles {
+  margin:0;
 }
 
 .card-content.stats {
@@ -173,3 +182,9 @@ button:focus {
 .margin-0 {
   margin:0;
 }
+
+.center {
+  display: grid;
+  place-items: center;
+}
+

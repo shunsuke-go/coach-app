@@ -1,0 +1,17 @@
+<div class="card hoverable">
+  <div class="card-content">
+    <h6>
+      <i class="fas fa-search header-icons" style="color:lightblue"></i>
+      近所の募集を探す
+    </h6> 
+  </div>
+  <div class="card-action">
+    <div class="card-content">
+      <%= form_with(url:maps_path,method: :get,local: true) do |f|%>
+      <%= f.label :area,"位置検索" %>
+      <%= f.text_field :area, class: "materialize-textarea" %>
+      <%= f.submit "検索",class: "btn" %>
+      <% end %>
+    </div> 
+  </div>
+</div>

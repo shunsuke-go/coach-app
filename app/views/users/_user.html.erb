@@ -1,6 +1,39 @@
 <li>
-    <%= link_to user.name, user %>
-    <% if current_user.admin? && !current_user?(user) %>
-    <%= link_to "削除", user, method: :delete,data:{confirm:"本当に削除しますか？    "} %>
-    <% end %>
+  <div class="col s12 m6 l4">
+    <div class="card hoverable">
+      <div class="card-content">
+        <% if user.avatar? %>
+          <%= link_to image_tag(user.avatar.url, class: "circle"), user_path(user) %>
+        <% else %>
+          <%=link_to image_tag('no-image.jpg', class: "circle"), user_path(user) %>
+        <% end %>  
+        <span class="profile-link">
+          <%= link_to user.name,user_path(user) %>
+        </span>
+      </div>
+        
+          <% if user.profile.present? %>
+          <ul>
+            <div class="card-action">
+              <li><%= user.profile.age %>歳</li>
+            </div>
+            <div class="card-action">
+              <li>居住地 : <%= user.profile.address %></li>
+            </div>
+            <div class="card-action">
+              <li><%= user.profile.content %></li>
+            </div>
+          </ul>
+          <% else %>
+          <div class="card-action">
+            プロフィールはありません。
+          </div>
+          <% end %>
+        
+
+        <% if current_user.admin? && !current_user?(user) %>
+        <%= link_to "削除", user, method: :delete,data:{confirm:"本当に削除しますか？"} %>
+        <% end %>
+    </div>
+  </div>
 </li>

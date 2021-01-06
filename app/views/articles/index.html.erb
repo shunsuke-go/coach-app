@@ -1,5 +1,9 @@
-<ul class="microposts">
-  <h3>タグ:<%= @tag %></h3>
-  <%= render @articles %>
-  <%= will_paginate @articles %>
-</ul>
+<p>タグ: <%= @tag %>
+<div class="row">
+  <div class="col s12 m12">
+    <ul class="articles">
+      <%= render @articles %>
+      <%= will_paginate @articles %>
+    </ul>
+  </div>
+</div>

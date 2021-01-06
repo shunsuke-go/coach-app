@@ -1,33 +1,35 @@
 <% if logged_in? %>
-<div class="row">
-  <aside class="col s12 m4">
-    <div class="card">
-    <section class="user_info card-content">
-      <%= render 'shared/user_info' %>  
-    </section>
-
-    <section class="card-content stats">
-      <%= render 'shared/status' %>
+  <div class="row">
+    <aside class="col s12 m4">
+      <div class="card hoverable">
+        <section class="user_info card-content">
+        <%= render 'shared/user_info' %>  
+        </section>
+        <section class="card-content stats">
+        <%= render 'shared/status' %>
       </div>
-    </section>
+        </section>
 
-    <section class="micropost_form">
-      <a class="waves-effect waves-light btn form-btn" href="<%= new_article_path %>">投稿</a>
-    </section>
-    <%= render 'shared/ranks' %>
-  </aside>
+      <section class="article_form">
+        <a class="waves-effect waves-light btn form-btn" href="<%= new_article_path %>">投稿</a>
+      </section>
+      <%= render 'maps/new_map' %>
+      
+      <%= render 'shared/ranks' %>
+    </aside>
+
     <div class="col s12 m8 feed">
       <%= render 'shared/feed' %>
       <%= will_paginate @feed_items %>
     </div>  
-</div>
-<% else %>
-<div class = "center jumbotron">
-<h2>  
-ここはホームページです！
-</h2>
-<%= link_to "登録！", signup_path, class: "btn btn-lg btn-primary" %>
-</div>
+    </div>
+    <% else %>
+    <div class = "center jumbotron">
+      <h2>  
+        ここはホームページです！
+      </h2>
+      <%= link_to "登録！", signup_path, class: "btn btn-lg btn-primary" %>
+  </div>
 <% end %>
 
 
