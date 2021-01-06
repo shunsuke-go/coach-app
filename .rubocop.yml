@@ -115,6 +115,9 @@ Metrics/MethodLength:
 Metrics/ModuleLength:
   CountComments: false
 
+Metrics/ClassLength:
+  Enabled: false
+
 Naming/FileName:
   Exclude:
     - 'Gemfile'
