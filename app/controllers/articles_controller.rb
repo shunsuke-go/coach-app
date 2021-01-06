@@ -23,8 +23,6 @@ class ArticlesController < ApplicationController
 
   def create
     @article = current_user.articles.build(article_params)
-    @article.image.attach(params[:article][:image])
-
     if @article.save
       latitude = params[:article][:map][:latitude]
       longitude = params[:article][:map][:longitude]
@@ -73,7 +71,7 @@ class ArticlesController < ApplicationController
   # Strong Parameter
     def article_params
       params.require(:article)
-            .permit(:content, :title, :tag_list, :image, map_attributes: [:id, :latitude, :longitude])
+            .permit(:content, :title, :tag_list, :thumbnail, map_attributes: [:id, :latitude, :longitude])
     end
 
   # 削除する記事を取得する。削除前に行う。

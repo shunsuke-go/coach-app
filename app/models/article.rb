@@ -1,6 +1,6 @@
 class Article < ApplicationRecord
   belongs_to :user
-  has_one_attached :image
+  mount_uploader :thumbnail, ThumbnailUploader
 
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
@@ -12,10 +12,6 @@ class Article < ApplicationRecord
   validates :user_id, presence: true
   validates :content, presence: true
   validates :title, presence: true, length: { maximum: 20 }
-  validates :image, content_type: { in: %w[image/jpeg image/gif image/png],
-                                    message: 'そのファイル形式は使用できません' },
-                    size: { less_than: 5.megabytes,
-                            message: '5MB以下の画像を使用してください' }
 
   acts_as_taggable
   has_rich_text :content
