@@ -14,8 +14,20 @@ body{
 }
 
 .tag {
-  display: block;
   margin:10px;
+}
+
+.tag-button {
+  background-color: lightblue;
+  color: black;
+  opacity: 0.8;
+  text-transform: none;
+}
+
+.tag-count {
+  margin:10px;
+  position: relative;
+  top:5px;
 }
 
 #map{
@@ -147,6 +159,10 @@ button:focus {
   float: right;
   position: relative;
   bottom: 20px;
+  
+  box-sizing: content-box;
+  width: 20%;
+  height: 50%;
 }
 
 .collapsible-header {
