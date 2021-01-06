@@ -47,6 +47,7 @@ gem 'acts-as-taggable-on', '~> 6.0' # 追加
 gem 'jwt'
 gem 'carrierwave', '~> 2.0'
 gem 'fog-aws'
+gem 'will_paginate-materialize', git: 'https://github.com/mldoscar/will_paginate-materialize', branch: 'master'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

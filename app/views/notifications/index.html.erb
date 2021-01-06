@@ -1,9 +1,21 @@
-<h2>通知</h2>
-
-<% if @notifications.empty? %>
-  <h3>通知はありません</h3>
-<% else %>
-<%= link_to "通知全削除", destroy_all_notifications_path,method: :delete %></p>
-<% end %>
-
-<%= render @notifications %>
+<div class="row">  
+  <div class="col s12 m8 push-m2">
+    <div class="card hoverable">
+      <div class="card-content">
+        <div class="card-title">通知
+        </div>
+        <% if @notifications.empty? %>
+        <h3>通知はありません</h3>
+        <% else %>
+        <a rel="nofollow" data-method="delete" href="/notifications/destroy_all">
+          <i class="fas fa-trash"></i>全削除
+        </a>
+        </p>
+        <% end %>
+      </div>
+      <div class="divider"></div>
+        <%= render @notifications %>
+    </div>
+    <%= will_paginate @notifications %>
+  </div>
+</div>

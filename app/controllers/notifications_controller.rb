@@ -1,6 +1,6 @@
 class NotificationsController < ApplicationController
   def index
-    @notifications = current_user.passive_notifications
+    @notifications = current_user.passive_notifications.paginate(page: params[:page], per_page: 10)
   end
 
   def destroy_all

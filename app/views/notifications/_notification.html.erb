@@ -1,33 +1,44 @@
+<div class="card-content dark-text">
+  <li>
+    <% if current_user.avatar? %>
+      <%= link_to image_tag(notification.visiter.avatar.url,
+      class: "circle"), user_path(notification.visiter) %>
+    <% else %>
+      <%=link_to image_tag('no-image.jpg', class: "circle"),
+      user_path(notification.visiter) %>
+    <% end %>        
+    
+    <span class="profile-link">
+    <%= link_to notification.visiter.name, user_path(notification.visiter) %>さんが
+                
+    <% if notification.action == "like" %>
+    <%= link_to notification.article.title,article_path(notification.article) %>
+    の記事をいいねしました
+    <i class="fas fa-heart right fa-3x" style="color:red"></i>
 
-<div class="row">
-  <div class="col s12 m6">
-    <div class="card white darken-1">
-      <div class="card-content dark-text">
-      <li><%= link_to notification.visiter.name, user_path(notification.visiter) %>さんが
-      <% if notification.action == "like" %>
-        <%= link_to notification.article.title,article_path(notification.article) %>
-        の記事をいいねしました
+    <% elsif notification.action == "comment" %>
+    <%= link_to notification.article.title,article_path(notification.article) %>
+    の記事にコメントしました
+    <i class="far fa-comment-dots right fa-3x"></i>
 
-      <% elsif notification.action == "comment" %>
-        <%= link_to notification.article.title,article_path(notification.article) %>
-        の記事にコメントしました
+    <% elsif notification.action == "message" %>
+    あなたに
+    <%= link_to "メッセージ",room_path(notification.message.room) %>
+    を送信しました
+    <i class="far fa-envelope right fa-3x"></i>
 
-      <% elsif notification.action == "message" %>
-        あなたに
-        <%= link_to "メッセージ",room_path(notification.message.room) %>
-        を送信しました
+    <% elsif notification.action == "follow" %>
+    あなたをフォローしました
+    <i class="far fa-handshake right fa-3x"></i>
 
-      <% elsif notification.action == "follow" %>
-        あなたをフォローしました
-      
-      <% elsif notification.action == "review" %>
-        あなたに
-      <%= link_to "レビュー", user_reviews_path(notification.visited) %>
-      を書きました
-      <% end %></li>
-        </div>
-      </div>
-    </div>
-  </div>
+    <% elsif notification.action == "review" %>
+    あなたに
+    <%= link_to "レビュー", user_reviews_path(notification.visited) %>
+    を書きました
+    <i class="fas fa-pen right fa-3x"></i>
 
-  
+    <% end %>
+    </span>
+  </li>
+</div>
+<div class="divider"></div>

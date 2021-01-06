@@ -30,7 +30,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in(@user)
-      redirect_to root_url
+      redirect_to new_profile_path
+      flash[:notice] = 'プロフィールも作成しましょう！'
     else
       render 'new'
 

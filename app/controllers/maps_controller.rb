@@ -1,6 +1,7 @@
 class MapsController < ApplicationController
   def new
     @map = Map.new
+    render 'maps/_new_map'
   end
 
   def index

@@ -1,10 +1,18 @@
-<% unless @articles.empty? %>
-<ul class="microposts">
-  検索位置：<%= @area %>
-  <%= render @articles %>
-</ul>
-
-<% else %>
-<%= @area %>に近い場所での募集はありません
-
-<% end %>
+<div class="row">
+  <div class="col s12 m4">
+    <%= render 'maps/new_map' %>
+  </div>
+    <% unless @articles.empty? %>
+    <div class="col s12 m8">
+    検索位置：<%= @area %>
+    <ul class="article">
+      <%= render @articles %>
+    </ul>
+    </div>
+    <% else %>
+    <div class="col s12 m4 push-m2">
+      <%= @area %>に近い場所での募集はありません
+    </div>
+    <% end %>
+  </div>
+</div>
