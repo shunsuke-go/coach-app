@@ -12,5 +12,7 @@ class MapsController < ApplicationController
     @gmaps.each do |gmap|
       @articles.push(gmap.article)
     end
+
+    @articles = @articles.paginate(page: params[:page], per_page: 5)
   end
 end

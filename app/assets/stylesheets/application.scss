@@ -188,3 +188,49 @@ button:focus {
   place-items: center;
 }
 
+.map-search {
+  margin-top: 28px;
+}
+
+.toast {
+  color:black;
+  background-color:lightyellow;
+ }
+
+#toast-container {
+  
+  top: auto !important;
+  right: auto !important;
+  bottom: 45%;
+  left:8.5%;
+  
+}
+
+
+.balloon1 {
+  position: relative;
+  display: inline-block;
+  left: 20px;
+  margin: 1.5em 0;
+  padding: 7px 10px;
+  min-width: 120px;
+  max-width: 100%;
+  color: #555;
+  font-size: 14px;
+  background:yellow;
+}
+
+.balloon1:before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -15px;
+  border: 15px solid transparent;
+  border-top: 15px solid yellow;
+}
+
+.balloon1 p {
+  margin: 0;
+  padding: 0;
+}
