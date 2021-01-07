@@ -14,12 +14,8 @@
       </span>
     </span>
       
-      <% if article.user.avatar? %>
-        <%= link_to image_tag(article.user.avatar.url, class: "circle"), user_path(article.user) %>
-      <% else %>
-        <%= link_to image_tag('no-image.jpg', class: "circle"), user_path(article.user)%>
-      <% end %>
-        <%= link_to article.user.name,user_path(article.user), class: "profile-link" %>
+      <%= render 'shared/user_avatar',user: article.user %>
+
     </div>
 
     <div class="card-action">

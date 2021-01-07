@@ -12,6 +12,7 @@ body{
   margin-top: 20px;
 }
 
+
 .flex {
   display: flex;
   flex-wrap: wrap;
@@ -233,4 +234,51 @@ button:focus {
 .balloon1 p {
   margin: 0;
   padding: 0;
+}
+
+.article-btn {
+  position: relative;
+  top: 30px;
+}
+
+.margin-30 {
+  margin:30px;
+}
+
+.place {
+  margin-top: 20px;
+}
+
+trix-editor {
+  min-height: 20em;
+  max-height: 20em;
+  overflow-y: auto;
+}
+
+.marker-delete {
+  position: absolute;
+  bottom: 79%;
+  left: 40%;
+  background-color: lightblue;
+  color:black;
+}
+
+.file_field {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.relative {
+  position: relative;
+}
+
+.form-btn {
+  width: 80px;
+  height: 80px
+}
+
+.pen {
+  position: relative;
+  top: 20px;
+  
 }

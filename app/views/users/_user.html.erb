@@ -2,15 +2,10 @@
   <div class="col s12 m6 l4">
     <div class="card hoverable">
       <div class="card-content">
-        <% if user.avatar? %>
-          <%= link_to image_tag(user.avatar.url, class: "circle"), user_path(user) %>
-        <% else %>
-          <%=link_to image_tag('no-image.jpg', class: "circle"), user_path(user) %>
-        <% end %>  
-        <span class="profile-link">
-          <%= link_to user.name,user_path(user) %>
-        </span>
-      </div>
+        
+        <%= render 'shared/user_avatar',user: user %>
+
+        </div>
         
           <% if user.profile.present? %>
           <ul>

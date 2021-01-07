@@ -3,15 +3,16 @@
     <aside class="col s12 m4">
       <div class="card hoverable">
         <section class="user_info card-content">
-        <%= render 'shared/user_info' %>  
+        <%= render 'shared/user_avatar',user: current_user %>  
         </section>
         <section class="card-content stats">
         <%= render 'shared/status' %>
       </div>
         </section>
 
-      <section class="article_form">
-        <a class="waves-effect waves-light btn form-btn" href="<%= new_article_path %>">投稿</a>
+      <section class="article_form fixed-action-btn">
+        <a class="waves-effect waves-light  btn red form-btn btn-floating" href="<%= new_article_path %>">
+        <i class="fas fa-pen fa-5x pen"></i></a>
       </section>
       <%= render 'maps/new_map' %>
       
