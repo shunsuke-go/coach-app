@@ -1,57 +1,50 @@
 <li id="article-<%= article.id %>">
-<div class="card white darken-1 hoverable">
-  <div class="card-image">
-    <% if article.thumbnail? %>
-      <%= link_to image_tag(article.thumbnail.url),article_path(article) %></p>
-    <% end %>
-  </div>
-  
-  <div class="card-content dark-text">
-    <span class="card-title">
-      <%= link_to article.title,article_path(article) %>
-      <span class="timestamp right">
+  <div class="card hoverable">
+    <div class="card-image">
+      <% if article.thumbnail? %>
+        <%= link_to image_tag(article.thumbnail.url),article_path(article) %></p>
+      <% end %>
+    </div>
+
+    <div class="card-content relative">
+      <div class="timestamp right">
         <%= article.created_at.strftime('%Y/%m/%d') %>
-      </span>
-    </span>
-      
+      </div>    
+
       <%= render 'shared/user_avatar',user: article.user %>
 
+      <div class="card-content article-tags">
+        <%= render 'articles/tag_list',tag_list:article.tag_list %>
+      </div>
     </div>
 
-    <div class="card-action">
-      <a href="<%= article_path(article)%>">続きを読む</a>
-      <% if article.comments.any? %>
-        <span>
-          <%= link_to "コメント：#{article.comments.count}件",article_path(article) %> 
-        </span>
-      <% end %>
-      
-      <div class="home-like">
-       <%= render 'likes/like', article: article %>
-      </div>
-      </div>
-      <% if current_user?(article.user) %>
-        <%= link_to "削除", article, method: :delete,
-        data:{ confirm: "本当に削除しますか？" },remote: true,class:"right" %>
-      <% end %>
+    <div class="card-content article-title">
+      <span class="card-title">
+        <%= link_to article.title,article_path(article) %>
+      </span>
     </div>
-    
-    <ul class="collapsible z-depth-0 tag">
-        <li class="margin-0">
-          <div class="collapsible-header">タグ<i class="fas fa-caret-down"></i></div>
-          <div class="collapsible-body">
-          <%= render 'articles/tag_list',tag_list:article.tag_list %>
-          </div>
-        </li>
-    </ul>
+
+    <div class="card-content article-content">
+      <h6 class="art-cont"><%= article.content %></h6>      
+    </div>
+
+    <div class="card-content more-read">
+     <a href="<%= article_path(article)%>">続きを読む</a>
+    </div>
+
+    <div class="card-content margin-0-top">
+      <%= render 'likes/like', article: article %>
+      <% if article.comments.any? %>
+        <span class="comment-count">
+          <%= link_to "コメント：#{article.comments.count}件",article_path(article) %>
+        </span>
+      <% end %>    
+      <span>
+        <% if current_user?(article.user) %>
+          <%= link_to "削除", article, method: :delete,
+         data:{ confirm: "本当に削除しますか？" },remote: true,class:"right" %>
+        <% end %>
+      </span>  
+    </div>
   </div>
 </li>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    var collap = document.querySelectorAll('.collapsible');
-    var instances = M.Collapsible.init(collap, []);
-  });
-</script>
-
-

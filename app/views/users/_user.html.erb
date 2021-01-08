@@ -1,12 +1,9 @@
 <li>
-  <div class="col s12 m6 l4">
+  <div class="col s12 m8 push-m2">
     <div class="card hoverable">
       <div class="card-content">
-        
         <%= render 'shared/user_avatar',user: user %>
-
         </div>
-        
           <% if user.profile.present? %>
           <ul>
             <div class="card-action">
@@ -23,8 +20,7 @@
           <div class="card-action">
             プロフィールはありません。
           </div>
-          <% end %>
-        
+          <% end %>   
 
         <% if current_user.admin? && !current_user?(user) %>
         <%= link_to "削除", user, method: :delete,data:{confirm:"本当に削除しますか？"} %>

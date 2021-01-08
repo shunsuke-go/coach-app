@@ -1,6 +1,7 @@
-<div  id="unlike_<%= article.id %>">
+<span  id="unlike_<%= article.id %>">
   <%= link_to article_like_path(article.id,Like.find_by(
     article_id: article.id,user_id: current_user.id)),
     method: :delete,remote: true, class: "button-as_link" do %>
   <i class="fa fa-heart fa-lg" style="color:red"></i>
   <% end %>
+</span>

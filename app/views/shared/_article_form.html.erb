@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col s12 m12">
     <div class="card">
-      <div class="card-content relative">
+      <div class="card-content article-card">
         <%= form_with(model:@article,local: true,class:"margin-30") do |f|%>
         <%= render 'shared/error_messages',object: f.object %>
         <div id="article_form" class="field">
@@ -21,7 +21,7 @@
           <%= f.label :thumbnail, "サムネイル" %>
           <%= f.file_field :thumbnail, accept: "image/jpeg,image/gif,image/png",class:"file_field" %>
         </div>
-      <div id="article_button"><%= f.submit "投稿！",class:"btn col s6 m6 push-s3 push-m3"%></div>
+      <div id="article_button"><%= f.submit "投稿！",class:"btn col s6 m6 article-form-btn push-s3 push-m3"%></div>
       <% end %>
         <button id="del" class="btn marker-delete" onclick="deleteMarker();">マーカー削除</button>
       </div> 

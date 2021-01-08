@@ -1,42 +1,45 @@
-<div id="article_page" class="col s12 m12">
-  <div class="card">
-    <div class="card-content">
-      
-      <%= render 'shared/user_avatar',user: @article.user %>
-
-      <%= render 'likes/like' ,article: @article%>
-      </div>
-      <div>
-      <%= render 'articles/tag_list',tag_list:@article.tag_list %>
-      </div>
-
+<div class="row">
+  <div id="article_page" class="col s12 m12">
+    <div class="card">
       <div class="card-content">
-      <span class="card-title center">
-      <h2><%= @article.title %></h2></span>
-      <span class="right article-time">
-        <%= @article.created_at.strftime('%Y/%m/%d') %>
-      </span>
-      <div class="divider"></div>
-      <div class="article-body">
-      <p><%= @article.content%>
+        <%= render 'articles/tag_list',tag_list:@article.tag_list %>
       </div>
-      <% unless @map.nil? %>
-      <div id="map"></div>
-      <% end %>
+      <div class="card-content">        
+        <%= render 'shared/user_avatar',user: @article.user %>
+        <%= render 'likes/like' ,article: @article%>
+      </div>
+        <div class="card-content">
+          <span class="card-title">
+            <h2><%= @article.title %></h2>
+          </span>
+          <span class="right article-time">
+            <%= @article.created_at.strftime('%Y/%m/%d') %>
+          </span>
+          <div class="divider"></div>
+          <div class="article-body">
+            <p><%= @article.content%>
+          </div>
+          <% unless @map.nil? %>
+            <div id="map"></div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+
+
+  <div class="col s12 m12">
+    コメント
+    <div class="card">
+      <div class="card-content">
+        <%= render 'comments/comment_form' %>
+        <div id="comments">
+          <%= render @comments %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-
-コメント
-<div class="card">
-  <div class="card-content">
-    <%= render 'comments/comment_form' %>
-    <div id="comments">
-      <%= render @comments %>
-    </div>
-  </div>
-</div>
-
 
 
 
