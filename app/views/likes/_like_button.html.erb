@@ -1,6 +1,7 @@
-<div  id="like_<%= article.id %>">
+<span  id="like_<%= article.id %>">
 <%= link_to article_likes_path(article.id),
   method: :post,remote: true, class: "button-as_link" do %>
   <i class="fa fa-heart fa-lg" style="color:gray"></i>
 <% end %>
+</span>
 

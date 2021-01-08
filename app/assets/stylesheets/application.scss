@@ -12,6 +12,7 @@ body{
   margin-top: 20px;
 }
 
+
 .flex {
   display: flex;
   flex-wrap: wrap;
@@ -26,6 +27,10 @@ body{
   margin:10px;
 }
 
+.tags {
+  margin:10px
+}
+
 .tag-button {
   background-color: lightblue;
   color: black;
@@ -36,7 +41,7 @@ body{
 .tag-count {
   margin:10px;
   position: relative;
-  top:5px;
+  
 }
 
 #map{
@@ -93,6 +98,10 @@ margin-bottom : 30px ;
   bottom: 20px;
 }
 
+.card-title {
+  font-weight: 800;
+}
+
 .ranking {
   margin-top: 15px;
 }
@@ -129,8 +138,51 @@ margin-bottom : 30px ;
   font-size: 20px;
 }
 
+.card-content.article-title {
+  padding-bottom: 0;
+  padding-top: 0;
+}
+
+.art-cont {
+  position: relative;
+  bottom: 40px;
+}
+
+.card-content.article-content {
+  
+  position: relative;
+  height: 100px;
+  overflow:hidden;
+  white-space: pre-line;
+  
+  padding: 0 20px 20px 20px;
+  margin: 5px;
+  
+}
+
+.card-content.article-content::after {
+  content: "";
+  position: absolute;
+  border-style: none;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+  width: 100%;
+  height: 80px;
+  background: linear-gradient(rgba(255,255,255,0) 0px, #fff 70px);   
+}
+
+
+
+
+
+
 .comment {
   white-space: pre-line;
+}
+
+.comment-count {
+  margin-left: 10px;
 }
 
 .margin-20 {
@@ -154,15 +206,12 @@ button:focus {
   background-color:white
 }
 
-.likes-count {
-  position: relative;
-  left: 25px;
-  bottom: 22px;
+
+.card-content.margin-0-top {
+  margin-top: 0px;
+  padding-top: 0px;
 }
 
-.like-form {
-  margin:20px
-}
 
 .home-like {
   float: right;
@@ -186,5 +235,137 @@ button:focus {
 .center {
   display: grid;
   place-items: center;
+}
+
+.map-search {
+  margin-top: 28px;
+}
+
+.toast {
+  color:black;
+  background-color:lightyellow;
+ }
+
+#toast-container {
+  
+  top: auto !important;
+  right: auto !important;
+  bottom: 45%;
+  left:8.5%;
+  
+}
+
+
+.balloon1 {
+  position: relative;
+  display: inline-block;
+  left: 20px;
+  margin: 1.5em 0;
+  padding: 7px 10px;
+  min-width: 120px;
+  max-width: 100%;
+  color: #555;
+  font-size: 14px;
+  background:yellow;
+}
+
+.balloon1:before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -15px;
+  border: 15px solid transparent;
+  border-top: 15px solid yellow;
+}
+
+.balloon1 p {
+  margin: 0;
+  padding: 0;
+}
+
+.article-btn {
+  position: relative;
+  top: 30px;
+  margin-bottom: 20px;
+}
+
+.article-btn {
+  margin-bottom: 20px;
+}
+
+.article-card {
+  margin-bottom: 20px;
+}
+
+.margin-30 {
+  margin:30px;
+}
+
+.place {
+  margin-top: 20px;
+}
+
+trix-editor {
+  min-height: 20em;
+  max-height: 20em;
+  overflow-y: auto;
+}
+
+.marker-delete {
+  position: absolute;
+  bottom: 79%;
+  left: 40%;
+  background-color: lightblue;
+  color:black;
+}
+
+.file_field {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.relative {
+  position: relative;
+}
+
+.form-btn {
+  width: 80px;
+  height: 80px
+}
+
+.pen {
+  position: relative;
+  top: 20px;
+  
+}
+
+.room-btn {
+  
+  color:black;
+  position: absolute;
+  bottom: 90px;
+  left:50px;
+}
+
+
+
+
+.dots {
+  position: relative;
+  bottom: 50px;
+  left: 1px;
+}
+
+.more-read {
+  
+}
+
+.card-content.article-tags {
+  padding:0;
+}
+
+.notice {
+  padding-left: 74px;
 }
 

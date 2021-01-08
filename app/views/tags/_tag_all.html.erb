@@ -1,22 +1,19 @@
-<div id="tag-all" class="row">
-  <div class="col">
-    <ul class="card">
-      <div class="card-content">
-        <div class="card-title">
-          人気のタグ
-        </div>
+<div id="tag-all">
+  <div class="card row">
+    <div class="card-content">
+      <div class="card-title center">
+        人気のタグ
+      </div>  
+    </div>
+    <div class="divider"></div>
+    <div class="card-content row flex">
+      <% @tags.each do |tag|%>
+      <div class="tags">
+        <a class="btn tag-button blue lighten-3" href="<%= articles_path(tag_name: tag.name) %>">
+          <%= tag.name %><span class="tag-count">(<%= tag.count %>件)</span>
+        </a>
       </div>
-
-      <div class="card-action flex">
-        <% @tags.each do |tag|%>
-        <li class="card-content flex">
-          <a class="btn tag-button" href="<%= articles_path(tag_name: tag.name) %>">
-          <%= tag.name %>
-          </a>
-          <span class="tag-count"><%= tag.count %>件</span>
-        </li>
-        <% end %>
-      </div>
-    </ul>
+      <% end %>
+    </div>
   </div>
 </div>

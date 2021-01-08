@@ -11,7 +11,7 @@ class Article < ApplicationRecord
   default_scope -> { order(created_at: :desc) }
   validates :user_id, presence: true
   validates :content, presence: true
-  validates :title, presence: true, length: { maximum: 20 }
+  validates :title, presence: true, length: { maximum: 50 }
 
   acts_as_taggable
   has_rich_text :content

@@ -1,33 +1,78 @@
 <%= provide(:title,"マイページ")%>
-<h1><%= @user.name %>のページ</h1 >
 <div class="row">
   <aside class="col s12 m4">
-    <section class="user_info">
-      <h1>
-        <%= @user.name %>
-      </h1>
-      <% if current_user?(@user) %>
-      <%= link_to "アカウント情報の更新",edit_user_path(current_user) %></p>
-      <%= render 'profile_page' %>
-      <% end %>
-    <%= render 'shared/status' %>
-    <div id="ave_point">
-      <% unless @reviews.empty? %>
-      平均：<%= @ave_rate %>点
-      <% end %>
-    </div></p>
-    <%= link_to "レビュー", user_reviews_path(@user) %>
-    </section>
-  </aside>
+    <div class="card hoverable">
+      <section class="card-content user_info">
+        <%= render 'shared/user_avatar',user: @user %>
+      </section>
+      <section class="card-content stats">
+        <%= render 'shared/status' %> 
+      </section>
+        <% if current_user?(@user) %>
+          <div class="divider"></div>
+          <div class="card-content">
+            <i class="fas fa-sync-alt fa-lg" style="color:green"></i>
+            <%= link_to "アカウント情報の更新",edit_user_path(current_user) %></p>
+          </div>
+          <div class="divider"></div>
+          <div class="card-content">
+            <i class="fas fa-user-alt fa-lg"></i>
+            <%= render 'profile_page' %>
+          </div>
+        <% else %>
+        <div class="card-content">
+          <%= render 'follow_form' %>
+        </div>
+          <div class="divider"></div>
+        <div class="card-content">
+          <i class="far fa-envelope fa-lg"></i>
+          <%= render 'room_form' %>
+        </div>
+        <% end %>
+      
+        <% unless @reviews.empty? %>
+          <div class="divider"></div>
+          <div id="ave_point" class="card-content">
+            <i class="fas fa-star fa-lg" style="color:orange"></i>
+            平均：<%= @ave_rate %>点
+          </div>
+        <% end %>
+      
+      <div class="divider"></div>
+      <div class="card-content">
+        <i class="far fa-comments fa-lg"></i>
+        <%= link_to "レビューを書く・見る", user_reviews_path(@user) %> 
+      </div>
+    </div>
 
-<div class="col s12 m8">
-  <%= render 'room_form' %>
-  <%= render 'follow_form' %>
-  
-  <% if @user.articles.any? %>
-  <h3><%= @user.articles.count%>記事</h3>
-  <%= render 'shared/feed' %>
-  <%= will_paginate @feed_items %>
+    <div class="card hoverable">
+      <% if @user.profile.present? %>
+      <ul>
+        <div class="card-action">
+        <li><%= @user.profile.age %>歳</li>
+        </div>
+        <div class="card-action">
+        <li>居住地 : <%= @user.profile.address %></li>
+        </div>
+        <div class="card-action">
+        <li><%= @user.profile.content %></li>
+        </div>
+      </ul>
+      <% else %>
+        <div class="card-action">
+          プロフィールはありません。
+        </div>
+      <% end %>   
+    </div>
+    
+  </aside>
+    
+  <div class="col s12 m8">
+    <% if @user.articles.any? %>
+      <%= render 'shared/feed' %>
+      <%= will_paginate @feed_items %>
+    <% else %>
+      <h4>記事はまだありません</h4>
     <% end %>
   </div>
 </div>

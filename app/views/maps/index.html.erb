@@ -1,18 +1,26 @@
 <div class="row">
-  <div class="col s12 m4">
-    <%= render 'maps/new_map' %>
-  </div>
-    <% unless @articles.empty? %>
+  <% unless @articles.empty? %>
+    <div class="col s12 m4 map-search">
+      <%= render 'maps/new_map' %>
+    </div>
+
     <div class="col s12 m8">
-    検索位置：<%= @area %>
-    <ul class="article">
-      <%= render @articles %>
-    </ul>
+      検索位置：<%= @area %>
+      <ul class="article">
+        <%= render @articles %>
+        <%= will_paginate @articles %>
+      </ul>
     </div>
     <% else %>
-    <div class="col s12 m4 push-m2">
+    <div class="col s12 m8 push-m2">
       <%= @area %>に近い場所での募集はありません
+      <%= render 'maps/new_map' %>
     </div>
     <% end %>
   </div>
 </div>
+
+
+
+
+
