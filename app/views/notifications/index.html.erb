@@ -5,7 +5,7 @@
         <div class="card-title">通知
         </div>
         <% if @notifications.empty? %>
-        <h3>通知はありません</h3>
+        <h5>通知はありません</h5>
         <% else %>
         <a rel="nofollow" data-method="delete" href="/notifications/destroy_all">
           <i class="fas fa-trash"></i>全削除
@@ -16,6 +16,6 @@
       <div class="divider"></div>
         <%= render @notifications %>
     </div>
-    <%= will_paginate @notifications %>
+    <div class="center"><%= will_paginate @notifications %></div>
   </div>
 </div>

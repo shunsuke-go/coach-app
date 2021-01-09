@@ -2,28 +2,20 @@
   <div class="card hoverable">
     <div class="card-image">
       <% if article.thumbnail? %>
-        <%= link_to image_tag(article.thumbnail.url),article_path(article) %></p>
+        <%= link_to image_tag(article.thumbnail.url),article_path(article) %>
       <% end %>
     </div>
 
-    <div class="card-content relative">
-      <div class="timestamp right">
-        <%= article.created_at.strftime('%Y/%m/%d') %>
-      </div>    
-
-      <%= render 'shared/user_avatar',user: article.user %>
-
+          
+      <div class="card-content article-title">
+        <span class="card-title">
+          <%= link_to article.title,article_path(article) %>
+        </span>
+      </div>
+    
       <div class="card-content article-tags">
         <%= render 'articles/tag_list',tag_list:article.tag_list %>
       </div>
-    </div>
-
-    <div class="card-content article-title">
-      <span class="card-title">
-        <%= link_to article.title,article_path(article) %>
-      </span>
-    </div>
-
     <div class="card-content article-content">
       <h6 class="art-cont"><%= article.content %></h6>      
     </div>
@@ -39,12 +31,9 @@
           <%= link_to "コメント：#{article.comments.count}件",article_path(article) %>
         </span>
       <% end %>    
-      <span>
-        <% if current_user?(article.user) %>
-          <%= link_to "削除", article, method: :delete,
-         data:{ confirm: "本当に削除しますか？" },remote: true,class:"right" %>
-        <% end %>
-      </span>  
+      <div class="right article-avatar">
+        <%= render 'shared/user_avatar',user: article.user %>
+      </div>
     </div>
   </div>
 </li>

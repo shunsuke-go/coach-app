@@ -1,9 +1,8 @@
 <% if @user_ranks.any? %>
  <ul class="collection with-header ranking z-depth-1 hoverable">
- <li class="collection-header">
+ <li class="collection-header center">
  <h6>
-  <i class="fas fa-crown header-icons" style="color:gold"></i>
-  レビューランキング
+  <i class="fas fa-crown header-icons" style="color:gold"></i>レビューランキング
  </h6>
  </li>
  <%= render 'shared/user_rank', collection: @user_ranks %>

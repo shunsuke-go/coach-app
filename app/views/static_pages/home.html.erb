@@ -1,14 +1,7 @@
 <% if logged_in? %>
   <div class="row">
     <aside class="col s12 m4">
-      <div class="card hoverable">
-        <section class="user_info card-content">
-        <%= render 'shared/user_avatar',user: current_user %>  
-        </section>
-        <section class="card-content stats">
-        <%= render 'shared/status' %>
-      </div>
-        </section>
+        
 
       <section class="article_form fixed-action-btn">
         <a class="waves-effect waves-light  btn red form-btn btn-floating" href="<%= new_article_path %>">
@@ -21,15 +14,22 @@
 
     <div class="col s12 m8 feed">
       <%= render 'shared/feed' %>
-      <%= will_paginate @feed_items %>
+    <div class="center"><%= will_paginate @feed_items %></div>
     </div>  
     </div>
-    <% else %>
-    <div class = "center jumbotron">
-      <h2>  
-        ここはホームページです！
-      </h2>
-      <%= link_to "登録！", signup_path, class: "btn btn-lg btn-primary" %>
+<% else %>
+  <div class="row">
+    <div class="col s12 m4">
+      <%= render 'maps/new_map' %>  
+      <%= render 'shared/ranks' %>
+      <section class="article_form fixed-action-btn">
+      <a class="waves-effect waves-light  btn red form-btn btn-floating" href="<%= new_article_path %>">
+      <i class="fas fa-pen fa-5x pen"></i></a>
+    </div>
+    <div class="col s12 m8 feed">
+      <%= render @articles %>
+      <div class="center"><%= will_paginate @articles %></div>
+    </div>      
   </div>
 <% end %>
 

@@ -10,8 +10,12 @@
           <%= f.label :tag_list,"タグ" %>
           <%= f.text_field :tag_list, value: @article.tag_list.join(','), class: "materialize-textarea" %>
 
-          <div class="place">教える場所</div>
-          <div id='map' class="margin-30"></div>
+          <div class="place">
+          教える場所
+          <a id="del" class="btn marker-delete" onclick="deleteMarker();">マーカー削除</a>
+          </div>
+          
+          <div id='map' class="margin-30"></div>          
           <%= f.fields_for :map, @article.build_map do |map| %>   
           <%= map.hidden_field :latitude %>
           <%= map.hidden_field :longitude %>
@@ -23,7 +27,6 @@
         </div>
       <div id="article_button"><%= f.submit "投稿！",class:"btn col s6 m6 article-form-btn push-s3 push-m3"%></div>
       <% end %>
-        <button id="del" class="btn marker-delete" onclick="deleteMarker();">マーカー削除</button>
       </div> 
     </div>
   </div>

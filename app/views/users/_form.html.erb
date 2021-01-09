@@ -1,24 +1,28 @@
-<%= form_with(model: @user, local: true) do |f|%>
-<%= render 'shared/error_messages', object: f.object%>
-<%= f.label :name, '名前'%>
-<%= f.text_field :name, class: 'form-control' %>
+<div class="card">
+  <div class="card-content">
+    <%= form_with(model: @user, local: true) do |f|%>
+    <%= render 'shared/error_messages', object: f.object%>
+    <%= f.label :name, '名前'%>
+    <%= f.text_field :name, class: 'form-control' %>
 
-<%= f.label :email, 'メールアドレス' %>
-<%= f.text_field :email, calss: 'form-control' %>
+    <%= f.label :email, 'メールアドレス' %>
+    <%= f.text_field :email, calss: 'form-control' %>
 
-<%= f.label :password, 'パスワード' %>
-<%= f.password_field :password, class: 'form-control' %>
+    <%= f.label :password, 'パスワード' %>
+    <%= f.password_field :password, class: 'form-control' %>
 
-<%= f.label :password_confirmation, 'パスワード（確認）' %>
-<%= f.password_field :password_confirmation, class: 'form-control' %>
+    <%= f.label :password_confirmation, 'パスワード（確認）' %>
+    <%= f.password_field :password_confirmation, class: 'form-control' %>
 
-<%= f.label :avatar, "サムネイル" %>
-<%= f.file_field :avatar, class: 'form-control', accept: "avatar/jpeg,avatar/gif,avatar/png" %>
-<% if @user.avatar? %>
-  <%= f.label :avatar_delete,class: 'checkbox inline' do %>
-  <%= f.check_box :avatar_delete %>
-  <span>画像を削除</span>
-  <% end %>
-<% end %>
-  <p><%= f.submit "登録"%></p>
-<% end %>
+    <%= f.label :avatar, "サムネイル" %>
+    <%= f.file_field :avatar, class: 'form-control', accept: "avatar/jpeg,avatar/gif,avatar/png" %>
+    <% if @user.avatar? %>
+      <%= f.label :avatar_delete,class: 'checkbox inline' do %>
+        <%= f.check_box :avatar_delete %>
+      <span>画像を削除</span>
+      <% end %>
+    <% end %>
+    <p class="center"><%= f.submit "登録",class:"btn regi-btn"%></p>
+    <% end %>
+  </div>
+</div>

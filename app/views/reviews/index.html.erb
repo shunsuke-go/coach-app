@@ -1,21 +1,46 @@
-<%= @user.name %></p>
-<div id="ave_point">
-  <% unless @reviews.empty? %>
-    平均：<%= @ave_rate %>点
-  <% end %>
-</div></p>
-<% if @profile.nil? %>
-  プロフィールはありません
-<% else %>
-  <%= render 'users/profile_list' %>
-<% end %></p>
-<% if @reviews.empty? %>
-  レビューはありません
-  <div id="reviews"></div>
-<% else %>
-  <div id="reviews">
-    <%= render @reviews %>
+<div class="row">
+  <div class="col s12 m4">
+    <div class="card">
+      <div class="card-content">
+        <%= render 'shared/user_avatar',user: @user %>
+        <%= render 'shared/status' %>
+        <div class="follow-btn">
+        <%= render 'users/follow_form' %>
+        </div>
+        <% unless current_user == @user %>        
+        <i class="far fa-envelope fa-lg"></i>
+        <%= render 'users/room_form' %>   
+        <% end %>  
+      </div>
+    </div>
+
+    <%= render 'shared/user_profile',user: @user %>
   </div>
-<% end %>
-<div id="review_error"></div>
-<%= render 'reviews/review_form' %>
+  <div class="col s12 m8">
+    <div class="card">
+      <div class="card-content">
+        <div id="ave_point">
+          <% unless @reviews.empty? %>
+            平均：<%= @ave_rate %>点
+          <% end %>
+        </div></p>
+        <% if @reviews.empty? %>
+          レビューはありません
+          <div id="reviews"></div>
+        <% else %>
+          <div id="reviews">
+            <%= render @reviews %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-content">
+        <% if logged_in? %>
+        <div id="review_error"></div>
+        <%= render 'reviews/review_form' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

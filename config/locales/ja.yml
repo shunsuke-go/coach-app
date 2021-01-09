@@ -1,0 +1,26 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      article: 記事
+      comment: コメント
+      profile: プロフィール
+      review: レビュー            
+    attributes:
+      user:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード（確認）
+      article:
+        title: タイトル
+        content: 本文
+      comment:
+        content: 本文
+      profile:
+        age: 年齢
+        address: 住所
+        content: 本文
+      review:
+        content: 本文
+        rate: 点数

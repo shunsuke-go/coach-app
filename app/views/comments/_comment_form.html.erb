@@ -1,4 +1,4 @@
-
+<% if logged_in? %>
 <%= form_with(model: [@article,@comment]) do |f| %>
 <div id="comment_error">
 </div>
@@ -7,3 +7,4 @@
   <%= f.submit "投稿",class:"btn btn-primary",id:"comment_button"%>
 <% end %>
 </div>
+<% end %>

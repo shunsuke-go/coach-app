@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  before_action :logged_in_user, only: [:create, :destroy, :index]
   def create
     @user = User.find_by(id: params[:user_id])
     @review = Review.new(review_params)
@@ -42,6 +43,15 @@ class ReviewsController < ApplicationController
     @reviews = @user.passive_reviews
     @review = Review.new
     @ave_rate = @user.ave_rate.round(1) unless @user.ave_rate.nil?
+    if logged_in?
+      @room = Room.find_by_sql("SELECT * FROM rooms WHERE id IN
+        (SELECT room_id FROM entries WHERE user_id = #{@user.id} &&
+        room_id IN (SELECT room_id FROM entries WHERE user_id = #{current_user.id}))")
+      if @room[0].nil?
+        @room = Room.new
+        @entry = Entry.new
+      end
+    end
   end
 
   def ave_point_cal
