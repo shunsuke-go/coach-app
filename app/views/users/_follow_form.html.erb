@@ -1,9 +1,12 @@
 <% unless current_user?(@user) %>
   <div id="follow_form">
-  <% if current_user.following?(@user) %>
-    <%= render 'unfollow'%>
-  <% else %>
-    <%= render 'follow'%>
+  <% if logged_in? %>
+    <i class="far fa-handshake fa-lg inline"></i>
+    <% if current_user.following?(@user) %>
+      <%= render 'users/unfollow'%>
+    <% else %>
+      <%= render 'users/follow'%>
+    <% end %>
   <% end %>
   </div>
 <% end %>

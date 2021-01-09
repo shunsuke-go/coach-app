@@ -28,6 +28,7 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 # gem 'rmagick'
+gem 'rails-i18n'
 gem 'image_processing',           '1.9.3'
 gem 'mini_magick',                '4.9.5'
 gem 'active_storage_validations', '0.8.2'

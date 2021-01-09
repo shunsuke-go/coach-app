@@ -11,12 +11,14 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @feed_items = @user.articles.paginate(page: params[:page], per_page: 5)
-    @room = Room.find_by_sql("SELECT * FROM rooms WHERE id IN
-      (SELECT room_id FROM entries WHERE user_id = #{@user.id} &&
-      room_id IN (SELECT room_id FROM entries WHERE user_id = #{current_user.id}))")
-    if @room[0].nil?
-      @room = Room.new
-      @entry = Entry.new
+    if logged_in?
+      @room = Room.find_by_sql("SELECT * FROM rooms WHERE id IN
+        (SELECT room_id FROM entries WHERE user_id = #{@user.id} &&
+        room_id IN (SELECT room_id FROM entries WHERE user_id = #{current_user.id}))")
+      if @room[0].nil?
+        @room = Room.new
+        @entry = Entry.new
+      end
     end
 
     @profile = Profile.find_by(user_id: params[:id])
@@ -30,7 +32,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in(@user)
-      redirect_to new_profile_path
+      redirect_to new_user_profile_path(@user)
       flash[:notice] = 'プロフィールも作成しましょう！'
     else
       render 'new'
@@ -56,7 +58,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.paginate(page: params[:page])
+    @users = User.paginate(page: params[:page], per_page: 5)
   end
 
   def destroy
@@ -66,7 +68,7 @@ class UsersController < ApplicationController
   end
 
   def following
-    @title = 'フォロー中'
+    @title = 'フォロー'
     @user = User.find_by(id: params[:id])
     @users = @user.following.paginate(page: params[:page])
     render 'show_follow'

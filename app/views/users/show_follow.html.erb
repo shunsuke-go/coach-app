@@ -1,19 +1,23 @@
 <% provide(:title,@title) %>
 <div class="row">
-  <aside class="col-md-4">
-   <section class="user_info">
-    <h1><%= @user.name %></h1>
-    <span> <%= link_to "プロフィール", @user %>  </span>
-    <span><b>投稿：</b><%= @user.articles.count%></span>
-  </section>
+  <aside class="col s12 m4">
+    <section class="user_info">
+      <div class="card">
+        <div class="card-content">
+          <%= render 'shared/user_avatar',user: @user %>
+          <%= render 'shared/status' %>
+        </div>
+      </div>
+      <%= render 'shared/user_profile',user: @user %>  
+    </section>
 </aside>
 
 
 
-  <div class="col-md-8">
-    <h3><%= @title %></h3>
+  <div class="col s12 m8 follow">
     <% if @users.any? %>
-      <ul class="users follow">
+      <h4 class="center"><%= @title %>リスト</h4>
+      <ul>
       <%= render @users %>  
       </ul>
       <%= will_paginate %>

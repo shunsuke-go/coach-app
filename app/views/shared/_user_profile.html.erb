@@ -1,0 +1,21 @@
+<div class="card hoverable">
+  <% if user.profile.present? %>
+  <ul>
+    <div class="card-action">
+    <li><%= user.profile.age %>歳</li>
+    </div>
+    <div class="card-action">
+    <li>居住地 : <%= user.profile.address %></li>
+    </div>
+    <div class="card-action">
+    <li class="profile"><%= user.profile.content %></li>
+    </div>
+  </ul>
+  <% else %>
+    <div class="card-action">
+      プロフィールはありません。
+    </div>
+  <% end %>   
+</div>
+
+

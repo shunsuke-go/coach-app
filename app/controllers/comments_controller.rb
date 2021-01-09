@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :logged_in_user
   def create
     @article = Article.find(params[:article_id])
     @comment = @article.comments.build(comment_params)
@@ -14,7 +15,6 @@ class CommentsController < ApplicationController
     else
       flash[:danger] = '送信に失敗しました'
       render 'error'
-
     end
   end
 

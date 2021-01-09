@@ -1,23 +1,31 @@
 <% provide(:title,"ログイン")%>
 
-<%= form_with(url: login_path,scope: :session,local: true) do |f|%>
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= f.label :email,"メールアドレス" %>
-    <%= f.email_field :email,class: 'form-controll' %>
-    
-    <%= f.label :password,"パスワード" %>
-    <%= f.password_field :password,class: 'form-controll'  %>
+  <div class="col s12 m8 push-m2">
+    <div class="center"><h5>ログイン</h5></div>
+    <div class="card">
+      <div class="card-content">
+        <%= form_with(url: login_path,scope: :session,local: true) do |f|%>
 
-    <%= f.label :remember_me,class: 'checkbox inline' do %>
-    <%= f.check_box :remember_me %>
-    <span>次回から自動でログイン</span>
-    <% end %>
+        <%= f.label :email,"メールアドレス" %>
+        <%= f.email_field :email,class: 'form-controll' %>
+        
+        <%= f.label :password,"パスワード" %>
+        <%= f.password_field :password,class: 'form-controll'  %>
 
-
-    <%= f.submit "ログイン" ,class: "btn btn-primary" %>
-
-    <%= link_to "新規登録はこちら",signup_path %>
-    <% end %>
+        <%= f.label :remember_me,class: 'checkbox inline' do %>
+        <%= f.check_box :remember_me %>
+        <span>次回から自動でログイン</span>
+        <% end %>
+        <p class="center">
+        <%= f.submit "ログイン" ,class: "btn login-btn" %>
+        </div>
+        <div class="card-content">
+        <p class="center">
+        <%= link_to "新規登録はこちら",signup_path %>
+        </div>
+        <% end %>        
+      </div>
+    </div>
   </div>
 </div>

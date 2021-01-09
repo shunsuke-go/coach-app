@@ -25,10 +25,16 @@
 
         <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">
         マイメニュー
-        <i class="material-icons right">arrow_drop_down</i></a>
+          <% if current_user.avatar? %>
+            <%= image_tag(current_user.avatar.url, class: "circle header-icon") %>
+          <% else %>
+            <%= image_tag('no-image.jpg', class: "circle header-icon") %>
+          <% end %></a>
         </li>
         <% else %>
-        <li><%= link_to "Log in", login_path %></li>
+        <li><%= link_to "ログイン", login_path %></li>
+        <li><%= link_to "登録",signup_path %></li>
+        
         <% end %>   
        </ul>
       </div>
@@ -39,7 +45,6 @@
   <ul id="dropdown1" class="dropdown-content">
     <li><%= link_to "プロフィール", user_path(current_user) %></li>
     <li><%= link_to "セッティング", edit_user_path(current_user) %></li>
-    <li><%= link_to "ヘルプ",help_path %></li>
     <li class="divider"></li>
     <li>        
       <%= link_to "ログアウト",logout_path,method: :delete %>
@@ -54,7 +59,6 @@
 
   <ul class="sidenav" id="mobile-demo">
     <li><%= link_to "ホーム",   root_path %></li>
-        <li><%= link_to "ヘルプ",   help_path %></li>
         <% if logged_in? %>
         <li> <%= link_to "タグ",tags_articles_path %> </li>
         <li><%= link_to "通知", notifications_path %></li>

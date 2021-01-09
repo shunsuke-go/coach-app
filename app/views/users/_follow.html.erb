@@ -1,4 +1,4 @@
-<%= form_with(model:current_user.active_relationships.build,local: true) do |f|%>
+<%= form_with(model:current_user.active_relationships.build,local: true,class:'inline') do |f|%>
  <%= hidden_field_tag :followed_id, @user.id %>
 <%= f.submit "フォロー",class:"btn btn-primary" %>
 <% end %>

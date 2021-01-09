@@ -3,6 +3,10 @@
 @import "./actiontext.scss";
 
 
+h4 {
+  margin-top:0;
+  margin-bottom: 30px;
+}
 
 body{
   background-color:#F2F2F2;
@@ -36,6 +40,7 @@ body{
   color: black;
   opacity: 0.8;
   text-transform: none;
+
 }
 
 .tag-count {
@@ -98,7 +103,7 @@ margin-bottom : 30px ;
   bottom: 20px;
 }
 
-.card-title {
+.span.card-title {
   font-weight: 800;
 }
 
@@ -129,18 +134,21 @@ margin-bottom : 30px ;
 }
 
 .article-time {
+  margin-left:30px;
   position: relative;
-  bottom: 30px;
+  bottom:20px
 }
 
 .article-body {
   margin: 10px;
-  font-size: 20px;
+  font-size: 16px;
+  margin-top: 30px;
+  word-break : break-all;
 }
 
 .card-content.article-title {
-  padding-bottom: 0;
-  padding-top: 0;
+  padding-bottom: 11px;
+  padding-top: 23px;
 }
 
 .art-cont {
@@ -210,6 +218,7 @@ button:focus {
 .card-content.margin-0-top {
   margin-top: 0px;
   padding-top: 0px;
+  padding-bottom: 30px;
 }
 
 
@@ -313,9 +322,7 @@ trix-editor {
 }
 
 .marker-delete {
-  position: absolute;
-  bottom: 79%;
-  left: 40%;
+  margin-left: 20px;
   background-color: lightblue;
   color:black;
 }
@@ -341,11 +348,7 @@ trix-editor {
 }
 
 .room-btn {
-  
   color:black;
-  position: absolute;
-  bottom: 90px;
-  left:50px;
 }
 
 
@@ -362,10 +365,80 @@ trix-editor {
 }
 
 .card-content.article-tags {
-  padding:0;
+  padding-top:0;
+  padding-bottom: 0;
 }
 
 .notice {
   padding-left: 74px;
 }
 
+.regi-btn {
+  width:30%;
+  margin:30px
+}
+
+.login-btn {
+  width:30%;
+  margin-top: 30px;
+}
+
+.article-avatar {
+  position: relative;
+  bottom: 13px;
+}
+
+.card-content.padding-0-top-bottom {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.under {
+  position: relative;
+  top: 15px;
+}
+.delete {
+  position: relative;
+  bottom: 19px;
+}
+
+.header-icon {
+  width:35px;
+  height:35px;
+  position: relative;
+  top: 11px;
+}
+
+.dropdown-trigger.icon {
+  padding-right: 20px;
+  margin-top: 0;
+  padding-left: 60px;
+}
+
+.follow-profile {
+  margin-top: 28px;
+}
+
+.profile-btn {
+  
+}
+
+.follow-btn {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.profile {
+  white-space: pre-wrap;
+}
+
+.inline {
+  display: inline-block;
+}
+
+.card-content.follow-form {
+  padding-left: 19px;
+}
+
+.card-content.article-main {
+  padding-top: 0;
+}

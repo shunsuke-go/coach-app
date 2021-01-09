@@ -1,21 +1,32 @@
 <div class="row">
-  <div id="article_page" class="col s12 m12">
-    <div class="card">
+  <div class="col s12 m4">
+    <%= render 'shared/user_info',user: @article.user %>
+  </div>
+
+  <div id="article_page" class="col s12 m8">
+    <div class="card hoverable">
       <div class="card-content">
-        <%= render 'articles/tag_list',tag_list:@article.tag_list %>
+        <span class="card-title">
+          <h4><%= @article.title %></h4>
+        </span>
       </div>
-      <div class="card-content">        
-        <%= render 'shared/user_avatar',user: @article.user %>
+      <div class="card-content padding-0-top-bottom">        
+        <span class="profile-link">
         <%= render 'likes/like' ,article: @article%>
+        </span>
+        <span class="right article-time">
+          <%= @article.created_at.strftime('%Y/%m/%d') %>
+        </span>
+        <span class="delete">
+          <% if current_user?(@article.user) %>
+            <%= link_to "削除", @article, method: :delete,
+            data:{ confirm: "本当に削除しますか？" },remote: true %>
+          <% end %>
+        </span>
       </div>
-        <div class="card-content">
-          <span class="card-title">
-            <h2><%= @article.title %></h2>
-          </span>
-          <span class="right article-time">
-            <%= @article.created_at.strftime('%Y/%m/%d') %>
-          </span>
-          <div class="divider"></div>
+        <div class="card-content article-main">
+          <%= render 'articles/tag_list',tag_list:@article.tag_list %>
+          
           <div class="article-body">
             <p><%= @article.content%>
           </div>
@@ -24,13 +35,13 @@
           <% end %>
         </div>
       </div>
-    </div>
+    
 
 
 
-  <div class="col s12 m12">
+  
     コメント
-    <div class="card">
+    <div class="card hoverable">
       <div class="card-content">
         <%= render 'comments/comment_form' %>
         <div id="comments">
@@ -38,7 +49,6 @@
         </div>
       </div>
     </div>
-  </div>
 </div>
 
 

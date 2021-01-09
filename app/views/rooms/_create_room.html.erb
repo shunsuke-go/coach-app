@@ -1,6 +1,6 @@
- <%= form_with(model: @room,local: true) do |f| %>
-    <%= fields_for(@entry) do |e| %>
-      <%= e.hidden_field :user_id,value:@user.id %>
-    <%= f.submit "ルームを作成", class: "btn room-btn blue lighten-3" %>
-      <% end %>
-    <% end %>
+<%= form_with(model: @room,class:'inline',local: true) do |f| %>
+  <%= fields_for(@entry) do |e| %>
+  <%= e.hidden_field :user_id,value:@user.id %>
+  <%= f.submit "#{@user.name}さんとメッセージ", class: "btn room-btn blue lighten-3" %>
+  <% end %>
+<% end %>

@@ -1,12 +1,13 @@
 <%= provide(:title,"ユーザー 一覧") %>
 <div class="row">
-  <h4 class="center">ユーザーを探す</h4>
-  <ul class="users">
-     <%= render @users %>
-  </ul>
-  <%= will_paginate @users%>
+  <div class="col s12 m8 push-m2">
+    <h4 class="center">ユーザーを探す</h4>
+    <ul class="users">
+        <%= render @users %>
+    </ul>
+  </div>
 </div>
-
+<div class="center"><%= will_paginate @users%></div>
 
 
 

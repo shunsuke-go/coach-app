@@ -1,5 +1,5 @@
 <li>
-  <div class="col s12 m8 push-m2">
+  
     <div class="card hoverable">
       <div class="card-content">
         <%= render 'shared/user_avatar',user: user %>
@@ -13,7 +13,7 @@
               <li>居住地 : <%= user.profile.address %></li>
             </div>
             <div class="card-action">
-              <li><%= user.profile.content %></li>
+              <li class="profile"><%= user.profile.content %></li>
             </div>
           </ul>
           <% else %>
@@ -26,5 +26,5 @@
         <%= link_to "削除", user, method: :delete,data:{confirm:"本当に削除しますか？"} %>
         <% end %>
     </div>
-  </div>
+  
 </li>

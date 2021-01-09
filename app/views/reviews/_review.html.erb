@@ -2,8 +2,10 @@
   レビュワー:<%= review.reviewer.name %></p>
   評価:<%= review.rate %></p>
   レビュー:<%= review.content %></p>
-  <% if review.reviewer_id == current_user.id %>
-  <%= link_to "削除",user_review_path(@user,review),method: :delete ,remote: true %></p>
+  <% if logged_in? %>
+    <% if review.reviewer_id == current_user.id %>
+      <%= link_to "削除",user_review_path(@user,review),method: :delete ,remote: true %></p>
+    <% end %>
   <% end %>
 </li>
 
