@@ -1,11 +1,17 @@
-<li id="review_<%= review.id %>">
-  レビュワー:<%= review.reviewer.name %></p>
-  評価:<%= review.rate %></p>
-  レビュー:<%= review.content %></p>
+<li id="review_<%= review.id %>" class="margin-20">
+  <div>
+    <%= render 'shared/user_avatar',user: review.reviewer %>
+  </div>
+
+  <div id="stars"><%= render 'shared/review_stars',rate: review.rate %></div>
+  <div><%= review.content %></div>
+
   <% if logged_in? %>
     <% if review.reviewer_id == current_user.id %>
-      <%= link_to "削除",user_review_path(@user,review),method: :delete ,remote: true %></p>
+      <%= link_to "削除",user_review_path(review.reviewed,review),method: :delete ,remote: true %></p>
     <% end %>
   <% end %>
+<div class="divider"></div>
 </li>
+
 

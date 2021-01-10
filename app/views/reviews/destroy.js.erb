@@ -1,7 +1,6 @@
 var review = document.getElementById("review_<%= @review.id %>");
 var ave_point = document.getElementById('ave_point');
 var reviews = document.getElementById('reviews');
-
 review.remove();
 
 fetch("/users/<%= @user.id %>/reviews/ave_point_cal",{
@@ -9,10 +8,27 @@ fetch("/users/<%= @user.id %>/reviews/ave_point_cal",{
   method: 'GET'
 }).then(response => response.json())
 .then(data => {
+  console.log(data.ave_points)
+  var ave_points_int = Math.floor(data.ave_points);
+  var star = `<i class="fas fa-star" style="color:gold"></i>`
+  function ave_point_star() {
+    for (var i = 1; i < ave_points_int; i++){
+      star = star + `<i class="fas fa-star" style="color:gold"></i>`
+    }
+
+    if (data.ave_points - ave_points_int >= 0.5) {
+      star = star + `<i class="fas fa-star-half" style="color:gold"></i>`
+    } 
+    return star
+  }
+
   if(reviews.childElementCount == 0){
     ave_point.textContent='';
-  }else{
-    ave_point.textContent=`平均：${data.ave_points}点`
+  } else {
+    ave_point.innerHTML=(`
+    <i class="far fa-star fa-lg"></i>
+    ${data.ave_points}
+    ${ave_point_star()} `)
   }
 })
 .catch(e =>{

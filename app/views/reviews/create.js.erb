@@ -2,6 +2,9 @@ var reviews = document.getElementById('reviews');
 var ave_point = document.getElementById('ave_point');
 var review_content = document.getElementById('review_content');
 var review_rate = document.getElementById('review_rate');
+var stars = document.getElementById('stars');
+
+
 
 fetch("/api/v1/users/<%= @user.id %>/reviews",{
   mode: 'cors',
@@ -12,20 +15,44 @@ fetch("/api/v1/users/<%= @user.id %>/reviews",{
   }
 }).then(response => response.json())
 .then(data => {
-  console.log(data);
   var hidden = <%= current_user.id %> != data[data.length-1].user.id  ? "hidden":""
+  var img = (data[data.length-1].user.avatar != null) ? data[data.length-1].user.avatar:"/assets/no-image.jpg"
+  
+  function rate_stars() {    
+    var star = `<i class="fas fa-star" style="color:gold"></i>`
+    for (var i = 1; i < data[data.length-1].rate; i++) {
+      star = star + `<i class="fas fa-star" style="color:gold"></i>`
+    }
+    return star
+  }
 
     reviews.insertAdjacentHTML('beforeend',
-    `<li id="review_${data[data.length-1].id}" class="review_${data[data.length-1].id}">    
-    レビュワー:${data[data.length-1].user.name}</p>
-    評価: ${data[data.length-1].rate}</p>
-    レビュー:${data[data.length-1].content}</p>
-    
-    <a data-remote="true" rel="nofollow" data-method="delete" 
+`<li id="review_${data[data.length-1].id}" class="review_${data[data.length-1].id} margin-20">    
+  <div>
+    <a href="/users/${data[data.length-1].user.id}">
+      <img class="circle" src=${img}>
+    </a>
+    <span class="profile-link">
+    <a href="/users/${data[data.length-1].user.id}">
+      ${data[data.length-1].user.name}
+    </a>  
+  </div>
+
+  <div id="stars">
+    ${rate_stars()}
+  </div>
+  <div>
+    ${data[data.length-1].content}
+  </div>
+  <a data-remote="true" rel="nofollow" data-method="delete" 
     href="/users/${data[data.length-1].user.id}/reviews/${data[data.length-1].id}"
-    ${hidden}>削除</a>
-    </li>`);
-      }).catch(e=> {
+    ${hidden}>削除
+  </a>
+  </p>
+  <div class="divider"></div>
+</li>
+`);
+  }).catch(e=> {
   console.log(e);
 })
 
@@ -38,7 +65,23 @@ fetch("/users/<%= @user.id %>/reviews/ave_point_cal",{
   }
 }).then(response => response.json())
 .then(data => {
-  ave_point.textContent=`平均：${data.ave_points}点`
+  var ave_points_int = Math.floor(data.ave_points);
+  var star = `<i class="fas fa-star" style="color:gold"></i>`
+  function ave_point_star() {
+    for (var i = 1; i < ave_points_int; i++){
+      star = star + `<i class="fas fa-star" style="color:gold"></i>`
+    }
+
+    if (data.ave_points - ave_points_int >= 0.5) {
+      star = star + `<i class="fas fa-star-half" style="color:gold"></i>`
+    } 
+
+    return star
+  }
+  ave_point.innerHTML=(`
+  <i class="far fa-star fa-lg"></i>
+  ${data.ave_points}
+  ${ave_point_star()} `)
 })
 .catch(e =>{
   console.log(e)
