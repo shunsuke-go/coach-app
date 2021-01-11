@@ -9,7 +9,6 @@
         </div>
         <% unless current_user == @user %>
         <div class="room-form">       
-          <i class="far fa-envelope fa-lg"></i>
           <%= render 'users/room_form' %>   
         </div>
         <% end %>  
@@ -22,7 +21,11 @@
         </div></p>
       </div>
     </div>
-    <%= render 'shared/user_profile',user: @user %>
+    <div class="card">
+      <div class="card-content">
+        <%= render 'shared/user_profile',user: @user %>
+      </div>
+    </div>
   </div>
 
 

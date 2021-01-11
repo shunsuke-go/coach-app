@@ -1,8 +1,6 @@
 <% if logged_in? %>
   <div class="row">
-    <aside class="col s12 m4">
-        
-
+    <aside class="col s12 m12 l4">        
       <section class="article_form fixed-action-btn">
         <a class="waves-effect waves-light  btn red form-btn btn-floating" href="<%= new_article_path %>">
         <i class="fas fa-pen fa-5x pen"></i></a>
@@ -12,21 +10,21 @@
       <%= render 'shared/ranks' %>
     </aside>
 
-    <div class="col s12 m8 feed">
+    <div class="col s12 m12 l8 feed">
       <%= render 'shared/feed' %>
     <div class="center"><%= will_paginate @feed_items %></div>
     </div>  
     </div>
 <% else %>
   <div class="row">
-    <div class="col s12 m4">
+    <div class="col s12 m12 l4">
       <%= render 'maps/new_map' %>  
       <%= render 'shared/ranks' %>
       <section class="article_form fixed-action-btn">
       <a class="waves-effect waves-light  btn red form-btn btn-floating" href="<%= new_article_path %>">
       <i class="fas fa-pen fa-5x pen"></i></a>
     </div>
-    <div class="col s12 m8 feed">
+    <div class="col s12 m12 l8 feed">
       <%= render @articles %>
       <div class="center"><%= will_paginate @articles %></div>
     </div>      

@@ -21,7 +21,7 @@ fetch("/api/v1/articles/<%=@article.id%>/comments",
   <li id='comment_${new_comment.id}'　class='comment-${new_comment.id} margin-20'>
     <div class="margin-20">  
       <a href="/users/${new_comment.user.id}">
-        <img class="circle" src=${img}>
+        <img class="circle small" src=${img}>
       </a>
       <span class="profile-link">
         <a href="/users/${new_comment.user.id}">

@@ -8,12 +8,25 @@ h4 {
   margin-bottom: 30px;
 }
 
+h5.name {
+  margin:0;
+}
+
+h6 {
+  margin:0;
+}
+
 body{
   background-color:#F2F2F2;
 }
 
 .row {
   margin-top: 20px;
+}
+.container {
+  width: 80%;
+  padding-right: 0px;
+  padding-left: 0px;
 }
 
 
@@ -398,8 +411,7 @@ trix-editor {
   top: 15px;
 }
 .delete {
-  position: relative;
-  bottom: 19px;
+  padding-left: 20px;
 }
 
 .header-icon {
@@ -428,7 +440,7 @@ trix-editor {
   margin-bottom: 20px;
 }
 .profile {
-  white-space: pre-wrap;
+  white-space: pre-line;
 }
 
 .inline {
@@ -442,10 +454,12 @@ trix-editor {
 .follow-form {
   position: relative;
   right: 5px
+
 }
 
 .card-content.article-main {
   padding-top: 0;
+  padding-bottom: 0;
 }
 
 .room-form {
@@ -456,4 +470,28 @@ trix-editor {
 .padding-updown-10 {
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+.user-show {
+  width: 40%;
+}
+
+.small {
+  width: 50px;
+  height: 50px;
+}
+
+.big {
+  width: 100px;
+  height: 100px;
+}
+
+.follows {
+  font-size: 20px;
+  position: relative;
+  left: 18px;
+}
+
+.article-prof {
+  margin-top: 0;
 }

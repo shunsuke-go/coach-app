@@ -1,9 +1,8 @@
 <% if user.avatar? %>
-<%= link_to image_tag(user.avatar.url, class: "circle"), user_path(user) %>
+<%= link_to image_tag(user.avatar.url, class: "circle small"), user_path(user) %>
 <% else %>
-<%=link_to image_tag('no-image.jpg', class: "circle"), user_path(user) %>
+<%=link_to image_tag('no-image.jpg', class: "circle small"), user_path(user) %>
 <% end %>
 <span class="profile-link">
 <%= link_to user.name,user %>
 </span>
-
