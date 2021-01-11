@@ -1,7 +1,7 @@
 <% if @articles.any? %>
   <div class="row">
     <div class="col s12 m8 push-m2">
-      <h4>いいねした記事一覧</h4>
+      <h5 class="center">いいねした記事</h5>
       <ul class="articles">
         <%= render @articles %>
         <div class="center"><%= will_paginate @articles %></div>

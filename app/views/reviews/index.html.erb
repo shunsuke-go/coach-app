@@ -4,36 +4,43 @@
       <div class="card-content">
         <%= render 'shared/user_avatar',user: @user %>
         <%= render 'shared/status' %>
-        <div class="follow-btn">
-        <%= render 'users/follow_form' %>
+        <div class="follow-btn follow-form">
+          <%= render 'users/follow_form' %>
         </div>
-        <% unless current_user == @user %>        
-        <i class="far fa-envelope fa-lg"></i>
-        <%= render 'users/room_form' %>   
+        <% unless current_user == @user %>
+        <div class="room-form">       
+          <i class="far fa-envelope fa-lg"></i>
+          <%= render 'users/room_form' %>   
+        </div>
         <% end %>  
+        <div id="ave_point">
+          <% unless @reviews.empty? %>
+            <i class="far fa-star fa-lg"></i>
+            <%= @ave_rate %>
+            <%= render 'shared/review_stars',rate: @ave_rate %>
+          <% end %>
+        </div></p>
       </div>
     </div>
-
     <%= render 'shared/user_profile',user: @user %>
   </div>
+
+
   <div class="col s12 m8">
     <div class="card">
       <div class="card-content">
-        <div id="ave_point">
-          <% unless @reviews.empty? %>
-            平均：<%= @ave_rate %>点
-          <% end %>
-        </div></p>
+        <h5 class="center">レビューを見る</h5>
         <% if @reviews.empty? %>
           レビューはありません
-          <div id="reviews"></div>
+          <ul id="reviews"></ul>
         <% else %>
-          <div id="reviews">
+          <ul id="reviews">
             <%= render @reviews %>
-          </div>
+          </ul>
         <% end %>
       </div>
     </div>
+
     <div class="card">
       <div class="card-content">
         <% if logged_in? %>

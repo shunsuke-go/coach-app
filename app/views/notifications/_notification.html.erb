@@ -1,6 +1,6 @@
 <div class="card-content dark-text">
   <li>
-    <% if current_user.avatar? %>
+    <% if notification.visiter.avatar? %>
       <%= link_to image_tag(notification.visiter.avatar.url,
       class: "circle"), user_path(notification.visiter) %>
     <% else %>

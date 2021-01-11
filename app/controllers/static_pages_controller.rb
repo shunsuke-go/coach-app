@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
-    @user_ranks = User.where('ave_rate IS NOT NULL').order(ave_rate: 'DESC').limit(3)
+    @user_ranks = User.where('ave_rate != 0').order(ave_rate: 'DESC').limit(3)
     if logged_in?
       @article = current_user.articles.build
       @feed_items = current_user.feed.paginate(page: params[:page], per_page: 5)

@@ -22,8 +22,8 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    @user = User.find_by(id: params[:user_id])
     @review = Review.find_by(id: params[:id])
+    @user = @review.reviewed
     @reviews = @user.passive_reviews
 
     @review.destroy
@@ -73,6 +73,6 @@ class ReviewsController < ApplicationController
       reviews.each do |review|
         point += review.rate
       end
-      @point = point / reviews.count.to_f
+      point / reviews.count
     end
 end

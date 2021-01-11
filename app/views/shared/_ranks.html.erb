@@ -1,10 +1,11 @@
-<% if @user_ranks.any? %>
- <ul class="collection with-header ranking z-depth-1 hoverable">
- <li class="collection-header center">
- <h6>
-  <i class="fas fa-crown header-icons" style="color:gold"></i>レビューランキング
- </h6>
- </li>
- <%= render 'shared/user_rank', collection: @user_ranks %>
- </ul>
-<% end %>
+
+  <ul class="collection with-header ranking z-depth-1 hoverable">
+    <li class="collection-header center">
+      <h6>
+      <i class="fas fa-crown header-icons" style="color:gold"></i>レビューランキング
+      </h6>
+      <% if @user_ranks.any? %>
+      <%= render 'shared/user_rank', collection: @user_ranks %>
+      <% end %>
+    </li>
+  </ul>

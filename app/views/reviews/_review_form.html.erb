@@ -3,10 +3,10 @@
 のレビューを書く
 <%= form_with(model:[@user,@review]) do |f| %>
 <%= render 'shared/error_messages', object: f.object %>
-<%= f.label :content %>
-<%= f.text_area :content, class: 'materialize-textarea' %>
 <%= f.label :rate %>
 <%= f.text_field :rate, class: 'materialize-textarea' %>
+<%= f.label :content %>
+<%= f.text_area :content, class: 'materialize-textarea' %>
 <div class="center">
 <%= f.submit '送信', class:'btn regi-btn',id:'review_button' %>
 </div>
