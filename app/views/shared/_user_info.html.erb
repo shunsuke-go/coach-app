@@ -1,50 +1,51 @@
 <div class="card hoverable">
-  <section class="card-content user_info">
+  <div class="card-content">
     <%= render 'shared/user_avatar',user: user %>
-  </section>
-  <section class="card-content stats">
+  
+  <div class="stats">
     <%= render 'shared/status' %> 
-  </section>
+  </div>
     <% if current_user?(@user) %>
-      <div class="divider"></div>
-      <div class="card-content">
+      
+      <div>
         <i class="fas fa-sync-alt fa-lg" style="color:green"></i>
         <%= link_to "アカウント情報の更新",edit_user_path(current_user) %></p>
       </div>
-      <div class="divider"></div>
-      <div class="card-content">
+      
+      <div>
         <i class="fas fa-user-alt fa-lg"></i>
         <%= render 'users/profile_page' %>
       </div>
     <% else %>
-    <div class="card-content follow-form">
+    <div class="follow-form padding-updown-10">
       <%= render 'users/follow_form' %>
     </div>
       
     <% if logged_in? %>
-      <div class="divider"></div>
-      <div class="card-content">
+      
+      <div class="padding-updown-10">
         <i class="far fa-envelope fa-lg inline"></i>
         <%= render 'users/room_form' %>
       </div>
       <% end %>
     <% end %>
   
-    <% unless @reviews.empty? %>
-      <div class="divider"></div>
-      <div id="ave_point" class="card-content">
-        <i class="fas fa-star fa-lg" style="color:orange"></i>
-        平均：<%= @ave_rate %>点
-      </div>
-    <% end %>
-  
+    
+      
+        <div id="ave_point" class="padding-updown-10">
+          <% unless @reviews.empty? %>
+            <i class="far fa-star fa-lg"></i>
+            <%= @ave_rate %>
+            <%= render 'shared/review_stars',rate: @ave_rate %>
+          <% end %>
+        </div></p>  
 
-  <div class="divider"></div>
-  <div class="card-content">
+  
+  <div class="padding-updown-10">
     <i class="far fa-comments fa-lg"></i>
     <%= link_to "レビューを書く・見る", user_reviews_path(@user) %> 
   </div>
-
+</div>
 </div>
 
 

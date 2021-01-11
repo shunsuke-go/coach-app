@@ -2,11 +2,12 @@
   <div class="col s12 m8 push-m2">
     <div class="card hoverable">
       <div class="card-content">
-        <div class="card-title">通知
-        </div>
         <% if @notifications.empty? %>
-        <h5>通知はありません</h5>
+        <h5 class="center">通知はありません</h5>
         <% else %>
+          <div class="card-title">
+            <h5 class="center">通知</h5>
+          </div>
         <a rel="nofollow" data-method="delete" href="/notifications/destroy_all">
           <i class="fas fa-trash"></i>全削除
         </a>

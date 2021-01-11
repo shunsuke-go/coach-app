@@ -12,33 +12,33 @@ fetch("/api/v1/articles/<%=@article.id%>/comments",
   }
 }).then(response =>response.json())
 .then(data => {
- 
-  var hidden = (<%=current_user.id %> != data[data.length-1].user.id) ? "hidden":""
-  var img = (data[data.length-1].user.avatar != null) ? data[data.length-1].user.avatar:"/assets/no-image.jpg"
   
-  comments.insertAdjacentHTML('beforeend',
-  `<li id='comment_${data[data.length-1].id}'　class='comment-${data[data.length-1].id} margin-20'>
+  var new_comment = data[data.length-1]
+  var hidden = (<%= current_user.id %> != new_comment.user.id) ? "hidden":""
+  var img = (new_comment.user.avatar != null) ? new_comment.user.avatar:"/assets/no-image.jpg"
+  
+  comments.insertAdjacentHTML('beforeend',`
+  <li id='comment_${new_comment.id}'　class='comment-${new_comment.id} margin-20'>
     <div class="margin-20">  
-      <a href="/users/${data[data.length-1].user.id}">
+      <a href="/users/${new_comment.user.id}">
         <img class="circle" src=${img}>
       </a>
       <span class="profile-link">
-        <a href="/users/${data[data.length-1].user.id}">
-          ${data[data.length-1].user.name}
+        <a href="/users/${new_comment.user.id}">
+          ${new_comment.user.name}
         </a>
       </span>
       <div class="comment">
-        ${data[data.length-1].content}
+        ${new_comment.content}
       </div>
       <div class="divider"></div>
       <div class="right comment-delete">
         <a data-confirm="本当に削除しますか？" data-remote="true" rel="nofollow"
-        data-method="delete" href="/articles/${data[data.length-1].article.id}/comments/${data[data.length-1].id}"
+        data-method="delete" href="/articles/${new_comment.article.id}/comments/${new_comment.id}"
         ${hidden}>削除</a>  
       </div>
     </div>
   </li>`)
-
 }).catch(e => {
   console.log(e);
 })

@@ -15,9 +15,9 @@ fetch("/api/v1/users/<%= @user.id %>/reviews",{
   }
 }).then(response => response.json())
 .then(data => {
+  var new_review = data[data.length-1]
   var hidden = <%= current_user.id %> != data[data.length-1].user.id  ? "hidden":""
-  var img = (data[data.length-1].user.avatar != null) ? data[data.length-1].user.avatar:"/assets/no-image.jpg"
-  
+  var img = (data[data.length-1].user.avatar != null) ? data[data.length-1].user.avatar:"/assets/no-image.jpg"    
   function rate_stars() {    
     var star = `<i class="fas fa-star" style="color:gold"></i>`
     for (var i = 1; i < data[data.length-1].rate; i++) {
@@ -26,15 +26,15 @@ fetch("/api/v1/users/<%= @user.id %>/reviews",{
     return star
   }
 
-    reviews.insertAdjacentHTML('beforeend',
-`<li id="review_${data[data.length-1].id}" class="review_${data[data.length-1].id} margin-20">    
+reviews.insertAdjacentHTML('beforeend',`
+<li id="review_${new_review.id}" class="review_${new_review.id} margin-20">    
   <div>
-    <a href="/users/${data[data.length-1].user.id}">
+    <a href="/users/${new_review.user.id}">
       <img class="circle" src=${img}>
     </a>
     <span class="profile-link">
-    <a href="/users/${data[data.length-1].user.id}">
-      ${data[data.length-1].user.name}
+    <a href="/users/${new_review.user.id}">
+      ${new_review.user.name}
     </a>  
   </div>
 
@@ -42,17 +42,18 @@ fetch("/api/v1/users/<%= @user.id %>/reviews",{
     ${rate_stars()}
   </div>
   <div>
-    ${data[data.length-1].content}
+    ${new_review.content}
   </div>
   <a data-remote="true" rel="nofollow" data-method="delete" 
-    href="/users/${data[data.length-1].user.id}/reviews/${data[data.length-1].id}"
+    href="/users/${new_review.user.id}/reviews/${new_review.id}"
     ${hidden}>削除
   </a>
   </p>
   <div class="divider"></div>
 </li>
 `);
-  }).catch(e=> {
+
+}).catch(e=> {
   console.log(e);
 })
 
