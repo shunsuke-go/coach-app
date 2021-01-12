@@ -29,6 +29,10 @@ body{
   padding-left: 0px;
 }
 
+.card .card-content {
+  
+}
+
 
 .flex {
   display: flex;
@@ -147,9 +151,7 @@ margin-bottom : 30px ;
 }
 
 .article-time {
-  margin-left:30px;
-  position: relative;
-  bottom:20px
+  color:gray;
 }
 
 .article-body {
@@ -452,9 +454,7 @@ trix-editor {
 }
 
 .follow-form {
-  position: relative;
-  right: 5px
-
+  
 }
 
 .card-content.article-main {
@@ -468,8 +468,8 @@ trix-editor {
 }
 
 .padding-updown-10 {
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 .user-show {
@@ -494,4 +494,78 @@ trix-editor {
 
 .article-prof {
   margin-top: 0;
+}
+
+.card-content .side-padding {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.card-content .left-padding {
+  padding-left: 0;
+}
+
+.card-content.top-0 {
+  padding-top: 3px;
+}
+
+.article-profile {
+  white-space: pre-line;
+  color:gray;
+  position: relative;
+  bottom: 23px;
+  font-size: 14px;
+}
+
+.current_user {
+  width: 200px;
+  margin: 0 0 0 auto;
+  
+}
+
+.order {
+  order: 1;
+}
+
+
+
+.current_user{
+  background:#5AE628;
+  padding:20px;
+  text-align:left;
+  color:#333333;
+  font-size:14px;
+  border-radius:25px;
+  -webkit-border-radius:25px;
+  -moz-border-radius:25px;
+}
+
+.message {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  word-wrap: break-word;
+}
+
+.not_current_user{
+  width: 200px;
+  background:#E3E3D9;
+  padding:20px;
+  text-align:left;
+  color:#333333;
+  font-size:14px;
+  border-radius:25px;
+  -webkit-border-radius:25px;
+  -moz-border-radius:25px;
+  display: inline-block;
+  position: relative;
+  bottom:18px;
+}
+
+.gray {
+  color:gray;
+}
+
+.message-time {
+  position: relative;
+  bottom: 18px;
 }

@@ -1,4 +1,18 @@
-<li id="message_<%= message.id %>">
-<%= message.user.name %>さんのメッセージ
-<p><%= message.content %></p>
-</li>
+<div id="message_<%= message.id %>" class="message">
+  <% if message.user == current_user %>
+  <div class="current_user">
+    <%= message.content %>
+  </div>
+  <div class="right gray">
+    <%= message.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
+  </div>
+  <% else %>
+  <%= render 'shared/user_avatar_only',user: current_user %>
+  <div class="not_current_user">
+    <%= message.content %>
+  </div>
+    <div class="gray message-time">
+      <%= message.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
+    </div>
+  <% end %>
+</div>

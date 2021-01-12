@@ -1,11 +1,10 @@
-<div class="card-content">
+<div class="card-content left-padding">
+
   <% if current_user?(@user) %>
     <div class="padding-updown-10">
-      <i class="fas fa-sync-alt fa-lg" style="color:green"></i>
       <%= link_to "アカウント情報の更新",edit_user_path(current_user) %></p>
     </div>
     <div class="padding-updown-10">
-      <i class="fas fa-user-alt fa-lg"></i>
       <%= render 'users/profile_page' %>
     </div>
   <% else %>
@@ -19,16 +18,9 @@
     <% end %>
   <% end %>      
 
-  <div id="ave_point" class="padding-updown-10">
-    <% unless @reviews.empty? %>
-      <i class="far fa-star fa-lg"></i>
-      <%= @ave_rate %>
-      <%= render 'shared/review_stars',rate: @ave_rate %>
-    <% end %>
-  </div></p>  
 
   <div class="padding-updown-10">
-    <i class="far fa-comments fa-lg"></i>
+    
     <%= link_to "レビューを書く・見る", user_reviews_path(@user) %> 
   </div>
 </div>

@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+  include MessagesHelper
   def create
     @user = User.find_by(id: params[:user_id])
     @message = Message.new(message_params)
@@ -20,6 +21,22 @@ class MessagesController < ApplicationController
       redirect_to root_url
 
     end
+  end
+
+  def from
+    # 自分が所属するルームで自分以外のユーザが書いたメッセージが受信メッセージとなる。
+    @user = User.find(params[:id])
+    @receive_messages = Message.find_by_sql("
+      SELECT * FROM messages WHERE room_id IN (
+        SELECT room_id FROM entries WHERE user_id = #{@user.id}
+      ) && user_id != #{@user.id}")
+    @rooms = non_duplicate_rooms(@receive_messages)
+    @users = non_duplicate_users(@receive_messages)
+    @new_message = 
+    
+    binding.pry
+    
+    
   end
 
   private

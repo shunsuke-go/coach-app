@@ -2,7 +2,7 @@ class Message < ApplicationRecord
   belongs_to :user
   belongs_to :room
   has_many :notifications, dependent: :destroy
-  validates :user_id, presence: true, uniqueness: { scope: :room_id }
+  validates :user_id, presence: true
   validates :room_id, presence: true
   validates :content, presence: true, length: { maximum: 300 }
 

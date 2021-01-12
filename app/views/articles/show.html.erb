@@ -7,10 +7,10 @@
         </span>
       </div>
       <div class="card-content padding-0-top-bottom">        
-        <span class="right">
+        <span class="right article-time">
         <%= @article.created_at.strftime('%Y/%m/%d') %>
         </span>
-        <span class="article-time">
+        <span class="article-avatar">
         <%= render 'shared/user_avatar',user: @article.user %>
         </span>
       </div>
@@ -42,21 +42,32 @@
       </div>
 
     <div class="row article-prof">
-
-      <div class="col s12 m12 l6 push-l1">
+      <div class="col s12 m12 l2">
         <div class="card-content">
-        <%= render 'shared/user_avatar',user: @article.user %>
-        <div class="profile">
-        <%= @article.user.profile.content %>
+          <% if @article.user.avatar? %>
+          <%= link_to image_tag(@article.user.avatar.url, class: "circle small"), user_path(@article.user) %>
+          <% else %>
+          <%=link_to image_tag('no-image.jpg', class: "circle small"), user_path(@article.user) %>
+          <% end %>                
         </div>
+      </div>
+
+      <div class="col s12 m12 l5 pull-l1">
+        <div class="card-content">
+            <%= link_to @article.user.name %>          
+          <div class="article-profile">
+            <% if @article.user.profile.present? %>
+              <%= @article.user.profile.content %>
+            <% end %>
+          </div>
         </div>
       </div>
 
 
-      <div class="col s12 m12 l5">
-        <div class="card-content">
+      <div class="col s12 m12 l5 pull-l1">
+        
           <%= render 'shared/user_info' %>           
-        </div>
+        
       </div>
     </div>
 

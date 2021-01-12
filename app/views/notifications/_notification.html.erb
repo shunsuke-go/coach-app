@@ -4,7 +4,7 @@
       <%= link_to image_tag(notification.visiter.avatar.url,
       class: "circle small"), user_path(notification.visiter) %>
     <% else %>
-      <%=link_to image_tag('no-image.jpg', class: "circle"),
+      <%=link_to image_tag('no-image.jpg', class: "circle small"),
       user_path(notification.visiter) %>
     <% end %>        
     
