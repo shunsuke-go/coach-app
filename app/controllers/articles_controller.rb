@@ -61,6 +61,37 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def edit
+    @article = Article.find(params[:id])
+    @map = Map.find_by(article_id: @article.id)
+    return if @map.nil?
+
+    gon.latitude = @map.latitude
+    gon.longitude = @map.longitude
+  end
+
+  def update
+    @article = Article.find(params[:id])
+    if @article.update(article_params)
+      latitude = params[:article][:map][:latitude]
+      longitude = params[:article][:map][:longitude]
+
+      unless latitude.empty?
+        @map = @article.build_map(
+          latitude: latitude,
+          longitude: longitude
+        )
+        @map.save
+      end
+
+      flash[:success] = '更新しました'
+      redirect_to root_path
+    else
+      flash[:danger] = '更新に失敗しました'
+      render 'edit'
+    end
+  end
+
   def destroy
     @article.destroy
     flash[:success] = '削除しました！'
