@@ -4,7 +4,7 @@ class Message < ApplicationRecord
   has_many :notifications, dependent: :destroy
   validates :user_id, presence: true
   validates :room_id, presence: true
-  validates :content, presence: true, length: { maximum: 300 }
+  validates :content, presence: true, length: { maximum: 150 }
 
   def create_message_notification(user)
     message_notification = user.passive_notifications.build(

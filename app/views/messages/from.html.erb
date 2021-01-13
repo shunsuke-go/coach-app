@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="col s12 m12 l8 push-l2">
+    <h5 class="center">受信メッセージ</h5>
+    <div class="card">      
+      <% @new_messages.each do |new_message| %>
+        <div class="row messages">      
+          <div class="card-content">
+            <div class="col l1">
+              <%= render 'shared/user_avatar_only', user: new_message.user %>              
+            </div>
+            <div class="col l10">
+              <%= link_to new_message.user.name,user_path(new_message.user) %></p>
+              <div class="receive-message">
+                <a href="<%= room_path(new_message.room) %>" class="receive-message"><%=  new_message.content %></a>
+              </div>
+            </div>
+          </div>          
+        </div>
+        <div class="divider"></div>
+      <% end %>  
+    </div>
+  </div>
+</div>

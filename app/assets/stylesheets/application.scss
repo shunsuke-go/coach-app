@@ -569,3 +569,12 @@ trix-editor {
   position: relative;
   bottom: 18px;
 }
+
+.row.messages {
+  margin-top: 0;
+}
+
+.receive-message {
+  color:gray;
+  text-decoration: underline
+}

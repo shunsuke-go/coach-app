@@ -35,8 +35,8 @@ RSpec.describe Message, type: :model do
         expect(message).to be_invalid
       end
 
-      it 'contentが301文字以上だと保存できないこと' do
-        message.content = 'a' * 301
+      it 'contentが151文字以上だと保存できないこと' do
+        message.content = 'a' * 151
         expect(message).to be_invalid
       end
     end
