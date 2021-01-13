@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
     if @review.save
       flash[:success] = 'レビューを書き込みました'
       ave_rate = num_point(@reviews)
-      @user.update_columns(ave_rate: ave_rate)
+      @user.update_columns(ave_rate: ave_rate, review_count: @reviews.count)
 
       respond_to do |format|
         format.html { redirect_to user_path(@user) }
@@ -28,7 +28,7 @@ class ReviewsController < ApplicationController
 
     @review.destroy
     ave_rate = num_point(@reviews)
-    @user.update_columns(ave_rate: ave_rate)
+    @user.update_columns(ave_rate: ave_rate, review_count: @reviews.count)
     flash[:success] = '削除しました'
 
     respond_to do |format|

@@ -18,7 +18,7 @@ Rails.application.routes.draw do
 
   resources :relationships, only: [:create, :destroy]
 
-  resources :articles, only: [:create, :destroy, :show, :index, :new] do
+  resources :articles, only: [:create, :destroy, :show, :index, :new, :edit, :update] do
     resources :comments, only: [:create, :destroy]
     resources :likes, only: [:create, :destroy]
     get '/likes/counts', to: 'likes#count'

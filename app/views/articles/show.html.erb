@@ -33,6 +33,7 @@
         <% if current_user?(@article.user) %>
         <%= link_to "削除", @article, method: :delete,
         data:{ confirm: "本当に削除しますか？" },remote: true %>
+        <%= link_to "編集",edit_article_path(@article) %>
         <% end %>
         </span>
 
@@ -104,7 +105,7 @@ function initMap(){
  
   let map = new google.maps.Map(document.getElementById('map'), {
   center: myLatLng,
-  zoom: 8
+  zoom: 11
     });
   
    marker = new google.maps.Marker();

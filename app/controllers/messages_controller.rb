@@ -20,7 +20,7 @@ class MessagesController < ApplicationController
 
     else
       flash[:danger] = '無効な操作です'
-      redirect_to root_url
+      render 'error'
 
     end
   end
@@ -32,8 +32,6 @@ class MessagesController < ApplicationController
       SELECT * FROM messages WHERE room_id IN (
         SELECT room_id FROM entries WHERE user_id = #{@user.id}
       ) && user_id != #{@user.id}")
-    @rooms = non_duplicate_rooms(@receive_messages)
-    @users = non_duplicate_users(@receive_messages)
     @new_messages = get_new_messages(@receive_messages)
   end
 

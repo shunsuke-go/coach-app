@@ -6,6 +6,7 @@ ja:
       comment: コメント
       profile: プロフィール
       review: レビュー            
+      message: メッセージ
     attributes:
       user:
         name: 名前
@@ -24,3 +25,5 @@ ja:
       review:
         content: 本文
         rate: 点数
+      message:
+        content: メッセージ
