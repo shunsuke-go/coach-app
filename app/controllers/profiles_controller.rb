@@ -1,4 +1,6 @@
 class ProfilesController < ApplicationController
+  before_action :logged_in_user, only: [:edit, :update, :create]
+
   def new
     @profile = current_user.build_profile
   end

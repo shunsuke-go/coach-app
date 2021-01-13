@@ -11,6 +11,10 @@
           <i class="fas fa-tag header-icons"></i>タグ</a>
         </li>
 
+        <li><a href="/messages/<%=current_user.id%>/from">
+          <i class="fas fa-envelope header-icons"></i>メッセージボックス</a>
+        </li>
+
         <li><a href="<%= notifications_path %>">
           <i class="fas fa-bell header-icons"></i>通知</a>
         </li>
@@ -74,10 +78,6 @@
         <li><%= link_to "ログイン", login_path %></li>
         <% end %>
   </ul>
-
-<div class="container">
-  <%= yield %>
-</div>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {

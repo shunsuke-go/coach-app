@@ -205,3 +205,6 @@ Style/RegexpLiteral:
 # https://rubocop.readthedocs.io/en/stable/cops_style/#styleslicingwithrange
 Style/SlicingWithRange:
   Enabled: true
+
+Style/NumericPredicate:
+  Enabled: false

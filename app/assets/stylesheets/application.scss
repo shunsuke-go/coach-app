@@ -8,12 +8,29 @@ h4 {
   margin-bottom: 30px;
 }
 
+h5.name {
+  margin:0;
+}
+
+h6 {
+  margin:0;
+}
+
 body{
   background-color:#F2F2F2;
 }
 
 .row {
   margin-top: 20px;
+}
+.container {
+  width: 80%;
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+.card .card-content {
+  
 }
 
 
@@ -134,9 +151,7 @@ margin-bottom : 30px ;
 }
 
 .article-time {
-  margin-left:30px;
-  position: relative;
-  bottom:20px
+  color:gray;
 }
 
 .article-body {
@@ -398,8 +413,7 @@ trix-editor {
   top: 15px;
 }
 .delete {
-  position: relative;
-  bottom: 19px;
+  padding-left: 20px;
 }
 
 .header-icon {
@@ -428,7 +442,7 @@ trix-editor {
   margin-bottom: 20px;
 }
 .profile {
-  white-space: pre-wrap;
+  white-space: pre-line;
 }
 
 .inline {
@@ -440,12 +454,12 @@ trix-editor {
 }
 
 .follow-form {
-  position: relative;
-  right: 5px
+  
 }
 
 .card-content.article-main {
   padding-top: 0;
+  padding-bottom: 0;
 }
 
 .room-form {
@@ -454,6 +468,113 @@ trix-editor {
 }
 
 .padding-updown-10 {
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.user-show {
+  width: 40%;
+}
+
+.small {
+  width: 50px;
+  height: 50px;
+}
+
+.big {
+  width: 100px;
+  height: 100px;
+}
+
+.follows {
+  font-size: 20px;
+  position: relative;
+  left: 18px;
+}
+
+.article-prof {
+  margin-top: 0;
+}
+
+.card-content .side-padding {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.card-content .left-padding {
+  padding-left: 0;
+}
+
+.card-content.top-0 {
+  padding-top: 3px;
+}
+
+.article-profile {
+  white-space: pre-line;
+  color:gray;
+  position: relative;
+  bottom: 23px;
+  font-size: 14px;
+}
+
+.current_user {
+  width: 200px;
+  margin: 0 0 0 auto;
+  
+}
+
+.order {
+  order: 1;
+}
+
+
+
+.current_user{
+  background:#5AE628;
+  padding:20px;
+  text-align:left;
+  color:#333333;
+  font-size:14px;
+  border-radius:25px;
+  -webkit-border-radius:25px;
+  -moz-border-radius:25px;
+}
+
+.message {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  word-wrap: break-word;
+}
+
+.not_current_user{
+  width: 200px;
+  background:#E3E3D9;
+  padding:20px;
+  text-align:left;
+  color:#333333;
+  font-size:14px;
+  border-radius:25px;
+  -webkit-border-radius:25px;
+  -moz-border-radius:25px;
+  display: inline-block;
+  position: relative;
+  bottom:18px;
+}
+
+.gray {
+  color:gray;
+}
+
+.message-time {
+  position: relative;
+  bottom: 18px;
+}
+
+.row.messages {
+  margin-top: 0;
+}
+
+.receive-message {
+  color:gray;
+  text-decoration: underline
 }

@@ -29,7 +29,8 @@ Rails.application.routes.draw do
   get '/articles', to: 'static_pages#home'
 
   resources :rooms, only: [:show, :create, :index]
-  resources :messages, only: :create
+  resources :messages, only: [:create]
+  get 'messages/:id/from', to: 'messages#from'
   resources :notifications, only: [:index] do
     collection do
       delete 'destroy_all'

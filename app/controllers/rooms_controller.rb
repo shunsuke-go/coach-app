@@ -1,6 +1,7 @@
 class RoomsController < ApplicationController
   before_action :room_exists?, only: [:create]
   before_action :room_mached?, only: [:show]
+  before_action :logged_in_user, only: [:create, :show]
 
   def create
     @user = User.find_by(id: params[:entry][:user_id])

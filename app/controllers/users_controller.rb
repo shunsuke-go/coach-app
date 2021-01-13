@@ -71,6 +71,21 @@ class UsersController < ApplicationController
     @title = 'フォロー'
     @user = User.find_by(id: params[:id])
     @users = @user.following.paginate(page: params[:page])
+    if logged_in?
+      @room = Room.find_by_sql("SELECT * FROM rooms WHERE id IN
+        (SELECT room_id FROM entries WHERE user_id = #{@user.id} &&
+        room_id IN (SELECT room_id FROM entries WHERE user_id = #{current_user.id}))")
+      if @room[0].nil?
+        @room = Room.new
+        @entry = Entry.new
+      end
+    end
+
+    @profile = Profile.find_by(user_id: params[:id])
+    @review = Review.new
+    @reviews = @user.passive_reviews
+    @ave_rate = @user.ave_rate.round(1) unless @user.ave_rate.nil?
+
     render 'show_follow'
   end
 
@@ -78,6 +93,21 @@ class UsersController < ApplicationController
     @title = 'フォロワー'
     @user = User.find_by(id: params[:id])
     @users = @user.followers.paginate(page: params[:page])
+    if logged_in?
+      @room = Room.find_by_sql("SELECT * FROM rooms WHERE id IN
+        (SELECT room_id FROM entries WHERE user_id = #{@user.id} &&
+        room_id IN (SELECT room_id FROM entries WHERE user_id = #{current_user.id}))")
+      if @room[0].nil?
+        @room = Room.new
+        @entry = Entry.new
+      end
+    end
+
+    @profile = Profile.find_by(user_id: params[:id])
+    @review = Review.new
+    @reviews = @user.passive_reviews
+    @ave_rate = @user.ave_rate.round(1) unless @user.ave_rate.nil?
+
     render 'show_follow'
   end
 

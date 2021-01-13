@@ -1,56 +1,90 @@
 <div class="row">
-  <div class="col s12 m4">
-    <%= render 'shared/user_info',user: @article.user %>
-  </div>
-
-  <div id="article_page" class="col s12 m8">
+  <div id="article_page" class="col s12 m12 l10 push-l1">
     <div class="card hoverable">
       <div class="card-content">
         <span class="card-title">
-          <h4><%= @article.title %></h4>
+        <h4><%= @article.title %></h4>
         </span>
       </div>
       <div class="card-content padding-0-top-bottom">        
-        <span class="profile-link">
+        <span class="right article-time">
+        <%= @article.created_at.strftime('%Y/%m/%d') %>
+        </span>
+        <span class="article-avatar">
+        <%= render 'shared/user_avatar',user: @article.user %>
+        </span>
+      </div>
+      <div class="card-content article-main">
+        <div class="tag-list">
+          <%= render 'articles/tag_list',tag_list:@article.tag_list %>
+        </div>
+        <div class="article-body">
+          <p><%= @article.content%>
+        </div>
+        <% unless @map.nil? %>
+        <div id="map"></div>
+        <% end %>
+      </div>
+      <div class="card-content">
+        <span class="">
         <%= render 'likes/like' ,article: @article%>
         </span>
-        <span class="right article-time">
-          <%= @article.created_at.strftime('%Y/%m/%d') %>
-        </span>
         <span class="delete">
-          <% if current_user?(@article.user) %>
-            <%= link_to "削除", @article, method: :delete,
-            data:{ confirm: "本当に削除しますか？" },remote: true %>
-          <% end %>
+        <% if current_user?(@article.user) %>
+        <%= link_to "削除", @article, method: :delete,
+        data:{ confirm: "本当に削除しますか？" },remote: true %>
+        <% end %>
         </span>
+
       </div>
-        <div class="card-content article-main">
-          <%= render 'articles/tag_list',tag_list:@article.tag_list %>
-          
-          <div class="article-body">
-            <p><%= @article.content%>
-          </div>
-          <% unless @map.nil? %>
-            <div id="map"></div>
-          <% end %>
-        </div>
-      </div>
-    
-
-
-
-  
-    コメント
-    <div class="card hoverable">
       <div class="card-content">
-        <%= render 'comments/comment_form' %>
-        <div id="comments">
-          <%= render @comments %>
+        <div class="divider"></div>    
+      </div>
+
+    <div class="row article-prof">
+      <div class="col s12 m12 l2">
+        <div class="card-content">
+          <% if @article.user.avatar? %>
+          <%= link_to image_tag(@article.user.avatar.url, class: "circle small"), user_path(@article.user) %>
+          <% else %>
+          <%=link_to image_tag('no-image.jpg', class: "circle small"), user_path(@article.user) %>
+          <% end %>                
         </div>
+      </div>
+
+      <div class="col s12 m12 l5 pull-l1">
+        <div class="card-content">
+            <%= link_to @article.user.name %>          
+          <div class="article-profile">
+            <% if @article.user.profile.present? %>
+              <%= @article.user.profile.content %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col s12 m12 l5 pull-l1">
+        
+          <%= render 'shared/user_info' %>           
+        
       </div>
     </div>
-</div>
 
+    </div>
+  </div>
+
+  <div class="col s12 m12 l10 push-l1">
+    <div class="card hoverable">
+      <div class="card-content">
+        <h6>コメント</h6>
+        <%= render 'comments/comment_form' %>
+      <div id="comments">
+        <%= render @comments %>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 <script>

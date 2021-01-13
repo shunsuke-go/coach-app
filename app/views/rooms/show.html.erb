@@ -1,8 +1,19 @@
 <% provide(:title,"メッセージ")%>
-ダイレクトメッセージ
-
-<div id="messages">
-<%= render @messages %>
+<div class="row">
+  <div class="col s12 m12 l8 push-l2">
+    <div class="card">
+      <div class="card-content">
+        <h5 class="center"><%= @user[0].name %>さんとのメッセージ</h5>
+        <div class="divider"></div>
+        <div id="messages" class="row">
+          <%= render @messages %>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-content">
+        <%= render 'messages/message_form'%>
+      </div>
+    </div>
+  </div>
 </div>
-
-<%= render 'messages/message_form'%>
