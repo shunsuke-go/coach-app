@@ -70,6 +70,9 @@ Layout/CommentIndentation:
 Layout/EmptyLinesAroundAttributeAccessor:
   Enabled: true
 
+Layout/MultilineMethodCallIndentation:
+    Enabled: false
+
 # https://rubocop.readthedocs.io/en/stable/cops_layout/#layoutspacearoundmethodcalloperator
 Layout/SpaceAroundMethodCallOperator:
   Enabled: true
