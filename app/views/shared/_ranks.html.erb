@@ -4,6 +4,7 @@
       <h6>
       <i class="fas fa-crown header-icons" style="color:gold"></i>レビューランキング
       </h6>
+      <span class="gray">※５件以上のレビューが必要です<span>
       <% if @user_ranks.any? %>
       <%= render 'shared/user_rank', collection: @user_ranks %>
       <% end %>
