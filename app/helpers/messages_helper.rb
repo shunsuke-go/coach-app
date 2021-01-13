@@ -24,16 +24,14 @@ module MessagesHelper
       end
 
       if message_box.room.id != message.room.id
-        new_messages.push(messages[index-1])
+        new_messages.push(messages[index - 1])
         message_box = message
       end
-      if messages[messages.length-1] == messages[index]
+      if messages[messages.length - 1] == messages[index]
         new_messages.push(message)
       end
     end
-    
-    
-    
-    return new_messages
+
+    new_messages
   end
 end
