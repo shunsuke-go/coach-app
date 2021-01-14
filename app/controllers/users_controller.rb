@@ -47,7 +47,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.remove_avatar! if params[:user][:avatar_delete] == '1'
-    if @user.update(user_params)
+    if @user.update!(user_params)
       flash[:success] = '更新に成功しました！'
       redirect_to user_url(@user)
 
