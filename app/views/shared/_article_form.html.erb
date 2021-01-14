@@ -7,7 +7,7 @@
         <div id="article_form" class="field">
           <%= f.label :title, "タイトル" %>
           <%= f.text_field :title,class: "materialize-textarea" %>
-          <%= f.label :tag_list,"タグ" %>
+          <%= f.label :tag_list,"タグ ※カンマ区切りで記入してください" %>
           <%= f.text_field :tag_list, value: @article.tag_list.join(','), class: "materialize-textarea" %>
 
           <div class="place">

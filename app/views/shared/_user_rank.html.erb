@@ -9,5 +9,6 @@
     <% end %>
     第<%= idx + 1 %>位　<%= link_to user_rank.name,user_path(user_rank) %>
     　<%= user_rank.ave_rate.round(1) %>点
+      <%= render 'shared/review_stars',rate: user_rank.ave_rate.round(1) %>
   </li>
 <% end %>

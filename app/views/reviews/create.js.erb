@@ -80,9 +80,8 @@ fetch("/users/<%= @user.id %>/reviews/ave_point_cal",{
     return star
   }
   ave_point.innerHTML=(`
-  <i class="far fa-star fa-lg"></i>
-  ${data.ave_points}
-  ${ave_point_star()} `)
+  ${ave_point_star()} 
+  ${data.ave_points}`)
 })
 .catch(e =>{
   console.log(e)
