@@ -1,7 +1,7 @@
 class MessagesController < ApplicationController
   include MessagesHelper
   before_action :logged_in_user
-  before_action :message_authority, only: [:from]
+  before_action :message_authority, only: [:box]
   def create
     @user = User.find_by(id: params[:user_id])
     @message = Message.new(message_params)
@@ -25,14 +25,16 @@ class MessagesController < ApplicationController
     end
   end
 
-  def from
+  def box
     # 自分が所属するルームで自分以外のユーザが書いたメッセージが受信メッセージとなる。
     @user = User.find(params[:id])
     @receive_messages = Message.find_by_sql("
       SELECT * FROM messages WHERE room_id IN (
         SELECT room_id FROM entries WHERE user_id = #{@user.id}
       ) && user_id != #{@user.id}")
-    @new_messages = get_new_messages(@receive_messages)
+    @send_messages = @user.messages
+    @new_send_messages = get_new_messages(@send_messages)
+    @new_receive_messages = get_new_messages(@receive_messages)
   end
 
   private
