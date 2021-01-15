@@ -577,7 +577,8 @@ trix-editor {
 }
 a.receive-message {
   color:black;
-  text-decoration: underline
+  text-decoration: underline;
+  word-break: break-all;
 }
 
 .message-tabs {
