@@ -27,11 +27,11 @@ class UsersController < ApplicationController
     @review = Review.new
     @reviews = @user.passive_reviews
     @ave_rate = @user.ave_rate.round(1) unless @user.ave_rate.nil?
-   # @point = @user.num_point(@reviews) unless @reviews.empty?
   end
 
   def create
     @user = User.new(user_params)
+    @user.toggle(:coach) if params[:user][:coach] == '1'
     if @user.save
       log_in(@user)
       redirect_to new_user_profile_path(@user)
@@ -48,6 +48,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+    @user.toggle(:coach) if params[:user][:coach] == '1'
     @user.remove_avatar! if params[:user][:avatar_delete] == '1'
     if @user.update!(user_params)
       flash[:success] = '更新に成功しました！'

@@ -8,11 +8,11 @@ class MapsController < ApplicationController
     @area = params[:area]
     @articles = []
     @gmaps = Map.near(@area, 20, units: :km)
-
     @gmaps.each do |gmap|
       @articles.push(gmap.article)
     end
 
+    # paginationのため
     @articles = @articles.paginate(page: params[:page], per_page: 5)
   end
 end

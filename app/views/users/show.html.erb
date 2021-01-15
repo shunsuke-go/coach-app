@@ -9,7 +9,13 @@
               <%= render 'shared/user_avatar_big',user: @user %>
             </div>
             <div class="col s8 m8 l8">
-              <h5><%=link_to @user.name,user_path(@user) %></h5>
+              <h5><%=link_to @user.name,user_path(@user) %>
+                <% if @user.coach? %>
+                <i class="far fa-check-circle" style="color:lightgreen"></i>
+                <span class="coach">コーチ！</span>
+                <% end %>
+              </h5>
+                
               <div id="ave_point" class="padding-updown-10">
                 <% unless @reviews.empty? %>
                   <%= render 'shared/review_stars',rate: @ave_rate %>
