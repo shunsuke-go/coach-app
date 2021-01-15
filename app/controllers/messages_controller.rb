@@ -28,13 +28,31 @@ class MessagesController < ApplicationController
   def box
     # 自分が所属するルームで自分以外のユーザが書いたメッセージが受信メッセージとなる。
     @user = User.find(params[:id])
-    @receive_messages = Message.find_by_sql("
-      SELECT * FROM messages WHERE room_id IN (
-        SELECT room_id FROM entries WHERE user_id = #{@user.id}
-      ) && user_id != #{@user.id}")
-    @send_messages = @user.messages
-    @new_send_messages = get_new_messages(@send_messages)
-    @new_receive_messages = get_new_messages(@receive_messages)
+    @new_send_messages = ActiveRecord::Base.connection.select_all("
+      SELECT m3.room_id,content,send_user_id, send_user_name,
+      partner_user_id, partner_user_name, partner_users_avatar,
+      m3.created_at
+      FROM (
+        SELECT m1.room_id AS room_id,
+          m1.content AS content,
+          m1.created_at AS created_at,
+          m1.user_id AS send_user_id,
+          users.id AS partner_user_id,
+          users.name AS partner_user_name,
+          users.avatar AS partner_users_avatar,
+          send_users.name AS send_user_name
+        FROM messages m1
+          INNER JOIN entries ON entries.room_id = m1.room_id and entries.user_id != #{@user.id}
+          INNER JOIN users ON entries.user_id = users.id
+          INNER JOIN entries AS send_entries ON send_entries.room_id = m1.room_id and m1.user_id = send_entries.user_id
+          INNER JOIN users AS send_users ON send_entries.user_id = send_users.id
+      ) AS m3
+      JOIN (SELECT room_id,MAX(created_at) AS created_at
+      FROM messages WHERE room_id
+      IN (SELECT entries.room_id FROM entries WHERE entries.user_id = #{@user.id})
+      GROUP BY room_id) AS m2
+      ON m3.room_id = m2.room_id AND m3.created_at = m2.created_at
+     ").to_hash
   end
 
   private
