@@ -24,7 +24,7 @@ class RoomsController < ApplicationController
        (SELECT user_id FROM entries WHERE room_id = #{params[:id]} && user_id != #{current_user.id})")
     @room = Room.find_by(id: params[:id])
     @message = Message.new
-    @messages = Message.where("room_id = #{@room.id}")
+    @messages = Message.includes(:user).where("room_id = #{@room.id}")
   end
 
   private

@@ -1,7 +1,7 @@
 class MessagesController < ApplicationController
   include MessagesHelper
   before_action :logged_in_user
-  before_action :message_authority, only: [:from]
+  before_action :message_authority, only: [:box]
   def create
     @user = User.find_by(id: params[:user_id])
     @message = Message.new(message_params)
@@ -25,14 +25,31 @@ class MessagesController < ApplicationController
     end
   end
 
-  def from
-    # 自分が所属するルームで自分以外のユーザが書いたメッセージが受信メッセージとなる。
+  def box
     @user = User.find(params[:id])
-    @receive_messages = Message.find_by_sql("
-      SELECT * FROM messages WHERE room_id IN (
-        SELECT room_id FROM entries WHERE user_id = #{@user.id}
-      ) && user_id != #{@user.id}")
-    @new_messages = get_new_messages(@receive_messages)
+
+    # 自分が所属するルーム毎の最新メッセージ,作成日時と、メッセージ相手のid,名前,avatarのurlを取得する
+    @new_send_messages = ActiveRecord::Base.connection.select_all("
+      SELECT m3.room_id,content, partner_user_id,
+             partner_user_name, partner_users_avatar,m3.created_at
+      FROM (
+        SELECT m1.room_id AS room_id,
+        m1.content AS content,
+        m1.created_at AS created_at,
+        users.id AS partner_user_id,
+        users.name AS partner_user_name,
+        users.avatar AS partner_users_avatar
+        FROM messages m1
+        INNER JOIN entries ON entries.room_id = m1.room_id and entries.user_id != #{@user.id}
+        INNER JOIN users ON entries.user_id = users.id
+      ) AS m3
+      JOIN (SELECT room_id,MAX(created_at) AS created_at
+      FROM messages
+      WHERE room_id
+      IN (SELECT entries.room_id FROM entries WHERE entries.user_id = #{@user.id})
+      GROUP BY room_id) AS m2
+      ON m3.room_id = m2.room_id AND m3.created_at = m2.created_at
+      ").to_hash
   end
 
   private

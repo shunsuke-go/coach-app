@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col l8 push-l2">
+    <h5 class="center">受信メッセージ</h5>
+    <div class="card hoverable">
+      <% @new_send_messages.each do |new_send_message| %>
+        <div class="row messages">      
+          <div class="card-content">
+            <div class="col l1">
+              <%= render 'shared/user_avatar_only_message_box',
+              user_avatar: new_send_message["partner_users_avatar"],
+              user_id: new_send_message["partner_user_id"]%>
+            </div>
+            <div class="col l10">
+              <div class="right gray">
+                <%= new_send_message["created_at"].strftime('%Y-%m-%d %H:%M:%S') %>
+              </div>
+              <div>
+                <%=link_to new_send_message["partner_user_name"],
+                user_path(new_send_message["partner_user_id"]) %>
+              </div>
+              <div class="receive-message">
+                <h6><%=link_to new_send_message["content"],
+                  room_path(new_send_message["room_id"]),class:"receive-message" %>
+                </h6>
+              </div>
+            </div>
+          </div>          
+        </div>
+        <div class="divider"></div>
+      <% end %>  
+    </div>
+  </div>
+</div>

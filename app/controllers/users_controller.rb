@@ -10,7 +10,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @feed_items = @user.articles.paginate(page: params[:page], per_page: 5)
+    @feed_items = @user.articles.with_rich_text_content.includes(
+      :user, :liked_users, :likes, :comments, :taggings, :tags
+    ).paginate(page: params[:page], per_page: 5)
     if logged_in?
       @room = Room.find_by_sql("SELECT * FROM rooms WHERE id IN
         (SELECT room_id FROM entries WHERE user_id = #{@user.id} &&

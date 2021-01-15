@@ -30,7 +30,7 @@ Rails.application.routes.draw do
 
   resources :rooms, only: [:show, :create, :index]
   resources :messages, only: [:create]
-  get 'messages/:id/from', to: 'messages#from'
+  get 'messages/box/:id', to: 'messages#box'
   resources :notifications, only: [:index] do
     collection do
       delete 'destroy_all'

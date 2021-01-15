@@ -1,3 +1,5 @@
+@import "materialize/components/color-variables";
+$primary-color: color("blue", "lighten-2") !default;
 @import 'materialize';
 //@import "https://fonts.googleapis.com/icon?family=Material+Icons";
 @import "./actiontext.scss";
@@ -573,8 +575,14 @@ trix-editor {
 .row.messages {
   margin-top: 0;
 }
-
-.receive-message {
+a.receive-message {
   color:black;
-  text-decoration: underline
+  text-decoration: underline;
+  word-break: break-all;
+}
+
+.message-tabs {
+  color:black;
+  position: relative;
+  bottom: 5px;
 }
