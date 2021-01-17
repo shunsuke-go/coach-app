@@ -1,6 +1,6 @@
   <% if @profile.nil? %>
-    <%= link_to "プロフィールを作成する", new_user_profile_path(current_user),class:"amazon-blue"%>
+    <%= link_to "プロフィールを作成する", new_user_profile_path(current_user),class:"btn red width-200"%>
   <% else %>
-    <%= link_to "プロフィールを更新する", edit_user_profile_path(current_user,current_user),class:"amazon-blue" %>
+    <%= link_to "プロフィールを更新する", edit_user_profile_path(current_user,current_user),class:"btn green width-200" %>
   <% end %>
   

@@ -40,8 +40,8 @@ class MessagesController < ApplicationController
         users.name AS partner_user_name,
         users.avatar AS partner_users_avatar
         FROM messages m1
-        INNER JOIN entries ON entries.room_id = m1.room_id and entries.user_id != #{@user.id}
-        INNER JOIN users ON entries.user_id = users.id
+        JOIN entries ON entries.room_id = m1.room_id and entries.user_id != #{@user.id}
+        JOIN users ON entries.user_id = users.id
       ) AS m3
       JOIN (SELECT room_id,MAX(created_at) AS created_at
       FROM messages

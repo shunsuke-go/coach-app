@@ -1,8 +1,8 @@
-<div class="card-content left-padding">
+<div class="card-content">
 
   <% if current_user?(@user) %>
     <div class="padding-updown-10">
-      <%= link_to "アカウント情報の更新",edit_user_path(current_user),class:"amazon-blue" %></p>
+      <%= link_to "アカウント情報の更新",edit_user_path(current_user),class:"btn cyan darken-1 width-200" %></p>
     </div>
     <div class="padding-updown-10">
       <%= render 'users/profile_page' %>
@@ -21,7 +21,7 @@
 
   <div class="padding-updown-10">
     
-    <%= link_to "レビューを書く・見る", user_reviews_path(@user),class:"amazon-blue" %> 
+    <%= link_to "レビューを書く・見る", user_reviews_path(@user),class:"btn white-text review-btn lime darken-2" %> 
   </div>
 </div>
 
