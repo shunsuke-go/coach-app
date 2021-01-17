@@ -38,7 +38,7 @@
     <%= render 'shared/feed' %>
     <div class="center"><%= will_paginate @feed_items %></div> 
     <% else %>
-    <h4>記事はまだありません</h4>
+    <h5 class="center">記事はまだありません</h5>
     <% end %>
   </div>
   <% if current_user?(@user) %>

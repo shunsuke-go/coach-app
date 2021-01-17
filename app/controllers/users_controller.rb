@@ -116,6 +116,15 @@ class UsersController < ApplicationController
     render 'show_follow'
   end
 
+  def guest_login
+    unless logged_in?
+      guest_user = User.find_by(email: 'guest@guest.com')
+      log_in(guest_user)
+      flash[:notice] = 'ゲストユーザーとしてログインしました'
+    end
+    redirect_to root_path
+  end
+
   private
 
   # Strong Parameter
