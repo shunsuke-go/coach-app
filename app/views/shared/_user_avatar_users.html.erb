@@ -1,0 +1,20 @@
+<% if user.avatar? %>
+<%= link_to image_tag(user.avatar.url, class: "circle small"), user_path(user) %>
+<% else %>
+<%=link_to image_tag('no-image.jpg', class: "circle small"), user_path(user) %>
+<% end %>
+
+<span class="profile-link">
+<%= link_to user.name,user %>
+<span class="coach-index">
+<% if user.coach? %>
+<i class="far fa-check-circle" style="color:lightgreen"></i>
+<span>コーチ</span>
+<% end %>
+</span>
+</p>        
+<% if user.ave_rate.present? %>
+<span class="stars"><%= render 'shared/review_stars',rate: user.ave_rate %></span>
+<% end %>        
+</span>
+

@@ -1,33 +1,30 @@
-<li>
-  
-    <div class="card hoverable">
-      <div class="card-content">
-        <%= render 'shared/user_avatar',user: user %>
-        </div>
-          <% if user.profile.present? %>
-          <ul>
-            <div class="card-action">
-              <li><%= user.profile.age %>歳</li>
-            </div>
-            <div class="card-action">
-              <li>居住地 : <%= user.profile.address %></li>
-            </div>
-            <div class="card-action">
-              <li class="profile">得意科目 : <%= user.profile.favorite %></li>
-            </div>
-            <div class="card-action">
-              <li class="profile"><%= user.profile.content %></li>
-            </div>
-          </ul>
-          <% else %>
-          <div class="card-action">
-            プロフィールはありません。
-          </div>
-          <% end %>   
+<li>  
+  <div class="card hoverable">
+    <div class="card-content">
+      <%= render 'shared/user_avatar_users',user: user %>    
 
-        <% if current_user.admin? && !current_user?(user) %>
-        <%= link_to "削除", user, method: :delete,data:{confirm:"本当に削除しますか？"} %>
-        <% end %>
-    </div>
-  
+      <% if user.profile.present? %>
+      <ul>
+        <div class="card-action">
+          <li><%= user.profile.age %>歳</li>
+        </div>
+        <div class="card-action">
+          <li>居住地 : <%= user.profile.address %></li>
+        </div>
+        <div class="card-action">
+          <li class="profile">得意科目 : <%= user.profile.favorite %></li>
+        </div>
+        <div class="card-action">
+          <li class="profile"><%= user.profile.content %></li>
+        </div>
+      </ul>
+      <% else %>
+      <div class="card-action">
+        プロフィールはありません。
+      </div>
+      <% end %>   
+    <% if current_user.admin? && !current_user?(user) %>
+    <%= link_to "削除", user, method: :delete,data:{confirm:"本当に削除しますか？"} %>
+    <% end %>
+  </div>
 </li>
