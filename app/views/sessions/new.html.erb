@@ -19,12 +19,17 @@
         <% end %>
         <p class="center">
         <%= f.submit "ログイン" ,class: "btn login-btn" %>
+        <% end %>        
+        <div class="center">
+          <%= link_to "ゲストログイン",'/guest_login',class: 'btn red guest-btn' %>
+        </div>
         </div>
         <div class="card-content">
+        
         <p class="center">
-        <%= link_to "新規登録はこちら",signup_path %>
+        
+        <%= link_to "新規登録はこちら",signup_path,class: 'amazon-blue'%>
         </div>
-        <% end %>        
       </div>
     </div>
   </div>

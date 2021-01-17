@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
+  get '/guest_login', to: 'users#guest_login'
   root 'static_pages#home'
   get '/signup', to: 'users#new'
   get '/help', to: 'static_pages#help'

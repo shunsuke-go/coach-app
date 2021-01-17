@@ -37,7 +37,7 @@ h6 {
 }
 
 h4 {
-  font-weight: 800;
+  
 }
 
 a.amazon-blue {
@@ -625,6 +625,8 @@ trix-editor {
 }
 a.receive-message {
   color:black;
+  text-decoration: underline;
+  font-weight: bold;
   word-break: break-all;
 }
 
@@ -680,9 +682,18 @@ a.title {
   margin-right: 5px;
 }
 
+.bold {
+  font-weight: bold;
+}
+
 /*
 .side {
   width:90%;
 }
 */
+
+.guest-btn {
+  margin-top:20px;
+  width: 208px;
+}
 

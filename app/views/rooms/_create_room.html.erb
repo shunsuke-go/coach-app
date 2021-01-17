@@ -1,6 +1,6 @@
 <%= form_with(model: @room,class:'inline',local: true) do |f| %>
   <%= fields_for(@entry) do |e| %>
   <%= e.hidden_field :user_id,value:@user.id %>
-  <%= f.submit "メッセージを送る", class: "btn blue lighten-3" %>
+  <%= f.submit "メッセージを送る", class: "btn blue blue darken-1 white-text" %>
   <% end %>
 <% end %>
