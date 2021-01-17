@@ -55,7 +55,7 @@
 
       <div class="col s12 m12 l5 pull-l1">
         <div class="card-content">
-            <%= link_to @article.user.name %>          
+            <%= link_to @article.user.name, user_path(@article.user) %>          
           <div class="article-profile">
             <% if @article.user.profile.present? %>
               <%= @article.user.profile.content %>
