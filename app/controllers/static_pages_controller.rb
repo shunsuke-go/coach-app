@@ -9,7 +9,9 @@ class StaticPagesController < ApplicationController
 
       @likes = current_user.liked_articles  
     else
-      @articles = Article.paginate(page: params[:page], per_page: 5)
+      @articles = Article.with_rich_text_content.includes(
+        :user, :liked_users, :likes, :comments, :taggings, :tags
+      ).paginate(page: params[:page], per_page: 5)
     end
   end
 

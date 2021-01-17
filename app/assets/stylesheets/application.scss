@@ -5,6 +5,20 @@ $primary-color: color("blue", "lighten-2") !default;
 @import "./actiontext.scss";
 
 
+a {
+    color:black ;
+  }
+
+a:hover {
+  opacity: 0.5 ;
+}
+
+a.notification {
+  text-decoration: underline;
+  font-weight: 700;
+}
+
+
 h4 {
   margin-top:0;
   margin-bottom: 30px;
@@ -14,8 +28,20 @@ h5.name {
   margin:0;
 }
 
+h5 {
+  margin:10px;
+}
+
 h6 {
   margin:0;
+}
+
+h4 {
+  font-weight: 800;
+}
+
+a.amazon-blue {
+  color:#0066c0;
 }
 
 body{
@@ -106,9 +132,16 @@ margin-bottom : 30px ;
 }
 
 .profile-link {
-  margin: 20px;
+  margin: 5px;
   position: relative; 
-  bottom: 20px;
+  bottom: 30px;
+}
+
+.profile-name {
+  margin: 5px;
+  position: relative; 
+  right: 70px;  
+  bottom: 30px;
 }
 
 .articles {
@@ -120,6 +153,12 @@ margin-bottom : 30px ;
   padding-bottom: 0px;
   position: relative; 
   bottom: 20px;
+}
+
+.status {
+  margin:5px;
+  position: relative;
+  left:15px;
 }
 
 .span.card-title {
@@ -164,7 +203,7 @@ margin-bottom : 30px ;
 }
 
 .card-content.article-title {
-  padding-bottom: 11px;
+  padding-bottom: 0;
   padding-top: 23px;
 }
 
@@ -176,10 +215,9 @@ margin-bottom : 30px ;
 .card-content.article-content {
   
   position: relative;
-  height: 100px;
+  height: 75px;
   overflow:hidden;
   white-space: pre-line;
-  
   padding: 0 20px 20px 20px;
   margin: 5px;
   
@@ -194,13 +232,8 @@ margin-bottom : 30px ;
   z-index: 2;
   width: 100%;
   height: 80px;
-  background: linear-gradient(rgba(255,255,255,0) 0px, #fff 70px);   
+  background: linear-gradient(rgba(255,255,255,0) 0px, #fff 80px);   
 }
-
-
-
-
-
 
 .comment {
   white-space: pre-line;
@@ -377,17 +410,15 @@ trix-editor {
   left: 1px;
 }
 
-.more-read {
-  
-}
 
 .card-content.article-tags {
-  padding-top:0;
-  padding-bottom: 0;
+  padding-top:17px;
+  padding-bottom: 10px;
 }
 
 .notice {
-  padding-left: 74px;
+  padding-left: 60px;
+  
 }
 
 .regi-btn {
@@ -407,6 +438,17 @@ trix-editor {
 
 .card-content.padding-0-top-bottom {
   padding-top: 0;
+  padding-bottom: 0;
+}
+
+.card-content.padding-0-bottom {
+  padding-bottom: 0;
+  position: relative;
+  top:10px;
+}
+
+.card-content.article-user{
+  padding-top:10px;
   padding-bottom: 0;
 }
 
@@ -440,15 +482,16 @@ trix-editor {
 }
 
 .follow-btn {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  width:148px;
 }
 .profile {
   white-space: pre-line;
+  word-break: break-all;
 }
 
 .inline {
   display: inline-block;
+  vertical-align: top;
 }
 
 .card-content.follow-form {
@@ -481,6 +524,7 @@ trix-editor {
 .small {
   width: 50px;
   height: 50px;
+  object-fit: cover;
 }
 
 .big {
@@ -509,6 +553,10 @@ trix-editor {
 
 .card-content.top-0 {
   padding-top: 3px;
+}
+
+.card-content.padding-top-0 {
+  padding-top: 0;
 }
 
 .article-profile {
@@ -577,7 +625,6 @@ trix-editor {
 }
 a.receive-message {
   color:black;
-  text-decoration: underline;
   word-break: break-all;
 }
 
@@ -586,3 +633,56 @@ a.receive-message {
   position: relative;
   bottom: 5px;
 }
+
+.checkboxes {
+  padding-top:20px;
+}
+
+.coach {
+  color:lightgreen;
+  
+  position: relative;
+  bottom: 5px;
+  left: 10px;
+}
+
+.coach-index {
+  color:lightgreen;
+  font-size: 14px;
+}
+
+.user-index {
+  height:50px
+}
+
+.stars {
+  position: relative;
+  left:58px;  
+}
+
+a.title {
+  font-size: 30px;
+  color:#444444;
+  font-weight: 700;
+}
+
+.coach-article {
+  position: relative;
+  bottom: 5px;
+}
+
+.brake-all {
+  word-break: break-all;
+}
+
+.margin-side-10 {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+/*
+.side {
+  width:90%;
+}
+*/
+

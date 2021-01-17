@@ -2,7 +2,7 @@
 
   <% if current_user?(@user) %>
     <div class="padding-updown-10">
-      <%= link_to "アカウント情報の更新",edit_user_path(current_user) %></p>
+      <%= link_to "アカウント情報の更新",edit_user_path(current_user),class:"amazon-blue" %></p>
     </div>
     <div class="padding-updown-10">
       <%= render 'users/profile_page' %>
@@ -21,7 +21,7 @@
 
   <div class="padding-updown-10">
     
-    <%= link_to "レビューを書く・見る", user_reviews_path(@user) %> 
+    <%= link_to "レビューを書く・見る", user_reviews_path(@user),class:"amazon-blue" %> 
   </div>
 </div>
 

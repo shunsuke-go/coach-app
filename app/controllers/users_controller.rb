@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  include UsersHelper
   before_action :logged_in_user,
                 only: [:index, :edit, :update, :destroy, :following, :followers]
   before_action :correct_user, only: [:edit, :update]
@@ -27,11 +28,11 @@ class UsersController < ApplicationController
     @review = Review.new
     @reviews = @user.passive_reviews
     @ave_rate = @user.ave_rate.round(1) unless @user.ave_rate.nil?
-   # @point = @user.num_point(@reviews) unless @reviews.empty?
   end
 
   def create
     @user = User.new(user_params)
+    @user.toggle(:coach) if params[:user][:coach] == '1'
     if @user.save
       log_in(@user)
       redirect_to new_user_profile_path(@user)
@@ -48,6 +49,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+    @user.toggle(:coach) if params[:user][:coach] == '1'
     @user.remove_avatar! if params[:user][:avatar_delete] == '1'
     if @user.update!(user_params)
       flash[:success] = '更新に成功しました！'
@@ -60,7 +62,8 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.paginate(page: params[:page], per_page: 5)
+    @users = User.includes(:profile).paginate(page: params[:page], per_page: 5)
+    @coaches = User.where('coach = true').includes(:profile).paginate(page: params[:page], per_page: 5)
   end
 
   def destroy

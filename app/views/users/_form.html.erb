@@ -16,13 +16,29 @@
 
     <%= f.label :avatar, "サムネイル" %>
     <%= f.file_field :avatar, class: 'form-control', accept: "avatar/jpeg,avatar/gif,avatar/png" %>
-    <% if @user.avatar? %>
-      <%= f.label :avatar_delete,class: 'checkbox inline' do %>
-        <%= f.check_box :avatar_delete %>
-      <span>画像を削除</span>
+
+    <div class="checkboxes">
+      <% if @user.avatar? %>
+        <%= f.label :avatar_delete,class: 'checkbox inline' do %>
+          <%= f.check_box :avatar_delete %>
+        <span>画像を削除</span>
+        <% end %>
+      <% end %>　
+      <% if @user.coach? %>
+        <%= f.label :coach,class: 'checkbox inline' do %>
+        <%= f.check_box :coach %>
+        <span>コーチ登録を解除する</span>        
+        <% end %>
+      <% else %>
+        <%= f.label :coach,class: 'checkbox inline' do %>
+        <%= f.check_box :coach %>
+        <span>コーチとして登録する</span>
+        <% end %>
       <% end %>
-    <% end %>
-    <p class="center"><%= f.submit "登録",class:"btn regi-btn"%></p>
+    </div>
+    <p class="center">
+      <%= f.submit "登録",class:"btn regi-btn"%>
+    </p>
     <% end %>
   </div>
 </div>

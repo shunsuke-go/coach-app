@@ -2,16 +2,7 @@
 <div class="row">
   <div class="col s12 m12 l8 push-l2">
     <div class="card">
-      <div class="card-content">   
-        <% if @user[0].avatar.url.present? %>
-        <%= link_to image_tag("/uploads/user/avatar/#{@user.id}/#{@user[0].avatar.url}",
-         class: "circle small"), user_path(@user[0]) %>
-        <% else %>
-        <%=link_to image_tag('no-image.jpg', class: "circle small"), user_path(@user[0]) %>
-        <% end %> 
-          <span class="profile-link">
-          <%= link_to @user[0].name,user_path(@user[0]) %>
-          </span>        
+      <div class="card-content top-0"> 
         <h5 class="center">メッセージ</h5>
         <div class="divider"></div>
         <div id="messages" class="row">
