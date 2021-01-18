@@ -5,12 +5,16 @@
   <%=link_to image_tag('no-image.jpg', class: "circle small"), user_path(user) %>
   <% end %>
 </span>
+<% if user.coach? %>
 <span class="inline">
   <%= link_to user.name,user %>
 <div>
-  <% if user.coach? %>
   <i class="far fa-check-circle" style="color:lightgreen"></i>
   <span style="color:lightgreen">コーチ</span>
-  <% end %>
 </div>
 </span>
+<% else %>
+  <span class="not-coach">
+    <%= link_to user.name,user %>
+  </span>
+<% end %>
