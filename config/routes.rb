@@ -18,7 +18,6 @@ Rails.application.routes.draw do
   end
 
   resources :relationships, only: [:create, :destroy]
-
   resources :articles, only: [:create, :destroy, :show, :index, :new, :edit, :update] do
     resources :comments, only: [:create, :destroy]
     resources :likes, only: [:create, :destroy]
@@ -28,6 +27,7 @@ Rails.application.routes.draw do
     end
   end
   get '/articles', to: 'static_pages#home'
+  resources :searches, only: [:index]
 
   resources :rooms, only: [:show, :create, :index]
   resources :messages, only: [:create, :destroy]

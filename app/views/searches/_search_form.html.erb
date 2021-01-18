@@ -1,0 +1,6 @@
+<%= search_form_for @keyword = Article.ransack(),
+ url: searches_path do |f| %>
+<%= f.label :action_text_rich_text_body_cont %>
+<%= f.search_field :action_text_rich_text_body_cont %>
+<%= f.submit class: "btn" %>
+<% end %>

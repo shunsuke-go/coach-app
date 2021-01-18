@@ -7,6 +7,7 @@ class Article < ApplicationRecord
   has_many :liked_users, through: :likes, source: :user
   has_many :notifications, dependent: :destroy
   has_one :map, dependent: :destroy
+  has_one :action_text_rich_text, class_name: 'ActionText::RichText', as: :record
 
   default_scope -> { order(created_at: :desc) }
   validates :user_id, presence: true
