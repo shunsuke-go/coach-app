@@ -25,6 +25,11 @@ class MessagesController < ApplicationController
     end
   end
 
+  def destroy
+    @message = Message.find(params[:id])
+    @message.destroy
+  end
+
   def box
     @user = User.find(params[:id])
 
