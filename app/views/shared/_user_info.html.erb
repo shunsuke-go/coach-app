@@ -15,6 +15,9 @@
       <div class="padding-updown-10">
       <%= render 'users/room_form' %>
       </div>
+    <% else %>
+      <%= link_to "フォロー",login_path, class:"btn follow-btn margin-t-b-5" %>
+      <%= link_to "メッセージを送る",login_path, class:"btn blue blue darken-1 white-text width-200 margin-t-b-5" %>
     <% end %>
   <% end %>      
 

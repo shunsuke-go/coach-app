@@ -150,6 +150,15 @@ class User < ApplicationRecord
     notification.save if notification.valid?
   end
 
+  def users_room(current_user)
+    if id != current_user.id
+    room = Room.find_by_sql("SELECT * FROM rooms WHERE id IN
+    (SELECT room_id FROM entries WHERE user_id = #{id} &&
+    room_id IN (SELECT room_id FROM entries WHERE user_id = #{current_user.id}))")
+    end
+  end
+
+
   private
 
     def downcase_email

@@ -37,7 +37,8 @@
         </li>
         <% else %>
         <li><%= link_to "ログイン", login_path %></li>
-        <li><%= link_to "登録",signup_path %></li>
+        <li><%= link_to "登録", signup_path %></li>
+        <li><%= link_to "ゲストログイン （1クリック）", '/guest_login',class:"btn red" %>
         
         <% end %>   
        </ul>

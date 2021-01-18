@@ -8,7 +8,7 @@
       検索位置：<%= @area %>
       <ul class="article">
         <%= render @articles %>
-        <%= will_paginate @articles %>
+        <span class="center"><%= will_paginate @articles %></span>
       </ul>
     </div>
     <% else %>
