@@ -43,11 +43,10 @@ class ReviewsController < ApplicationController
     @reviews = @user.passive_reviews
     @review = Review.new
     @ave_rate = @user.ave_rate.round(1) unless @user.ave_rate.nil?
+
     if logged_in?
-      @room = Room.find_by_sql("SELECT * FROM rooms WHERE id IN
-        (SELECT room_id FROM entries WHERE user_id = #{@user.id} &&
-        room_id IN (SELECT room_id FROM entries WHERE user_id = #{current_user.id}))")
-      if @room[0].nil?
+      @room = @user.users_room(current_user)
+      if @room.blank?
         @room = Room.new
         @entry = Entry.new
       end

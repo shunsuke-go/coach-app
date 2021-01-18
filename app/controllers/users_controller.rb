@@ -15,10 +15,8 @@ class UsersController < ApplicationController
       :user, :liked_users, :likes, :comments, :taggings, :tags
     ).paginate(page: params[:page], per_page: 5)
     if logged_in?
-      @room = Room.find_by_sql("SELECT * FROM rooms WHERE id IN
-        (SELECT room_id FROM entries WHERE user_id = #{@user.id} &&
-        room_id IN (SELECT room_id FROM entries WHERE user_id = #{current_user.id}))")
-      if @room[0].nil?
+      @room = @user.users_room(current_user)
+      if @room.blank?
         @room = Room.new
         @entry = Entry.new
       end
@@ -122,6 +120,7 @@ class UsersController < ApplicationController
       log_in(guest_user)
       flash[:notice] = 'ゲストユーザーとしてログインしました'
     end
+    flash[:notice] = 'すでにログインしています'
     redirect_to root_path
   end
 
