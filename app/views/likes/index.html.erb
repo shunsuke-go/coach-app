@@ -1,11 +1,13 @@
-<% if @articles.any? %>
-  <div class="row">
-    <div class="col s12 m8 push-m2">
-      <h5 class="center">いいねした記事</h5>
-      <ul class="articles">
-        <%= render @articles %>
-        <div class="center"><%= will_paginate @articles %></div>
-      </ul>
-    </div>
+<div class="row">
+  <div class="col s12 m8 push-m2">
+    <% if @articles.any? %>
+    <h5 class="center">いいねした記事</h5>
+    <ul class="articles">
+      <%= render @articles %>
+      <div class="center"><%= will_paginate @articles %></div>
+    </ul>
+    <% else %>
+      <h5 class="center">いいねした記事はありません</h5>
+    <% end %>
   </div>
-<% end %>
+</div>
