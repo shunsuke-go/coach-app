@@ -16,18 +16,42 @@ fetch("/api/v1/articles/<%=@article.id%>/comments",
   var new_comment = data[data.length-1]
   var hidden = (<%= current_user.id %> != new_comment.user.id) ? "hidden":""
   var img = (new_comment.user.avatar != null) ? new_comment.user.avatar:"/assets/no-image.jpg"
-  
-  comments.insertAdjacentHTML('beforeend',`
-  <li id='comment_${new_comment.id}'　class='comment-${new_comment.id} margin-20'>
-    <div class="margin-20">  
-      <a href="/users/${new_comment.user.id}">
-        <img class="circle small" src=${img}>
-      </a>
-      <span class="profile-link">
+  var coach = (new_comment.user.coach == true) ? "":"hidden"
+  coach_check = () => {
+    if(new_comment.user.coach == true){
+    var coach_name = `
+      <span class="inline">
         <a href="/users/${new_comment.user.id}">
           ${new_comment.user.name}
         </a>
+        <div>
+          <i class="far fa-check-circle" style="color:lightgreen"></i>
+          <span style="color:lightgreen">コーチ</span>
+        </div>
+      </span>      
+      `
+      return coach_name
+    }else {
+     var not_coach_name = `
+      <span class="not-coach">
+        <a href="/users/${new_comment.user.id}">
+          ${new_comment.user.name}
+        </a>    
+      </span>      
+      `
+      return not_coach_name
+    }
+  }
+
+  comments.insertAdjacentHTML('beforeend',`
+  <li id='comment_${new_comment.id}'　class='comment-${new_comment.id} margin-20'>
+    <div class="margin-20">
+      <span>  
+        <a href="/users/${new_comment.user.id}">
+          <img class="circle small" src=${img}>
+        </a>
       </span>
+      ${coach_check()}
       <div class="comment">
         ${new_comment.content}
       </div>
@@ -42,10 +66,6 @@ fetch("/api/v1/articles/<%=@article.id%>/comments",
 }).catch(e => {
   console.log(e);
 })
-
-
-
-
 
 comment_error.textContent='';
 comment_content.value='';

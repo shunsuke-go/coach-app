@@ -9,5 +9,6 @@ json.array!(@comments) do |comment|
     json.id comment.user.id
     json.token comment.user.token
     json.avatar comment.user.avatar.url
+    json.coach comment.user.coach?
   end
 end
