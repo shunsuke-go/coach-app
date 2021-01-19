@@ -1,0 +1,18 @@
+var follow_form = document.getElementById('follow_form');
+var followers = document.getElementById('followers')
+
+follow_form.innerHTML="<%= j(render 'users/follow', user: @user) %>"
+
+fetch('/api/v1/users/<%= @user.id %>/relationships/followers_count',{
+  mode: 'cors',
+  method: 'GET',
+  headers: {
+    Authorization: "Token <%= current_user.token %>",
+    "Content-Type": "application/json"
+  }
+}).then(response => response.json())
+.then(data => {
+  followers.innerHTML=data.count
+}).catch(e => {
+  console.log(e);
+})

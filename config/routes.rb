@@ -21,7 +21,6 @@ Rails.application.routes.draw do
   resources :articles, only: [:create, :destroy, :show, :index, :new, :edit, :update] do
     resources :comments, only: [:create, :destroy]
     resources :likes, only: [:create, :destroy]
-    get '/likes/counts', to: 'likes#count'
     collection do
       get :tags
     end
@@ -44,10 +43,12 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users do
         resources :reviews, only: [:index], controller: 'reviews'
+        get '/relationships/followers_count', to: 'relationships#followers_count'
       end
 
       resources :articles do
         resources :comments, only: [:index], controller: 'comments'
+        get '/likes/count', to: 'likes#count'
       end
     end
   end

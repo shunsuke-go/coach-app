@@ -4,7 +4,7 @@ var likes_count = document.getElementById('likes_count_<%= @article.id %>');
 
 like_form.innerHTML="<%= j(render 'like_button', article: @article) %>";
 
-fetch('/articles/<%= @article.id %>/likes/counts.json',{
+fetch('/api/v1/articles/<%= @article.id %>/likes/count',{
   mode: 'cors',
   method: 'GET',
   headers: {
@@ -13,7 +13,7 @@ fetch('/articles/<%= @article.id %>/likes/counts.json',{
   }
 }).then(response => response.json())
 .then(data => {
-likes_count.textContent=data.counts
+likes_count.textContent=data.count
 }).catch(e => {
   console.log(e);
 })
