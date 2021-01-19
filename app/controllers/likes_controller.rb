@@ -1,5 +1,4 @@
 class LikesController < ApplicationController
-  before_action :authenticate, only: :count
   before_action :logged_in_user
 
   def create

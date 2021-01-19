@@ -8,4 +8,4 @@ module Api::V1
       render json: count
     end
   end
-end  
+end
