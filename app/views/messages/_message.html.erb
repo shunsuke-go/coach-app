@@ -3,7 +3,13 @@
   <div class="current_user">
     <%= message.content %>
   </div>
-  <div class="right gray">
+  <div class="right">
+    <% if current_user?(message.user) %>
+      <%= link_to "削除",message_path(message), method: :delete,
+      data: { confirm: "削除しますか？" }, remote: true %>
+    <% end %>
+  </div>
+  <div class="right gray message-time-c">
     <%= message.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
   </div>
   <% else %>

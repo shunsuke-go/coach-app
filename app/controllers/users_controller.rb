@@ -115,12 +115,13 @@ class UsersController < ApplicationController
   end
 
   def guest_login
-    unless logged_in?
+    if logged_in?
+      flash[:notice] = 'すでにログインしています'
+    else
       guest_user = User.find_by(email: 'guest@guest.com')
       log_in(guest_user)
       flash[:notice] = 'ゲストユーザーとしてログインしました'
     end
-    flash[:notice] = 'すでにログインしています'
     redirect_to root_path
   end
 

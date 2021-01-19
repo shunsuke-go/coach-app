@@ -48,7 +48,7 @@
 
   <% if logged_in? %>
   <ul id="dropdown1" class="dropdown-content">
-    <li><%= link_to "プロフィール", user_path(current_user) %></li>
+    <li><%= link_to "プロフィール", user_path(current_user) %></span></li>
     <li><%= link_to "セッティング", edit_user_path(current_user) %></li>
     <li class="divider"></li>
     <li>        
@@ -56,11 +56,6 @@
     </li>
   </ul>
   <% end %>
-
-
-
-
-
 
   <ul class="sidenav" id="mobile-demo">
     <li><%= link_to "ホーム",   root_path %></li>

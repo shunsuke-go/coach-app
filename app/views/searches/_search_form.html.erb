@@ -1,0 +1,17 @@
+<div class="card">
+  <div class="card-content">
+    <h6>
+      <i class="fas fa-search header-icons" style="color:lightblue"></i>    
+      キーワードで探す
+    </h6>
+  </div>
+    <div class="divider"></div>
+  <div class="card-content">
+    <%= search_form_for @keyword = Article.ransack(),
+    url: searches_path do |f| %>
+    <%= f.label :action_text_rich_text_body_cont, "キーワード" %>
+    <%= f.search_field :action_text_rich_text_body_cont %>
+    <%= f.submit class: "btn" %>
+    <% end %>
+  </div>
+</div>

@@ -1,12 +1,11 @@
-
-  <ul class="collection with-header ranking z-depth-1 hoverable side">
-    <li class="collection-header">
-      <h6>
-      <i class="fas fa-crown header-icons" style="color:gold"></i>レビューランキング
-      </h6>
-      <span class="gray" style="font-size:12px">※５件以上のレビューが必要です<span>
-      <% if @user_ranks.any? %>
-      <%= render 'shared/user_rank', collection: @user_ranks %>
-      <% end %>
-    </li>
-  </ul>
+<ul class="collection with-header ranking z-depth-1 hoverable side">
+  <li class="collection-header">
+    <h6>
+    <i class="fas fa-crown header-icons" style="color:gold"></i>レビューランキング
+    </h6>
+    <span class="gray" style="font-size:12px">※５件以上のレビューが必要です<span>
+    <% if @user_ranks.any? %>
+    <%= render 'shared/user_rank', collection: @user_ranks %>
+    <% end %>
+  </li>
+</ul>

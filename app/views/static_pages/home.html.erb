@@ -1,35 +1,23 @@
-<% if logged_in? %>
-  <div class="row">
-    <aside class="col s12 m12 l4">        
-      <section class="article_form fixed-action-btn">
-        <a class="waves-effect waves-light  btn red form-btn btn-floating" href="<%= new_article_path %>">
-        <i class="fas fa-pen fa-5x pen"></i></a>
-      </section>
-      <%= render 'maps/new_map' %>
-      
-      <%= render 'shared/ranks' %>
-    </aside>
-
-    <div class="col s12 m12 l8 feed">
-      <%= render 'shared/feed' %>
-    <div class="center"><%= will_paginate @feed_items %></div>
-    </div>  
+<div class="row">
+  <div class="col s12 m12 l4">        
+    <div class="article_form fixed-action-btn">
+      <a class="waves-effect waves-light  btn red form-btn btn-floating" href="<%= new_article_path %>">
+      <i class="fas fa-pen fa-5x pen"></i></a>
     </div>
-<% else %>
-  <div class="row">
-    <div class="col s12 m12 l4">
-      <%= render 'maps/new_map' %>  
-      <%= render 'shared/ranks' %>
-      <section class="article_form fixed-action-btn">
-        <a class="waves-effect waves-light  btn red form-btn btn-floating" href="<%= new_article_path %>">
-        <i class="fas fa-pen fa-5x pen"></i></a>
-      </section>
-    </div>
-    <div class="col s12 m12 l8 feed">
-      <%= render @articles %>
-      <div class="center"><%= will_paginate @articles %></div>
-    </div>      
+    <%= render 'maps/new_map' %>
+    <%= render 'searches/search_form' %>
+    <%= render 'shared/ranks' %>
   </div>
-<% end %>
+
+  <div class="col s12 m12 l8 feed">
+    <% if logged_in? %>
+    <%= render 'shared/feed' %>
+    <div class="center"><%= will_paginate @feed_items %></div>
+    <% else %>      
+    <%= render @articles %>
+    <div class="center"><%= will_paginate @articles %></div>
+    <% end %>
+  </div>  
+</div>
 
 
