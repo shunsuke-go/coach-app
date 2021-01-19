@@ -17,7 +17,7 @@
       </div>
       <% if article.tags.any? %>
       <div class="card-content article-tags">
-        <%= render 'articles/tag_list',tag_list: article.tag_list %>
+        <%= render 'articles/tag_list',tag_list: article.tags.pluck(:name) %>
       </div>
       <% end %>
 

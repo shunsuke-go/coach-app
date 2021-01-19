@@ -1,19 +1,18 @@
 <div class="card hoverable side">
   <div class="card-content">
     <h6>
-      <i class="fas fa-search header-icons" style="color:lightblue"></i>
+      <i class="fas fa-globe-asia header-icons" style="color:lightblue"></i>
       近所の募集を探す
     </h6> 
   </div>
-  <div class="card-action" id="map_card">
-    <div class="card-content">
+  <div class="divider"></div>
+    <div class="card-content" id="map_card">
       <%= form_with(url:maps_path,method: :get,id: "map_form",local: true) do |f|%>
-      <%= f.label :area,"位置検索" %>
+      <%= f.label :area,"検索する位置" %>
       <%= f.text_field :area, class: "materialize-textarea", id: "map_search" %>
       <%= f.submit "検索",class: "btn",id: "search_btn" %>
       <% end %>
-    </div> 
-  </div>
+    </div>
 </div>
 
 <%= javascript_pack_tag 'maps/map_search' %>
