@@ -1,7 +1,7 @@
   <header>
     <div class="conatiner">
     <nav>
-      <div class="nav-wrapper blue">
+      <div class="nav-wrapper cyan darken-1">
         <%= link_to "タイトル", root_path, id: "logo",class: "brand-logo" %>
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -75,11 +75,4 @@
         <% end %>
   </ul>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-    var sidenav = document.querySelectorAll('.sidenav');
-    var instances = M.Sidenav.init(sidenav,[]);
-    var dropdown = document.querySelectorAll('.dropdown-trigger');
-    var instances = M.Dropdown.init(dropdown,[]);
-  });
-</script>
+<%= javascript_pack_tag 'materialize/header' %>
