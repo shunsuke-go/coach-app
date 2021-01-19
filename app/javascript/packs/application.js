@@ -5,11 +5,11 @@
 
 require("@rails/ujs").start()
 //= require materialize
-
 //require("turbolinks").start()
-
 //↑ブラウザバック問題解決のため
 require("@rails/activestorage").start()
 require("channels")
 require("trix")
 require("@rails/actiontext")
+
+

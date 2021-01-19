@@ -13,10 +13,7 @@ button.addEventListener('click',(e) => {
       `<div class="balloon1" id="balloon1">
       <p>検索位置を入力してください</p>
       </div>`);
-  
     }
-
-
     e.preventDefault();
   };
 });
