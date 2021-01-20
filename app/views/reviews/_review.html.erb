@@ -8,7 +8,9 @@
 
   <% if logged_in? %>
     <% if review.reviewer_id == current_user.id %>
-      <%= link_to "削除",user_review_path(review.reviewed,review),method: :delete ,remote: true %></p>
+      <div class="right comment-delete">
+        <%= link_to "削除",user_review_path(review.reviewed,review),method: :delete ,remote: true %>
+      </div>
     <% end %>
   <% end %>
 <div class="divider"></div>

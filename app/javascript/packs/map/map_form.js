@@ -18,21 +18,10 @@ google.maps.event.addListener(map, 'click', mylistener);
 
      //クリックしたときの処理
 function mylistener(event){
-
-  //markerの位置を設定
-  //event.latLng.lat()でクリックしたところの緯度を取得
-  marker.setPosition(new google.maps.LatLng(event.latLng.lat(), event.latLng.lng()));
-  //marker設置
-  marker.setMap(map);    
-  console.log(event.latLng.lat(), event.latLng.lng());
-  map_lat.value = event.latLng.lat();
-  map_lng.value = event.latLng.lng();
- 
+    marker.setPosition(new google.maps.LatLng(event.latLng.lat(), event.latLng.lng()));
+    marker.setMap(map);    
+    console.log(event.latLng.lat(), event.latLng.lng());
+    map_lat.value = event.latLng.lat();
+    map_lng.value = event.latLng.lng();
+  }
 }
-}
-function deleteMarker(){
-marker.setMap(null);
-map_lat.value = "";
-map_lng.value = "";
-}
-

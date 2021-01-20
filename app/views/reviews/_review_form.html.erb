@@ -4,7 +4,7 @@
 <%= form_with(model:[@user,@review]) do |f| %>
 <%= render 'shared/error_messages', object: f.object %>
 <%= f.label :rate %>
-<%= f.text_field :rate, class: 'materialize-textarea' %>
+<%= f.select :rate, [['1',1],['2',2],['3',3],['4',4],['5',5]], prompt: "点数を選択してください" %>
 <%= f.label :content %>
 <%= f.text_area :content, class: 'materialize-textarea' %>
 <div class="center">

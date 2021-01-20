@@ -17,25 +17,50 @@ fetch("/api/v1/users/<%= @user.id %>/reviews",{
 .then(data => {
   var new_review = data[data.length-1]
   var hidden = <%= current_user.id %> != data[data.length-1].user.id  ? "hidden":""
-  var img = (data[data.length-1].user.avatar != null) ? data[data.length-1].user.avatar:"/assets/no-image.jpg"    
+  var img = (new_review.user.avatar != null) ? new_review.user.avatar:"/assets/no-image.jpg"
+  coach_check = () => {
+    if(new_review.user.coach == true){
+    var coach_name = `
+      <span class="inline">
+        <a href="/users/${new_review.user.id}">
+          ${new_review.user.name}
+        </a>
+        <div>
+          <i class="far fa-check-circle" style="color:lightgreen"></i>
+          <span style="color:lightgreen">コーチ</span>
+        </div>
+      </span>      
+      `
+      return coach_name
+    }else {
+     var not_coach_name = `
+      <span class="not-coach">
+        <a href="/users/${new_review.user.id}">
+          ${new_review.user.name}
+        </a>    
+      </span>      
+      `
+      return not_coach_name
+    }
+  }
+  
   function rate_stars() {    
-    var star = `<i class="fas fa-star" style="color:gold"></i>`
+    var star = `<i class="fas fa-star review-stars" style="color:gold"></i>`
     for (var i = 1; i < data[data.length-1].rate; i++) {
-      star = star + `<i class="fas fa-star" style="color:gold"></i>`
+      star = star + `<i class="fas fa-star review-stars" style="color:gold"></i>`
     }
     return star
   }
 
 reviews.insertAdjacentHTML('beforeend',`
-<li id="review_${new_review.id}" class="review_${new_review.id} margin-20">    
+<li id="review_${new_review.id}" class="review_${new_review.id} margin-20">
   <div>
-    <a href="/users/${new_review.user.id}">
-      <img class="circle small" src=${img}>
-    </a>
-    <span class="profile-link">
-    <a href="/users/${new_review.user.id}">
-      ${new_review.user.name}
-    </a>  
+    <span>
+      <a href="/users/${new_review.user.id}">
+        <img class="circle small" src="${img}">
+      </a>
+    </span>
+    ${coach_check()}
   </div>
 
   <div id="stars">
@@ -44,11 +69,12 @@ reviews.insertAdjacentHTML('beforeend',`
   <div>
     ${new_review.content}
   </div>
-  <a data-remote="true" rel="nofollow" data-method="delete" 
-    href="/users/${new_review.user.id}/reviews/${new_review.id}"
-    ${hidden}>削除
-  </a>
-  </p>
+  <div class="right comment-delete">
+    <a data-remote="true" rel="nofollow" data-method="delete" 
+      href="/users/${new_review.user.id}/reviews/${new_review.id}"
+      ${hidden}>削除
+    </a>
+  </div>
   <div class="divider"></div>
 </li>
 `);
@@ -67,14 +93,14 @@ fetch("/users/<%= @user.id %>/reviews/ave_point_cal",{
 }).then(response => response.json())
 .then(data => {
   var ave_points_int = Math.floor(data.ave_points);
-  var star = `<i class="fas fa-star" style="color:gold"></i>`
+  var star = `<i class="fas fa-star review-stars" style="color:gold"></i>`
   function ave_point_star() {
     for (var i = 1; i < ave_points_int; i++){
-      star = star + `<i class="fas fa-star" style="color:gold"></i>`
+      star = star + `<i class="fas fa-star review-stars" style="color:gold"></i>`
     }
 
     if (data.ave_points - ave_points_int >= 0.5) {
-      star = star + `<i class="fas fa-star-half" style="color:gold"></i>`
+      star = star + `<i class="fas fa-star-half review-stars" style="color:gold"></i>`
     } 
 
     return star
