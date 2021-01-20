@@ -10,9 +10,9 @@
           <%= f.label :tag_list,"タグ ※コンマ区切りで記入してください" %>
           <%= f.text_field :tag_list, value: @article.tag_list.join(','), class: "materialize-textarea" %>
 
-          <div class="place">
+          
             <span class="marker">教える場所 ※地図をクリックしてもOK</span>            
-          </div>
+          
           <div class="search-box input-field">
             <input type="text" id="address" placeholder="地名、施設名などを入力するか、地図をクリックしてマーカーを立ててください">
             <a class="btn" onclick="codeAddress()">地図検索</a>
@@ -95,7 +95,10 @@ function codeAddress(){
       center: myLatLng,
       zoom: 11
       });
-  geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+  geocoder.geocode( { 
+    'address': inputAddress,
+     'region': 'jp'
+    }, function(results, status) {
     if (status == 'OK') {
       map.setCenter(results[0].geometry.location);
       console.log(results[0].geometry.location);
