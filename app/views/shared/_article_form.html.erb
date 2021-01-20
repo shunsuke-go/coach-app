@@ -7,13 +7,18 @@
         <div id="article_form" class="field">
           <%= f.label :title, "タイトル" %>
           <%= f.text_field :title,class: "materialize-textarea" %>
-          <%= f.label :tag_list,"タグ ※カンマ区切りで記入してください" %>
+          <%= f.label :tag_list,"タグ ※コンマ区切りで記入してください" %>
           <%= f.text_field :tag_list, value: @article.tag_list.join(','), class: "materialize-textarea" %>
 
           <div class="place">
-          教える場所
-          <a id="del" class="btn marker-delete" onclick="deleteMarker();">マーカー削除</a>
+            <span class="marker">教える場所 ※地図をクリックしてもOK</span>            
           </div>
+          <div class="search-box input-field">
+            <input type="text" id="address" placeholder="地名、施設名などを入力するか、地図をクリックしてマーカーを立ててください">
+            <a class="btn" onclick="codeAddress()">地図検索</a>
+            <a id="del" class="btn marker-delete right" onclick="deleteMarker()">マーカー削除</a>
+          </div>
+          
           
           <div id='map' class="margin-30"></div>          
           <%= f.fields_for :map, @article.build_map do |map| %>   
@@ -35,5 +40,77 @@
 
 
 
-<%= javascript_pack_tag 'map/map_form' %>
+
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API'] %>&callback=initMap" async defer></script>
+<script>
+var marker
+var myLatLng
+var map_lat
+var map_lng
+var geocoder
+var map_result
+
+
+function initMap (){
+  myLatLng = {lat: 35.68090045006303, lng: 139.76690798417752}
+  map_lat = document.getElementById('article_map_latitude')
+  map_lng = document.getElementById('article_map_longitude')
+  marker = new google.maps.Marker();
+
+  let map = new google.maps.Map(document.getElementById('map'), {
+  center: myLatLng,
+  zoom: 12
+  });
+
+google.maps.event.addListener(map, 'click', mylistener);
+
+     //クリックしたときの処理
+function mylistener(event){
+    marker.setPosition(new google.maps.LatLng(event.latLng.lat(), event.latLng.lng()));
+    marker.setMap(map);    
+    console.log(event.latLng.lat(), event.latLng.lng());
+    map_lat.value = event.latLng.lat();
+    map_lng.value = event.latLng.lng();
+  }
+}
+
+  function deleteMarker(){
+  if(map_result != null){
+    initMap();
+    map_result = null;
+    marker.setMap(null);
+    map_lat.value = "";
+    map_lng.value = "";
+  } else {
+    marker.setMap(null);
+    map_lat.value = "";
+    map_lng.value = "";
+  }
+}
+
+function codeAddress(){
+  geocoder = new google.maps.Geocoder()
+  let inputAddress = document.getElementById('address').value;
+  let map = new google.maps.Map(document.getElementById('map'), {
+      center: myLatLng,
+      zoom: 11
+      });
+  geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+    if (status == 'OK') {
+      map.setCenter(results[0].geometry.location);
+      console.log(results[0].geometry.location);
+      var marker = new google.maps.Marker({
+          map: map,
+          position: results[0].geometry.location
+      });
+      map_result = results[0].geometry.location;
+      map_lat.value = map_result.lat();
+      map_lng.value = map_result.lng();
+      console.log(map_lat.value,map_lng.value);
+    } else {
+      alert('該当する結果がありませんでした');
+      initMap();
+    }
+  });   
+}
+</script>
