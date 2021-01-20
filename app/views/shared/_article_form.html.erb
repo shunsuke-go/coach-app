@@ -16,12 +16,14 @@
             </div>
             <div class="input-field">
               <input type="text" id="address" placeholder="地名、施設名などを入力するか、地図をクリックしてマーカーを立ててください">
-              <label>教える場所 ※地図をクリックしてもOK</label>
+              <label>教える場所</label>
               <a class="btn" onclick="codeAddress()">地図検索</a>
-              <a id="del" class="btn marker-delete right" onclick="deleteMarker()">マーカー削除</a>
+              <a id="del" class="btn marker-delete right" onclick="deleteMarker()">
+              <i class="fas fa-map-marker-alt fas-2x" style="color:red"></i>削除
+              </a>
             </div>
 
-            <div id='map' class="margin-30"></div>          
+            <div id='map' class="margin-t-b-14"></div>          
             <%= f.fields_for :map, @article.build_map do |map| %>   
             <%= map.hidden_field :latitude %>
             <%= map.hidden_field :longitude %>
@@ -50,7 +52,7 @@ var map_lat
 var map_lng
 var geocoder
 var map_result
-
+let map
 
 function initMap (){
   myLatLng = {lat: 35.68090045006303, lng: 139.76690798417752}
@@ -58,7 +60,7 @@ function initMap (){
   map_lng = document.getElementById('article_map_longitude')
   marker = new google.maps.Marker();
 
-  let map = new google.maps.Map(document.getElementById('map'), {
+  map = new google.maps.Map(document.getElementById('map'), {
   center: myLatLng,
   zoom: 12
   });
@@ -76,40 +78,25 @@ function mylistener(event){
 }
 
   function deleteMarker(){
-  if(map_result != null){
-    initMap();
-    map_result = null;
     marker.setMap(null);
     map_lat.value = "";
     map_lng.value = "";
-  } else {
-    marker.setMap(null);
-    map_lat.value = "";
-    map_lng.value = "";
-  }
 }
 
 function codeAddress(){
   geocoder = new google.maps.Geocoder()
   let inputAddress = document.getElementById('address').value;
-  let map = new google.maps.Map(document.getElementById('map'), {
-      center: myLatLng,
-      zoom: 11
-      });
   geocoder.geocode( { 
     'address': inputAddress,
      'region': 'jp'
     }, function(results, status) {
     if (status == 'OK') {
       map.setCenter(results[0].geometry.location);
-      console.log(results[0].geometry.location);
-      var marker = new google.maps.Marker({
-          map: map,
-          position: results[0].geometry.location
-      });
       map_result = results[0].geometry.location;
       map_lat.value = map_result.lat();
       map_lng.value = map_result.lng();
+      marker.setPosition(new google.maps.LatLng(map_result.lat(), map_result.lng()));
+      marker.setMap(map);
       console.log(map_lat.value,map_lng.value);
     } else {
       alert('該当する結果がありませんでした');

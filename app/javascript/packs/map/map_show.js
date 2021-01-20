@@ -14,7 +14,7 @@ window.initMap = function (){
 
 let map = new google.maps.Map(document.getElementById('map'), {
 center: myLatLng,
-zoom: 11
+zoom: 16
   });
 
  marker = new google.maps.Marker();
