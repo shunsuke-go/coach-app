@@ -1,6 +1,8 @@
-<%= form_with(model:@message) do |f| %> </p>
-  <%= f.label :content, "メッセージ" %>
-  <%= f.text_area :content, class:'materialize-textarea' %>
+<%= form_with(model:@message) do |f| %></p>
+  <div class="input-field">
+    <%= f.text_area :content, class:'materialize-textarea' %>
+    <%= f.label :content, "メッセージ" %>
+  </div>
   <%= f.submit "送信",class:"btn"%>
   <%= hidden_field_tag :user_id,@user[0].id %>
   <%= hidden_field_tag :room_id,@room.id %>

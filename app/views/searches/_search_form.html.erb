@@ -9,8 +9,10 @@
   <div class="card-content">
     <%= search_form_for @keyword = Article.ransack(),
     url: searches_path do |f| %>
-    <%= f.label :action_text_rich_text_body_cont, "キーワード" %>
-    <%= f.search_field :action_text_rich_text_body_cont %>
+    <div class="input-field">
+      <%= f.search_field :action_text_rich_text_body_cont %>
+      <%= f.label :action_text_rich_text_body_cont, "キーワード" %>
+    </div>
     <%= f.submit class: "btn" %>
     <% end %>
   </div>

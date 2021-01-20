@@ -3,11 +3,12 @@
 <div id="comment_error">
 </div>
 <div class="input-field">
-  <%= f.text_area :content,class: 'materialize-textarea',placeholder:"コメント" %>
+  <%= f.text_area :content,class: 'materialize-textarea' %>
+  <%= f.label :content, "本文" %>
+</div>
 <% if logged_in? %>  
   <%= f.submit "投稿",class:"btn btn-primary",id:"comment_button"%>
 <% else %>
   <%= link_to "投稿", login_path, class:"btn" %>
 <% end %>
-</div>
 <% end %>

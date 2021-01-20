@@ -5,6 +5,7 @@ json.array!(@reviews) do |review|
   json.rate_floor review.rate.floor
   json.user do
     json.name review.reviewer.name
+    json.coach review.reviewer.coach?
     json.id review.reviewer.id
     json.avatar review.reviewer.avatar.url
   end
