@@ -320,26 +320,14 @@ button:focus {
 
 
 .balloon1 {
-  position: relative;
-  display: inline-block;
-  left: 20px;
+  
+  
+  
   margin: 1.5em 0;
-  padding: 7px 10px;
   min-width: 120px;
   max-width: 100%;
   color: #555;
   font-size: 14px;
-  background:yellow;
-}
-
-.balloon1:before {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -15px;
-  border: 15px solid transparent;
-  border-top: 15px solid yellow;
 }
 
 .balloon1 p {
@@ -376,7 +364,6 @@ trix-editor {
 }
 
 .marker-delete {
-  margin-left: 20px;
   background-color: lightblue;
   color:black;
 }
@@ -436,7 +423,7 @@ trix-editor {
 }
 
 .login-btn {
-  width:30%;
+  width:208px;
   margin-top: 30px;
 }
 
@@ -740,4 +727,9 @@ a.title {
 
 .review-stars {
   margin-right:4px
+}
+
+.margin-t-b-14 {
+  margin-top: 14px;
+  margin-bottom: 14px;
 }
