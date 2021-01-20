@@ -6,13 +6,14 @@
     <div class="card">
       <div class="card-content">
         <%= form_with(url: login_path,scope: :session,local: true) do |f|%>
-
-        <%= f.label :email,"メールアドレス" %>
-        <%= f.email_field :email,class: 'form-controll' %>
-        
-        <%= f.label :password,"パスワード" %>
-        <%= f.password_field :password,class: 'form-controll'  %>
-
+        <div class="input-field">
+          <%= f.email_field :email %>
+          <%= f.label :email,"メールアドレス" %>
+        </div>
+        <div class="input-field">
+          <%= f.password_field :password,class: 'form-controll'  %>
+          <%= f.label :password,"パスワード" %>
+        </div>        
         <%= f.label :remember_me,class: 'checkbox inline' do %>
         <%= f.check_box :remember_me %>
         <span>次回から自動でログイン</span>

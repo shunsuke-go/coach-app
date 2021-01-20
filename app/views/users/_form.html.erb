@@ -2,18 +2,24 @@
   <div class="card-content">
     <%= form_with(model: @user, local: true) do |f|%>
     <%= render 'shared/error_messages', object: f.object%>
-    <%= f.label :name, '名前'%>
-    <%= f.text_field :name, class: 'form-control' %>
+    <div class="input-field">              
+      <%= f.text_field :name, class: 'form-control' %>
+      <%= f.label :name, '名前'%>
+    </div>
 
-    <%= f.label :email, 'メールアドレス' %>
-    <%= f.text_field :email, calss: 'form-control' %>
+    <div class="input-field">      
+      <%= f.email_field :email, calss: 'form-control' %>
+      <%= f.label :email, 'メールアドレス' %>
+    </div>
+    <div class="input-field">
+      <%= f.password_field :password, class: 'form-control' %>
+      <%= f.label :password, 'パスワード' %>
+    </div>
 
-    <%= f.label :password, 'パスワード' %>
-    <%= f.password_field :password, class: 'form-control' %>
-
-    <%= f.label :password_confirmation, 'パスワード（確認）' %>
-    <%= f.password_field :password_confirmation, class: 'form-control' %>
-
+    <div class="input-field">
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
+      <%= f.label :password_confirmation, 'パスワード（確認）' %>
+    </div>
     <%= f.label :avatar, "サムネイル" %>
     <%= f.file_field :avatar, class: 'form-control', accept: "avatar/jpeg,avatar/gif,avatar/png" %>
 

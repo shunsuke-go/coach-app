@@ -1,38 +1,39 @@
 <div class="row">
   <div class="col s12 m10 push-m1">
     <div class="card">
-      <div class="card-content article-card">
+      <div class="card-content article-card">        
         <%= form_with(model:@article,local: true,class:"margin-30") do |f|%>
         <%= render 'shared/error_messages',object: f.object %>
-        <div id="article_form" class="field">
-          <%= f.label :title, "タイトル" %>
-          <%= f.text_field :title,class: "materialize-textarea" %>
-          <%= f.label :tag_list,"タグ ※コンマ区切りで記入してください" %>
-          <%= f.text_field :tag_list, value: @article.tag_list.join(','), class: "materialize-textarea" %>
+        
+          <div id="article_form" class="field">
+            <div class="input-field">              
+              <%= f.text_field :title,class: "materialize-textarea" %>
+              <%= f.label :title, "タイトル" %>
+            </div>
+            <div class="input-field">              
+              <%= f.text_field :tag_list, value: @article.tag_list.join(','), class: "materialize-textarea" %>
+              <%= f.label :tag_list,"タグ ※コンマ区切りで記入してください" %>
+            </div>
+            <div class="input-field">
+              <input type="text" id="address" placeholder="地名、施設名などを入力するか、地図をクリックしてマーカーを立ててください">
+              <label>教える場所 ※地図をクリックしてもOK</label>
+              <a class="btn" onclick="codeAddress()">地図検索</a>
+              <a id="del" class="btn marker-delete right" onclick="deleteMarker()">マーカー削除</a>
+            </div>
 
-          
-            <span class="marker">教える場所 ※地図をクリックしてもOK</span>            
-          
-          <div class="search-box input-field">
-            <input type="text" id="address" placeholder="地名、施設名などを入力するか、地図をクリックしてマーカーを立ててください">
-            <a class="btn" onclick="codeAddress()">地図検索</a>
-            <a id="del" class="btn marker-delete right" onclick="deleteMarker()">マーカー削除</a>
+            <div id='map' class="margin-30"></div>          
+            <%= f.fields_for :map, @article.build_map do |map| %>   
+            <%= map.hidden_field :latitude %>
+            <%= map.hidden_field :longitude %>
+            <% end %>            
+              <%= f.rich_text_area :content,placeholder:"入力してください",class: "materialize-textarea" %>
+              <%= f.label :content, "本文" %>
+            <%= f.label :thumbnail, "サムネイル" %>
+            <%= f.file_field :thumbnail, accept: "image/jpeg,image/gif,image/png",class:"file_field" %>
+            <div id="article_button"><%= f.submit "投稿！",class:"btn col s6 m6 article-form-btn push-s3 push-m3"%></div>
           </div>
-          
-          
-          <div id='map' class="margin-30"></div>          
-          <%= f.fields_for :map, @article.build_map do |map| %>   
-          <%= map.hidden_field :latitude %>
-          <%= map.hidden_field :longitude %>
-          <% end %>
-          <%= f.label :content, "本文" %>
-          <%= f.rich_text_area :content,placeholder:"入力してください",class: "materialize-textarea" %>
-          <%= f.label :thumbnail, "サムネイル" %>
-          <%= f.file_field :thumbnail, accept: "image/jpeg,image/gif,image/png",class:"file_field" %>
-        </div>
-      <div id="article_button"><%= f.submit "投稿！",class:"btn col s6 m6 article-form-btn push-s3 push-m3"%></div>
-      <% end %>
-      </div> 
+        <% end %> 
+      </div>
     </div>
   </div>
 </div>
