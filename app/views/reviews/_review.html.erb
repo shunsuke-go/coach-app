@@ -7,9 +7,10 @@
   <div><%= review.content %></div>
 
   <% if logged_in? %>
-    <% if review.reviewer_id == current_user.id %>
+    <% if review.reviewer_id == current_user.id || current_user.admin? %>
       <div class="right comment-delete">
-        <%= link_to "削除",user_review_path(review.reviewed,review),method: :delete ,remote: true %>
+        <%= link_to "削除",user_review_path(review.reviewed,review),method: :delete ,
+        remote: true,data: { confirm: "本当に削除しますか？" } %>
       </div>
     <% end %>
   <% end %>

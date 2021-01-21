@@ -25,6 +25,12 @@
   <div class="padding-updown-10">
     
     <%= link_to "レビューを書く・見る", user_reviews_path(@user),class:"btn white-text review-btn lime darken-2" %> 
+    <% if current_user.admin? %>
+    <div>
+      <%= link_to "このユーザーを削除",user_path(@user),method: :delete,
+      data: { confirm: "本当に削除しますか？" } %>
+    </div>
+    <% end %>
   </div>
 </div>
 
