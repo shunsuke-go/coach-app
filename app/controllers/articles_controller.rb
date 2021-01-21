@@ -1,6 +1,5 @@
 class ArticlesController < ApplicationController
   before_action :logged_in_user, only: [:new, :create, :destroy]
-  before_action :correct_user, only: [:destroy]
 
   def new
     @article = Article.new
@@ -91,12 +90,9 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    @article.destroy
+    Article.find(params[:id]).destroy
     flash[:success] = '削除しました！'
-    respond_to do |format|
-      format.html { redirect_to request.referer || root_url }
-      format.js
-    end
+    redirect_to root_path
   end
 
   def index
@@ -115,11 +111,5 @@ class ArticlesController < ApplicationController
     def article_params
       params.require(:article)
             .permit(:content, :title, :tag_list, :thumbnail, map_attributes: [:id, :latitude, :longitude])
-    end
-
-  # 削除する記事を取得する。削除前に行う。
-    def correct_user
-      @article = current_user.articles.find_by(id: params[:id])
-      redirect_to root_url if @article.nil?
     end
 end
