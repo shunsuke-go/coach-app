@@ -3,8 +3,7 @@
     <div class="card">
       <div class="card-content article-card">        
         <%= form_with(model:@article,local: true,class:"margin-30") do |f|%>
-        <%= render 'shared/error_messages',object: f.object %>
-        
+        <%= render 'shared/error_messages',object: f.object %>        
           <div id="article_form" class="field">
             <div class="input-field">              
               <%= f.text_field :title,class: "materialize-textarea" %>
@@ -22,7 +21,6 @@
               <i class="fas fa-map-marker-alt fas-2x" style="color:red"></i>削除
               </a>
             </div>
-
             <div id='map' class="margin-t-b-14"></div>          
             <%= f.fields_for :map, @article.build_map do |map| %>   
             <%= map.hidden_field :latitude %>
