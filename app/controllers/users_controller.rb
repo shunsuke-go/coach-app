@@ -60,7 +60,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.includes(:profile).paginate(page: params[:page], per_page: 5)
+    @users = User.where('coach != true').includes(:profile).paginate(page: params[:page], per_page: 5)
     @coaches = User.where('coach = true').includes(:profile).paginate(page: params[:page], per_page: 5)
   end
 
