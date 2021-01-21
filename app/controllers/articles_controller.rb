@@ -28,7 +28,7 @@ class ArticlesController < ApplicationController
     end
 
     return if @map.nil?
-    
+
     gon.latitude = @map.latitude
     gon.longitude = @map.longitude
   end
