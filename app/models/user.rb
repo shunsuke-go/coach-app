@@ -159,6 +159,10 @@ class User < ApplicationRecord
     end
   end
 
+  def guest?(user)
+    id == user.id
+  end
+
   private
 
     def downcase_email
