@@ -47,6 +47,13 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+    guest_user = User.find_by(email: 'guest@guest.com')
+    if guest_user.guest?(@user)
+      flash[:danger] = 'ゲストユーザーのため、更新できません'
+      redirect_to root_path
+      return
+    end
+
     @user.toggle(:coach) if params[:user][:coach] == '1'
     @user.remove_avatar! if params[:user][:avatar_delete] == '1'
     if @user.update!(user_params)

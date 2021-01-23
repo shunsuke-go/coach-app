@@ -29,7 +29,8 @@ services:
       RAILS_ENV: production
   nginx:
     build:
-      context: nginx
+      context: .
+      dockerfile: ./docker/nginx/Dockerfile
     volumes:
       - tmp-data:/coach-app/tmp
     ports:
