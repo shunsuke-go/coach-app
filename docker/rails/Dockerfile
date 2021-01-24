@@ -15,4 +15,4 @@ RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
 RUN mkdir -p tmp/sockets
 RUN SECRET_KEY_BASE=placeholder bundle exec rails assets:precompile RAILS_ENV=production \
- && yarn cache clean
+    && yarn cache clean
