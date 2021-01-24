@@ -26,8 +26,8 @@
             <%= map.hidden_field :latitude %>
             <%= map.hidden_field :longitude %>
             <% end %>            
+              <%= f.label :content,"本文" %>
               <%= f.rich_text_area :content,placeholder:"入力してください",class: "materialize-textarea" %>
-              <%= f.label :content, "本文" %>
             <%= f.label :thumbnail, "サムネイル" %>
             <%= f.file_field :thumbnail, accept: "image/jpeg,image/gif,image/png",class:"file_field" %>
             <div id="article_button"><%= f.submit "投稿！",class:"btn col s6 m6 article-form-btn push-s3 push-m3"%></div>
