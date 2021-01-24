@@ -5,6 +5,19 @@ $primary-color: color("blue", "lighten-2") !default;
 @import "./actiontext.scss";
 
 
+@media screen and ( max-width:479px ){
+  .container{
+      width: 100% !important;
+  }
+
+
+  .card-content.article-card {
+    padding-right:0;
+    padding-left: 0;
+  }
+
+}
+
 a {
     color:black ;
   }
@@ -100,8 +113,8 @@ body{
 
 #map{
   height: 400px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin: 10px;
+  
 }
 
 ul,li {

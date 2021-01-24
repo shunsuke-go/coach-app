@@ -70,7 +70,7 @@ reviews.insertAdjacentHTML('beforeend',`
     ${new_review.content}
   </div>
   <div class="right comment-delete">
-    <a data-remote="true" rel="nofollow" data-method="delete" 
+    <a data-confirm="本当に削除しますか？" data-remote="true" rel="nofollow" data-method="delete" 
       href="/users/${new_review.user.id}/reviews/${new_review.id}"
       ${hidden}>削除
     </a>

@@ -143,7 +143,7 @@ ActiveRecord::Schema.define(version: 2021_01_15_135100) do
     t.integer "reviewer_id"
     t.integer "reviewed_id"
     t.text "content"
-    t.float "rate"
+    t.integer "rate"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["reviewed_id"], name: "index_reviews_on_reviewed_id"
