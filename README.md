@@ -10,7 +10,7 @@
 **◆フロントエンド**
 * HTML/SCSS
 * Javascript
-* Materialize
+* Materialize  
 **◆バックエンド**
 * Ruby:2.6.6
 * Rails:6.0.3
