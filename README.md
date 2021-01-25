@@ -7,40 +7,40 @@
 [Coacher!](https://coacher-app.work)
 
 # 使用技術
-**◆フロントエンド**
-* HTML/SCSS
-* Javascript
-* Materialize
-**◆バックエンド**
-* Ruby:2.6.6
-* Rails:6.0.3
-**◆インフラ・開発環境**
-* AWS(VPC, Rout53, ALB, EC2, EDS, S3)
-* CircleCI(CI/CD)
-* Docker/docker-compose
-* MySQL:8.0.2.2
-* Nginx
-* Puma
-**◆テスト・静的コード解析**
-* Rspec
-* Rubocop
+**◆フロントエンド**  
+*HTML/SCSS
+*Javascript
+*Materialize
+**◆バックエンド**  
+*Ruby:2.6.6
+*Rails:6.0.3
+**◆インフラ・開発環境**  
+*AWS(VPC, Rout53, ALB, EC2, EDS, S3)
+*CircleCI(CI/CD)
+*Docker/docker-compose
+*MySQL:8.0.2.2
+*Nginx
+*Puma
+**◆テスト・静的コード解析**  
+*Rspec
+*Rubocop
 
 # インフラ構成図
 
 # こだわった点
-* **N+1問題の解決**  
+* **N+1問題の解決**
 当初、トップページの読み込み時間の長さに頭を抱えておりました。
 どうしても解決したいと強く思いましたので、自分で調査しトライアンドエラーを何度も繰り返しました。
 その結果、現在では1秒未満に抑えるこに成功しました。
 具体的に行ったことはincludeメソッドや生のSQL文を記述することです。
 特に、実務において使用しているSQLの技術が非常に役に立ちました。
 
-* **Ajaxを素のJavascript(fetch API)のみで実現**  
+* **Ajaxを素のJavascript(fetch API)のみで実現**
 将来的にはVue.jsやReactを習得する予定ですので、素のJavascriptの扱いに慣れる必要があると考えました。
 そのために、練習も兼ねて素のJavascript(fetch API)のみでAjaxを実現させました。
 その甲斐あって、RailsからフロントエンドにJSONを返すという基本的なフロントエンド、バックエンド分離の構造を学ぶ事ができました。
 
-* **記事機能において外部APIを使用（GoogleMaps API, Geocoding API）**  
+* **記事機能において外部APIを使用（GoogleMaps API, Geocoding API）**
 アプリの設計段階で、GoogleMapを表示することができると非常に使いやすいものになると判断いたしました。
 私にとっては難易度が高いものでしたが、粘り強く取り組むことにより、想定通りの機能を実装することができました。
 特に苦労した点は以下になります。
