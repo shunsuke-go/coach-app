@@ -7,23 +7,23 @@
 [Coacher!](https://coacher-app.work)
 
 # 使用技術
-**◆フロントエンド**
-* HTML/SCSS
-* Javascript
-* Materialize  
-**◆バックエンド**
-* Ruby:2.6.6
-* Rails:6.0.3
-**◆インフラ・開発環境**  
-* AWS(VPC, Rout53, ALB, EC2, EDS, S3)
-* CircleCI(CI/CD)
-* Docker/docker-compose
-* MySQL:8.0.2.2
-* Nginx
-* Puma
-**◆テスト・静的コード解析**
-*Rspec
-*Rubocop
+* フロントエンド
+ * HTML/SCSS
+ * Javascript
+ * Materialize  
+* バックエンド
+ * Ruby:2.6.6
+ * Rails:6.0.3
+* インフラ・開発環境  
+ * AWS(VPC, Rout53, ALB, EC2, RDS, S3)
+ * CircleCI(CI/CD)
+ * Docker/docker-compose
+ * MySQL:8.0.2.2
+ * Nginx
+ * Puma
+* テスト・静的コード解析
+ * Rspec
+ * Rubocop
 
 # インフラ構成図
 
