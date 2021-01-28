@@ -7,12 +7,13 @@ class MapsController < ApplicationController
   def index
     @area = params[:area]
     @articles = []
-    @gmaps = Map.near(@area, 20, units: :km)
+    @gmaps = Map.near(@area, 20, units: :km).includes(
+      article: [:user, :liked_users, :likes, :comments, :taggings, :tags]
+    )
     @gmaps.each do |gmap|
       @articles.push(gmap.article)
     end
 
-    # paginationのため
     @articles = @articles.paginate(page: params[:page], per_page: 5)
   end
 end
