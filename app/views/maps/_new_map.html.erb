@@ -9,8 +9,9 @@
     <div class="card-content" id="map_card">
       <%= form_with(url:maps_path,method: :get,id: "map_form",local: true) do |f|%>
       <div class="input-field">        
-        <%= f.text_field :area, class: "materialize-textarea", id: "map_search" %>
-        <%= f.label :area,"検索する位置" %>
+        <%= f.text_field :area, class: "materialize-textarea", id: "map_search" ,
+        placeholder: "地名などを入力してください" %>
+        <%= f.label :area, "検索する位置" %>
       </div>
       <%= f.submit "検索",class: "btn",id: "search_btn" %>
       <% end %>
