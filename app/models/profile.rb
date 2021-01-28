@@ -3,5 +3,6 @@ class Profile < ApplicationRecord
   validates :age, numericality: true, presence: true
   validates :content, presence: true, length: { maximum: 1000 }
   validates :address, presence: true, length: { maximum: 50 }
+  validates :wages, numericality: true, presence: true
   validates :favorite, length: { maximum: 50 }
 end

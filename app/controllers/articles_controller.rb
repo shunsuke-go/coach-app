@@ -69,7 +69,7 @@ class ArticlesController < ApplicationController
 
   def update
     @article = Article.find(params[:id])
-    if @article.update!(article_params)
+    if @article.update(article_params)
       latitude = params[:article][:map][:latitude]
       longitude = params[:article][:map][:longitude]
 

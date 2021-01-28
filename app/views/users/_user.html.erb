@@ -2,21 +2,33 @@
   <div class="card hoverable">
     <div class="card-content">
       <%= render 'shared/user_avatar_users',user: user %>    
-
       <% if user.profile.present? %>
       <ul>
+        <% if user.profile.age.present? %>
+          <div class="card-action">
+            <li><%= user.profile.age %>歳</li>
+          </div>
+        <% end %>
+        <% if user.profile.address.present? %>        
+          <div class="card-action">
+            <li>居住地 : <%= user.profile.address %></li>
+          </div>
+        <% end %>
+        <% if user.profile.favorite.present? %>        
+          <div class="card-action">
+            <li class="profile">得意科目 : <%= user.profile.favorite %></li>
+          </div>
+        <% end %>
+        <% if user.profile.wages.present? %>        
         <div class="card-action">
-          <li><%= user.profile.age %>歳</li>
+          <li class="wages">希望時給単価 : <%= user.profile.wages %></li>
         </div>
-        <div class="card-action">
-          <li>居住地 : <%= user.profile.address %></li>
-        </div>
-        <div class="card-action">
-          <li class="profile">得意科目 : <%= user.profile.favorite %></li>
-        </div>
-        <div class="card-action">
-          <li class="profile"><%= user.profile.content %></li>
-        </div>
+        <% end %>
+        <% if user.profile.content.present? %>        
+          <div class="card-action">
+            <li class="profile"><%= user.profile.content %></li>
+          </div>
+        <% end %>
       </ul>
       <% else %>
       <div class="card-action">

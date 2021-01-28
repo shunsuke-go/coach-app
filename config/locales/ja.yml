@@ -21,6 +21,7 @@ ja:
       profile:
         age: 年齢
         address: 住所
+        wages: 希望時給単価
         content: 本文
       review:
         content: 本文
