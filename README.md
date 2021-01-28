@@ -137,7 +137,7 @@ https://github.com/shunsuke-go/coach-app/blob/main/app/controllers/messages_cont
 * 自分が所属するチャットルーム全ての最新メッセージを取得し、表示する。
 
 # インフラ構成図
-[](/README_images/infra.png)
+<img src="/README_images/infra.png">
 
 # ER図
-[](/README_images/ER_diagram.png)
+<img src="/README_images/ER_diagram.png">
