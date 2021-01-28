@@ -102,6 +102,7 @@ https://github.com/shunsuke-go/coach-app/blob/main/app/controllers/messages_cont
 ## 記事に関する機能
 * 記事一覧表示、記事詳細表示、記事投稿、記事編集、記事削除機能
   * 記事投稿、編集機能については、Action text gemを使用し、UXの向上を図った
+  * 記事一覧機能については、ページネーション機能を実装。will_paginate gemを使用
 * タグに関する機能
   * acts_as_taggable gemを使用
   * タグを付けて登録することができる
@@ -113,6 +114,7 @@ https://github.com/shunsuke-go/coach-app/blob/main/app/controllers/messages_cont
 * 「近所の募集を探す」機能
   * 検索した位置から半径20km以内の位置情報と紐付いている記事を探すことが可能
 * 記事検索機能
+  * ransack gemを使用
 
 ## フォロー機能
 * フォロー、フォロー解除機能
