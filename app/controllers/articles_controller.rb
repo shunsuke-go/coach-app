@@ -17,7 +17,6 @@ class ArticlesController < ApplicationController
     @reviews = @user.passive_reviews
     @ave_rate = @user.ave_rate.round(1) unless @user.ave_rate.nil?
     @profile = Profile.find_by(user_id: @user.id)
-
     if logged_in?
       @room = @user.users_room(current_user)
       if @room.blank?

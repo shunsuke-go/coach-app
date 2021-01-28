@@ -56,17 +56,18 @@
       <div class="col s12 m12 l5 pull-l1">
         <div class="card-content">
             <%= link_to @article.user.name, user_path(@article.user) %>          
-          <div class="article-profile">            
-            <% if @article.user.profile.wages.present? %>
-            希望時間単価 : <%= @article.user.profile.wages %>円
-            <% end %>
-            <% if @article.user.profile.content.present? %>
-              <%= @article.user.profile.content %>
-            <% end %>
-          </div>
+          <% if @profile.present? %>
+            <div class="article-profile">            
+              <% if @profile.wages.present? %>
+              希望時間単価 : <%= @profile.wages %>円
+              <% end %>
+              <% if @profile.content.present? %>
+                <%= @profile.content %>
+              <% end %>
+            </div>
+          <% end %>
         </div>
       </div>
-
 
       <div class="col s12 m12 l5 pull-l1">        
           <%= render 'shared/user_info' %>                   
