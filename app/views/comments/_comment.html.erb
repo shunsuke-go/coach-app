@@ -7,8 +7,10 @@
       </div>
       <div class="divider"></div>
       <div class="right comment-delete">
-        <% if current_user?(comment.user) || current_user.admin? %>
-        <%= link_to "削除", article_comment_path(@article,comment), method: :delete,data:{ confirm:"本当に削除しますか？" },remote: true %> 
+        <% if logged_in? %>      
+          <% if current_user?(comment.user) || current_user.admin? %>
+          <%= link_to "削除", article_comment_path(@article,comment), method: :delete,data:{ confirm:"本当に削除しますか？" },remote: true %> 
+          <% end %>
         <% end %>
       </div>
     </div>
