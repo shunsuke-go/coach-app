@@ -56,7 +56,7 @@ class UsersController < ApplicationController
 
     @user.toggle(:coach) if params[:user][:coach] == '1'
     @user.remove_avatar! if params[:user][:avatar_delete] == '1'
-    if @user.update!(user_params)
+    if @user.update(user_params)
       flash[:success] = '更新に成功しました！'
       redirect_to user_url(@user)
 
