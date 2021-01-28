@@ -91,7 +91,6 @@ https://github.com/shunsuke-go/coach-app/blob/main/app/controllers/messages_cont
 
 # 機能詳細
 ## ユーザーに関する機能
-___
 * ユーザー登録、ログイン、ログアウト、ユーザー情報編集
 * ゲストログイン機能
 * コーチ登録機能
@@ -138,4 +137,7 @@ ___
 * 自分が所属するチャットルーム全ての最新メッセージを取得し、表示する。
 
 # インフラ構成図
-<img src="/README_images/infra.png">
+[](/README_images/infra.png)
+
+# ER図
+[](/README_images/ER_diagram.png)
