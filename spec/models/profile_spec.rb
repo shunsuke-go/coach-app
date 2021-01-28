@@ -20,7 +20,7 @@ RSpec.describe Profile, type: :model do
 
       it 'ageが存在しないと保存できないこと' do
         profile.age = nil
-        expect(profile).to be_invalid
+        expect(profile).to be_valid
       end
 
       it 'ageが数字でないと保存できないこと' do
@@ -30,7 +30,7 @@ RSpec.describe Profile, type: :model do
 
       it 'contentが存在しないと保存できないこと' do
         profile.content = ''
-        expect(profile).to be_invalid
+        expect(profile).to be_valid
       end
 
       it 'contentが1001文字以上だと保存できないこと' do
@@ -40,7 +40,7 @@ RSpec.describe Profile, type: :model do
 
       it 'addressが存在しないと保存できないこと' do
         profile.address = ''
-        expect(profile).to be_invalid
+        expect(profile).to be_valid
       end
 
       it 'addressが51文字以上だと保存できないこと' do

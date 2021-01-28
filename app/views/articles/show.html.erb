@@ -30,10 +30,12 @@
         <%= render 'likes/like' ,article: @article%>
         </span>
         <span class="delete">
-        <% if current_user?(@article.user) || current_user.admin? %>
-        <%= link_to "削除", @article, method: :delete,
-        data:{ confirm: "本当に削除しますか？" } %>
-        <%= link_to "編集",edit_article_path(@article) %>
+        <% if logged_in? %>
+          <% if current_user?(@article.user) || current_user.admin? %>
+            <%= link_to "削除", @article, method: :delete,
+            data:{ confirm: "本当に削除しますか？" } %>
+            <%= link_to "編集",edit_article_path(@article) %>
+          <% end %>
         <% end %>
         </span>
 
