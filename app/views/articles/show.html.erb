@@ -61,7 +61,7 @@
           <% if @profile.present? %>
             <div class="article-profile">            
               <% if @profile.wages.present? %>
-              希望時間単価 : <%= @profile.wages %>円
+              <span style="color:black">希望時間単価 : <%= @profile.wages %>円</span>
               <% end %>
               <% if @profile.content.present? %>
                 <%= @profile.content %>
