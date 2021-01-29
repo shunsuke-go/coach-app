@@ -2,7 +2,7 @@
     <div class="conatiner">
     <nav>
       <div class="nav-wrapper cyan darken-1">
-        <%= link_to "タイトル", root_path, id: "logo",class: "brand-logo" %>
+        <%= link_to image_tag('title_logo.png',class:"title-logo brand-logo"),root_path %>
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
         <% if logged_in? %>
