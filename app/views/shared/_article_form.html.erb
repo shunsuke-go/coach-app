@@ -25,7 +25,7 @@
             <%= f.fields_for :map, @article.build_map do |map| %>   
             <%= map.hidden_field :latitude %>
             <%= map.hidden_field :longitude %>
-            <% end %>            
+            <% end %>
               <%= f.label :content,"本文" %>
               <%= f.rich_text_area :content,placeholder:"入力してください",class: "materialize-textarea" %>
             <%= f.label :thumbnail, "サムネイル" %>
