@@ -36,12 +36,15 @@ class ArticlesController < ApplicationController
     if @article.save
       latitude = params[:article][:map][:latitude]
       longitude = params[:article][:map][:longitude]
+      address = params[:article][:map][:address]
 
       unless latitude.empty?
         @map = @article.build_map(
           latitude: latitude,
-          longitude: longitude
+          longitude: longitude,
+          address: address.slice(3, 30)
         )
+        # @map.address = @map.address_search(latitude, longitude)
         @map.save
       end
 
@@ -71,11 +74,12 @@ class ArticlesController < ApplicationController
     if @article.update(article_params)
       latitude = params[:article][:map][:latitude]
       longitude = params[:article][:map][:longitude]
-
+      address = params[:article][:map][:address]
       unless latitude.empty?
         @map = @article.build_map(
           latitude: latitude,
-          longitude: longitude
+          longitude: longitude,
+          address: address.slice(3, 30)
         )
         @map.save
       end
@@ -109,6 +113,6 @@ class ArticlesController < ApplicationController
   # Strong Parameter
     def article_params
       params.require(:article)
-            .permit(:content, :title, :tag_list, :thumbnail, map_attributes: [:id, :latitude, :longitude])
+            .permit(:content, :title, :tag_list, :thumbnail, map_attributes: [:id, :address, :latitude, :longitude])
     end
 end
