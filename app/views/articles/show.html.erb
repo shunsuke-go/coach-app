@@ -46,7 +46,7 @@
       </div>
 
     <div class="row article-prof">
-      <div class="col s12 m12 l2">
+      <div class="col s2 m2 l2">
         <div class="card-content">
           <% if @article.user.avatar? %>
           <%= link_to image_tag(@article.user.avatar.url, class: "circle small"), user_path(@article.user) %>
@@ -56,7 +56,7 @@
         </div>
       </div>
 
-      <div class="col s12 m12 l5 pull-l1">
+      <div class="col s10 m10 l5 pull-l1">
         <div class="card-content">
             <%= link_to @article.user.name, user_path(@article.user) %>          
           <% if @profile.present? %>
@@ -72,7 +72,7 @@
         </div>
       </div>
 
-      <div class="col s12 m12 l5 pull-l1">        
+      <div class="col s10 push-s2 m10 push-m2 l5 pull-l1">        
           <%= render 'shared/user_info' %>                   
       </div>
     </div>
