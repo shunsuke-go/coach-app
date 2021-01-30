@@ -17,7 +17,9 @@
         </div>
         <div class="divider"></div>
         <div class="center">
-          <%= render 'shared/user_info',user: @user %>
+          <div class="card-content pad-t-b-12">
+            <%= render 'shared/user_info',user: @user %>
+          </div>
         </div>
         <div class="divider"></div>
             <% if @user.profile.present? %>
