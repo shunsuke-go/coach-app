@@ -572,6 +572,7 @@ trix-editor {
 
 .article-profile {
   white-space: pre-line;
+  word-break: break-all;
   color:gray;
   position: relative;
   bottom: 23px;
@@ -762,4 +763,16 @@ strong {
 
 .address {
   padding-left: 9px;
+}
+
+.profile-parts {
+  padding: 24px 60px 24px 60px;
+}
+
+.pad-t-24 {
+  padding-top: 24px;
+}
+
+.pad-b-24 {
+  padding-bottom: 24px;
 }
