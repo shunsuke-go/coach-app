@@ -37,7 +37,6 @@ class UsersController < ApplicationController
       flash[:notice] = 'プロフィールも作成しましょう！'
     else
       render 'new'
-
     end
   end
 
