@@ -766,7 +766,7 @@ strong {
 }
 
 .profile-parts {
-  padding: 24px 60px 24px 60px;
+  padding: 12px 45px 12px 45px;
 }
 
 .pad-t-24 {
@@ -775,4 +775,14 @@ strong {
 
 .pad-b-24 {
   padding-bottom: 24px;
+}
+
+.card-content.pad-t-b-12 {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.card-content.pad-t-b-18 {
+  padding-top: 18px;
+  padding-bottom: 18px;
 }
