@@ -72,6 +72,6 @@ class ReviewsController < ApplicationController
       reviews.each do |review|
         point += review.rate
       end
-      point / reviews.count
+      point / reviews.count.to_f
     end
 end
