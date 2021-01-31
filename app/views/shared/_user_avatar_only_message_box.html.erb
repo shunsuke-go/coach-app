@@ -1,6 +1,12 @@
 <% if user_avatar.present? %>
-    <%= link_to image_tag("/uploads/user/avatar/#{user_id}/#{user_avatar}", class: "circle small"), user_path(user_id) %>
-  <% else %>
-    <%=link_to image_tag('no-image.jpg', class: "circle small"), user_path(user_id) %>
+  <% if Rails.env == 'development' %>
+    <%= link_to image_tag("/uploads/user/avatar/#{user_id}/#{user_avatar}",
+     class: "circle small"), user_path(user_id) %>
+  <% elsif Rails.env == 'production' %>
+    <%= link_to image_tag("https://coacher-rails.s3.amazonaws.com/uploads/user/avatar/#{user_id}/#{user_avatar}",
+     class: "circle small"), user_path(user_id) %>
   <% end %>
+<% else %>
+  <%=link_to image_tag('no-image.jpg', class: "circle small"), user_path(user_id) %>
+<% end %>
 

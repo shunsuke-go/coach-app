@@ -1,0 +1,24 @@
+<% if @user.profile.present? %>
+  <div class="profile-parts">
+  <% if @user.profile.age.present? %>
+    <span class="gray">年齢 :</span><span class="bold right"><%= @user.profile.age %>歳</span></p>
+  <% end %>
+  <% if @user.profile.address.present? %>
+    <span class="gray">居住地 :</span><span class="bold right"><%= @user.profile.address %></span></p>
+  <% end %>
+  <% if @user.profile.favorite.present? %>
+    <span class="gray">得意科目 :</span><span class="bold right"><%= @user.profile.favorite %></span></p>
+  <% end %>            
+  <% if @user.profile.wages.present? %>
+    <span class="gray">時間単価 :</span></span><span class="bold right"><%= @user.profile.wages %>円</span></p>
+  <% end %>
+  </div>
+  <div class="divider"></div>
+  <div class="profile">
+    <% if @user.profile.content.present? %>
+      <%= @user.profile.content %>
+    <% end %>
+  </div>
+  <% else %>
+    <div class="pad-t-24">プロフィールはありません</div>
+<% end %>

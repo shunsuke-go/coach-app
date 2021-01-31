@@ -4,8 +4,6 @@ var review_content = document.getElementById('review_content');
 var review_rate = document.getElementById('review_rate');
 var stars = document.getElementById('stars');
 
-
-
 fetch("/api/v1/users/<%= @user.id %>/reviews",{
   mode: 'cors',
   method: 'GET',
@@ -17,7 +15,19 @@ fetch("/api/v1/users/<%= @user.id %>/reviews",{
 .then(data => {
   var new_review = data[data.length-1]
   var hidden = <%= current_user.id %> != data[data.length-1].user.id  ? "hidden":""
-  var img = (new_review.user.avatar != null) ? new_review.user.avatar:"/assets/no-image.jpg"
+  img = () => {
+    var image
+    if (new_review.user.avatar != null) {
+    image = `
+    <a href="/users/${new_review.user.id}">
+      <img class="circle small" src=${img}
+    </a>`
+    } else {
+      image = `<%= image_tag("/no-image.jpg",class:"circle small") %>`
+    }
+    return image
+  }
+
   coach_check = () => {
     if(new_review.user.coach == true){
     var coach_name = `
@@ -56,9 +66,7 @@ reviews.insertAdjacentHTML('beforeend',`
 <li id="review_${new_review.id}" class="review_${new_review.id} margin-20">
   <div>
     <span>
-      <a href="/users/${new_review.user.id}">
-        <img class="circle small" src="${img}">
-      </a>
+      ${img()}
     </span>
     ${coach_check()}
   </div>

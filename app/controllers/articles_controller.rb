@@ -79,7 +79,7 @@ class ArticlesController < ApplicationController
         @map = @article.build_map(
           latitude: latitude,
           longitude: longitude,
-          address: address.slice(3, 30)
+          address: address.slice(3, 50)
         )
         @map.save
       end
