@@ -20,10 +20,10 @@ fetch("/api/v1/users/<%= @user.id %>/reviews",{
     if (new_review.user.avatar != null) {
     image = `
     <a href="/users/${new_review.user.id}">
-      <img class="circle small" src=${img}
+      <img class="circle small" src=${new_review.user.avatar}
     </a>`
     } else {
-      image = `<%= image_tag("/no-image.jpg",class:"circle small") %>`
+      image = `<%= image_tag("no-image",class:"circle small") %>`
     }
     return image
   }
