@@ -15,8 +15,19 @@ fetch("/api/v1/articles/<%=@article.id%>/comments",
   
   var new_comment = data[data.length-1]
   var hidden = (<%= current_user.id %> != new_comment.user.id) ? "hidden":""
-  var img = (new_comment.user.avatar != null) ? new_comment.user.avatar:"/assets/no-image.jpg"
   var coach = (new_comment.user.coach == true) ? "":"hidden"
+  img = () => {
+    var image
+    if (new_comment.user.avatar != null) {
+    image = `
+    <a href="/users/${new_comment.user.id}">
+      <img class="circle small" src=${img}
+    </a>`
+    } else {
+      image = `<%= image_tag("/no-image.jpg",class:"circle small") %>`
+    }
+    return image
+  }
   coach_check = () => {
     if(new_comment.user.coach == true){
     var coach_name = `
@@ -47,9 +58,7 @@ fetch("/api/v1/articles/<%=@article.id%>/comments",
   <li id='comment_${new_comment.id}'　class='comment-${new_comment.id} margin-20'>
     <div class="margin-20">
       <span>  
-        <a href="/users/${new_comment.user.id}">
-          <img class="circle small" src=${img}>
-        </a>
+        ${img()}
       </span>
       ${coach_check()}
       <div class="comment">

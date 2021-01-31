@@ -17,16 +17,12 @@
         </div>
         <div class="divider"></div>
         <div class="center">
-        <%= render 'shared/user_info',user: @user %>
+          <div class="card-content pad-t-b-12">
+            <%= render 'shared/user_info',user: @user %>
+          </div>
         </div>
         <div class="divider"></div>
-        <div class="profile">
-          <% if @user.profile.present? %>            
-          <%= @user.profile.content %>    
-          <% else %>
-            <h6>プロフィールはありません</h6>
-          <% end %>
-        </div>
+        <%= render 'shared/profile_parts' %>
       </div>
     </div>
   </div>

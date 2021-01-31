@@ -51,7 +51,7 @@
           <% if @article.user.avatar? %>
           <%= link_to image_tag(@article.user.avatar.url, class: "circle small"), user_path(@article.user) %>
           <% else %>
-          <%=link_to image_tag('no-image.jpg', class: "circle small"), user_path(@article.user) %>
+          <%= link_to image_tag('no-image.jpg', class: "circle small"), user_path(@article.user) %>
           <% end %>                
         </div>
       </div>
