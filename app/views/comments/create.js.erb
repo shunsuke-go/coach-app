@@ -21,10 +21,10 @@ fetch("/api/v1/articles/<%=@article.id%>/comments",
     if (new_comment.user.avatar != null) {
     image = `
     <a href="/users/${new_comment.user.id}">
-      <img class="circle small" src=${img}
+      <img class="circle small" src=${new_comment.user.avatar}
     </a>`
     } else {
-      image = `<%= image_tag("/no-image.jpg",class:"circle small") %>`
+      image = `<%= image_tag("no-image",class:"circle small") %>`
     }
     return image
   }
