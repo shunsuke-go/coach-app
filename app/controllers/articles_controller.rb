@@ -104,7 +104,7 @@ class ArticlesController < ApplicationController
   end
 
   def tags
-    @tags = Article.tag_counts
+    @tags = Article.tag_counts.order('taggings_count DESC')
     render 'tags/_tag_all'
   end
 
