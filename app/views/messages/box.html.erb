@@ -1,6 +1,6 @@
 <%= provide(:title,"メッセージボックス") %>
 <div class="row">
-  <div class="col l8 push-l2">
+  <div class="col s12 m12 l8 push-l2">
     <h5 class="center">受信メッセージ</h5>
     <div class="card hoverable">
       <% @new_send_messages.each do |new_send_message| %>
@@ -13,7 +13,7 @@
             </div>
             <div class="col l10">
               <div class="right gray">
-                <%= new_send_message["created_at"].strftime('%Y-%m-%d %H:%M:%S') %>
+                <%= new_send_message["created_at"].since(9.hours).strftime("%Y-%m-%d %H:%M:%S") %>
               </div>
               <div>
                 <%=link_to new_send_message["partner_user_name"],

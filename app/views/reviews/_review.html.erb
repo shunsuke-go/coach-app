@@ -4,7 +4,7 @@
   </div>
 
   <div id="stars"><%= render 'shared/review_stars',rate: review.rate %></div>
-  <div><%= review.content %></div>
+  <div class="reviews"><%= review.content %></div>
 
   <% if logged_in? %>
     <% if review.reviewer_id == current_user.id || current_user.admin? %>

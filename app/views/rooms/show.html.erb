@@ -3,7 +3,7 @@
   <div class="col s12 m12 l8 push-l2">
     <div class="card">
       <div class="card-content top-0"> 
-        <h5 class="center">メッセージ</h5>
+        <h5 class="center"><%=link_to "#{@user[0].name}とのメッセージ", user_path(@user[0]) %></h5>
         <div class="divider"></div>
         <div id="messages" class="row">
           <%= render @messages %>
