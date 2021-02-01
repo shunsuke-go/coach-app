@@ -582,11 +582,13 @@ trix-editor {
 .current_user {
   width: 200px;
   margin: 0 0 0 auto;
-  
 }
 
 .order {
   order: 1;
+}
+.direct-messages {
+  white-space: pre-line;
 }
 
 
@@ -639,6 +641,7 @@ a.receive-message {
   color:black;
   text-decoration: underline;
   font-weight: bold;
+  white-space: pre-line;
   word-break: break-all;
 }
 
@@ -711,6 +714,11 @@ a.title {
 
 .review-btn {
   width:200px;
+}
+
+.reviews {
+  word-wrap: break-word;
+  white-space:pre-wrap;  
 }
 
 .width-200 {
