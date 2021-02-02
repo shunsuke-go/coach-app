@@ -10,11 +10,6 @@ class SessionsController < ApplicationController
     @user = User.find_by(email: params[:session][:email].downcase)
     if @user && @user.authenticate(params[:session][:password])
       log_in(@user)
-
-      # チェックボックスがONなら
-      # remember_tokenをブラウザのクッキーに設定し、
-      # remember_digestをDBに保存
-
       params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
       flash[:success] = 'ログインに成功しました！'
       redirect_back_or(@user)

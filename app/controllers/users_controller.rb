@@ -133,12 +133,10 @@ class UsersController < ApplicationController
 
   private
 
-  # Strong Parameter
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation, :avatar)
     end
 
-  # 別のユーザーページを編集するのを防ぐ
     def correct_user
       @user = User.find_by(id: params[:id])
       if @user.nil?
@@ -147,7 +145,6 @@ class UsersController < ApplicationController
       redirect_to root_url unless current_user?(@user)
     end
 
-  # 管理者かどうか確認
     def check_admin
       unless current_user.admin?
         falsh[:danger] = '管理者のみ行える操作です'

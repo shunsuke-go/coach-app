@@ -19,12 +19,9 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    # article_id  params[:id] ← commentのid
-
     @article = Article.find(params[:article_id])
     @comment = Comment.find(params[:id]).destroy
     @comment.destroy
-    # redirect_to article_url(@article)
   end
 
   private

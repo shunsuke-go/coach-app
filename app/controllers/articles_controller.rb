@@ -110,7 +110,6 @@ class ArticlesController < ApplicationController
 
   private
 
-  # Strong Parameter
     def article_params
       params.require(:article)
             .permit(:content, :title, :tag_list, :thumbnail, map_attributes: [:id, :address, :latitude, :longitude])
