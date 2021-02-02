@@ -10,7 +10,6 @@ class ApplicationController < ActionController::Base
       end
     end
 
-  # ログインしてなかったらログインページへ飛ばす
     def logged_in_user
       return if logged_in?
 

@@ -6,7 +6,6 @@ class LikesController < ApplicationController
     @like = @article.likes.build
     @like.user_id = current_user.id
 
-    # 通知
     @article.create_like_notification(current_user)
 
     if @like.save
