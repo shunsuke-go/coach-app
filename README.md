@@ -7,6 +7,8 @@
 全て独学で開発いたしました。  
 [Coacher!](https://coacher-app.work)  
 
+<img src="/README_images/screen_shot.png">
+
 # 使用技術
 * フロントエンド
   * HTML/SCSS
