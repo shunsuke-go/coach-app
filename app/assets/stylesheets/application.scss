@@ -102,11 +102,12 @@ body{
   color: black;
   opacity: 0.8;
   text-transform: none;
-
+  font-size: 14px;
+  padding:0 5px 0 5px;
 }
 
 .tag-count {
-  margin:10px;
+  margin-left:10px;
   position: relative;
   
 }
@@ -793,4 +794,21 @@ strong {
 .card-content.pad-t-b-18 {
   padding-top: 18px;
   padding-bottom: 18px;
+}
+
+.ranker-name {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.alert {
+  height:60%;
+  background-color: blue;
+  text-align: center;
+}
+
+.alert-message {
+  position: relative;
+  bottom:14px;
 }
