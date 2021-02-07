@@ -7,7 +7,8 @@
       <% else %>
         <i class="fas fa-medal" style="color: #815a2b;"></i>
     <% end %>
-    第<%= idx + 1 %>位　<%= link_to user_rank.name,user_path(user_rank) %>
+    第<%= idx + 1 %>位　
+      <div><%= link_to user_rank.name,user_path(user_rank) %></div>
     　<span class="right"><%= user_rank.ave_rate.round(1) %>点
       <%= render 'shared/review_stars',rate: user_rank.ave_rate.round(1) %></span>
   </li>
