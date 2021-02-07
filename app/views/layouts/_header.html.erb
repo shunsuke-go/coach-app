@@ -1,49 +1,51 @@
   <header>
     <div class="conatiner">
-    <nav>
-      <div class="nav-wrapper cyan darken-1">
-        <%= link_to image_tag('title_logo.png',class:"title-logo brand-logo"),root_path %>
-        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <% if logged_in? %>
-        
-        <li><a href="<%= tags_articles_path %>">
-          <i class="fas fa-tag header-icons"></i>タグ</a>
-        </li>
+    <div class="navbar-fixed">
+      <nav>
+        <div class="nav-wrapper cyan darken-1">
+          <%= link_to image_tag('title_logo.png',class:"title-logo brand-logo"),root_path %>
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <% if logged_in? %>
+          
+          <li><a href="<%= tags_articles_path %>">
+            <i class="fas fa-tag header-icons"></i>タグ</a>
+          </li>
 
-        <li><a href="/messages/box/<%=current_user.id%>">
-          <i class="fas fa-envelope header-icons"></i>メッセージボックス</a>
-        </li>
+          <li><a href="/messages/box/<%=current_user.id%>">
+            <i class="fas fa-envelope header-icons"></i>メッセージボックス</a>
+          </li>
 
-        <li><a href="<%= notifications_path %>">
-          <i class="fas fa-bell header-icons"></i>通知</a>
-        </li>
+          <li><a href="<%= notifications_path %>">
+            <i class="fas fa-bell header-icons"></i>通知</a>
+          </li>
 
-        <li><a href="<%= users_path %>">
-         <i class="fas fa-user header-icons"></i>ユーザ一覧</a>
-        </li>
+          <li><a href="<%= users_path %>">
+          <i class="fas fa-user header-icons"></i>ユーザ一覧</a>
+          </li>
 
-        <li><a href="<%= user_likes_path(current_user) %>">
-          <i class="fas fa-heart header-icons"></i>いいねした記事</a>
-        </li>
+          <li><a href="<%= user_likes_path(current_user) %>">
+            <i class="fas fa-heart header-icons"></i>いいねした記事</a>
+          </li>
 
-        <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">
-        マイメニュー
-          <% if current_user.avatar? %>
-            <%= image_tag(current_user.avatar.url, class: "circle header-icon") %>
+          <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">
+          マイメニュー
+            <% if current_user.avatar? %>
+              <%= image_tag(current_user.avatar.url, class: "circle header-icon") %>
+            <% else %>
+              <%= image_tag('no-image.jpg', class: "circle header-icon") %>
+            <% end %></a>
+          </li>
           <% else %>
-            <%= image_tag('no-image.jpg', class: "circle header-icon") %>
-          <% end %></a>
-        </li>
-        <% else %>
-        <li><%= link_to "ログイン", login_path %></li>
-        <li><%= link_to "登録", signup_path %></li>
-        <li><%= link_to "ゲストログイン （1クリック）", '/guest_login',class:"btn red" %>
-        
-        <% end %>   
-       </ul>
-      </div>
-    </nav>
+          <li><%= link_to "ログイン", login_path %></li>
+          <li><%= link_to "登録", signup_path %></li>
+          <li><%= link_to "ゲストログイン （1クリック）", '/guest_login',class:"btn red" %>
+          
+          <% end %>   
+        </ul>
+        </div>
+      </nav>
+    </div>
   </header>  
 
   <% if logged_in? %>
