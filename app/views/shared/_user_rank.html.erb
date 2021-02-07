@@ -1,5 +1,6 @@
 <% @user_ranks.each_with_index do |user_rank,idx| %> 
   <li class="collection-item auto">
+    <div>
     <% if idx == 0 %>
       <i class="fas fa-medal" style="color: gold;"></i>
       <% elsif idx == 1 %>
@@ -7,9 +8,11 @@
       <% else %>
         <i class="fas fa-medal" style="color: #815a2b;"></i>
     <% end %>
-    第<%= idx + 1 %>位　
-      <div><%= link_to user_rank.name,user_path(user_rank) %></div>
-    　<span class="right"><%= user_rank.ave_rate.round(1) %>点
+    第<%= idx + 1 %>位
+        　<span><%= user_rank.ave_rate.round(1) %>点
       <%= render 'shared/review_stars',rate: user_rank.ave_rate.round(1) %></span>
+
+    </div>
+      <%= link_to user_rank.name,user_path(user_rank) %>
   </li>
 <% end %>
