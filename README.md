@@ -1,4 +1,3 @@
-※このREADMEは製作途中です  
 # [Coacher!](https://coacher-app.work)
 
 # アプリ概要
