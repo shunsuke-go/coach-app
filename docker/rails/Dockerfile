@@ -10,7 +10,8 @@ ADD Gemfile /coach-app/Gemfile
 ADD Gemfile.lock /coach-app/Gemfile.lock
 RUN gem install bundler && gem update bundler && bundle install
 COPY . /coach-app
-RUN rails assets:precompile RAILS_ENV=production \
+RUN rails assets:clobber \
+    &&rails assets:precompile RAILS_ENV=production \
     && yarn cache clean
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
