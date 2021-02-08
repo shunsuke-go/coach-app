@@ -798,9 +798,8 @@ strong {
 }
 
 .ranker-name {
-  text-overflow: ellipsis;
-  overflow: hidden;
   white-space: nowrap;
+  text-decoration: underline;
 }
 
 .alert {
@@ -813,3 +812,4 @@ strong {
   position: relative;
   bottom:14px;
 }
+

@@ -13,6 +13,6 @@
       <%= render 'shared/review_stars',rate: user_rank.ave_rate.round(1) %></span>
 
     </div>
-      <%= link_to user_rank.name,user_path(user_rank) %>
+      <span class="ranker-name"><%= link_to user_rank.name,user_path(user_rank) %></span>
   </li>
 <% end %>

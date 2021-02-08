@@ -3,7 +3,7 @@
     <div class="navbar-fixed">
       <nav>
         <% flash.each do |message_type,message| %>
-        <div class="alert alert-<%= message_type%>">
+        <div class="alert alert-<%= message_type%>"  id="alert">
           <span class="alert-message"><%= message %></span>
         </div>
         <% end %>        
