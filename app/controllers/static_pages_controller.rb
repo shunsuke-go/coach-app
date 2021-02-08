@@ -8,12 +8,12 @@ class StaticPagesController < ApplicationController
       ).paginate(page: params[:page], per_page: 5)
 
       @likes = current_user.liked_articles
-      @tags = Article.tag_counts.order('taggings_count DESC').limit(10)
     else
       @articles = Article.with_rich_text_content.includes(
         :user, :liked_users, :likes, :comments, :taggings, :tags
       ).paginate(page: params[:page], per_page: 5)
     end
+    @tags = Article.tag_counts.order('taggings_count DESC').limit(10)
   end
 
   def help
