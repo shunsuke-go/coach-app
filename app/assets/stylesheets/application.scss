@@ -817,9 +817,22 @@ strong {
 
 .alert {
   height:60%;
-  background-color: blue;
   text-align: center;
 }
+
+.alert-success {
+  background-color: blue;
+}
+
+.alert-notice {
+  background-color: green;
+}
+
+.alert-danger {
+  background-color: orange;
+}
+
+
 
 .alert-message {
   position: relative;
