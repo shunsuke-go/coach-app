@@ -39,12 +39,10 @@
           <% end %>
         <% end %>
         </span>
-
       </div>
       <div class="card-content">
         <div class="divider"></div>    
       </div>
-
     <div class="row article-prof">
       <div class="col s2 m2 l2">
         <div class="card-content">
@@ -55,7 +53,6 @@
           <% end %>                
         </div>
       </div>
-
       <div class="col s10 m10 l5 pull-l1">
         <div class="card-content">
             <%= link_to @article.user.name, user_path(@article.user) %>          
@@ -71,7 +68,6 @@
           <% end %>
         </div>
       </div>
-
       <div class="col s10 push-s2 m10 push-m2 l5 pull-l1">
         <div class="card-content pad-t-b-18">
           <%= render 'shared/user_info' %>   
@@ -80,7 +76,6 @@
     </div>
     </div>
   </div>
-
   <div class="col s12 m12 l10 push-l1">
     <div class="card hoverable">
       <div class="card-content">
@@ -92,6 +87,5 @@
     </div>
   </div>
 </div>
-
 <%= javascript_pack_tag 'map/map_show' %>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API'] %>&callback=initMap" async defer></script>
