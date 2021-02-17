@@ -1,19 +1,18 @@
 <% if user.profile.present? %>
-<ul>
-  <div class="card-content">
-  <li><%= user.profile.age %>歳</li>
-  </div>
-  <div class="card-action">
-  <li>居住地 : <%= user.profile.address %></li>
-  </div>
-  <div class="card-action">
-  <li class="profile"><%= user.profile.content %></li>
-  </div>
-  <div class="card-action">
-  <li class="profile"><%= user.profile.favorite %></li>
-  </div>
-
-</ul>
+  <ul>
+    <div class="card-content">
+    <li><%= user.profile.age %>歳</li>
+    </div>
+    <div class="card-action">
+    <li>居住地 : <%= user.profile.address %></li>
+    </div>
+    <div class="card-action">
+    <li class="profile"><%= user.profile.content %></li>
+    </div>
+    <div class="card-action">
+    <li class="profile"><%= user.profile.favorite %></li>
+    </div>
+  </ul>
 <% else %>
   <div class="card-action">
     プロフィールはありません。

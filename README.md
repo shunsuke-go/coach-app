@@ -115,7 +115,8 @@ https://github.com/shunsuke-go/coach-app/blob/main/app/controllers/messages_cont
 * 「近所の募集を探す」機能
   * 検索した位置から半径20km以内の位置情報と紐付いている記事を探すことが可能
 * 記事検索機能
-  * ransack gemを使用
+  * ransack gemを使用  
+  * 記事を文字列で検索できる
 
 ## フォロー機能
 * フォロー、フォロー解除機能

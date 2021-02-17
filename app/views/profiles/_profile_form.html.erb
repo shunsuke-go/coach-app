@@ -1,7 +1,7 @@
+<%= provide(:title,@title)%>
 <div class="col s12 m8 push-m2">
   <div class="card">
     <div class="card-content">
-      <%= provide(:title,@title)%>
       <%= form_with(model:[current_user,@profile], local: true) do |f| %>
       <%= render 'shared/error_messages', object: f.object%>
       <div class="input-field">

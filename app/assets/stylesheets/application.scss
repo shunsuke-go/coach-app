@@ -337,9 +337,6 @@ button:focus {
 
 
 .balloon1 {
-  
-  
-  
   margin: 1.5em 0;
   min-width: 120px;
   max-width: 100%;
@@ -347,10 +344,26 @@ button:focus {
   font-size: 14px;
 }
 
+.balloon2 {
+  margin: 1.5em 0;
+  min-width: 120px;
+  max-width: 100%;
+  color: #555;
+  font-size: 14px;
+}
+
+
+
 .balloon1 p {
   margin: 0;
   padding: 0;
 }
+
+.balloon2 p {
+  margin: 0;
+  padding: 0;
+}
+
 
 .article-btn {
   position: relative;
@@ -804,9 +817,22 @@ strong {
 
 .alert {
   height:60%;
-  background-color: blue;
   text-align: center;
 }
+
+.alert-success {
+  background-color: blue;
+}
+
+.alert-notice {
+  background-color: green;
+}
+
+.alert-danger {
+  background-color: orange;
+}
+
+
 
 .alert-message {
   position: relative;

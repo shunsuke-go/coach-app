@@ -1,38 +1,34 @@
-
-  <% if current_user?(@user) %>
+<% if current_user?(@user) %>
+  <div class="padding-updown-10">
+    <%= link_to "アカウント情報の更新",edit_user_path(current_user),class:"btn cyan darken-1 width-200" %></p>
+  </div>
+  <div class="padding-updown-10">
+    <%= render 'users/profile_page' %>
+  </div>
+<% else %>
+  <div class="follow-form padding-updown-10">
+    <%= render 'users/follow_form' %>
+  </div>
+  <% if logged_in? %>
     <div class="padding-updown-10">
-      <%= link_to "アカウント情報の更新",edit_user_path(current_user),class:"btn cyan darken-1 width-200" %></p>
-    </div>
-    <div class="padding-updown-10">
-      <%= render 'users/profile_page' %>
+    <%= render 'users/room_form' %>
     </div>
   <% else %>
-    <div class="follow-form padding-updown-10">
-      <%= render 'users/follow_form' %>
+    <%= link_to "フォロー",login_path, class:"btn follow-btn margin-t-b-5" %>
+    <%= link_to "メッセージを送る",login_path, class:"btn blue blue darken-1 white-text width-200 margin-t-b-5" %>
+  <% end %>
+<% end %>      
+<div class="padding-updown-10">  
+  <%= link_to "レビューを書く・見る", user_reviews_path(@user),class:"btn white-text review-btn lime darken-2" %> 
+  <% if logged_in? %>
+    <% if current_user.admin? %>
+    <div>
+      <%= link_to "このユーザーを削除",user_path(@user),method: :delete,
+      data: { confirm: "本当に削除しますか？" } %>
     </div>
-    <% if logged_in? %>
-      <div class="padding-updown-10">
-      <%= render 'users/room_form' %>
-      </div>
-    <% else %>
-      <%= link_to "フォロー",login_path, class:"btn follow-btn margin-t-b-5" %>
-      <%= link_to "メッセージを送る",login_path, class:"btn blue blue darken-1 white-text width-200 margin-t-b-5" %>
     <% end %>
-  <% end %>      
-
-
-  <div class="padding-updown-10">
-    
-    <%= link_to "レビューを書く・見る", user_reviews_path(@user),class:"btn white-text review-btn lime darken-2" %> 
-    <% if logged_in? %>
-      <% if current_user.admin? %>
-      <div>
-        <%= link_to "このユーザーを削除",user_path(@user),method: :delete,
-        data: { confirm: "本当に削除しますか？" } %>
-      </div>
-      <% end %>
-    <% end %>
-  </div>
+  <% end %>
+</div>
 
 
 

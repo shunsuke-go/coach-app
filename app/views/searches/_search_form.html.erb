@@ -1,5 +1,5 @@
 <div class="card hoverable">
-  <div class="card-content">
+  <div class="card-content" id="article-search-card">
     <h6>
       <i class="fas fa-search header-icons" style="color:lightblue"></i>    
       キーワードで探す
@@ -13,7 +13,8 @@
       <%= f.search_field :action_text_rich_text_body_cont %>
       <%= f.label :action_text_rich_text_body_cont, "キーワード" %>
     </div>
-    <%= f.submit class: "btn" %>
+    <%= f.submit class: "btn", id:"article-search-btn"%>
     <% end %>
   </div>
 </div>
+<%= javascript_pack_tag 'search/article_search' %>

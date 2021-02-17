@@ -1,8 +1,6 @@
 var follow_form = document.getElementById('follow_form');
 var followers = document.getElementById('followers');
-
 follow_form.innerHTML="<%= j(render 'users/unfollow', user: @user) %>"
-
 fetch('/api/v1/users/<%= @user.id %>/relationships/followers_count',{
   mode: 'cors',
   method: 'GET',

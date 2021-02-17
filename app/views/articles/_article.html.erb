@@ -4,9 +4,7 @@
       <% if article.thumbnail? %>
         <%= link_to image_tag(article.thumbnail.url),article_path(article) %>
       <% end %>
-    </div>
-
-          
+    </div>        
       <div class="card-content article-title">
         <span class="card-title">
           <%= link_to article.title,article_path(article),class:"title" %>
@@ -20,25 +18,20 @@
         <%= render 'articles/tag_list',tag_list: article.tags.pluck(:name) %>
       </div>
       <% end %>
-
     <div class="card-content article-content">
       <h6 class="art-cont"><%= article.content %></h6>      
     </div>
-
     <div class="card-content more-read">
      <a href="<%= article_path(article)%>" style="color:orange">続きを読む</span></a>
     </div>
-
     <div class="card-content margin-0-top">
       <%= render 'likes/like', article: article %>
       <% if article.comments.any? %>
         <span class="comment-count">
           <%= link_to "コメント：#{article.comments.size}件",article_path(article) %>
         </span>
-      <% end %>    
-        
-      <div class="right article-avatar">
-        
+      <% end %>            
+      <div class="right article-avatar">        
       </div>
     </div>
   </div>

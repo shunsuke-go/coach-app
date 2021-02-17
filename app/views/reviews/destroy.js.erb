@@ -2,7 +2,6 @@ var review = document.getElementById("review_<%= @review.id %>");
 var ave_point = document.getElementById('ave_point');
 var reviews = document.getElementById('reviews');
 review.remove();
-
 fetch("/users/<%= @user.id %>/reviews/ave_point_cal",{
   mode: 'cors',
   method: 'GET'
@@ -14,13 +13,11 @@ fetch("/users/<%= @user.id %>/reviews/ave_point_cal",{
     for (var i = 1; i < ave_points_int; i++){
       star = star + `<i class="fas fa-star review-stars" style="color:gold"></i>`
     }
-
     if (data.ave_points - ave_points_int >= 0.5) {
       star = star + `<i class="fas fa-star-half review-stars" style="color:gold"></i>`
     } 
     return star
   }
-
   if(reviews.childElementCount == 0){
     ave_point.textContent='';
   } else {
@@ -33,4 +30,3 @@ fetch("/users/<%= @user.id %>/reviews/ave_point_cal",{
 .catch(e =>{
   console.log(e)
 })
-

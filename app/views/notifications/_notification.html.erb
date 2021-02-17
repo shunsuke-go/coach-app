@@ -6,39 +6,31 @@
     <% else %>
       <%=link_to image_tag('no-image.jpg', class: "circle small"),
       user_path(notification.visiter) %>
-    <% end %>        
-    
+    <% end %>            
     <span class="profile-link">
-      <%= link_to notification.visiter.name, user_path(notification.visiter) %>さんが
-    
+      <%= link_to notification.visiter.name, user_path(notification.visiter) %>さんが    
     <div class="notice">            
       <% if notification.action == "like" %>
         <%= link_to notification.article.title,article_path(notification.article),class:"notification" %>
-        の記事をいいねしました
-        
+        の記事をいいねしました        
         <i class="fas fa-heart fa-2x right" style="color:red"></i>
-
       <% elsif notification.action == "comment" %>
         <%= link_to notification.article.title,article_path(notification.article),class:"notification"  %>
         の記事にコメントしました
         <i class="far fa-comment-dots fa-2x right"></i>
-
       <% elsif notification.action == "message" %>
         あなたに
         <%= link_to "メッセージ",room_path(notification.message.room),class:"notification"  %>
         を送信しました
         <i class="far fa-envelope fa-2x right"></i>
-
       <% elsif notification.action == "follow" %>
         あなたをフォローしました
         <i class="far fa-handshake fa-2x right"></i>
-
       <% elsif notification.action == "review" %>
         あなたに
         <%= link_to "レビュー", user_reviews_path(notification.visited),class:"notification"  %>
         を書きました
         <i class="fas fa-pen right fa-2x"></i>
-
       <% end %>
     </div>
     </span>
