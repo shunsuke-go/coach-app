@@ -38,11 +38,6 @@
     </div>
   </div>
 </div>
-
-
-
-
-
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API'] %>&callback=initMap" async defer></script>
 <script>
 var marker
@@ -53,7 +48,6 @@ var address
 var geocoder
 var map_result
 let map
-
 function initMap (){
   myLatLng = {lat: 35.68090045006303, lng: 139.76690798417752}
   map_lat = document.getElementById('article_map_latitude')
@@ -82,13 +76,11 @@ function mylistener(event){
   }
 
 }
-
 function deleteMarker(){
     marker.setMap(null);
     map_lat.value = "";
     map_lng.value = "";
 }
-
 function reverse(lat_lng) {
 var geo = new google.maps.Geocoder();
 geo.geocode(
@@ -103,7 +95,6 @@ geo.geocode(
   }
 );
 }
-
 function codeAddress(){
   geocoder = new google.maps.Geocoder()
   let inputAddress = document.getElementById('address').value;

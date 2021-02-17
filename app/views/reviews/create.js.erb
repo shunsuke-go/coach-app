@@ -3,7 +3,6 @@ var ave_point = document.getElementById('ave_point');
 var review_content = document.getElementById('review_content');
 var review_rate = document.getElementById('review_rate');
 var stars = document.getElementById('stars');
-
 fetch("/api/v1/users/<%= @user.id %>/reviews",{
   mode: 'cors',
   method: 'GET',
@@ -27,7 +26,6 @@ fetch("/api/v1/users/<%= @user.id %>/reviews",{
     }
     return image
   }
-
   coach_check = () => {
     if(new_review.user.coach == true){
     var coach_name = `
@@ -90,7 +88,6 @@ reviews.insertAdjacentHTML('beforeend',`
 }).catch(e=> {
   console.log(e);
 })
-
 fetch("/users/<%= @user.id %>/reviews/ave_point_cal",{
   mode: 'cors',
   method: 'GET',
@@ -106,11 +103,9 @@ fetch("/users/<%= @user.id %>/reviews/ave_point_cal",{
     for (var i = 1; i < ave_points_int; i++){
       star = star + `<i class="fas fa-star review-stars" style="color:gold"></i>`
     }
-
     if (data.ave_points - ave_points_int >= 0.5) {
       star = star + `<i class="fas fa-star-half review-stars" style="color:gold"></i>`
     } 
-
     return star
   }
   ave_point.innerHTML=(`
@@ -120,8 +115,6 @@ fetch("/users/<%= @user.id %>/reviews/ave_point_cal",{
 .catch(e =>{
   console.log(e)
 })
-
 review_content.value='';
 review_rate.value='';
-review_error.textContent='';
-  
+review_error.textContent='';  

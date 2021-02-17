@@ -1,9 +1,9 @@
 <div id="message_<%= message.id %>" class="message">
   <% if message.user == current_user %>
-  <div class="current_user">
-    <span class="direct-messages"><%= message.content %></span>
-  </div>
-  <div class="right">
+    <div class="current_user">
+      <span class="direct-messages"><%= message.content %></span>
+    </div>
+    <div class="right">
     <% if current_user?(message.user) %>
       <%= link_to "削除",message_path(message), method: :delete,
       data: { confirm: "削除しますか？" }, remote: true %>
@@ -17,8 +17,8 @@
   <div class="not_current_user">
     <span class="direct-messages"><%= message.content %></span>
   </div>
-    <div class="gray message-time">
-      <%= message.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
-    </div>
+  <div class="gray message-time">
+    <%= message.created_at.strftime('%Y-%m-%d %H:%M:%S') %>
+  </div>
   <% end %>
 </div>

@@ -1,5 +1,4 @@
 var messages = document.getElementById('messages');
 var message_content = document.getElementById('message_content');
-
 messages.insertAdjacentHTML('beforeend',"<%= j(render @message) %>");
 message_content.value='';

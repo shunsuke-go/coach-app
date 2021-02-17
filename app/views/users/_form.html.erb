@@ -14,14 +14,12 @@
       <%= f.password_field :password %>
       <%= f.label :password, 'パスワード' %>
     </div>
-
     <div class="input-field">
       <%= f.password_field :password_confirmation %>
       <%= f.label :password_confirmation, 'パスワード（確認）' %>
     </div>
     <%= f.label :avatar, "サムネイル" %>
     <%= f.file_field :avatar, class: 'form-control', accept: "avatar/jpeg,avatar/gif,avatar/png" %>
-
     <div class="checkboxes">
       <% if @user.avatar? %>
         <%= f.label :avatar_delete,class: 'checkbox inline' do %>

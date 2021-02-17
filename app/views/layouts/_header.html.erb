@@ -1,85 +1,76 @@
-  <header>
-    <div class="conatiner">
-    <div class="navbar-fixed">
-      <nav>
-        <% flash.each do |message_type,message| %>
-        <div class="alert alert-<%= message_type%>"  id="alert">
-          <span class="alert-message"><%= message %></span>
-        </div>
-        <% end %>        
-        <div class="nav-wrapper cyan darken-1">          
-          <%= link_to image_tag('title_logo.png',class:"title-logo brand-logo"),root_path %>
-          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-          <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <% if logged_in? %>
-          
-          <li><a href="<%= tags_articles_path %>">
-            <i class="fas fa-tag header-icons"></i>タグ</a>
-          </li>
-
-          <li><a href="/messages/box/<%=current_user.id%>">
-            <i class="fas fa-envelope header-icons"></i>メッセージボックス</a>
-          </li>
-
-          <li><a href="<%= notifications_path %>">
-            <i class="fas fa-bell header-icons"></i>通知</a>
-          </li>
-
-          <li><a href="<%= users_path %>">
-          <i class="fas fa-user header-icons"></i>ユーザ一覧</a>
-          </li>
-
-          <li><a href="<%= user_likes_path(current_user) %>">
-            <i class="fas fa-heart header-icons"></i>いいねした記事</a>
-          </li>
-
-          <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">
-          マイメニュー
-            <% if current_user.avatar? %>
-              <%= image_tag(current_user.avatar.url, class: "circle header-icon") %>
-            <% else %>
-              <%= image_tag('no-image.jpg', class: "circle header-icon") %>
-            <% end %></a>
-          </li>
+<header>
+  <div class="conatiner">
+  <div class="navbar-fixed">
+    <nav>
+      <% flash.each do |message_type,message| %>
+      <div class="alert alert-<%= message_type%>"  id="alert">
+        <span class="alert-message"><%= message %></span>
+      </div>
+      <% end %>        
+      <div class="nav-wrapper cyan darken-1">          
+        <%= link_to image_tag('title_logo.png',class:"title-logo brand-logo"),root_path %>
+        <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <% if logged_in? %>      
+        <li><a href="<%= tags_articles_path %>">
+          <i class="fas fa-tag header-icons"></i>タグ</a>
+        </li>
+        <li><a href="/messages/box/<%=current_user.id%>">
+          <i class="fas fa-envelope header-icons"></i>メッセージボックス</a>
+        </li>
+        <li><a href="<%= notifications_path %>">
+          <i class="fas fa-bell header-icons"></i>通知</a>
+        </li>
+        <li><a href="<%= users_path %>">
+        <i class="fas fa-user header-icons"></i>ユーザ一覧</a>
+        </li>
+        <li><a href="<%= user_likes_path(current_user) %>">
+          <i class="fas fa-heart header-icons"></i>いいねした記事</a>
+        </li>
+        <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">
+        マイメニュー
+          <% if current_user.avatar? %>
+            <%= image_tag(current_user.avatar.url, class: "circle header-icon") %>
           <% else %>
-          <li><%= link_to "ログイン", login_path %></li>
-          <li><%= link_to "登録", signup_path %></li>
-          <li><%= link_to "ゲストログイン （1クリック）", '/guest_login',class:"btn red" %>
-          
-          <% end %>   
-        </ul>
-        </div>
-      </nav>
-    </div>
-  </header>  
-
-  <% if logged_in? %>
-  <ul id="dropdown1" class="dropdown-content">
-    <li><%= link_to "プロフィール", user_path(current_user) %></span></li>
-    <li><%= link_to "セッティング", edit_user_path(current_user) %></li>
-    <li class="divider"></li>
-    <li>        
-      <%= link_to "ログアウト",logout_path,method: :delete %>
-    </li>
-  </ul>
-  <% end %>
-
-  <ul class="sidenav" id="mobile-demo">
-    <li><%= link_to "ホーム",   root_path %></li>
-        <% if logged_in? %>
-        <li><%= link_to "タグ",tags_articles_path %></li>
-        <li><a href="/messages/box/<%=current_user.id%>">メッセージボックス</a></li>
-        <li><%= link_to "通知", notifications_path %></li>
-        <li><%= link_to "ユーザ一覧", users_path %></li>
-        <li><%= link_to "いいねした記事", user_likes_path(current_user) %></li>
-        <li><%= link_to "プロフィール", user_path(current_user) %></li>
-        <li><%= link_to "セッティング", edit_user_path(current_user) %></li>
-        <li><%= link_to "近い記事検索",new_map_path %></li>
-        <li>        
-        <%= link_to "ログアウト",logout_path,method: :delete %>
+            <%= image_tag('no-image.jpg', class: "circle header-icon") %>
+          <% end %></a>
         </li>
         <% else %>
         <li><%= link_to "ログイン", login_path %></li>
-        <% end %>
-  </ul>
+        <li><%= link_to "登録", signup_path %></li>
+        <li><%= link_to "ゲストログイン （1クリック）", '/guest_login',class:"btn red" %>        
+        <% end %>   
+      </ul>
+      </div>
+    </nav>
+  </div>
+</header>  
+<% if logged_in? %>
+<ul id="dropdown1" class="dropdown-content">
+  <li><%= link_to "プロフィール", user_path(current_user) %></span></li>
+  <li><%= link_to "セッティング", edit_user_path(current_user) %></li>
+  <li class="divider"></li>
+  <li>        
+    <%= link_to "ログアウト",logout_path,method: :delete %>
+  </li>
+</ul>
+<% end %>
+<ul class="sidenav" id="mobile-demo">
+  <li><%= link_to "ホーム",   root_path %></li>
+  <% if logged_in? %>
+  <li><%= link_to "タグ",tags_articles_path %></li>
+  <li><a href="/messages/box/<%=current_user.id%>">メッセージボックス</a></li>
+  <li><%= link_to "通知", notifications_path %></li>
+  <li><%= link_to "ユーザ一覧", users_path %></li>
+  <li><%= link_to "いいねした記事", user_likes_path(current_user) %></li>
+  <li><%= link_to "プロフィール", user_path(current_user) %></li>
+  <li><%= link_to "セッティング", edit_user_path(current_user) %></li>
+  <li><%= link_to "近い記事検索",new_map_path %></li>
+  <li>        
+  <%= link_to "ログアウト",logout_path,method: :delete %>
+  </li>
+  <% else %>
+  <li><%= link_to "ログイン", login_path %></li>
+  <% end %>
+</ul>
 <%= javascript_pack_tag 'materialize/header' %>
