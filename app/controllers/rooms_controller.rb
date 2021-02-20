@@ -22,7 +22,7 @@ class RoomsController < ApplicationController
     # @userは配列
     @user = User.find_by_sql("SELECT * FROM users WHERE id =
        (SELECT user_id FROM entries WHERE room_id = #{params[:id]} && user_id != #{current_user.id})")
-    @room = Room.find_by(id: params[:id])
+    @room = Room.find(params[:id])
     @message = Message.new
     @messages = Message.includes(:user).where("room_id = #{@room.id}")
   end
@@ -42,7 +42,7 @@ class RoomsController < ApplicationController
     def room_mached?
       # current_userとentryのuserが同じかどうか
 
-      room = Room.find_by(id: params[:id])
+      room = Room.find(params[:id])
       check_entry = Entry.where("room_id = #{room.id} && user_id = #{current_user.id}")
 
       if check_entry.empty?

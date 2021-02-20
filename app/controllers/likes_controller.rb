@@ -22,8 +22,8 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    @article = Article.find_by(id: params[:article_id])
-    @like = Like.find_by(id: params[:id])
+    @article = Article.find(params[:article_id])
+    @like = Like.find(params[:id])
     @like.destroy
 
     respond_to do |format|

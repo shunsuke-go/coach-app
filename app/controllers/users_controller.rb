@@ -71,14 +71,14 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    User.find_by(id: params[:id]).destroy
+    User.find(params[:id]).destroy
     flash[:success] = '削除に成功しました'
     redirect_to root_url
   end
 
   def following
     @title = 'フォロー'
-    @user = User.find_by(id: params[:id])
+    @user = User.find(params[:id])
     @users = @user.following.paginate(page: params[:page])
     if logged_in?
       @room = Room.find_by_sql("SELECT * FROM rooms WHERE id IN
@@ -100,7 +100,7 @@ class UsersController < ApplicationController
 
   def followers
     @title = 'フォロワー'
-    @user = User.find_by(id: params[:id])
+    @user = User.find(params[:id])
     @users = @user.followers.paginate(page: params[:page])
     if logged_in?
       @room = Room.find_by_sql("SELECT * FROM rooms WHERE id IN
@@ -138,7 +138,7 @@ class UsersController < ApplicationController
     end
 
     def correct_user
-      @user = User.find_by(id: params[:id])
+      @user = User.find(params[:id])
       if @user.nil?
         flash[:danger] = '無効な操作です'
       end

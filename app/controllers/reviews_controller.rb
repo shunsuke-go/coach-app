@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy, :index]
   def create
-    @user = User.find_by(id: params[:user_id])
+    @user = User.find(params[:user_id])
     @review = Review.new(review_params)
     @review.reviewer_id = current_user.id
     @review.reviewed_id = @user.id
@@ -22,7 +22,7 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    @review = Review.find_by(id: params[:id])
+    @review = Review.find(params[:id])
     @user = @review.reviewed
     @reviews = @user.passive_reviews
 
