@@ -3,7 +3,7 @@ class MessagesController < ApplicationController
   before_action :logged_in_user
   before_action :message_authority, only: [:box]
   def create
-    @user = User.find_by(id: params[:user_id])
+    @user = User.find(params[:user_id])
     @message = Message.new(message_params)
     @message.user_id = current_user.id
     @message.room_id = params[:room_id]
