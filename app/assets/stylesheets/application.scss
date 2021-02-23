@@ -811,6 +811,8 @@ strong {
 }
 
 .ranker-name {
+  position: relative;
+  bottom:22px;
   white-space: nowrap;
   text-decoration: underline;
 }

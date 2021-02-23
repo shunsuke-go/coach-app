@@ -1,7 +1,11 @@
 <%= provide(:title,"検索") %>
 <div class="row">
   <div class="col s12 m8 push-m2">
-    <%= render @articles %>
+    <% if @articles.empty? %>
+      <h6 class="center">そのワードに関する記事はありませんでした</h6>
+    <% else %>
+      <%= render @articles %>
+    <% end %>
     <div class="center"><%= will_paginate @articles %></div>
   </div>
 </div>
