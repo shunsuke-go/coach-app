@@ -1,4 +1,7 @@
 class SearchesController < ApplicationController
+  def new
+  end
+
   def index
     @keyword = Article.ransack(params[:q])
     @articles = @keyword.result.with_rich_text_content.includes(
