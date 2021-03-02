@@ -65,7 +65,8 @@
   <li><%= link_to "いいねした記事", user_likes_path(current_user) %></li>
   <li><%= link_to "プロフィール", user_path(current_user) %></li>
   <li><%= link_to "セッティング", edit_user_path(current_user) %></li>
-  <li><%= link_to "近い記事検索",new_map_path %></li>
+  <li><%= link_to "近い記事検索", new_map_path %></li>
+  <li><%= link_to "ワードで記事検索", new_search_path %></li>
   <li>        
   <%= link_to "ログアウト",logout_path,method: :delete %>
   </li>

@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     end
   end
   get '/articles', to: 'static_pages#home'
-  resources :searches, only: [:index]
+  resources :searches, only: [:index, :new]
 
   resources :rooms, only: [:show, :create, :index]
   resources :messages, only: [:create, :destroy]
