@@ -5,6 +5,8 @@ class NotificationsController < ApplicationController
     @notifications = current_user.passive_notifications
     .includes(:visiter, :visited, :article, :comment, :message)
     .paginate(page: params[:page], per_page: 10)
+
+    @notifications.update(checked: true)
   end
 
   def destroy_all
