@@ -24,7 +24,7 @@ module MessagesHelper
       ").to_hash
 
     @new_send_messages.each do |new_send_message|
-      if new_send_message['checked'] != true
+      if new_send_message['checked'] != 1
         return 1
       end
     end

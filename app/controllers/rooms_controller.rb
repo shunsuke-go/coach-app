@@ -25,6 +25,7 @@ class RoomsController < ApplicationController
     @room = Room.find(params[:id])
     @message = Message.new
     @messages = Message.includes(:user).where("room_id = #{@room.id}")
+    @messages.update(checked: true)
   end
 
   private
