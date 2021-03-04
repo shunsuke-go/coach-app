@@ -35,11 +35,12 @@ class MessagesController < ApplicationController
 
     # 自分が所属するルーム毎の最新メッセージ,作成日時と、メッセージ相手のid,名前,avatarのurlを取得する
     @new_send_messages = ActiveRecord::Base.connection.select_all("
-      SELECT m3.room_id,content, partner_user_id,
+      SELECT m3.room_id,content, partner_user_id, checked,
              partner_user_name, partner_users_avatar,m3.created_at
       FROM (
         SELECT m1.room_id AS room_id,
         m1.content AS content,
+        m1.checked AS checked,
         m1.created_at AS created_at,
         users.id AS partner_user_id,
         users.name AS partner_user_name,
