@@ -50,13 +50,13 @@
       </div>
     </nav>
   </div>
-</header>  
+</header>
 <% if logged_in? %>
 <ul id="dropdown1" class="dropdown-content">
   <li><%= link_to "プロフィール", user_path(current_user) %></span></li>
   <li><%= link_to "セッティング", edit_user_path(current_user) %></li>
   <li class="divider"></li>
-  <li>        
+  <li>
     <%= link_to "ログアウト",logout_path,method: :delete %>
   </li>
 </ul>
@@ -65,8 +65,18 @@
   <li><%= link_to "ホーム",   root_path %></li>
   <% if logged_in? %>
   <li><%= link_to "タグ",tags_articles_path %></li>
-  <li><a href="/messages/box/<%=current_user.id%>">メッセージボックス</a></li>
-  <li><%= link_to "通知", notifications_path %></li>
+  <li>
+    <% if message_check == 1 %>
+    <span class="new badge red hm-badge"></span>
+    <% end %>
+    <a href="/messages/box/<%=current_user.id%>">メッセージボックス</a>
+  </li>
+  <li>
+    <% if unchecked_notifications.any? %>
+      <span class="new badge red hm-badge"></span>
+    <% end %>        
+    <%= link_to "通知", notifications_path %>
+  </li>
   <li><%= link_to "ユーザ一覧", users_path %></li>
   <li><%= link_to "いいねした記事", user_likes_path(current_user) %></li>
   <li><%= link_to "プロフィール", user_path(current_user) %></li>
