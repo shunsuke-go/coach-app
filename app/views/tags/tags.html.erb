@@ -1,11 +1,13 @@
-<div class="row margin-0">
+<div class="row">
   <div class="col s12 m12">
-    <div class="card tag-all hoverable">
+    <div class="card hoverable">
       <div class="card-content">
-          <h6># 人気のタグ</h6>
+        <div class="card-title center">
+          人気のタグ
+        </div>  
       </div>
       <div class="divider"></div>
-      <div class="card-content row flex margin-0">
+      <div class="card-content row flex">
         <% @tags.each do |tag|%>
         <div class="tags">
           <a class="btn tag-button blue-grey lighten-4" href="<%= articles_path(tag_name: tag.name) %>">

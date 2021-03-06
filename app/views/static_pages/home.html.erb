@@ -4,10 +4,10 @@
       <a class="waves-effect waves-light  btn red form-btn btn-floating" href="<%= new_article_path %>">
       <i class="fas fa-pen fa-5x pen"></i></a>
     </div>
+    <div class="none"><%= render 'tags/tag_all' %></div>
     <div class="none"><%= render 'maps/new_map' %></div>
     <div class="none"><%= render 'searches/search_form' %></div>
     <div class="none"><%= render 'shared/ranks' %></div>
-    <div class="none"><%= render 'tags/tag_all' %></div>
   </div>
   <div class="col s12 m12 l8 feed">
     <% if logged_in? %>
