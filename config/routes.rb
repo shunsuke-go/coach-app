@@ -50,6 +50,8 @@ Rails.application.routes.draw do
         resources :comments, only: [:index], controller: 'comments'
         get '/likes/count', to: 'likes#count'
       end
+
+      get '/articles', to: 'articles#index'
     end
   end
 end
