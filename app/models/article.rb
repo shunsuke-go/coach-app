@@ -46,9 +46,12 @@ class Article < ApplicationRecord
   end
 
   def as_json(options = {})
-    binding.pry
+    
     action_text_json = super
     action_text_json[:rich_text_body] = content.to_s
     action_text_json
   end
+
+
+
 end

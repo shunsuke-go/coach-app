@@ -13,11 +13,23 @@ module Api::V1
         @articles = Article.with_rich_text_content.includes(
           :user, :liked_users, :likes, :comments, :taggings, :tags
         ).paginate(page: params[:page], per_page: 5)
-        render json: {
-          articles: @articles,
-          user_ranks: @user_ranks,
-          favorite_tags: @tags
+
+ 
+      @articles.map {
+        |article|          
+          if article.tags.present?
+            article.tag_list = []
+            article.tag_list.push(article.tag_counts_on(:tags))
+          end
         }
+        
+        # render json: {
+        #    articles: @articles ,           
+        #    user_ranks: @user_ranks ,
+        #    favorite_tags: @tags,
+        #    user: @articles.map { |article| article.user.name },
+        # }
+      
       end
     end
 
@@ -45,7 +57,6 @@ module Api::V1
       end
 
       action_text_json = @article.as_json
-      binding.pry
       render json: action_text_json
     end
   end
