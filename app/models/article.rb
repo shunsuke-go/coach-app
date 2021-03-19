@@ -46,12 +46,8 @@ class Article < ApplicationRecord
   end
 
   def as_json(options = {})
-    
-    action_text_json = super
-    action_text_json[:rich_text_body] = content.to_s
-    action_text_json
+    user_avatar = super
+    user_avatar[:user_avatar] = user.avatar
+    user_avatar
   end
-
-
-
 end

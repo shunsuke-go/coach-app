@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
+    
     @user_ranks = User.where('ave_rate != 0 && review_count >= 5').order(ave_rate: 'DESC').limit(3)
     @tags = Article.tag_counts.order('taggings_count DESC').limit(10)
     if logged_in?

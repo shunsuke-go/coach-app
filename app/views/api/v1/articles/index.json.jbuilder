@@ -9,19 +9,19 @@ json.articles @articles do |article|
   json.tag_list article.tags do |tag|
     json.id tag.id
     json.name tag.name
-    json.count tag.count  
+    json.count tag.taggings_count
   end
 end
-  
+
 json.tags @tags do |tag|
-    json.id tag.id
-    json.name tag.name
-    json.count tag.count
+  json.id tag.id
+  json.name tag.name
+  json.count tag.taggings_count
 end
 
 json.user_ranks @user_ranks do |user_rank|
   json.id user_rank.id
   json.name user_rank.name
-  json.avatar user_rank.avatar
+  json.user_avatar user_rank.avatar
   json.ave_rate user_rank.ave_rate
 end
