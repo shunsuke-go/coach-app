@@ -5,7 +5,7 @@ module Api::V1
       @tags = Article.tag_counts.order('taggings_count DESC').limit(10)
       if logged_in?
         @article = current_user.articles.build
-        @feed_items = current_user.feed.with_rich_text_content.includes(
+        @articles = current_user.feed.with_rich_text_content.includes(
           :user, :liked_users, :likes, :comments, :taggings, :tags
         ).paginate(page: params[:page], per_page: 5)
         @likes = current_user.liked_articles

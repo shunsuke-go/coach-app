@@ -43,6 +43,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       post '/login', to: 'sessions#create'
       get '/logged_in', to: 'sessions#react_logged_in?'
+      delete '/logout', to: 'sessions#logout'
       resources :users, only: [:show, :index, :create] do
         resources :reviews, only: [:index], controller: 'reviews'
         get '/relationships/followers_count', to: 'relationships#followers_count'
