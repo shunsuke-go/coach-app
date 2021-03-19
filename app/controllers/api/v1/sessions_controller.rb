@@ -21,7 +21,7 @@ module Api::V1
       if logged_in?
         render json: { logged_in: true, user: @current_user }
       else
-        render json: { logged_in: false, message: "ユーザが存在しません。" }
+        render json: { logged_in: false, message: 'ユーザが存在しません。' }
       end
     end
 
