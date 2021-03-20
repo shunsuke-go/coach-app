@@ -39,5 +39,12 @@ module Api::V1
         gon.longitude = @map.longitude
       end
     end
+
+    def all
+      @articles = Article.all.with_rich_text_content.includes(
+        :user, :liked_users, :likes, :comments, :taggings, :tags
+      )
+      render json: @articles.map(&:id)
+    end
   end
 end

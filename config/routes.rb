@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/help', to: 'static_pages#help'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
+  get '/logout', to: 'sessions#destroy'
   resources :users do
     resources :reviews, only: [:create, :destroy, :index]
     get '/reviews/ave_point_cal', to: 'reviews#ave_point_cal'
@@ -44,6 +45,7 @@ Rails.application.routes.draw do
       post '/login', to: 'sessions#create'
       get '/logged_in', to: 'sessions#react_logged_in?'
       delete '/logout', to: 'sessions#logout'
+      get '/articles_all', to: 'articles#all'
       resources :users, only: [:show, :index, :create] do
         resources :reviews, only: [:index], controller: 'reviews'
         get '/relationships/followers_count', to: 'relationships#followers_count'
@@ -51,6 +53,10 @@ Rails.application.routes.draw do
 
       resources :articles do
         resources :comments, only: [:index], controller: 'comments'
+        resources :users, only: [:create, :index] do
+          get '/likes/destroy_target', to: 'likes#destroy_target'
+          resources :likes, only: [:create, :destroy]
+        end
         get '/likes/count', to: 'likes#count'
       end
 
