@@ -7,7 +7,11 @@ module Api::V1
       @like.user_id = @user.id
       @article.create_like_notification(@user)
       @like.save
-      render json: @user.liked_articles
+      render json:
+      {
+        liked_articles: @user.liked_articles,
+        likes_count: @article.likes.count
+      }
     end
 
     def destroy_target
@@ -17,9 +21,14 @@ module Api::V1
 
     def destroy
       @user = User.find(params[:user_id])
+      @article = Article.find(params[:article_id])
       @like = Like.find(params[:id])
       @like.destroy
-      render json: @user.liked_articles
+      render json:
+      {
+        liked_articles: @user.liked_articles,
+        likes_count: @article.likes.count
+      }
     end
 
     def count

@@ -6,6 +6,7 @@ json.user_id @article.user.id
 json.user_name @article.user.name
 json.user_avatar @article.user.avatar
 json.profile @article.user.profile
+json.likes_count @article.likes.count
 json.tag_list @article.tags do |tag|
   json.id tag.id
   json.name tag.name
