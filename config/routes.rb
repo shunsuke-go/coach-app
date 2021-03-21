@@ -49,6 +49,8 @@ Rails.application.routes.draw do
       resources :users, only: [:show, :index, :create] do
         resources :reviews, only: [:index], controller: 'reviews'
         get '/relationships/followers_count', to: 'relationships#followers_count'
+        post 'relationships/:followed_id/', to: 'relationships#create'
+        delete 'relationships/:followed_id/', to: 'relationships#destroy'
       end
 
       resources :articles do
