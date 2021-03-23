@@ -21,5 +21,6 @@ json.articles @feed_items do |article|
     json.count tag.taggings_count
   end
 end
+json.articles_count @articles_count
 json.follower_count @user.followers.count
 json.followed_count @user.following.count

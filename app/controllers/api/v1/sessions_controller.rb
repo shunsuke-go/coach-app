@@ -24,7 +24,11 @@ module Api::V1
 
     def react_logged_in?
       if logged_in?
-        render json: { logged_in: true, user: @current_user }
+        render json: {
+          logged_in: true,
+          user: @current_user,
+          liked_articles: @current_user.liked_articles
+        }
       else
         render json: { logged_in: false, message: 'ユーザが存在しません。' }
       end

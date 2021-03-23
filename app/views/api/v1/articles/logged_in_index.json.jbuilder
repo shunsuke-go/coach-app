@@ -1,4 +1,4 @@
-json.articles @articles do |article|
+json.articles @feed_items do |article|
   json.id article.id
   json.title article.title
   json.content article.content.body
@@ -13,7 +13,6 @@ json.articles @articles do |article|
     json.count tag.taggings_count
   end
 end
-
 json.tags @tags do |tag|
   json.id tag.id
   json.name tag.name
@@ -30,4 +29,4 @@ end
 json.liked_articles @likes do |article|
   json.id article.id
 end
-json.articles_count @articles_count
+json.articles_count @logged_in_articles_count

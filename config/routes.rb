@@ -46,9 +46,11 @@ Rails.application.routes.draw do
       get '/logged_in', to: 'sessions#react_logged_in?'
       delete '/logout', to: 'sessions#logout'
       get '/articles_all', to: 'articles#all'
+      get '/articles/users/:user_id', to: 'articles#logged_in_index'
       resources :users, only: [:show, :index, :create] do
         resources :reviews, only: [:index], controller: 'reviews'
         get '/relationships/followers_count', to: 'relationships#followers_count'
+        get 'relationships/:followed_id/', to: 'relationships#following?'
         post 'relationships/:followed_id/', to: 'relationships#create'
         delete 'relationships/:followed_id/', to: 'relationships#destroy'
       end
@@ -57,12 +59,14 @@ Rails.application.routes.draw do
         resources :comments, only: [:index], controller: 'comments'
         resources :users, only: [:create, :index] do
           get '/likes/destroy_target', to: 'likes#destroy_target'
-          resources :likes, only: [:create, :destroy]
+          resources :likes, only: [:create]
+          delete '/likes', to: 'likes#destroy'
         end
         get '/likes/count', to: 'likes#count'
       end
 
-      get '/articles', to: 'articles#index'
+      get '/articles/?page=:page', to: 'articles#index'
+      get '/users/:id/?page=:page', to: 'users#show'
     end
   end
 end

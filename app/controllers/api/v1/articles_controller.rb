@@ -3,17 +3,25 @@ module Api::V1
     def index
       @user_ranks = User.where('ave_rate != 0 && review_count >= 5').order(ave_rate: 'DESC').limit(3)
       @tags = Article.tag_counts.order('taggings_count DESC').limit(10)
-      if logged_in?
-        @article = current_user.articles.build
-        @articles = current_user.feed.with_rich_text_content.includes(
-          :user, :liked_users, :likes, :comments, :taggings, :tags
-        ).paginate(page: params[:page], per_page: 5)
-        @likes = current_user.liked_articles
-      else
-        @articles = Article.with_rich_text_content.includes(
-          :user, :liked_users, :likes, :comments, :taggings, :tags
-        ).paginate(page: params[:page], per_page: 5)
-      end
+      @articles = Article.with_rich_text_content.includes(
+        :user, :liked_users, :likes, :comments, :taggings, :tags
+      ).paginate(page: params[:page], per_page: 5)
+      @articles_count = Article.all.with_rich_text_content.includes(
+        :user, :liked_users, :likes, :comments, :taggings, :tags
+      ).count
+    end
+
+    def logged_in_index
+      @user_ranks = User.where('ave_rate != 0 && review_count >= 5').order(ave_rate: 'DESC').limit(3)
+      @tags = Article.tag_counts.order('taggings_count DESC').limit(10)
+      @user = User.find(params[:user_id])
+      @feed_items = @user.feed.with_rich_text_content.includes(
+        :user, :liked_users, :likes, :comments, :taggings, :tags
+      ).paginate(page: params[:page], per_page: 5)
+      @likes = @user.liked_articles
+      @logged_in_articles_count = @user.feed.with_rich_text_content.includes(
+        :user, :liked_users, :likes, :comments, :taggings, :tags
+      ).count
     end
 
     def show

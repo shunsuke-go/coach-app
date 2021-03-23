@@ -22,7 +22,7 @@ module Api::V1
     def destroy
       @user = User.find(params[:user_id])
       @article = Article.find(params[:article_id])
-      @like = Like.find(params[:id])
+      @like = Like.find_by(user_id: @user.id, article_id: @article.id)
       @like.destroy
       render json:
       {

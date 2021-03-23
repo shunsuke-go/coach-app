@@ -31,6 +31,9 @@ module Api::V1
       @review = Review.new
       @reviews = @user.passive_reviews
       @ave_rate = @user.ave_rate.round(1) unless @user.ave_rate.nil?
+      @articles_count = @user.articles.with_rich_text_content.includes(
+        :user, :liked_users, :likes, :comments, :taggings, :tags
+      ).count
     end
 
     private

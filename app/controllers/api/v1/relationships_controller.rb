@@ -10,8 +10,15 @@ module Api::V1
 
     def destroy
       @following_user = User.find(params[:user_id])
-      @followed_user = Relationship.find(params[:followed_id]).followed
-      following_user.unfollow(@followed_user)
+      @followed_user = User.find(params[:followed_id])
+      @following_user.unfollow(@followed_user)
+      render json: @followed_user.followers.count
+    end
+
+    def following?
+      @following_user = User.find(params[:user_id])
+      @followed_user = User.find(params[:followed_id])
+      render json: @following_user.following?(@followed_user)
     end
 
     def followers_count
