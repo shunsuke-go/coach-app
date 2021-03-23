@@ -47,6 +47,7 @@ Rails.application.routes.draw do
       delete '/logout', to: 'sessions#logout'
       get '/articles_all', to: 'articles#all'
       get '/articles/users/:user_id', to: 'articles#logged_in_index'
+      resources :rooms, only: [:show, :create]
       resources :users, only: [:show, :index, :create] do
         resources :reviews, only: [:index], controller: 'reviews'
         get '/relationships/followers_count', to: 'relationships#followers_count'

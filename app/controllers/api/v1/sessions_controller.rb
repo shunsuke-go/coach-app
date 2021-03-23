@@ -27,7 +27,9 @@ module Api::V1
         render json: {
           logged_in: true,
           user: @current_user,
-          liked_articles: @current_user.liked_articles
+          liked_articles: @current_user.liked_articles.with_rich_text_content.includes(
+            :user, :liked_users, :likes, :comments, :taggings, :tags
+          )
         }
       else
         render json: { logged_in: false, message: 'ユーザが存在しません。' }

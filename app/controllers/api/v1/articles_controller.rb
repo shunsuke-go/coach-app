@@ -42,10 +42,6 @@ module Api::V1
           @entry = Entry.new
         end
       end
-      unless @map.nil?
-        gon.latitude = @map.latitude
-        gon.longitude = @map.longitude
-      end
     end
 
     def all
@@ -53,6 +49,11 @@ module Api::V1
         :user, :liked_users, :likes, :comments, :taggings, :tags
       )
       render json: @articles.map(&:id)
+    end
+
+    def destroy
+      Article.find(params[:id]).destroy
+      render json: 'DELETED'
     end
   end
 end
