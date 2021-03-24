@@ -40,6 +40,7 @@ module Api::V1
       else
         guest_user = User.find_by(email: 'guest@guest.com')
         log_in(guest_user)
+        remember(guest_user)
         render json: {
           logged_in: true,
           user: guest_user,
