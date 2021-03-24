@@ -127,7 +127,6 @@ class User < ApplicationRecord
   end
 
   def users_room(current_user)
-    
     if id != current_user.id
       Room.find_by_sql("SELECT * FROM rooms WHERE id IN
     (SELECT room_id FROM entries WHERE user_id = #{id} &&
