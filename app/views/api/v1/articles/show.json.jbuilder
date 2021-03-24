@@ -20,3 +20,5 @@ json.comments @comments do |comment|
   json.user_name comment.user.name
   json.user_avatar comment.user.avatar
 end
+
+json.map @map
