@@ -41,6 +41,7 @@ gem 'gon'
 gem 'dotenv-rails'
 gem 'aws-sdk-s3', require: false
 gem 'ransack'
+gem 'rails_same_site_cookie'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'will_paginate',           '3.1.8'
