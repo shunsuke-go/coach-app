@@ -34,6 +34,22 @@ module Api::V1
       @articles_count = @user.articles.all.count
     end
 
+    def guest_login
+      if logged_in?
+        render json: 'すでにログインしています'
+      else
+        guest_user = User.find_by(email: 'guest@guest.com')
+        log_in(guest_user)
+        render json: {
+          logged_in: true,
+          user: guest_user,
+          liked_articles: guest_user.liked_articles.with_rich_text_content.includes(
+            :user, :liked_users, :likes, :comments, :taggings, :tags
+          )
+        }
+      end
+    end
+
     private
 
       def user_params
