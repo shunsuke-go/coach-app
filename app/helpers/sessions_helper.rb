@@ -32,7 +32,6 @@ module SessionsHelper
 
     # クッキーを削除する
   def forget(user)
-    
     user.forget
     cookies.delete(:user_id)
     cookies.delete(:remember_token)
@@ -40,7 +39,6 @@ module SessionsHelper
 
     # ログアウトする
   def log_out
-    
     forget(current_user)
     session.delete(:user_id)
     @current_user = nil
