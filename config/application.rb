@@ -40,8 +40,8 @@ module CoachApp
     # the framework and any gems in your application.
 
     # Don't generate system test files.
-    config.api_only = false
-    config.middleware.use ActionDispatch::Cookies
+    # config.api_only = false
+    # config.middleware.use ActionDispatch::Cookies
     config.generators.system_tests = nil
     config.autoloader = :classic
     config.time_zone = 'Asia/Tokyo'
