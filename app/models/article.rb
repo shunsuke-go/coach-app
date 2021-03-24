@@ -44,4 +44,10 @@ class Article < ApplicationRecord
   def display_image
     image.variant(resize_to_limit: [200, 200])
   end
+
+  def as_json(options = {})
+    user_avatar = super
+    user_avatar[:user_avatar] = user.avatar
+    user_avatar
+  end
 end

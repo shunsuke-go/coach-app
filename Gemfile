@@ -47,6 +47,7 @@ gem 'will_paginate',           '3.1.8'
 # gem 'bootstrap-will_paginate', '1.0.0'
 gem 'acts-as-taggable-on', '~> 6.0' # 追加
 gem 'jwt'
+gem 'rack-cors'
 gem 'carrierwave', '~> 2.0'
 gem 'fog-aws'
 gem 'will_paginate-materialize', git: 'https://github.com/mldoscar/will_paginate-materialize', branch: 'master'
