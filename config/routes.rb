@@ -42,6 +42,7 @@ Rails.application.routes.draw do
 
   namespace :api, format: 'json' do
     namespace :v1 do
+      get '/guest_login', to: 'users#guest_login'
       post '/login', to: 'sessions#create'
       get '/logged_in', to: 'sessions#react_logged_in?'
       delete '/logout', to: 'sessions#logout'
