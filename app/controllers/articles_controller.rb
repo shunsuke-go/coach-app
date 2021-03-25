@@ -7,29 +7,29 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    # redirect_to("#{ENV['FRONT_URL']}/articles/#{params[:id]}")
-    @article = Article.find(params[:id])
-    @user = @article.user
-    @comment = @article.comments.build
-    @comments = @article.comments.all
-    @like = @article.likes.build
-    @tags = @article.tag_counts_on(:tags)
-    @map = Map.find_by(article_id: @article.id)
-    @reviews = @user.passive_reviews
-    @ave_rate = @user.ave_rate.round(1) unless @user.ave_rate.nil?
-    @profile = Profile.find_by(user_id: @user.id)
-    if logged_in?
-      @room = @user.users_room(current_user)
-      if @room.blank?
-        @room = Room.new
-        @entry = Entry.new
-      end
-    end
+    redirect_to("#{ENV['FRONT_URL']}/articles/#{params[:id]}")
+    # @article = Article.find(params[:id])
+    # @user = @article.user
+    # @comment = @article.comments.build
+    # @comments = @article.comments.all
+    # @like = @article.likes.build
+    # @tags = @article.tag_counts_on(:tags)
+    # @map = Map.find_by(article_id: @article.id)
+    # @reviews = @user.passive_reviews
+    # @ave_rate = @user.ave_rate.round(1) unless @user.ave_rate.nil?
+    # @profile = Profile.find_by(user_id: @user.id)
+    # if logged_in?
+    #   @room = @user.users_room(current_user)
+    #   if @room.blank?
+    #     @room = Room.new
+    #     @entry = Entry.new
+    #   end
+    # end
 
-    return if @map.nil?
+    # return if @map.nil?
 
-    gon.latitude = @map.latitude
-    gon.longitude = @map.longitude
+    # gon.latitude = @map.latitude
+    # gon.longitude = @map.longitude
   end
 
   def create

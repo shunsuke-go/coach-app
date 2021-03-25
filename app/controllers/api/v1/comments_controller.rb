@@ -13,13 +13,13 @@ module Api::V1
         @article.create_comment_notification(current_user, @comment)
       else
         render json: '投稿に失敗しました'
-      end  
+      end
     end
 
-private
-    def comment_params
-      params.require(:comment).permit(:content)
-    end
+    private
 
+      def comment_params
+        params.require(:comment).permit(:content)
+      end
   end
 end
