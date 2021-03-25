@@ -58,7 +58,7 @@ Rails.application.routes.draw do
       end
 
       resources :articles do
-        resources :comments, only: [:index], controller: 'comments'
+        resources :comments, only: [:index, :create], controller: 'comments'
         resources :users, only: [:create, :index] do
           get '/likes/destroy_target', to: 'likes#destroy_target'
           resources :likes, only: [:create]
