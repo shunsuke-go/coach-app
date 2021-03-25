@@ -40,8 +40,7 @@ module Api::V1
 
     def count
       @article = Article.find(params[:article_id])
-      count = { count: @article.likes.count }
-      render json: count
+      render json: @article.likes.count
     end
   end
 end
