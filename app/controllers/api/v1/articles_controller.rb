@@ -18,7 +18,6 @@ module Api::V1
       @feed_items = @user.feed.with_rich_text_content.includes(
         :user, :liked_users, :likes, :comments, :taggings, :tags
       ).paginate(page: params[:page], per_page: 5)
-      @likes = @user.liked_articles
       @logged_in_articles_count = @user.feed.with_rich_text_content.includes(
         :user, :liked_users, :likes, :comments, :taggings, :tags
       ).count
