@@ -31,6 +31,13 @@ module Api::V1
       }
     end
 
+    def index
+      @articles = current_user.liked_articles.with_rich_text_content.includes(
+        :user, :liked_users, :likes, :comments, :taggings, :tags
+      )
+      render json: @articles
+    end
+
     def count
       @article = Article.find(params[:article_id])
       count = { count: @article.likes.count }

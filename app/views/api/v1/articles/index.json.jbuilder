@@ -27,7 +27,4 @@ json.user_ranks @user_ranks do |user_rank|
   json.ave_rate user_rank.ave_rate
 end
 
-json.liked_articles @likes do |article|
-  json.id article.id
-end
 json.articles_count @articles_count
