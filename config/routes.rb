@@ -51,7 +51,6 @@ Rails.application.routes.draw do
       get '/articles/users/:user_id', to: 'articles#logged_in_index'
       resources :rooms, only: [:show, :create]
       resources :users, only: [:show, :index, :create] do
-        
         resources :likes, only: [:index]
         resources :reviews, only: [:index], controller: 'reviews'
         get '/relationships/followers_count', to: 'relationships#followers_count'

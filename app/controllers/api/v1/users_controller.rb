@@ -56,7 +56,7 @@ module Api::V1
       end
     end
 
-    def all 
+    def all
       @users = User.all
       render json: { users: @users }
     end
