@@ -1,7 +1,12 @@
 module Api::V1
   class UsersController < ApplicationController
     def index
-      @users = User.all
+      @users = User.where('coach != true').includes(:profile).paginate(page: params[:page], per_page: 5)
+      @coaches = User.where('coach = true').includes(:profile).paginate(page: params[:page], per_page: 5)
+      render json: {
+        users: @users,
+        coaches: @coaches
+      }
     end
 
     def create
@@ -49,6 +54,11 @@ module Api::V1
           )
         }
       end
+    end
+
+    def all
+      @users = User.all
+      render json: { users: @users }
     end
 
     private
