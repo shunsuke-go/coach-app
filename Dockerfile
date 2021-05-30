@@ -7,12 +7,11 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
 WORKDIR /coach-app
 COPY Gemfile /coach-app/Gemfile
 COPY Gemfile.lock /coach-app/Gemfile.lock
-RUN bundle install && bundle update
+RUN bundle install
 COPY . /coach-app
 
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 3000
-
 #CMD ["rails", "server", "-b", "0.0.0.0"]
